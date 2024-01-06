@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google'
+// import { Inter } from 'next/font/google'
 import './globals.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import "slick-carousel/slick/slick.css"; 
@@ -13,7 +13,7 @@ import FooterMain from './shared/Footer';
 import MobileFooterMenu from './shared/Header/Mobile/MobileFooterMenu';
 import FlatButton from './FlatButton';
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'The Korean Mall - Korean Cosmetics and Skin Care Products.',
