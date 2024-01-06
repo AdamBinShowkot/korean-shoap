@@ -1,0 +1,70 @@
+.banner-three-container{
+    height: 100px;
+    width: 100vw;
+    background-image: linear-gradient(45deg,rgba(20, 19, 31, 0.7),rgba(20, 19, 31, 0.7)), url('/banner3.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    .banner-three-row{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100px; 
+        .column{
+            padding:auto 30px;
+        }
+        .middle-column{
+            text-align:center;
+            justify-content:center;
+            align-items:center;
+            display:flex;
+        }
+    }
+}
+
+.banner-three-button{
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.25);
+    padding: 6px;
+    font-size: 22px;
+    font-weight: 700;
+    //opacity: .9;
+}
+
+/*** RESPONSIVE AREA ***/
+@media only screen and (max-width:480px) {
+    .banner-three-container{
+        height: 100px;
+        width: 100vw;
+        .banner-three-row{
+            height:100px;
+            .column{
+                padding:auto 30px;
+            }
+        }
+    }
+    
+}
+@media only screen and (min-width:768px) {
+  
+}
+@media only screen and (min-width:980px) {
+    .banner-three-container{
+        height: 100px;
+        width: 100vw;
+        .banner-three-row{
+            height:100px;
+            .middle-column{
+                width: 33% !important;
+            }
+            .column{
+                padding:auto 30px;
+            }
+        }
+    }    
+}
+@media only screen and (min-width:1360px) {
+    
+}
+@media only screen and (min-width:1920px) {
+    
+}

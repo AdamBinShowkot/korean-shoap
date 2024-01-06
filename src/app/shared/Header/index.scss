@@ -1,0 +1,47 @@
+.header-container{
+    position: sticky !important;
+    top: 0;
+    background-color: #fff;
+    z-index: 150;
+}
+.discount-container{
+    background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1));
+}
+.header-topbar{
+  display: block;
+}
+.mobile-header{
+  display: none;
+  border-bottom: 1px solid rgb(240, 237, 237);
+}
+
+/*** RESPONSIVE AREA ***/
+@media only screen and (min-width:360px) {
+  .discount-container{
+    display: none;
+  }
+  .header-navbar{
+    display: none;
+  }
+  .header-topbar{
+    display: none;
+  }
+  .mobile-header{
+    display: block;
+  }
+}
+
+@media only screen and (min-width:980px) {
+    .discount-container{
+      display: block;
+    }
+    .header-navbar{
+      display: block;
+    }
+    .header-topbar{
+      display: block;
+    }
+    .mobile-header{
+      display: none;
+    }
+}

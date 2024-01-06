@@ -1,0 +1,51 @@
+.mobile-header-top-container{
+    // position: fixed;
+    // top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+}
+.mobile-humberger-menu{
+    height: 20px;
+    width: 25px;
+}
+.mobile-shoap-logo{
+    height: 30px;
+    width: 100%;
+}
+
+.mobile-footer-menu{
+    position: fixed;
+    bottom: 0;
+    display: none;
+    height: 60px;
+    width: 100vw;
+    background: #fff;
+    z-index: 50;
+    border-top: 1px solid rgb(240, 237, 237);
+    .mobile-menu-column{
+        display: flex;
+        height: 60px;
+        justify-content: space-around;
+        align-items: center;
+        .mobile-menu-image{
+            height: 30px;
+            width: 30px;
+        }
+    }
+}
+
+
+/*** RESPONSIVE AREA ***/
+@media only screen and (min-width:360px) {
+    .mobile-footer-menu{
+        display: block;
+    }
+}
+  
+@media only screen and (min-width:980px) {
+    .mobile-footer-menu{
+        display: none
+    }
+}

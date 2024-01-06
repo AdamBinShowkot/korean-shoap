@@ -1,0 +1,42 @@
+.star-rating svg{
+    display: inline-block !important;
+}
+.accordion{
+    border: none;
+}
+.accordion-item{
+    border: none;
+}
+.accordion-header{
+    padding: 0px;
+    margin: 0px;
+    font-size: 20px !important;
+}
+.accordion-button{
+    margin: 0px !important;
+    padding: 6px !important;
+}
+.accordion-button::after{
+    height: 20px;
+    width: 20px;
+    font-size: 12px;
+}
+.accordion-button:not(.collapsed){
+    background-color: #fff !important;
+    margin: 0px !important;
+}
+.accordion-body{
+    padding: 5px;
+    font-size: 14px;
+    border: none;
+}
+
+.comment-description{
+    color: #000;
+    font-size: 12px;
+}
+
+.comment-footer-hr{
+    margin: 30px 0px;
+}
+

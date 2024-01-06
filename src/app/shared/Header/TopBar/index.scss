@@ -1,0 +1,39 @@
+.top-bar-container{
+    padding: 10px 200px;
+}
+.logo-div img{
+    height: 40px;
+}
+
+.global-search:hover{
+    cursor: pointer;
+}
+.header-social-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.header-social-image:hover{
+
+        cursor: pointer;
+}
+
+
+.user-button{
+    background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1));
+    border: none !important;
+    color: #fff;
+    height: 37px;
+    width: 37px;
+    padding: 10px !important;
+    border-radius: 50px;
+}
+
+.normal-icon-button{
+    height: 25px;
+    width: 25px;
+    background-color: #fff;
+    border: none;
+    padding: 2px;
+}

@@ -1,0 +1,29 @@
+.blog-card{
+    margin: 15px 10px;
+    border-radius: 5px;
+    background-color: rgba(92, 51, 169, 0.05);
+    border: none;
+}
+.blog-card:hover{
+    transition: .3s;
+    cursor: pointer;
+    box-shadow: 0px 16px 24px 0px rgba(0, 0, 0, 0.14);
+}
+.blog-category-lists{
+    margin-top: 8px;
+}
+.blog-category-lists li{
+    font-size: 12px;
+    color: grey;
+}
+
+.featured-explore-more{
+    position: absolute;
+    bottom: 30px;
+    width: 60%;
+    right: 20%;
+    background-color: rgba(255, 255, 255, 1);
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 50px;
+}

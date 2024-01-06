@@ -1,0 +1,254 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.cdnfonts.com/css/helvetica-neue-lt-pro-2');
+/* @import '~bootstrap/scss/bootstrap'; */
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  font-family: 'Helvetica Neue LT Pro', sans-serif;
+  color: #000;
+  background-color: #fff;
+  /* background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb)); */
+}
+h1{
+  font-size: 30px;
+}
+h2{
+  font-size: 24px;
+  font-weight: 600;
+  color: #000;
+}
+p{
+  font-size: 14px;
+  color: #fff;
+}
+a,span{
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+  line-height: 16px;
+}
+
+ul li{
+  display: block !important;
+}
+.home-page-inner-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px 7.5vw;
+}
+/* .col-12{
+  padding: 0;
+} */
+.normal-input{
+  height: 35px;
+  line-height:14px;
+  font-size: 14px;
+  font-family: 'Helvetica Neue LT Pro', sans-serif;
+}
+
+.normal-social-button{
+  height: 25px;
+  width: 25px;
+  background-color: #fff;
+  border: none;
+  padding: 2px;
+  margin: 4px 10px;
+}
+
+.normal-social-button:last-child{
+  margin-right: 0px;
+}
+
+.no-left-margin{
+  margin-left: 0;
+}
+
+.footer-header{
+  color: #000;
+}
+
+.save-off-button{
+  background-image: linear-gradient(to right,rgba(92, 51, 169, 1),rgba(232, 99, 154, 1));
+  border: none;
+  padding: 6px 20px;
+}
+.slider-previous-arrow-btn{
+  background-image: linear-gradient(to right,rgba(92, 51, 169, 1),rgba(232, 99, 154, 1)) !important;
+  /* padding: 6px !important; */
+  height: 32px !important;
+  width: 32px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-left: -60px !important;
+  border-radius: 50% !important;
+}
+.slick-prev:before, .slick-next:before{
+  font-size: 22px !important;
+  margin-top: 3px !important;
+}
+
+
+.slider-next-arrow-btn{
+  background-image: linear-gradient(to right,rgba(92, 51, 169, 1),rgba(232, 99, 154, 1)) !important;
+  /* padding: 6px !important; */
+  height: 32px !important;
+  width: 32px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-right: -80px !important;
+  border-radius: 50% !important;
+}
+.slick-prev:before, .slick-next:before{
+  font-size: 22px !important;
+  margin-top: 3px !important;
+}
+/*** COTACT FORM && COMMNET FORM CSS***/
+.contact-form .form-control{
+  background-color: rgba(0, 0, 0, 0.06);
+  border: none;
+}
+
+/* .slick-dots{
+  
+  display: flex;
+}
+.slick-dots li{
+  display: inline !important;
+} */
+
+
+
+.page-item{
+  margin: 5px 6px;
+}
+.page-item .page-link{
+  padding: 6px 10px;
+  border-radius: 50%;
+}
+.page-item:first-child .page-link{
+  padding: 6px 12px;
+  border-radius: 50% !important;
+}
+.page-item:last-child .page-link{
+  padding: 6px 12px;
+  border-radius: 50% !important;
+}
+
+/***  Flat Button CSS ***/
+.fixed-button {
+  position: fixed;
+  display: block;
+  bottom: 20%; /* Adjust the distance from the bottom as needed */
+  right: 0; /* Adjust the distance from the right as needed */
+/* Set the background color */
+  color: #fff; /* Set the text color */
+  /* border: none; */
+  /* border-radius: 5px; */
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 10000;
+  /* border:3px solid ; */
+  border: double 3px transparent;
+  /* border-radius: 5px !important; */
+  border-radius: 10px;
+  border-right: none;
+  overflow: hidden;
+  /* border-image:linear-gradient(to bottom, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1)); */
+  background-image: linear-gradient( white,  white),linear-gradient(to bottom,  rgba(92, 51, 169, 1),  rgba(232, 99, 154, 1));
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+/* Add hover effect if desired */
+
+
+.flat-button-top-area{
+  padding: 6px 20px 6px 6px;
+  background-color: rgba(25, 32, 56, 1);
+}
+.flat-button-footer-area{
+  padding: 0px 20px 0px 6px;
+  background-color: rgba(232, 99, 154, 1);
+}
+
+.fixed-button span{
+  color: #fff;
+  font-size: 12px;
+}
+
+
+/*** Normal class for justify align , content center***/
+.display-flex-justify-content-align-item-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/** Responsive area **/
+/*** RESPONSIVE AREA ***/
+@media only screen and (max-width:480px) {
+  
+  .fixed-button{
+    display: none;
+  }
+  .slider-next-arrow-btn{
+    height: 28px !important;
+    width: 28px !important;
+    margin-right: -90px !important;
+    border-radius: 50% !important;
+  }
+  .slider-previous-arrow-btn{
+    height: 28px !important;
+    width: 28px !important;
+    margin-left: -40px !important;
+    border-radius: 50% !important;
+  }
+  .home-page-inner-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:10px;
+  }
+}
+@media only screen and (min-width:768px) {
+
+}
+@media only screen and (min-width:980px) {
+  .fixed-button{
+    display: block;
+  }
+  .home-page-inner-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px 7.5vw;
+  }
+}
+@media only screen and (min-width:1360px) {
+  
+}
+@media only screen and (min-width:1920px) {
+  
+}

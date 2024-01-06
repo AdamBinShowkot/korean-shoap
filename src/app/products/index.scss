@@ -1,0 +1,17 @@
+.products-layout-container{
+    overflow: hidden;
+    height: 100px;
+    width: 98.75vw;
+    background-image: linear-gradient(45deg,rgba(20, 19, 31, 0.7),rgba(20, 19, 31, 0.7)), url('/banner3.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.products-layout-button{
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.25);
+    padding: 6px;
+    font-size: 22px;
+    font-weight: 700;
+    //opacity: .9;
+}

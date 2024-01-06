@@ -1,0 +1,24 @@
+.product-filter-input-group{
+    width: 100%;
+    border: 1px solid rgba(92, 51, 169, 1);
+    border-radius: 5px;
+    position: relative;
+}
+.product-filter-input-group .products-filter-group-button{
+    color: #000;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 0;
+    border-right: 1px solid rgba(92, 51, 169, 1);
+    font-size: 13px;
+    font-weight: 600;
+    margin-right: 1px;
+}
+
+.product-filter-input-group .products-filter-button-main{
+    position: absolute;
+    right: 5px;
+    padding: 10px 15px;
+    background: none;
+    border: none;
+}

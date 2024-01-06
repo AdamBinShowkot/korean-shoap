@@ -1,0 +1,32 @@
+.comments-reply-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(232, 99, 154, 1);
+    padding: 8px 50px;
+    border-radius: 50px;
+    border: none;
+}
+.comments-hr{
+    margin: 10px 0px;
+}
+.commnets-container span{
+    font-size: 13px;
+    font-weight: 500;
+    color: grey;
+}
+
+.contact-form-hr{
+    width: 20%;
+    margin: 10px 20px;
+}
+.contact-form-submit-button{
+    background-color: rgba(232, 99, 154, 1);
+    border: 1px solid rgba(232, 99, 154, 1);
+    padding: 8px 50px;
+    border-radius: 50px;
+}
+
+.contact-form .form-label{
+    font-size: 15px;
+}

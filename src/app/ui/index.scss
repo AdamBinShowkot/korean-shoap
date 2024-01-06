@@ -1,0 +1,269 @@
+.static-card-container{
+    width:13.8rem;
+    margin-right:1vw !important;
+    min-height:28rem;
+    .card-body{
+        text-align:center;
+        position:relative;
+        padding:0;
+        min-height:28rem;
+        .image{
+            height: 19rem;
+            width: 16rem;
+        }
+    }
+}
+.home-product-container{
+    margin: 0 2.2vw;
+    width: 13vw;
+    min-height:28rem;
+    border:none;
+    padding:0;
+    .product-card-body{
+        text-align:center;
+        position:relative;
+        padding:0;
+        min-height:26.4rem;
+        .card-container{
+            border:1px solid rgba(232, 99, 154, 1);
+            border-radius:5px;
+            margin-bottom:10px;
+            width:14.8vw !important;
+        }
+    }
+}
+.home-product-container:hover{
+    cursor: pointer;
+    // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.filter-product-card{
+    margin: 0 20px;
+}
+
+.card-button{
+    background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1));
+    border: none !important;
+    color: #fff;
+    padding: 5px 12px !important;
+}
+.product-card-button{
+    font-size: 12px;
+}
+.product-card-button-hover{
+    font-size: 12px;
+    background-color: rgba(232, 99, 154, 1) !important;
+    border: none;
+    border-radius: 10px;
+    margin-top: 25px;
+}
+.product-card-title{
+    color: rgba(232, 99, 154, 1);
+    font-size: 20px;
+    font-weight: 500;
+    font-style: italic;
+}
+.product-card-body{
+    padding: 40px 15px;
+}
+
+.home-post-container{
+    border: none;
+    background-image:  linear-gradient(to bottom,rgba(92, 51, 169, 1) ,rgba(232, 99, 154, 1));
+}
+
+.blog-new-button{
+    padding: 2px 20px !important;
+    font-size: 12px;
+    background-color: rgba(255, 255, 50, 1);
+    border: none;
+    color: #000;
+}
+.blog-video-button{
+    // background-image:  linear-gradient(to right,rgba(255, 255, 255, 1) ,rgba(255, 255, 255, 0));
+    background-color: rgba(92, 51, 169, 0.35);
+    border: none;
+    //padding: 10px 20px;
+    width: 100%;
+}
+.video-btn-time{
+   position: absolute;
+   right: 25px; 
+   background-color: #fff;
+   color: #000;
+   border: none;
+   font-size: 11px;
+}
+
+
+/**  start hover card button area ***/
+.details-active{
+    display: block;
+    visibility: visible;
+    transition: opacity 0.8s ease-in-out;
+}
+.details-deactive{
+    display: none;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out;
+}
+
+
+.hover-card-active{
+    display: block;
+    visibility: visible;
+    position:absolute;
+    transition: opacity 0.8s ease-in-out;
+    padding: 60px 10px;
+    border: double 1px transparent;
+    z-index: 100;
+    bottom: 0;
+    background-color: #fff;
+    width: 14.8vw !important;
+    // border-image:linear-gradient(to bottom, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1))2;
+    border-radius: 5px;
+    border: 1px solid rgba(92, 51, 169, 1),;
+    // background-origin: border-box;
+    // background-clip: content-box, border-box;
+}
+.hover-card-active 
+.nav-item{
+    width: 50%;
+    padding: 0 !important;
+    border: none;
+    border: 5px !important;
+}
+.hover-card-active 
+.nav-link{
+    margin: 0 !important;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, .5);
+    border-radius: 0px;
+}
+.hover-card-active 
+.nav-link.active{
+    background-color: rgba(232, 99, 154, 1);
+    border: 1px solid rgba(232, 99, 154, 1) !important;
+}
+#controlled-tab-example-tab-home{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+#controlled-tab-example-tab-profile{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+#controlled-tab-example .nav-tabs{
+   border: none !important;
+}
+
+
+
+
+.hover-card-deactive{
+    display: none;
+    visibility: hidden;
+    // display: block;
+    // visibility: visible;
+    transition: opacity 0.8s ease-in-out;
+}
+
+/*** end hover card button area***/
+
+
+/*** RESPONSIVE AREA ***/
+@media only screen and (max-width:480px) {
+    .product-slider-container{
+        .slick-list {
+            padding: 0px 20px !important;
+            .slick-slide{
+                width: 45vw !important;
+                margin: 0 2vw 0 3vw!important;
+            }
+        }
+    }
+    .product-non-slide-container{
+        .home-product-container{
+            margin: 0px 1vw;
+        }
+    }
+    .static-card-container{
+        width:45vw;
+        margin-right:1vw !important;
+        min-height:20rem;
+        .card-body{
+            text-align:center;
+            position:relative;
+            padding:0;
+            min-height:20.6rem;
+            .product-card-title{
+                font-size: 16px !important;
+                font-weight: 500;
+                font-style: italic;
+            }
+            .image{
+                height: 10rem;
+                width: 8rem;
+            }
+            
+        }
+        
+    }
+    .home-product-container{
+        width: 38vw;
+        min-height:20rem;
+        .product-card-body{
+            min-height:20.4rem;
+            .card-container{
+                width:45vw !important;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .product-card-button{
+                    position:absolute;
+                    bottom:5px;
+                    left:0;
+                    right:0;
+                }
+            }
+            .card-text{
+                margin-bottom: 10px;
+                span{
+                    font-size: 12px !important;
+                }
+            }
+            .card-button{
+                font-size: 11px !important;
+            }
+        }
+    }
+}
+@media only screen and (min-width:768px) {
+  
+}
+@media only screen and (min-width:980px) {
+    .product-slider-container{
+        // .slick-list {
+        //     padding: 0px !important;
+        //     .slick-slide{
+        //         width: 100% !important;
+        //         margin: 0 !important;
+        //     }
+        // }
+    }
+    .home-product-container{
+        width: 12vw;
+        min-height:28rem;
+        .product-card-body{
+            min-height:26.4rem;
+            .card-container{
+                width:14.8vw !important;
+            }
+        }
+    }
+}
+@media only screen and (min-width:1360px) {
+    
+}
+@media only screen and (min-width:1920px) {
+    
+}
