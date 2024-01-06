@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
       <head>
         <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js" async ></script>
       </head>
-      <body className={inter.className}>
+      <body >
         <FlatButton/>
         <Container fluid>
           <HeaderMain/>
