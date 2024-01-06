@@ -38,8 +38,8 @@ async function getBrandProductLists(){
   return response;
 }
 export default async function Home() {
-  const brandLists=await getBrandProductLists();
- // const brandLists=[];
+  //const brandLists=await getBrandProductLists();
+  const brandLists=[];
   //const bodyCareDataLists= await getBodyCareLists();
   //console.log(bodyCareDataLists)
   //const test = useSize();
@@ -95,16 +95,6 @@ export default async function Home() {
       </Row>
       <Row>
         <BannerThree/>
-      </Row>
-      <Row
-      // style={{
-      //   padding:'50px 0px',
-      //   minHeight:'500px'
-      // }}
-      >
-        <Col>
-          <IsotopeReact lists={brandLists}/>
-        </Col>
       </Row>
       <Row>
         <Col xs={12}>

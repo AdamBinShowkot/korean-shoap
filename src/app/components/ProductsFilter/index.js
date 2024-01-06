@@ -62,22 +62,22 @@ const IsotopeReact = ({lists}) => {
       : isotope.current.arrange({filter: `.${filterKey}`})
   }, [filterKey])
 
-  useEffect(()=>{
-    if(lists.length){
-        lists.map((dta)=>{
-            if(dta.name=="Neogen"){
-                if(dta?.products?.length){
-                    setNeogenLists(dta.products);
-                }
-            }else if(dta.name=="COSRX"){
-                if(dta?.products?.length){
-                    setCosrxLists(dta.products);
-                }
-            }
-        })
-    }
-   console.log(lists)
-},[lists])
+//   useEffect(()=>{
+//     if(lists.length){
+//         lists.map((dta)=>{
+//             if(dta.name=="Neogen"){
+//                 if(dta?.products?.length){
+//                     setNeogenLists(dta.products);
+//                 }
+//             }else if(dta.name=="COSRX"){
+//                 if(dta?.products?.length){
+//                     setCosrxLists(dta.products);
+//                 }
+//             }
+//         })
+//     }
+//    console.log(lists)
+// },[lists])
 
   const handleFilterKeyChange = key => () => setFilterKey(key)
 
@@ -177,34 +177,19 @@ const IsotopeReact = ({lists}) => {
                                     </Col>
                                 }):""
                             } */}
-                            {
-                                neogenLists?.length?neogenLists.map((dta,index)=>{
-                                    if(index==3){
-                                        return "";
-                                    }else{
-                                       return  <Col 
-                                       xs={3} 
-                                       key={dta.id}  
-                                       className="filter-item vege"
-                                       >
-                                           <StaticCardWithImage/>
-                                           
-                                       </Col>
-                                    }
-                                }):""
-                            }
+                           
                             <Col xs={3} className="filter-item vege ">
                                 <StaticCardWithImage/>
                             </Col>
-                            {/* <Col xs={3} className="filter-item fruit">
-                                <FilterProduct/>
-                            </Col>
                             <Col xs={3} className="filter-item fruit">
                                 <FilterProduct/>
                             </Col>
                             <Col xs={3} className="filter-item fruit">
                                 <FilterProduct/>
-                            </Col> */}
+                            </Col>
+                            <Col xs={3} className="filter-item fruit">
+                                <FilterProduct/>
+                            </Col>
                         </Row>
                 </Col>
             </Row>
