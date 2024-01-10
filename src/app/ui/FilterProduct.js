@@ -11,18 +11,21 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './index.scss';
 import Image from 'next/image';
+import { 
+    baseImageServer 
+} from '@/utils/config';
 
-const FilterProduct=()=>{
+const FilterProduct=({details})=>{
     return(
         <>
             <Card 
             style={{ 
-                width: '16vw',
+                width: '85%',
                 minHeight:'26rem',
                 border:'none',
                 padding:'0'
             }}
-            className='filter-product-card'
+            // className='filter-product-card'
             >
                 {/* <Card.Img variant="top" src="/logo.png" /> */}
                 <Card.Body
@@ -59,10 +62,11 @@ const FilterProduct=()=>{
                                 </Button>
                             </Card.Title>
                             <Image
-                            src='/products2.jpg'
+                            src={`${baseImageServer}/${details.image}`}
                             height={300}
                             width={259}
-                            alt=""
+                            className='isotope-filter-image'
+                            alt="Image"
                             />
                         </Col>
                     </Row>
@@ -72,8 +76,8 @@ const FilterProduct=()=>{
                     }}
                     >
                         <span>
-                            Neogen Dermalogy Black 
-                            Energy Cream 80ml
+                           {details?.name?details.name:` Neogen Dermalogy Black 
+                            Energy Cream 80ml`}
                         </span>
                     </Card.Text>
                      <Button 

@@ -1,7 +1,8 @@
 .filter-container{
     display: flex;
     //flex-wrap: wrap;
-    min-height: 1200px;
+    min-height: 100px;
+    height: auto;
 }
 .filter-item{
     display: flex;
@@ -18,4 +19,18 @@
 
 .my-test-slick .slick-list .slick-track .slick-slide:first-child{
     border: 1px solid red !important;
+}
+
+// Isotope Items CSS
+.filter-products-container{
+    padding: 0px 100px;
+    overflow: hidden;
+}
+.isotope-items{
+    width: 20%;
+    margin: 1% .5%;
+    .isotope-filter-image{
+        height: 36vh;
+        width: 100%;
+    }
 }

@@ -1,0 +1,1 @@
+export const baseImageServer="https://korean-shop.softwaregiantbd.com"

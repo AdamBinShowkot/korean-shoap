@@ -38,8 +38,8 @@ async function getBrandProductLists(){
   return response;
 }
 export default async function Home() {
-  //const brandLists=await getBrandProductLists();
-  const brandLists=[];
+  const brandLists=await getBrandProductLists();
+  //const brandLists=[];
   //const bodyCareDataLists= await getBodyCareLists();
   //console.log(bodyCareDataLists)
   //const test = useSize();
@@ -93,8 +93,12 @@ export default async function Home() {
           </Row>
         </Col>
       </Row>
+
       <Row>
         <BannerThree/>
+      </Row>
+      <Row>
+        <IsotopeReact lists={brandLists}/>
       </Row>
       <Row>
         <Col xs={12}>

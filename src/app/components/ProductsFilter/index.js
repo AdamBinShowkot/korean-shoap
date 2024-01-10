@@ -15,6 +15,7 @@ import axios from "axios";
 import FilterProduct from "@/app/ui/FilterProduct";
 import StaticCardWithImage from "@/app/ui/StaticCardWithImage";
 import './index.scss';
+import SingleItem from "./SingleItem";
 
 function getProductLists(){
     ConfigureAxios();
@@ -32,6 +33,7 @@ const IsotopeReact = ({lists}) => {
     const [filterKey, setFilterKey] = useState('*')
     const [products,setProducts]=useState([]);
     const [cosrxLists,setCosrxLists]=useState([]);
+    //const [cosrxLists,setCosrxLists]=useState([{id:1},{id:2},{id:3},{id:4},{id:5},{id:6}]);
     const [neogenLists,setNeogenLists]=useState([]);
     const [tiamLists,setTiamLists]=useState([]);
     const [sumBymiLists,setSumBymiLists]=useState([]);
@@ -45,21 +47,42 @@ const IsotopeReact = ({lists}) => {
     //     })
     // },[])
   // initialize an Isotope object with configs
+
+    useEffect(()=>{
+    if(lists.length){
+        lists.map((dta)=>{
+            if(dta.name=="Neogen"){
+                if(dta?.products?.length){
+                    setNeogenLists(dta.products);
+                }
+            }else if(dta.name=="COSRX"){
+                if(dta?.products?.length){
+                    setCosrxLists(dta.products);
+                }
+            }
+        })
+    }
+   console.log(lists)
+},[lists])
   useEffect(() => {
-    isotope.current = new Isotope('.filter-container', {
-      itemSelector: '.filter-item',
-      layoutMode: 'fitRows',
-    })
+    setTimeout(()=>{
+        isotope.current = new Isotope('.filter-container', {
+            itemSelector: '.grid-item',
+            layoutMode: 'fitRows',
+        })
+   },400)
     // cleanup
-    return () => isotope.current.destroy()
+   // return () => isotope.current.destroy()
   }, [])
 
 
   // handling filter key change
   useEffect(() => {
-    filterKey === '*'
+    setTimeout(()=>{
+        filterKey === '*'
       ? isotope.current.arrange({filter: `*`})
       : isotope.current.arrange({filter: `.${filterKey}`})
+    },500)
   }, [filterKey])
 
 //   useEffect(()=>{
@@ -159,38 +182,62 @@ const IsotopeReact = ({lists}) => {
                             </Button>
                         </Col>
                     </Row>
-                    {/* <ul>
-                        <li onClick={handleFilterKeyChange('*')}>All</li>
-                        <li onClick={handleFilterKeyChange('vege')}>Show Veges</li>
-                        <li onClick={handleFilterKeyChange('fruit')}>Show Fruits</li>
-                    </ul> */}
-                        <Row className="filter-container">
-                            {/* {
-                                cosrxLists?.length?cosrxLists.map((dta)=>{
-                                    return  <Col 
-                                    xs={3} 
-                                    key={dta.id}  
-                                    className="filter-item fruit"
-                                    >
-                                        <FilterProduct/>
-                                        
-                                    </Col>
-                                }):""
-                            } */}
-                           
-                            <Col xs={3} className="filter-item vege ">
-                                <StaticCardWithImage/>
-                            </Col>
-                            <Col xs={3} className="filter-item fruit">
-                                <FilterProduct/>
-                            </Col>
-                            <Col xs={3} className="filter-item fruit">
-                                <FilterProduct/>
-                            </Col>
-                            <Col xs={3} className="filter-item fruit">
-                                <FilterProduct/>
-                            </Col>
-                        </Row>
+                    <div 
+                    className="filter-products-container filter-container"
+                    style={{
+                        display:'flex',
+                        flexWrap:'wrap'
+                    }}
+                    >
+                        {
+                            neogenLists?.length?neogenLists.map((dta)=>{
+                                return  <SingleItem
+                                className={"neogen"}
+                                key={dta.id}
+                                details={dta}
+                                />
+                            }):""
+                        }
+                        {
+                            cosrxLists?.length?cosrxLists.map((dta)=>{
+                                return  <SingleItem
+                                className={"cosrx"}
+                                key={dta.id}
+                                details={dta}
+                                />
+                            }):""
+                        }
+                        {/* <ItemsContainer/> */}
+                        
+                        {/* <Col
+                        style={{
+                            width:'22% !important'
+                        }} 
+                        className="grid-item vege ">
+                            <StaticCardWithImage/>
+                        </Col>
+                        <Col
+                        style={{
+                            width:'22% !important'
+                        }} 
+                        className="grid-item fruit">
+                            <FilterProduct/>
+                        </Col>
+                        <Col
+                        style={{
+                            width:'22% !important'
+                        }} 
+                        className="grid-item fruit">
+                            <FilterProduct/>
+                        </Col>
+                        <Col
+                        style={{
+                            width:'22% !important'
+                        }} 
+                        className="grid-item fruit">
+                            <FilterProduct/>
+                        </Col> */}
+                    </div>
                 </Col>
             </Row>
         </Container>

@@ -5,6 +5,35 @@
 
 
 // /** @type {import('next').NextConfig} */
-const nextConfig = {}
+// const nextConfig = {
+//     // reactStrictMode: true,
+//     // images: {
+//     //     domains: ["https://korean-shop.softwaregiantbd.com"],
+//     //     formats: ["image/webp"],
+//     // },
+//     images: {
+//         remotePatterns: [
+//           {
+//             protocol: 'https',
+//             hostname: 'korean-shop.softwaregiantbd.com',
+//             // port: '',
+//             // pathname: '/image/**',
+//           },
+//         ],
+//       },
+// }
 
-module.exports = nextConfig
+// module.exports = nextConfig
+
+module.exports = {
+    images: {
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'korean-shop.softwaregiantbd.com',
+          port: '',
+          pathname: '/images/**',
+        },
+      ],
+    },
+  }
