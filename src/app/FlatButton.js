@@ -1,62 +1,94 @@
 'use client';
-import React from 'react';
+import React,{
+    useContext, useEffect, useState
+} from 'react';
 import {
     Button, 
     Row,
     Col
 } from 'react-bootstrap';
 import Image from 'next/image';
+import Link from 'next/link';
+import { 
+    AddToCartContext 
+} from '@/contextApi/addToCartApi';
 
 const FlatButton=()=>{
+    const {cartLists,setCartLists}=useContext(AddToCartContext);
+    const [quantity,setQuantity]=useState(0);
+    const [totalPrice,setTotalPrice]=useState(0);
+
+    useEffect(()=>{
+        if(cartLists.length){
+            const totalQuantity=cartLists.reduce(
+                (accumulator, currentValue) => accumulator + currentValue.quantity,
+                0,
+            );
+            const totalPrice=cartLists.reduce(
+                (accumulator, currentValue) => accumulator + (currentValue.quantity*currentValue.price),
+                0,
+            )
+            setTotalPrice(totalPrice);
+            setQuantity(totalQuantity);
+        }else{
+            setQuantity(0);
+            setTotalPrice(0);
+        }
+    },[cartLists])
+
+
+    
     return(
         <>
-            <Row 
-            className='fixed-button'
-            >
-                <Col 
-                xs={12}
-                style={{
-                    padding:"0px"
-                }}
+           <Link href="/products/checkout">
+                <Row 
+                className='fixed-button'
                 >
-                    <Row
-                    className='flat-button-top-area'
+                    <Col 
+                    xs={12}
+                    style={{
+                        padding:"0px"
+                    }}
                     >
-                        <Col 
-                        xs={12}
+                        <Row
+                        className='flat-button-top-area'
                         >
-                            <Row
+                            <Col 
+                            xs={12}
                             >
-                                <Col 
-                                xs={12}
-                                style={{
-                                    display:'flex',
-                                    justifyContent:'center',
-                                    alignItems:"center"
-                                }}
+                                <Row
                                 >
-                                    <Image
-                                    src={'/shop-bag.png'}
-                                    height={20}
-                                    width={20}
-                                    alt="Image"
-                                    />
-                                </Col>
-                            </Row>
-                            <span>10 Items</span>
-                        </Col>
-                    </Row>
-                    <Row
-                    className='flat-button-footer-area'
-                    >
-                        <Col 
-                        xs={12}
+                                    <Col 
+                                    xs={12}
+                                    style={{
+                                        display:'flex',
+                                        justifyContent:'center',
+                                        alignItems:"center"
+                                    }}
+                                    >
+                                        <Image
+                                        src={'/shop-bag.png'}
+                                        height={20}
+                                        width={20}
+                                        alt="Image"
+                                        />
+                                    </Col>
+                                </Row>
+                                <span>{quantity?quantity:0} Items</span>
+                            </Col>
+                        </Row>
+                        <Row
+                        className='flat-button-footer-area'
                         >
-                            <span>৳ 11025</span>
-                        </Col>
-                    </Row>
-                </Col>
-            </Row>
+                            <Col 
+                            xs={12}
+                            >
+                                <span>৳ {totalPrice?parseFloat(totalPrice).toFixed(2):0}</span>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+           </Link>
         </>
     )
 }

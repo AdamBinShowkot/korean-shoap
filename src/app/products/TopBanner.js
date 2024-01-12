@@ -17,7 +17,8 @@ const TopBanner=()=>{
                 style={{
                     display:'flex',
                     justifyContent:'center',
-                    alignItems:'center'
+                    alignItems:'center',
+                    padding:'0'
                 }}
                 >
                     <Image

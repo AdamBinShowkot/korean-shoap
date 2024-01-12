@@ -11,6 +11,7 @@ import Container from 'react-bootstrap/Container'
 import HeaderMain from './shared/Header';
 import FooterMain from './shared/Footer';
 import MobileFooterMenu from './shared/Header/Mobile/MobileFooterMenu';
+import BodyContainer from './BodyContainer';
 import FlatButton from './FlatButton';
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -27,19 +28,14 @@ export default function RootLayout({ children }) {
         <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js" async ></script>
       </head>
       <body >
-        <FlatButton/>
+        {/* <FlatButton/> */}
         <Container fluid>
           <HeaderMain/>
           {/* <Container> */}
             
-          <Row>
-            <Col 
-            style={{
-              overflow:'hidden'
-            }}>
-              {children}
-            </Col>
-          </Row>
+          <BodyContainer>
+            {children}
+          </BodyContainer>
         
           {/* </Container> */}
           <FooterMain/>

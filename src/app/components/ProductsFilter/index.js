@@ -62,7 +62,7 @@ const IsotopeReact = ({lists}) => {
             }
         })
     }
-   console.log(lists)
+   //console.log(lists)
 },[lists])
   useEffect(() => {
     setTimeout(()=>{

@@ -33,6 +33,9 @@ async function getBrandProductLists(){
           //console.log("Products : ",res.data);
           return res.data;
       }
+  }).catch((error)=>{
+    console.log(error)
+    return [];
   });
 
   return response;

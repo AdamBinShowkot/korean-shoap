@@ -1,11 +1,18 @@
 'use client'
-import React from 'react';
+import React,{
+    useEffect,
+    useContext,
+    useState
+} from 'react';
 import {
     Card,
     Row,
     Col,
     Button
 } from 'react-bootstrap';
+import { 
+    AddToCartContext 
+} from '@/contextApi/addToCartApi';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -14,8 +21,49 @@ import Image from 'next/image';
 import { 
     baseImageServer 
 } from '@/utils/config';
+import { list } from 'postcss';
 
 const FilterProduct=({details})=>{
+    const [hoverShow,setHoverShow]=useState(false);
+    const {cartLists,setCartLists}=useContext(AddToCartContext);
+    const variants=details?.variant?.length?details?.variant[0]:{}
+
+    const handleAddToCart=(data)=>{
+        //console.log(data);
+        let lists =[...cartLists];
+        // const highestId=cartLists?.length?(cartLists.length+1):1
+        // const newObj={
+        //     id:highestId,
+        //     name:"Demo Name"
+        // }
+        // setCartLists([...lists,newObj])
+        const currentId=data.id;
+        if(lists?.length){
+            const index = lists.map(e => e.id).indexOf(currentId);
+            if(index>=0){
+                lists[index].quantity=lists[index].quantity+1;
+                setCartLists([...lists])
+            }else{
+                const newObj={
+                    id:currentId,
+                    name:data?.name,
+                    price:parseFloat(variants.price-variants.discount_price).toFixed(0),
+                    quantity:1
+                }
+                setCartLists([...lists,newObj])
+            }
+        }else{
+            const newObj={
+                id:currentId,
+                name:data?.name,
+                price:parseFloat(variants.price-variants.discount_price).toFixed(0),
+                quantity:1
+            }
+            setCartLists([...lists,newObj])
+        }
+       // console.log(currentId)
+    }
+
     return(
         <>
             <Card 
@@ -80,7 +128,7 @@ const FilterProduct=({details})=>{
                             Energy Cream 80ml`}
                         </span>
                     </Card.Text>
-                     <Button 
+                    <Button 
                     className='card-button product-card-button'
                     style={{
                         position:'absolute',
@@ -88,8 +136,11 @@ const FilterProduct=({details})=>{
                         left:0,
                         right:0
                     }}
+                    onClick={()=>{
+                        handleAddToCart(details);
+                    }}
                     >
-                        Add To Bag ৳ 2100 ৳ 1900
+                        Add To Bag ৳ {variants?.price?parseFloat(variants.price).toFixed(0):0} ৳ {variants?.price && variants?.discount_price?parseFloat(variants.price-variants.discount_price).toFixed(0):0}
                     </Button>
                 </Card.Body>
             </Card>

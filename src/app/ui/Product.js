@@ -1,8 +1,12 @@
 'use client'
 import React,{
     useState,
-    useEffect
+    useEffect,
+    useContext
 } from 'react';
+import { 
+    AddToCartContext 
+} from '@/contextApi/addToCartApi';
 import {
     Card,
     Row,
@@ -19,8 +23,19 @@ import './index.scss';
 
 const Product=({windowWidth})=>{
     const [hoverShow,setHoverShow]=useState(false);
+    const {cartLists,setCartLists}=useContext(AddToCartContext);
 
+    const handleAddToCart=()=>{
+        let lists =[...cartLists];
+        const highestId=cartLists?.length?(cartLists.length+1):1
+        const newObj={
+            id:highestId,
+            name:"Demo Name"
+        }
+        setCartLists([...lists,newObj])
+    }
 
+    
     return(
         <>
             <Card 
@@ -87,6 +102,9 @@ const Product=({windowWidth})=>{
                         </Card.Text>
                         <Button 
                         className='card-button product-card-button'
+                        onClick={()=>{
+                           // handleAddToCart()
+                        }}
                         >
                             Add To Bag ৳ 2100 ৳ 1900
                         </Button>
@@ -104,6 +122,9 @@ const Product=({windowWidth})=>{
                             <ProductHover/>
                             <Button 
                             className='product-card-button-hover'
+                            onClick={()=>{
+                                handleAddToCart()
+                            }}
                             // style={{
                             //     position:'absolute',
                             //     bottom:'5px',

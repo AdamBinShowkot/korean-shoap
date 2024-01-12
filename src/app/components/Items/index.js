@@ -98,19 +98,19 @@ const ItemsContainer=({title})=>{
                             <Product windowWidth={width}/>
                         </div>
                         <div>
-                            <Product/>
+                            <Product windowWidth={width}/>
                         </div>
                         <div>
-                            <Product/>
+                            <Product windowWidth={width}/>
                         </div>
                         <div>
-                            <Product/>
+                            <Product windowWidth={width}/>
                         </div>
                         <div>
-                            <Product/>
+                            <Product windowWidth={width}/>
                         </div>
                         <div>
-                            <Product/>
+                            <Product windowWidth={width}/>
                         </div>
                     </Slider>
                 </Col>
