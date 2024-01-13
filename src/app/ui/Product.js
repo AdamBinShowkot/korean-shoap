@@ -67,14 +67,21 @@ const Product=({data})=>{
             className='home-product-container'
             onMouseEnter={()=>{
                 setHoverShow(true)
+                //console.log("Heloooooooooooooo")
             }}
             onMouseLeave={()=>{
                 setHoverShow(false)
+                //console.log("Helooooooo1111111111")
             }}
             >
                 {/* <Card.Img variant="top" src="/logo.png" /> */}
                 <Card.Body
                 className='product-card-body'
+                style={{
+                    display:'flex',
+                    flexDirection:'column',
+                    alignItems:'center'
+                }}
                 >
                     <Link href={`/products/${data?.slug?data.slug:1}`}>
                         <Row
@@ -109,7 +116,12 @@ const Product=({data})=>{
                         </Row>
                    </Link>
                    <Row
-                   className={`${hoverShow?'details-deactive':'details-active'}`}
+                   className={`${hoverShow?'details-active':'details-active'}`}
+                   style={{
+                        position:'absolute',
+                        bottom:"20px",
+                        width:'100%',
+                    }}
                    >
                         <Col 
                         xs={12}
@@ -118,28 +130,29 @@ const Product=({data})=>{
                         }}
                         >
                             <Card.Text
-                        style={{
-                            
-                        }}
-                        >
-                            <span>
-                                {data?.name?data.name:`Neogen Dermalogy Black 
-                                Energy Cream 80ml`}
-                            </span>
-                        </Card.Text>
-                        <Button 
-                        className='card-button product-card-button'
-                        onClick={()=>{
-                           // handleAddToCart()
-                        }}
-                        >
-                            Add To Bag ৳ {variants?.price?parseFloat(variants.price).toFixed(0):0} ৳ {variants?.price && variants?.discount_price?parseFloat(variants.price-variants.discount_price).toFixed(0):0}
-                        </Button>
-                    </Col>
-                   </Row>
-                   <Row
-                   className={`${hoverShow?'hover-card-active':'hover-card-deactive'}`}
-                   >
+                            style={{
+                                
+                            }}
+                            >
+                                <span>
+                                    {data?.name?data.name:`Neogen Dermalogy Black 
+                                    Energy Cream 80ml`}
+                                </span>
+                            </Card.Text>
+                            <Button 
+                            className='card-button product-card-button'
+                            onClick={()=>{
+                            // handleAddToCart()
+                            }}
+                            >
+                                Add To Bag ৳ {variants?.price?parseFloat(variants.price).toFixed(0):0} ৳ {variants?.price && variants?.discount_price?parseFloat(variants.price-variants.discount_price).toFixed(0):0}
+                            </Button>
+                        </Col>
+                    </Row>
+                    <Row
+                    //className={`${hoverShow?'hover-card-active':'hover-card-deactive'}`}
+                    className={`${hoverShow?'hover-card-active':'hover-card-deactive'}`}
+                    >
                         <Col 
                         xs={12}
                         style={{

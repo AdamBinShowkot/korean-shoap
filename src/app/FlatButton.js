@@ -55,6 +55,9 @@ const FlatButton=()=>{
                         >
                             <Col 
                             xs={12}
+                            style={{
+                                textAlign:'center'
+                            }}
                             >
                                 <Row
                                 >
