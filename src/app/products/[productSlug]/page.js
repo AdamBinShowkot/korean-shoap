@@ -9,6 +9,11 @@ import {
     FormControl,
     InputGroupText
 } from 'react-bootstrap';
+import axios from 'axios';
+import ConfigureAxios from '@/utils/axiosConfig';
+import { 
+    baseImageServer 
+} from '@/utils/config';
 import NormalProduct from './partials/NormalProduct';
 import VideoProduct from './partials/VideoProduct';
 import ProductSlider from './partials/ProductSlider';
@@ -18,8 +23,27 @@ import CommentMain from './partials/CommentMain';
 import FooterProductSlider from './partials/ProductsSlider';
 import './index.scss';
 
+async function getProductsDetails({productSlug}){
+    ConfigureAxios();
+    let response={};
+    if(productSlug!=1){
+        response=axios.get(`/public/product-details/${productSlug}`).then((res)=>{
+            if(res.status===200){
+                //console.log("Products : ",res.data);
+                return res.data;
+            }
+        }).catch((error)=>{
+          console.log(error)
+          return [];
+        });
+    }
+  
+    return response;
+}
 export default async function Page({params}){
-    //console.log("PP",params)
+    // console.log("Params",params)
+    const details=await getProductsDetails(params)
+    console.log(details);
     return(
         <>
             <Row
@@ -69,7 +93,7 @@ export default async function Page({params}){
                                     }}
                                     >
                                         <Image
-                                        src='/detailsImage.png'
+                                        src={`${details?.image?`${baseImageServer}/${details.image}`:'/detailsImage.png'}`}
                                         height={500}
                                         width={500}
                                         alt="Image"
@@ -99,7 +123,7 @@ export default async function Page({params}){
                     <Row>
                         <Col xs={12}>
                             <h2 style={{marginBottom:'5px'}}>
-                                Neogen Dermalogy Black Energy Cream 80ml
+                                {details?.name?details.name:`Neogen Dermalogy Black Energy Cream 80ml`}
                             </h2>
                         </Col>
                     </Row>
@@ -116,7 +140,7 @@ export default async function Page({params}){
                             alignItems:'center'
                         }}
                         >
-                            <StarComponent/> <span>&nbsp;&nbsp;<b>3</b> Customer review &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Sold: <b>32</b></span>
+                            <StarComponent rate={details?.avg_rating?details.avg_rating:3}/> <span>&nbsp;&nbsp;<b>3</b> Customer review &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Sold: <b>32</b></span>
                         </Col>
                     </Row>
                     <Row>
@@ -128,7 +152,7 @@ export default async function Page({params}){
                             alignItems:'center'
                         }}
                         >
-                            <span>Size: <b>&nbsp;80ml</b>&nbsp;&nbsp;&nbsp; Origin: <b>&nbsp;American</b>&nbsp;&nbsp;&nbsp; SKU: <b>&nbsp;11107858</b></span>
+                            <span>Size: <b>&nbsp;80ml</b>&nbsp;&nbsp;&nbsp; Origin: <b>&nbsp;American</b>&nbsp;&nbsp;&nbsp; SKU: <b>&nbsp;{details?.sku?details.sku:'111'}</b></span>
                         </Col>
                     </Row><br/>
                     <Row>
@@ -246,12 +270,12 @@ export default async function Page({params}){
                     <Row>
                         <Col xs={12}>
                             <p style={{color:'#000'}}>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
+                            {details?.short_description?details.short_description:`Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
                             Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
                             Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
                             vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
                             Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-                            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+                            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.`}
                             </p>
                         </Col>
                     </Row><br/>

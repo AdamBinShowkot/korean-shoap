@@ -13,7 +13,7 @@ const StarComponent=({rate,size})=>{
                 size={size?size:20}
                 transition
                 allowFraction
-                //showTooltip 
+                //showTooltip
                 initialValue={rating} 
                 />
             </div>

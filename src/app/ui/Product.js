@@ -15,24 +15,49 @@ import {
 } from 'react-bootstrap';
 import Image from 'next/image';
 import Slider from 'react-slick';
+import { 
+    baseImageServer 
+} from '@/utils/config';
+import Link from 'next/link';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import ProductHover from './partials/ProuctHover';
 import './index.scss';
 
 
-const Product=({windowWidth})=>{
+const Product=({data})=>{
     const [hoverShow,setHoverShow]=useState(false);
     const {cartLists,setCartLists}=useContext(AddToCartContext);
+    const variants=data?.variant?.length?data?.variant[0]:{}
 
-    const handleAddToCart=()=>{
-        let lists =[...cartLists];
-        const highestId=cartLists?.length?(cartLists.length+1):1
-        const newObj={
-            id:highestId,
-            name:"Demo Name"
+    const handleAddToCart=(infos)=>{
+        if(infos?.id){
+            let lists =[...cartLists];
+            const currentId=infos.id;
+            if(lists?.length){
+                const index = lists.map(e => e.id).indexOf(currentId);
+                if(index>=0){
+                    lists[index].quantity=lists[index].quantity+1;
+                    setCartLists([...lists])
+                }else{
+                    const newObj={
+                        id:currentId,
+                        name:infos?.name,
+                        price:parseFloat(variants.price-variants.discount_price).toFixed(0),
+                        quantity:1
+                    }
+                    setCartLists([...lists,newObj])
+                }
+            }else{
+                const newObj={
+                    id:currentId,
+                    name:infos?.name,
+                    price:parseFloat(variants.price-variants.discount_price).toFixed(0),
+                    quantity:1
+                }
+                setCartLists([...lists,newObj])
+            }
         }
-        setCartLists([...lists,newObj])
     }
 
     
@@ -51,36 +76,38 @@ const Product=({windowWidth})=>{
                 <Card.Body
                 className='product-card-body'
                 >
-                    <Row
-                    className='card-container'
-                    >
-                        <Col 
-                        xs={12}
-                        style={{
-                            padding:'5px',
-                        }}
+                    <Link href={`/products/${data?.slug?data.slug:1}`}>
+                        <Row
+                        className='card-container'
                         >
-                            <Card.Title
+                            <Col 
+                            xs={12}
                             style={{
-                                textAlign:'left',
-                                padding:'0'
+                                padding:'5px',
                             }}
                             >
-                                <Button 
-                                className='card-button'
+                                <Card.Title
+                                style={{
+                                    textAlign:'left',
+                                    padding:'0'
+                                }}
                                 >
-                                    Shop Now
-                                </Button>
-                            </Card.Title>
-                            <Image
-                            src='/products2.jpg'
-                            height={300}
-                            width={300}
-                            alt=""
-                            className='image'
-                            />
-                        </Col>
-                    </Row>
+                                    <Button 
+                                    className='card-button'
+                                    >
+                                        Shop Now
+                                    </Button>
+                                </Card.Title>
+                                <Image
+                                src={`${data?.image?`${baseImageServer}/${data.image}`:'/products2.jpg'}`}
+                                height={300}
+                                width={300}
+                                alt=""
+                                className='image'
+                                />
+                            </Col>
+                        </Row>
+                   </Link>
                    <Row
                    className={`${hoverShow?'details-deactive':'details-active'}`}
                    >
@@ -96,8 +123,8 @@ const Product=({windowWidth})=>{
                         }}
                         >
                             <span>
-                                Neogen Dermalogy Black 
-                                Energy Cream 80ml
+                                {data?.name?data.name:`Neogen Dermalogy Black 
+                                Energy Cream 80ml`}
                             </span>
                         </Card.Text>
                         <Button 
@@ -106,7 +133,7 @@ const Product=({windowWidth})=>{
                            // handleAddToCart()
                         }}
                         >
-                            Add To Bag ৳ 2100 ৳ 1900
+                            Add To Bag ৳ {variants?.price?parseFloat(variants.price).toFixed(0):0} ৳ {variants?.price && variants?.discount_price?parseFloat(variants.price-variants.discount_price).toFixed(0):0}
                         </Button>
                     </Col>
                    </Row>
@@ -123,7 +150,7 @@ const Product=({windowWidth})=>{
                             <Button 
                             className='product-card-button-hover'
                             onClick={()=>{
-                                handleAddToCart()
+                                handleAddToCart(data?data:{})
                             }}
                             // style={{
                             //     position:'absolute',
@@ -132,7 +159,7 @@ const Product=({windowWidth})=>{
                             //     right:0
                             // }}
                             >
-                                Add To Bag ৳ 2100 ৳ 1900
+                               Add To Bag ৳ {variants?.price?parseFloat(variants.price).toFixed(0):0} ৳ {variants?.price && variants?.discount_price?parseFloat(variants.price-variants.discount_price).toFixed(0):0}
                             </Button>
                         </Col>
                    </Row>

@@ -34,7 +34,7 @@ import {
 const ProductsMain=()=>{
     // const products = await getProductLists();
     const [products,setProducts]=useState([]);
-    const [perPage,setPerPage]=useState(15);
+    const [perPage,setPerPage]=useState(10);
     const [page,setPage]=useState(1);
 
     useEffect(()=>{
@@ -290,9 +290,9 @@ const ProductsMain=()=>{
                     {
                         products?.length?(
                             products.map((dta)=>{  
-                            return <Link key={dta.id} href="/products/2" style={{margin:'20px 0px'}}>
-                                    <Product data={dta}/>
-                                </Link>
+                            return <div key={dta.id} style={{margin:'5px 0px'}}>
+                                    <Product  data={dta}/>
+                                </div>
                             })
                         ):""
                     }
