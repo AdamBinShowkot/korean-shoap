@@ -86,7 +86,7 @@ const FlatButton=()=>{
                             <Col 
                             xs={12}
                             >
-                                <span>৳ {totalPrice?parseFloat(totalPrice).toFixed(2):0}</span>
+                                <span>৳ {totalPrice?parseFloat(totalPrice).toFixed(0):0}</span>
                             </Col>
                         </Row>
                     </Col>

@@ -10,7 +10,10 @@ const ProductsPage=()=>{
     return(
         <>
             <Row>
-                <Col xs={12}>
+                <Col 
+                xs={12}
+                
+                >
                     <TopBanner/>
                 </Col>
             </Row>

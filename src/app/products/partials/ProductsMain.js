@@ -57,20 +57,16 @@ const ProductsMain=()=>{
     return(
         <>
             <Row
-            style={{
-                padding:'30px 80px',
-                display:'flex',
-                justifyContent:'center',
-                alignItems:'center'
-            }}
             >
                 <Col 
                 xs={12}
+                className='products-top-container-row'
                 >
                     <InputGroup
                     className='product-filter-input-group'
                     >
-                        <InputGroupText
+                        <div
+                        xs={3}
                         className='products-filter-group-button'
                         >
                             <div
@@ -109,8 +105,9 @@ const ProductsMain=()=>{
                                     />
                                 </div>
                             </div>
-                        </InputGroupText>
-                        <InputGroupText
+                        </div>
+                        <div
+                        xs={3}
                         className='products-filter-group-button'
                         >
                             <div
@@ -149,8 +146,9 @@ const ProductsMain=()=>{
                                     />
                                 </div>
                             </div>
-                        </InputGroupText>
-                        <InputGroupText
+                        </div>
+                        <div
+                        xs={3}
                         className='products-filter-group-button'
                         >
                             <div
@@ -189,8 +187,9 @@ const ProductsMain=()=>{
                                     />
                                 </div>
                             </div>
-                        </InputGroupText>
-                        <InputGroupText
+                        </div>
+                        <div
+                        xs={3}
                         className='products-filter-group-button'
                         >
                             <div
@@ -229,8 +228,9 @@ const ProductsMain=()=>{
                                     />
                                 </div>
                             </div>
-                        </InputGroupText>
-                        <InputGroupText
+                        </div>
+                        <div
+                        xs={3}
                         className='products-filter-button-main'
                         >
                             <div
@@ -255,21 +255,14 @@ const ProductsMain=()=>{
                                     />
                                 </div>
                             </div>
-                        </InputGroupText>
+                        </div>
                     </InputGroup>
                 </Col>
             </Row>
             <Row>
                 <Col 
                 xs={12}
-                style={{
-                    padding:"40px 80px",
-                    display:'flex',
-                    justifyContent:'flex-start',
-                    alignItems:'center',
-                    flexWrap:'wrap',
-                    overflow:'hidden'
-                }}
+                className="products-bottom-container-col"
                 >
                     {/* <Row>
                         {

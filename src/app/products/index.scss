@@ -15,3 +15,50 @@
     font-weight: 700;
     //opacity: .9;
 }
+.products-top-container-row{
+    padding:30px 80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap: wrap;
+}
+.products-bottom-container-col{
+    padding:40px 80px;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    flex-wrap:wrap;
+    overflow:hidden;
+}
+
+// RESPONSIVE AREA
+@media only screen and (max-width:480px) {
+    .products-top-container-row{
+        padding: 16px 9px;
+        .products-filter-button-main{
+            display: none !important;
+        }
+        .products-filter-group-button{
+            width: 50% !important;
+        }
+    }
+    .products-bottom-container-col{
+        padding: 15px 4px;
+        justify-content: space-between;
+        .home-product-container{
+            width: 44vw !important;
+        }
+    }
+}
+@media only screen and (min-width:980px) {
+    .products-top-container-row{
+        padding: 30px 80px;
+        .products-filter-group-button{
+            width: 12% !important;
+        }
+    }
+    .products-bottom-container-col{
+        padding: 30px 80px;
+        justify-content: center;
+    }
+}

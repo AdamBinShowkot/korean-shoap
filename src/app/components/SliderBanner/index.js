@@ -6,6 +6,9 @@ import {
     Col,
     Row
 } from 'react-bootstrap';
+import { 
+    baseImageServer 
+} from '@/utils/config';
 import Slider from 'react-slick';
 import './index.scss';
 import "slick-carousel/slick/slick.css"; 
@@ -50,6 +53,7 @@ const SliderBanner=()=>{
                         >
                             <Image
                             src={'/bsOne.png'}
+                            //src={`${baseImageServer}/images/slider/wa0fZzpnCzFgWKkZgL6P.jpeg`}
                             width={1920}
                             height={440}
                             alt="Slide Image"
