@@ -16,56 +16,17 @@ import FeaturedImage from './FeatruedImage';
 const SidebarMain=()=>{
     return(
         <>
-            <Row>
-                <Col 
-                xs={12}>
-                    <h3>Search</h3><br/>
-                    <InputGroup>
-                        <FormControl
-                        className='normal-input'
-                        placeholder='search here'
-                        >
-
-                        </FormControl>
-                        <InputGroupText
-                        className='normal-input global-search'
-                        >
-                            <Image
-                            src="/search.png"
-                            width={20}
-                            height={20}
-                            alt="search"
-                            />
-                        </InputGroupText>
-                    </InputGroup>
-                    <br/>
-                    <h3>Categories</h3>
-                    <ul className='blog-category-lists'>
-                        <li>Cream Blush</li>
-                        <li>Uncategorized</li>
-                        <li>Hair & Body</li>
-                        <li>Make Up</li>
-                        <li>How To’s</li>
-                        <li>Skincare</li>
-                        <li>Sun Care</li>
-                        <li>Tip</li>
-                    </ul>
-                </Col>
+            <Row
+            className="blog-sidebar-search-cotnainer"
+            >
+                
             </Row>
             <Row
             style={{
                 marginTop:'15px'
             }}
             >
-                <Col 
-                xs={12}
-                >
-                    <h3>Recent Post</h3><br/>
-                    <RecentSinglePost/>
-                    <RecentSinglePost/>
-                    <RecentSinglePost/>
-                    <RecentSinglePost/>
-                </Col>
+               
             </Row>
             <Row
             style={{

@@ -159,7 +159,7 @@ ul li{
 /***  Flat Button CSS ***/
 .fixed-button {
   position: fixed;
-  display: block;
+  /* display: block; */
   bottom: 20%; /* Adjust the distance from the bottom as needed */
   right: 0; /* Adjust the distance from the right as needed */
 /* Set the background color */
