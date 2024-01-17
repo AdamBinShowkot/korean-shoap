@@ -36,6 +36,7 @@ const ProductHover=({lists})=>{
                     return <Tab 
                         eventKey={`${dta}`} 
                         title={`${dta}`}
+                        key={dta}
                         >
                             <Row>
                                 <Col 
