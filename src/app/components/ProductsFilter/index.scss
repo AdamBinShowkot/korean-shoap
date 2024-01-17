@@ -12,9 +12,20 @@
 .filter-button{
     margin: 0 15px;
     color: #000;
-    font-size: 20px;
     font-weight: 600;
-    padding: 4px auto !important;
+    line-height: 17px;
+    font-size:27px;
+    padding: 4px 0px !important;
+    border: none;
+    border-radius: 0 !important;
+}
+.filter-button:hover{
+    background: transparent !important;
+    color: #000 !important;
+}
+.filter-active-button{
+    color: #5C33A9 !important;
+    border-bottom: 3px solid #5C33A9;
 }
 
 .my-test-slick .slick-list .slick-track .slick-slide:first-child{

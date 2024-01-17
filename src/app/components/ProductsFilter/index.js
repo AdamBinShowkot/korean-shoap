@@ -37,6 +37,7 @@ const IsotopeReact = ({lists}) => {
     const [neogenLists,setNeogenLists]=useState([]);
     const [tiamLists,setTiamLists]=useState([]);
     const [sumBymiLists,setSumBymiLists]=useState([]);
+    const [activeBtn,setActiveBtn]=useState("*");
     // useEffect(()=>{
     //     ConfigureAxios();
     //     axios.get('/public/feature-product/brand')
@@ -147,35 +148,35 @@ const IsotopeReact = ({lists}) => {
                         >
                             <Button
                             variant="outline-primary"
-                            className="filter-button"
+                            className={`filter-button ${filterKey=="cosrx"?"filter-active-button":""}`}
                             onClick={handleFilterKeyChange('cosrx')}
                             >
                                 COSRX
                             </Button>
                             <Button
                             variant="outline-primary"
-                            className="filter-button"
+                            className={`filter-button ${filterKey=="neogen"?"filter-active-button":""}`}
                             onClick={handleFilterKeyChange('neogen')}
                             >
                                 NEOGEN
                             </Button>
                             <Button
                             variant="outline-primary"
-                            className="filter-button"
+                            className={`filter-button ${filterKey=="fruit"?"filter-active-button":""}`}
                             onClick={handleFilterKeyChange('fruit')}
                             >
                                 TIAM
                             </Button>
                             <Button
                             variant="outline-primary"
-                            className="filter-button"
+                            className={`filter-button ${filterKey=="vege"?"filter-active-button":""}`}
                             onClick={handleFilterKeyChange('vege')}
                             >
                                 SUM BY MI
                             </Button>
                             <Button
                             variant="outline-primary"
-                            className="filter-button"
+                            className={`filter-button ${filterKey=="*"?"filter-active-button":""}`}
                             onClick={handleFilterKeyChange('*')}
                             >
                                 ALL BRAND

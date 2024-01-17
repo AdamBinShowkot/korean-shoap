@@ -29,7 +29,22 @@ const Product=({data})=>{
     const [hoverShow,setHoverShow]=useState(false);
     const {cartLists,setCartLists}=useContext(AddToCartContext);
     const variants=data?.variant?.length?data?.variant[0]:{}
+    const [sizes,setSizes]=useState([]);
+    const [sizeLists,setSizeLists]=useState([]);
 
+    useEffect(()=>{
+        if(data?.variant?.length){
+            //console.log("V",data.variant)
+            let sizess=[];
+            data.variant.map((dta)=>{
+                if(dta.size){
+                    sizess.push(dta.size);
+                }
+            })
+            setSizes(sizess)
+            setSizeLists(variants[0]);
+        }
+    },[data]);
     const handleAddToCart=(infos)=>{
         if(infos?.id){
             let lists =[...cartLists];
@@ -65,14 +80,14 @@ const Product=({data})=>{
         <>
             <Card 
             className='home-product-container'
-            onMouseEnter={()=>{
-                setHoverShow(true)
-                //console.log("Heloooooooooooooo")
-            }}
-            onMouseLeave={()=>{
-                setHoverShow(false)
-                //console.log("Helooooooo1111111111")
-            }}
+            // onMouseEnter={()=>{
+            //     setHoverShow(true)
+            //     //console.log("Heloooooooooooooo")
+            // }}
+            // onMouseLeave={()=>{
+            //     setHoverShow(false)
+            //     //console.log("Helooooooo1111111111")
+            // }}
             >
                 {/* <Card.Img variant="top" src="/logo.png" /> */}
                 <Card.Body
@@ -107,8 +122,8 @@ const Product=({data})=>{
                                 </Card.Title>
                                 <Image
                                 src={`${data?.image?`${baseImageServer}/${data.image}`:'/products2.jpg'}`}
-                                height={300}
-                                width={300}
+                                height={250}
+                                width={200}
                                 alt=""
                                 className='image'
                                 />
@@ -120,13 +135,18 @@ const Product=({data})=>{
                    style={{
                         position:'absolute',
                         bottom:"20px",
+                        minWidth:'14.8vw',
                         width:'100%',
                     }}
                    >
                         <Col 
                         xs={12}
                         style={{
-                            padding:"0"
+                            padding:"0",
+                            display:'flex',
+                            justifyContent:'center',
+                            alignItems:'center',
+                            flexDirection:'column'
                         }}
                         >
                             <Card.Text
@@ -142,10 +162,22 @@ const Product=({data})=>{
                             <Button 
                             className='card-button product-card-button'
                             onClick={()=>{
-                            // handleAddToCart()
+                                handleAddToCart(data?data:{})
                             }}
                             >
-                                Add To Bag ৳ {variants?.price?parseFloat(variants.price).toFixed(0):0} ৳ {variants?.price && variants?.discount_price?parseFloat(variants.price-variants.discount_price).toFixed(0):0}
+                                Add To Bag &nbsp;<del> ৳{variants?.price?parseFloat(variants.price).toFixed(0):0}</del> ৳ {variants?.price && variants?.discount_price?parseFloat(variants.price-variants.discount_price).toFixed(0):0}
+                                <Image
+                                src="/upArrow.png"
+                                height={14}
+                                width={15}
+                                alt="Arrow"
+                                style={{
+                                    marginLeft:'5px'
+                                }}
+                                onClick={()=>{
+                                    setHoverShow(!hoverShow)
+                                }}
+                                />
                             </Button>
                         </Col>
                     </Row>
@@ -159,20 +191,26 @@ const Product=({data})=>{
                             padding:"0"
                         }}
                         >
-                            <ProductHover/>
+                            <ProductHover lists={sizes}/>
                             <Button 
                             className='product-card-button-hover'
                             onClick={()=>{
                                 handleAddToCart(data?data:{})
                             }}
-                            // style={{
-                            //     position:'absolute',
-                            //     bottom:'5px',
-                            //     left:0,
-                            //     right:0
-                            // }}
                             >
-                               Add To Bag ৳ {variants?.price?parseFloat(variants.price).toFixed(0):0} ৳ {variants?.price && variants?.discount_price?parseFloat(variants.price-variants.discount_price).toFixed(0):0}
+                               Add To Bag &nbsp;<del>৳{variants?.price?parseFloat(variants.price).toFixed(0):0}</del> ৳ {variants?.price && variants?.discount_price?parseFloat(variants.price-variants.discount_price).toFixed(0):0}
+                               <Image
+                                src="/downArrow.png"
+                                height={14}
+                                width={15}
+                                alt="Arrow"
+                                style={{
+                                    marginLeft:'3px'
+                                }}
+                                onClick={()=>{
+                                    setHoverShow(!hoverShow)
+                                }}
+                                />
                             </Button>
                         </Col>
                    </Row>

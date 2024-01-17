@@ -148,7 +148,7 @@ const CheckoutMain=()=>{
                                                     <Form.Check
                                                     inline
                                                     label="Delivery Inside Dhaka:"
-                                                    name="group1"
+                                                    name="group2"
                                                     type={"radio"}
                                                     id={`inline-radio-2`}
                                                     />
@@ -203,21 +203,21 @@ const CheckoutMain=()=>{
                                             <Form.Check
                                             inline
                                             label="Cash On Delivery"
-                                            name="group1"
+                                            name="group2"
                                             type={"radio"}
                                             id={`inline-radio-3`}
                                             />
                                             <Form.Check
                                             inline
                                             label="bKash"
-                                            name="group1"
+                                            name="group2"
                                             type={"radio"}
                                             id={`inline-radio-4`}
                                             />
                                             <Form.Check
                                             inline
                                             label="Pay with Card /Mobile Wallet"
-                                            name="group1"
+                                            name="group2"
                                             type={"radio"}
                                             id={`inline-radio-5`}
                                             />
