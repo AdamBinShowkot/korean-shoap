@@ -182,6 +182,9 @@ const Product=({data})=>{
                         </Col>
                     </Row>
                     <Row
+                    onMouseLeave={()=>{
+                        setHoverShow(false)
+                    }}
                     //className={`${hoverShow?'hover-card-active':'hover-card-deactive'}`}
                     className={`${hoverShow?'hover-card-active':'hover-card-deactive'}`}
                     >

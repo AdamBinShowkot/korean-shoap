@@ -1,12 +1,25 @@
 .navbar-container{
-    background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1),rgba(92, 51, 169, 1));
-    padding: 0px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1),rgba(92, 51, 169, 1));
+  padding: 0px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // overflow-y: hidden;
     // color: #000;
 }
+.navbar-container{
+  .skin-care-container{
+    // min-width: 600px !important;
+    // margin-left: 10vw !important;
+    // margin-right: 10vw !important;
+    //min-width: 900px !important;
+    // margin-right: 20vw !important;
+    // min-width: 70vw !important;
 
+    position: fixed;
+    left: 10;
+  }
+}
 .navbar-category{
     text-transform: uppercase;
     color: #fff;

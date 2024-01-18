@@ -3,6 +3,7 @@ import {Row,Col} from 'react-bootstrap';
 import DiscountMain from './Discount';
 import TopBarMain from './TopBar';
 import NavBarMain from './NavBar';
+// import NavBarTwo from './NavBar/NavbarTwo';
 import './index.scss';
 import MobileHeader from './Mobile/MobileHeader';
 
@@ -27,6 +28,7 @@ const HeaderMain=()=>{
                     className='header-navbar'
                     >
                         <NavBarMain/>
+                        {/* <NavBarTwo/> */}
                     </Row>
                     <Row
                     className='mobile-header'
