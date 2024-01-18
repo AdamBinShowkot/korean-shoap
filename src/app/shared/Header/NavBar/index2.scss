@@ -1,5 +1,38 @@
 
-
+.category-menu-href{
+  font-size: 20px !important;
+  font-weight: 600;
+  color: #fff !important;
+}
+.mega-menu-href{
+  display: flex !important;
+  font-size: 16px !important;
+  font-weight: 500;
+  color: #fff !important;
+}
+.navbar-arrow-image{
+  height: 12px !important;
+  width: 14px !important;
+}
+.mega-menu-left-container{
+  padding: 16px 20px;
+  text-align: left;
+  display: flex !important;
+  //align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap !important;
+  .link-href{
+    color: #000 !important;
+    padding: 8px;
+    font-size: 14px !important;
+    font-weight: 600;
+  }
+}
+.banner-image{
+  height: 100%;
+  width: 100%;
+}
 
  *,
 :after,
@@ -17,16 +50,21 @@
   clear: both;
   display: block
 }
-ul{
+.navbar-container ul{
 	list-style:none;
 	margin: 0;
 	padding: 0;
 }
-a, a:hover, a.active, a:active, a:visited, a:focus{
+.navbar-container a, 
+.navbar-container a:hover,
+.navbar-container a.active,
+.navbar-container a:active, 
+.navbar-container a:visited, 
+.navbar-container a:focus{
 	color:#fefefe;
 	text-decoration:none;
 }
-.content{
+.navbar-container .content{
 	margin: 50px 100px 0px 100px;
 }
 
@@ -35,7 +73,7 @@ a, a:hover, a.active, a:active, a:visited, a:focus{
 	float: left;
 	list-style: none;
 	position:relative;
-	background: #23364B;
+	background: transparent;
 }
 .exo-menu > li {	display: inline-block;float:left;}
 .exo-menu > li > a{
@@ -50,7 +88,7 @@ a, a:hover, a.active, a:active, a:visited, a:focus{
 }
 .exo-menu > li > a.active,
 .exo-menu > li > a:hover,
-li.drop-down ul > li > a:hover{
+.navbar-container li.drop-down ul > li > a:hover{
 	background:#009FE1;
 	color:#fff;
 }
@@ -60,7 +98,7 @@ li.drop-down ul > li > a:hover{
   margin-right: 6px;
   line-height: 20px !important;
 }
-li.drop-down,
+.navbar-container li.drop-down,
 .flyout-right,
 .flyout-left{position:relative;}
 li.drop-down:before {
@@ -74,7 +112,7 @@ li.drop-down:before {
   top: 20px;
   font-size: 14px;
 }
-li.drop-down>ul{
+.navbar-container li.drop-down>ul{
 	left: 0px;
 	min-width: 230px;
 
@@ -88,12 +126,12 @@ li.drop-down>ul{
   border-left: 1px solid #365670;
   }
 
-li.drop-down>ul>li>a,
+.navbar-container li.drop-down>ul>li>a,
 .flyout-right ul>li>a ,
 .flyout-left ul>li>a {
 	color: #fff;
 	display: block;
-	padding: 20px 22px;
+	padding: 10px 22px;
 	text-decoration: none;
 	background-color: #365670;
 	border-bottom: 1px dotted #547787;
@@ -102,8 +140,8 @@ li.drop-down>ul>li>a,
 	-o-transition: color 0.2s linear, background 0.2s linear;
 	transition: color 0.2s linear, background 0.2s linear;
 }
-.flyout-right ul>li>a ,
-.flyout-left ul>li>a {
+.navbar-container .flyout-right ul>li>a ,
+.navbar-container .flyout-left ul>li>a {
 	border-bottom: 1px dotted #B8C7BC;
 }
 
@@ -145,13 +183,16 @@ h4.row.mega-title {
 /*mega menu*/
 
 .mega-menu {
-  left: 0;
+  left: 6vw;
   right: 0;
-  padding: 15px;
+  //padding: 15px;
   display:none;
   padding-top: 0;
   min-height: 100%;
-
+  z-index: 1000;
+  width: 85vw;
+  min-height: 30vh;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 h4.row.mega-title {
   color: #eee;
@@ -162,7 +203,7 @@ h4.row.mega-title {
   text-transform: uppercase;
   border-bottom: 1px solid #547787;
   padding-top: 15px;
-  background-color: #365670
+  background-color: #fff;
   }
  .mega-menu ul li a {
   line-height: 25px;
@@ -233,15 +274,15 @@ ul.icon-des li {
 	margin-top:0px;
 }
 /*Images*/
-.Images{
-	left:0;
-   width:100%;
-	 display:none;
-	color:#fefefe;
-	padding-top:15px;
-	background:#547787;
-	padding-bottom:15px;
-}
+// .Images{
+// 	left:0;
+//   width:100%;
+// 	display:none;
+// 	color:#fefefe;
+// 	padding-top:15px;
+// 	background:#547787;
+// 	padding-bottom:15px;
+// }
 .Images h4 {
   font-size: 15px;
   margin-top: 0px;
@@ -252,7 +293,7 @@ ul.icon-des li {
 .flyout-left ul>li>a,
 .flyout-mega-wrap,
 .mega-menu{
-	background-color: #547787;
+	background-color: #fff;
 }
 
 /*hover*/
@@ -276,7 +317,7 @@ li.flyout-mega>a:hover +.flyout-mega-wrap{
  @media (min-width:767px){
 	.exo-menu > li > a{
 	display:block;
-	padding: 20px 22px;
+	padding: 12px 22px;
  }
 .mega-menu, .flyout-mega-wrap, .Images, .Blog,.flyout-right>ul,
 .flyout-left>ul, li.drop-down>ul{
@@ -307,7 +348,7 @@ li.flyout-mega>a:hover +.flyout-mega-wrap{
 	}
 	.display.exo-menu > li > a{
 	  display:block ;
-	  	padding: 20px 22px;
+	  	padding: 12px 22px;
 	}
 	
 .mega-menu, .Images, .Blog,.flyout-right>ul,

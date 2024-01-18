@@ -133,7 +133,6 @@ const Product=({data})=>{
                    <Row
                    className={`${hoverShow?'details-active':'details-active'}`}
                    style={{
-                        position:'absolute',
                         bottom:"20px",
                         minWidth:'14.8vw',
                         width:'100%',
@@ -161,6 +160,13 @@ const Product=({data})=>{
                             </Card.Text>
                             <Button 
                             className='card-button product-card-button'
+                            style={{
+                                position:'absolute',
+                                bottom:'25px',
+                                left:'-1.4vw',
+                                right:'0',
+                                minWidth:'14.8vw'
+                            }}
                             onClick={()=>{
                                 handleAddToCart(data?data:{})
                             }}
