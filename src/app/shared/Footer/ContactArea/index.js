@@ -37,40 +37,43 @@ const ContactAreaMain=()=>{
                     xl={3}
                     xs={12}
                     style={{
-                        textAlign:'left'
+                        textAlign:'left',
+                        display:'flex',
+                        alignItems:'center',
+                        justifyContent:'space-between'
                     }}
                     >
-                        <Button
+                        {/* <Button
                         className='normal-social-button no-left-margin'
-                        >
+                        > */}
                             <Image
                             src="/facebook.png"
-                            width={16}
-                            height={16}
+                            width={11}
+                            height={11}
                             alt="search"
                             />
-                        </Button>
+                        {/* </Button> */}
                     
-                        <Button
+                        {/* <Button
                         className='normal-social-button'
-                        >
+                        > */}
                             <Image
                             src="/instagram.png"
                             width={20}
                             height={20}
                             alt="search"
                             />
-                        </Button>
-                        <Button
+                        {/* </Button> */}
+                        {/* <Button
                         className='normal-social-button'
-                        >
+                        > */}
                             <Image
                             src="/youtube.png"
                             width={22}
                             height={22}
                             alt="search"
                             />
-                        </Button>
+                        {/* </Button> */}
                     </Col>
                     <Col 
                     xl={6}

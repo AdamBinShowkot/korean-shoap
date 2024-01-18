@@ -25,6 +25,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/logo.png" sizes="any" />
         <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js" async ></script>
       </head>
       <body >
