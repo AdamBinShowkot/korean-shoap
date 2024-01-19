@@ -26,6 +26,16 @@ async function getBodyCareLists(){
 
   return response;
 }
+async function getSkinTypeLists(){
+  ConfigureAxios();
+  const response=axios.get('/public/skin-type/list?page=1&per_page=10').then((res)=>{
+      if(res.status===200){
+        return res.data?.items;
+      }
+  });
+
+  return response;
+}
 async function getBrandProductLists(){
   ConfigureAxios();
   const response=axios.get('/public/feature-product/brand').then((res)=>{
