@@ -12,9 +12,9 @@ import './index.scss';
 
 async function getProductLists(){
     ConfigureAxios();
-    const response=axios.get('/public/feature-product/brand/1?page=1&per_page=2').then((res)=>{
+    const response=axios.get('/public/top/products?page=1&per_page=20').then((res)=>{
         if(res.status===200){
-            return res.data?.data?.feature_products;
+            return res.data?.items;
         }
     });
 
@@ -25,7 +25,7 @@ const ProductsSlider=async()=>{
     //console.log("Data: ",dataLists)
     return(
         <>
-            <SliderProducts />
+            <SliderProducts lists={dataLists}/>
         </>
     )
 }

@@ -40,7 +40,7 @@ function SamplePrevArrow(props) {
       />
     );
 }
-const SliderProducts=()=>{
+const SliderProducts=({lists})=>{
     const [settings,setSetting]=useState({
         dots: false,
         infinite: true,
@@ -94,7 +94,15 @@ const SliderProducts=()=>{
                         <div>
                             <StaticProducts/>
                         </div>
-                        <div>
+
+                        {
+                            lists?.length?lists.map((dta)=>{
+                                return <div key={dta.id}>
+                                    <Product data={dta}/>
+                                </div>
+                            }):""
+                        }
+                        {/* <div>
                             <Product windowWidth={width}/>
                         </div>
                         <div>
@@ -108,7 +116,7 @@ const SliderProducts=()=>{
                         </div>
                         <div>
                             <Product windowWidth={width}/>
-                        </div>
+                        </div> */}
                     </Slider>
                 </Col>
            </Row>
