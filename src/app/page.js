@@ -50,8 +50,99 @@ async function getBrandProductLists(){
 
   return response;
 }
+
+async function getProductsLists(){
+  ConfigureAxios();
+  const response=axios.get('/public/product-list?per_page=15&page=1').then((res)=>{
+      if(res.status===200){
+          //console.log("Products : ",res.data);
+          return res.data.items;
+      }
+  }).catch((error)=>{
+    console.log(error)
+    return [];
+  });
+
+  return response;
+}
+async function getCleanserProducts(){
+  ConfigureAxios();
+  const response=axios.get('/public/feature-product/category/cleanser').then((res)=>{
+      if(res.status===200){
+          //console.log("Products : ",res.data);
+          return res.data?.length?res.data[0].products:[];
+      }
+  }).catch((error)=>{
+    console.log(error)
+    return [];
+  });
+
+  return response;
+}
+async function getTonerProducts(){
+  ConfigureAxios();
+  const response=axios.get('/public/feature-product/category/toner').then((res)=>{
+      if(res.status===200){
+          //console.log("Products : ",res.data);
+          return res.data?.length?res.data[0].products:[];
+      }
+  }).catch((error)=>{
+    console.log(error)
+    return [];
+  });
+
+  return response;
+}
+async function getEyeCareProducts(){
+  ConfigureAxios();
+  const response=axios.get('/public/feature-product/category/eye-care').then((res)=>{
+      if(res.status===200){
+          //console.log("Products : ",res.data);
+          return res.data?.length?res.data[0].products:[];
+      }
+  }).catch((error)=>{
+    console.log(error)
+    return [];
+  });
+
+  return response;
+}
+async function getBodyCareProducts(){
+  ConfigureAxios();
+  const response=axios.get('/public/feature-product/category/body-care').then((res)=>{
+      if(res.status===200){
+          //console.log("Products : ",res.data);
+          return res.data?.length?res.data[0].products:[];
+      }
+  }).catch((error)=>{
+    console.log(error)
+    return [];
+  });
+
+  return response;
+}
+async function getBodySerumProducts(){
+  ConfigureAxios();
+  const response=axios.get('/public/feature-product/category/serum').then((res)=>{
+      if(res.status===200){
+          //console.log("Products : ",res.data);
+          return res.data?.length?res.data[0].products:[];
+      }
+  }).catch((error)=>{
+    console.log(error)
+    return [];
+  });
+
+  return response;
+}
 export default async function Home() {
   const brandLists=await getBrandProductLists();
+  const productsLists=await getProductsLists();
+  const CleanserItems=await getCleanserProducts();
+  const TonerItems=await getTonerProducts();
+  const BodyCareItems=await getBodyCareProducts();
+  const EyeCareItems=await getEyeCareProducts();
+  const EyeSerumItems=await getBodySerumProducts();
   //const brandLists=[];
   //const bodyCareDataLists= await getBodyCareLists();
   //console.log(bodyCareDataLists)
@@ -80,7 +171,9 @@ export default async function Home() {
             <HomeFeatured/>
           </Row>
           <Row>
-            <ProductsSlider/>
+            <ProductsSlider
+            lists={productsLists}
+            />
           </Row>
           {/* <Row
           style={{
@@ -90,19 +183,33 @@ export default async function Home() {
             <BannerTwo/>
           </Row> */}
           <Row>
-            <ItemsContainer title="CLEANSER "/>
+            <ItemsContainer 
+            title="CLEANSER "
+            lists={CleanserItems}
+            />
           </Row>
           <Row>
-            <ItemsContainer title="TONER "/>
+            <ItemsContainer 
+            lists={TonerItems}
+            title="TONER "/>
           </Row>
           <Row>
-            <ItemsContainer title="SERUM/ESSENCE/AMPOULE "/>
+            <ItemsContainer 
+            title="SERUM/ESSENCE/AMPOULE "
+            lists={EyeSerumItems}
+            />
           </Row>
           <Row>
-            <ItemsContainer title="BODY CARE "/>
+            <ItemsContainer 
+            title="BODY CARE "
+            lists={BodyCareItems}
+            />
           </Row>
           <Row>
-            <ItemsContainer title="EYE CARE "/>
+            <ItemsContainer 
+            title="EYE CARE "
+            lists={EyeCareItems}
+            />
           </Row>
         </Col>
       </Row>

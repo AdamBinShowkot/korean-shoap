@@ -36,7 +36,7 @@ function SamplePrevArrow(props) {
       />
     );
 }
-const ItemsContainer=({title})=>{
+const ItemsContainer=({title,lists})=>{
     const [settings,setSettings]=useState(
         {
             dots: false,
@@ -85,7 +85,14 @@ const ItemsContainer=({title})=>{
                         <div>
                             <StaticProducts/>
                         </div>
-                        <div >
+                        {
+                            lists?.length?lists.map((dta)=>{
+                                return <div key={dta.id}>
+                                    <Product data={dta}/>
+                                </div>
+                            }):""
+                        }
+                        {/* <div >
                             <Product windowWidth={width}/>
                         </div>
                         <div>
@@ -111,7 +118,7 @@ const ItemsContainer=({title})=>{
                         </div>
                         <div>
                             <Product windowWidth={width}/>
-                        </div>
+                        </div> */}
                     </Slider>
                 </Col>
             </Row>

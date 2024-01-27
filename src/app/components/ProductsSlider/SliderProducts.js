@@ -41,6 +41,7 @@ function SamplePrevArrow(props) {
     );
 }
 const SliderProducts=({lists})=>{
+    console.log("Lists : ",lists)
     const [settings,setSetting]=useState({
         dots: false,
         infinite: true,
@@ -83,7 +84,7 @@ const SliderProducts=({lists})=>{
     // };
     return(
         <>
-            <Row 
+            {/* <Row 
             style={{
                 
             }}
@@ -102,26 +103,36 @@ const SliderProducts=({lists})=>{
                                 </div>
                             }):""
                         }
-                        {/* <div>
-                            <Product windowWidth={width}/>
-                        </div>
-                        <div>
-                            <Product windowWidth={width}/>
-                        </div>
-                        <div>
-                            <Product windowWidth={width}/>
-                        </div>
-                        <div>
-                            <Product windowWidth={width}/>
-                        </div>
-                        <div>
-                            <Product windowWidth={width}/>
-                        </div> */}
                     </Slider>
                 </Col>
-           </Row>
+           </Row> */}
 
             <Row 
+            style={{
+                padding:'20px 0px'
+            }}
+            >
+                <Col 
+                xs={12}
+                className='product-non-slide-container'
+                >
+                    {
+                        lists?.length?lists.map((dta)=>{
+                            return <Product 
+                            key={dta.id}
+                            data={dta}
+                            windowWisth={width}
+                            />
+                        }):""
+                    }
+                    {/* <Product windowWisth={width}/>
+                    <Product windowWisth={width}/>
+                    <Product windowWisth={width}/>
+                    <Product windowWisth={width}/> */}
+                </Col>
+            </Row>
+
+            {/* <Row 
             style={{
                 padding:'20px 0px'
             }}
@@ -136,24 +147,7 @@ const SliderProducts=({lists})=>{
                     <Product windowWisth={width}/>
                     <Product windowWisth={width}/>
                 </Col>
-            </Row>
-
-            <Row 
-            style={{
-                padding:'20px 0px'
-            }}
-            >
-                <Col 
-                xs={12}
-                className='product-non-slide-container'
-                >
-                    <Product windowWisth={width}/>
-                    <Product windowWisth={width}/>
-                    <Product windowWisth={width}/>
-                    <Product windowWisth={width}/>
-                    <Product windowWisth={width}/>
-                </Col>
-            </Row>
+            </Row> */}
         </>
     )
 }

@@ -20,12 +20,12 @@ async function getProductLists(){
 
     return response;
 }
-const ProductsSlider=async()=>{
-    const dataLists=await getProductLists();
+const ProductsSlider=async({lists})=>{
+    //const dataLists=await getProductLists();
     //console.log("Data: ",dataLists)
     return(
         <>
-            <SliderProducts lists={dataLists}/>
+            <SliderProducts lists={lists}/>
         </>
     )
 }
