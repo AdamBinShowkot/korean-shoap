@@ -30,7 +30,7 @@ module.exports = {
       remotePatterns: [
         {
           protocol: 'https',
-          hostname: 'korean-shop.softwaregiantbd.com',
+          hostname: 'ksb.koreanshopbd.com',
           port: '',
           pathname: '/images/**',
         },

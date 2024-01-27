@@ -1,1 +1,1 @@
-export const baseImageServer="https://korean-shop.softwaregiantbd.com"
+export const baseImageServer="https://ksb.koreanshopbd.com"

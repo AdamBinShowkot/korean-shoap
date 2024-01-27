@@ -41,7 +41,7 @@ function SamplePrevArrow(props) {
     );
 }
 const SliderProducts=({lists})=>{
-    console.log("Lists : ",lists)
+    //console.log("Lists : ",lists)
     const [settings,setSetting]=useState({
         dots: false,
         infinite: true,
