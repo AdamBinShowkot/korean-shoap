@@ -1,0 +1,47 @@
+.login-registration-container{
+    padding: 15vh 15vw 100px;
+}
+.login-register-inner{
+    padding: 0px 20px 0px 20px;
+}
+
+.others-login-container{
+    padding: 0 10vw 40px;
+    .break-section{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 0px;
+        .heading{
+            width: 20% !important;
+            text-align: center;
+        }
+        .hr{
+            background-color: #000;
+            height: 2px !important;
+            width: 40% !important;
+        }
+    }
+    
+}
+
+.checkout-submit-button{
+    border-radius: 10px;
+    background: var(--prio-vai-like, linear-gradient(90deg, #5C33A9 0.25%, #E8639A 99.81%));
+    border-color: var(--prio-vai-like, linear-gradient(90deg, #5C33A9 0.25%, #E8639A 99.81%));
+    color: #FFF;
+   // font-family: Heebo;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.login-register-button{
+    padding: 10px 8px;
+    background: var(--prio-vai-like, linear-gradient(90deg, #5C33A9 0.25%, #E8639A 99.81%));
+    border-color: var(--prio-vai-like, linear-gradient(90deg, #5C33A9 0.25%, #E8639A 99.81%));
+    border-radius: 0px !important;
+    color: #fff;
+    font-weight: 700;
+}

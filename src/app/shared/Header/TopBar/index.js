@@ -12,6 +12,7 @@ import {
 import './index.scss'
 import Image from 'next/image';
 import HeaderSearchInput from '../shared/HeaderSearchInput';
+import Link from 'next/link';
 
 const TopBarMain=()=>{
     return(
@@ -48,16 +49,20 @@ const TopBarMain=()=>{
                         textAlign:'right'
                     }}
                     >
-                        <Button
-                        className='user-button'
+                        <Link
+                        href="/login-registration"
                         >
-                            <Image
-                            src="/user.png"
-                            width={16}
-                            height={16}
-                            alt="search"
-                            />
-                        </Button>
+                            <Button
+                            className='user-button'
+                            >
+                                <Image
+                                src="/user.png"
+                                width={16}
+                                height={16}
+                                alt="search"
+                                />
+                            </Button>
+                        </Link>
 
                         <Button
                         className='user-button'

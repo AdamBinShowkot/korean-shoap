@@ -42,7 +42,10 @@ const CheckoutMain=()=>{
                             >
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                     <Form.Label><sup>*</sup>{" "}Phone:</Form.Label>
-                                    <Form.Control type="text" placeholder="" />
+                                    <Form.Control 
+                                    type="text" 
+                                    placeholder="" 
+                                    />
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                     <Button
