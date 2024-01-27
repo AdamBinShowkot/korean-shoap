@@ -124,7 +124,7 @@ const Product=({data})=>{
                                 src={`${data?.image?`${baseImageServer}/${data.image}`:'/products2.jpg'}`}
                                 height={250}
                                 width={200}
-                                alt=""
+                                alt={`${data.img_alt?data.img_alt:'Alter Text'}`}
                                 className='image'
                                 />
                             </Col>
