@@ -22,17 +22,17 @@ const BodyContainer=({children})=>{
     // }, [cartLists])
     
     return(
-        <Row>
-            <Col 
-            style={{
-              overflow:'hidden'
-            }}>
-              <AddToCartContext.Provider value={{cartLists,setCartLists}}>
-                <FlatButton/>
-                {children}
-              </AddToCartContext.Provider>
-            </Col>
-        </Row>
+      <Row>
+        <Col 
+        style={{
+          overflow:'hidden'
+        }}>
+          <AddToCartContext.Provider value={{cartLists,setCartLists}}>
+            <FlatButton/>
+            {children}
+          </AddToCartContext.Provider>
+        </Col>
+      </Row>
     )
 }
 export default BodyContainer;

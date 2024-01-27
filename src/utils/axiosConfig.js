@@ -12,6 +12,7 @@ import axios from 'axios';
 
 const ConfigureAxios = () => {
   axios.defaults.headers.post['Content-Type'] = 'application/json';
+  axios.defaults.headers.post['Accept'] = 'application/json, text/plain, */*"';
   axios.defaults.baseURL = "https://ksb.koreanshopbd.com/api/v1";
   //axios.defaults.headers.common['Authorization'] = 'Bearer 21|ubGQra8Eg0ESaiemBxOXuQg1EXLNmZefW4Gk9iO9077fd4c7';
 };
