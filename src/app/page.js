@@ -135,6 +135,21 @@ async function getBodySerumProducts(){
 
   return response;
 }
+
+async function getHeroBgImage(){
+  ConfigureAxios();
+  const response=axios.get('/public/sliders/hero-slider').then((res)=>{
+    if(res.status===200){
+      //console.log("Products : ",res.data);
+      return res.data;
+    }
+  }).catch((error)=>{
+    console.log(error)
+    return [];
+  });
+
+  return response;
+}
 export default async function Home() {
   const brandLists=await getBrandProductLists();
   const productsLists=await getProductsLists();
@@ -143,6 +158,7 @@ export default async function Home() {
   const BodyCareItems=await getBodyCareProducts();
   const EyeCareItems=await getEyeCareProducts();
   const EyeSerumItems=await getBodySerumProducts();
+  const HeroBgLists=await getHeroBgImage();
   //const brandLists=[];
   //const bodyCareDataLists= await getBodyCareLists();
   //console.log(bodyCareDataLists)
@@ -153,7 +169,9 @@ export default async function Home() {
     <>
       <Row>
         <Col>
-          <SliderBanner/>
+          <SliderBanner
+          lists={HeroBgLists}
+          />
         </Col>
       </Row>
       <Row

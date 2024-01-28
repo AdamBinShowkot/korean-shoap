@@ -15,7 +15,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from 'next/image';
 
-const SliderBanner=()=>{
+const SliderBanner=({lists})=>{
     const settings = {
         dots: false,
         infinite: true,
@@ -24,6 +24,7 @@ const SliderBanner=()=>{
         slidesToScroll: 1,
         centerMode:true
     };
+    //console.log("Lists",lists)
     return(
         <>
             <Row
@@ -45,7 +46,7 @@ const SliderBanner=()=>{
                     {...settings}
                     className="main-slide"
                     >
-                        <div
+                        {/* <div
                         // style={{
                         //     minHeight:'500px'
                         // }}
@@ -75,7 +76,23 @@ const SliderBanner=()=>{
                             className='top-slide-image'
                             //style={{ width: '100%', height: 'auto' }}
                             />
-                        </div>
+                        </div> */}
+                        {
+                            lists?.length?lists.map((dta)=>{
+                                return <div
+                                key={dta.id}
+                                >
+                                    <Image
+                                    //src={'/bsOne.png'}
+                                    src={`${baseImageServer}/${dta.image?dta.image:'bsOne.png'}`}
+                                    width={1920}
+                                    height={440}
+                                    alt="Slide Image"
+                                    className='top-slide-image'
+                                    />
+                                </div>
+                            }):""
+                        }
                     </Slider>
                 </Col>
             </Row>

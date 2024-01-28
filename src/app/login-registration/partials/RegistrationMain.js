@@ -12,8 +12,19 @@ import {
 
 const RegistrationMain=()=>{
     const [registrationInfo,setRegistrationInfo]=useState({
-        
-    })
+        name:"",
+        mobile:"",
+        password:""
+    });
+
+    const handleOnInputChange=(e)=>{
+        const {name,value}=e.target;
+
+        const data={...registrationInfo};
+        data[name]=[value];
+
+        setRegistrationInfo(data);
+    }
     return(
         <>
             <Row>
@@ -25,21 +36,30 @@ const RegistrationMain=()=>{
                             <Form.Label><sup>*</sup>{" "}Name:</Form.Label>
                             <Form.Control 
                             type="text" 
-                            placeholder="" 
+                            placeholder=""
+                            name="name"
+                            onChange={handleOnInputChange}
+                            value={registrationInfo.name} 
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea2">
                             <Form.Label><sup>*</sup>{" "}Mobile:</Form.Label>
                             <Form.Control 
                             type="text" 
-                            placeholder="" 
+                            placeholder=""
+                            name="mobile"
+                            onChange={handleOnInputChange}
+                            value={registrationInfo.mobile} 
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea3">
                             <Form.Label><sup>*</sup>{" "}Password:</Form.Label>
                             <Form.Control 
-                            type="text" 
-                            placeholder="" 
+                            type="password" 
+                            placeholder=""
+                            name="password"
+                            onChange={handleOnInputChange}
+                            value={registrationInfo.password} 
                             />
                         </Form.Group>
                         <Form.Group className="mb-3">
