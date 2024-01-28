@@ -42,10 +42,7 @@ const LoginMain=()=>{
                 email_or_mobile:userInfo.phone,
                 password:userInfo.password
             }
-            axios.post(`/public/login`,{
-                email_or_mobile:userInfo.phone,
-                password:userInfo.password
-            })
+            axios.post(`/public/login`,JSON.stringify(data))
             .then((response)=>{
                 console.log(response)
             }).catch((error)=>{

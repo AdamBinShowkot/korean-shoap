@@ -26,6 +26,7 @@ import './index.scss';
 
 
 const Product=({data})=>{
+    //console.log(data)
     const [hoverShow,setHoverShow]=useState(false);
     const {cartLists,setCartLists}=useContext(AddToCartContext);
     const variants=data?.variant?.length?data?.variant[0]:{}
@@ -124,7 +125,7 @@ const Product=({data})=>{
                                 src={`${data?.image?`${baseImageServer}/${data.image}`:'/products2.jpg'}`}
                                 height={250}
                                 width={200}
-                                alt={`${data.img_alt?data.img_alt:'Alter Text'}`}
+                                alt={`${data?.img_alt?data?.img_alt:'Alter Text'}`}
                                 className='image'
                                 />
                             </Col>

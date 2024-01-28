@@ -1,5 +1,8 @@
 'use client'
-import React from 'react';
+import React,{
+    useEffect,
+    useState
+} from 'react';
 import {
     Row,
     Col,
@@ -8,6 +11,9 @@ import {
 } from 'react-bootstrap';
 
 const RegistrationMain=()=>{
+    const [registrationInfo,setRegistrationInfo]=useState({
+        
+    })
     return(
         <>
             <Row>
