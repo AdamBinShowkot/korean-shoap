@@ -57,12 +57,14 @@ const Product=({data})=>{
                 let lists =[...cartLists];
                 const currentId=infos.id;
                 if(lists?.length){
-                    const index = lists.map(e => e.id).indexOf(currentId);
-                    
+                    const index = lists.map(e => e.product_id).indexOf(currentId);
+                    console.log("Index : ",index,"FF",currentId)
+                    ///console.log(lists)
                     if(index>=0){
+                        console.log("Im Calleddd")
                         const currentProducts=lists[index];
-                        //console.log(currentProducts)
-                        currentProducts.quantity+=1;
+                        console.log(currentProducts)
+                        currentProducts.quantity=parseInt(currentProducts.quantity)+1;
                         const product_id=currentProducts.product_id;
                         const obj={
                             quantity:currentProducts.quantity,
@@ -70,11 +72,12 @@ const Product=({data})=>{
                         }
                         axios.post(`/cart/${product_id}`,JSON.stringify(obj))
                         .then((response)=>{
-                            if(response.status===201){
+                            if(response.status==201){
+                                //console.log(response)
                                 getCartLists(token);
                             }
                         }).catch((error)=>{
-
+                            console.log("Err",error)
                         })
                         //setCartLists([...lists])
                     }else{
@@ -105,7 +108,7 @@ const Product=({data})=>{
         }else{
             if(infos?.id){
                 //console.log("In",infos)
-                //let lists =[...cartLists];
+                let lists2 =[...cartLists];
                 let lists=localStorage.getItem("ProductCarts");
                 lists=JSON.parse(lists);
                 //console.log("Lists: ",lists)
@@ -127,10 +130,11 @@ const Product=({data})=>{
                         }
                         lists=[...lists,newObj]
                         localStorage.setItem("ProductCarts",JSON.stringify(lists));
-                        setCartLists([...lists,newObj])
+                        setCartLists([...lists2,newObj])
                     }
                 }else{
-                    lists=[];
+                    //console.log('Calleddd')
+                    let newlists=[];
                     const newObj={
                         id:currentId,
                         name:infos?.name,
@@ -139,9 +143,10 @@ const Product=({data})=>{
                         product_id:currentId,
                         product_variant_id:variants.id?variants.id:0
                     }
-                    lists=[...lists,newObj]
-                    localStorage.setItem("ProductCarts",JSON.stringify(lists));
-                    setCartLists([...lists,newObj])
+                    //newlists=[...newlists,newObj]
+                    setCartLists([newObj])
+                    localStorage.setItem("ProductCarts",JSON.stringify([newObj]));
+
                 }
             }
         }

@@ -39,6 +39,12 @@ const TopBarMain=()=>{
 
         if(token){
             getCartLists(token)
+        }else{
+            let lists=localStorage.getItem("ProductCarts");
+            lists=JSON.parse(lists);
+            if(lists?.length){
+                setCartLists(lists)
+            }
         }
     },[])
 
@@ -87,7 +93,7 @@ const TopBarMain=()=>{
         }
 
     }
-    console.log("User : ",userInfo);
+    //console.log("User : ",userInfo);
     return(
         <>
             <Col
