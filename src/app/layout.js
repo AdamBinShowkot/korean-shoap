@@ -30,18 +30,9 @@ export default function RootLayout({ children }) {
       </head>
       <body >
         {/* <FlatButton/> */}
-        <Container fluid>
-          <HeaderMain/>
-          {/* <Container> */}
-            
           <BodyContainer>
             {children}
           </BodyContainer>
-        
-          {/* </Container> */}
-          <FooterMain/>
-          <MobileFooterMenu/>
-        </Container>
       </body>
     </html>
   )

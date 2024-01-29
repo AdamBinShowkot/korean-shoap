@@ -1,7 +1,8 @@
 'use client';
 import React,{
     useEffect,
-    useState
+    useState,
+    useContext
 } from 'react';
 import {
     Row,
@@ -11,10 +12,18 @@ import {
 } from 'react-bootstrap';
 import axios from 'axios';
 import queryString from 'query-string';
+import { 
+    UserInfoContextApi 
+} from '@/contextApi/userInfoApi';
 import ConfigureAxios from '@/utils/axiosConfig';
+import { 
+    ToastContainer,
+    toast
+} from 'react-toastify';
 
 const LoginMain=()=>{
-    const [userInfo,setUserInfo]=useState({
+    const {userInfo,setUserInfo}=useContext(UserInfoContextApi)
+    const [userInfos,setUserInfos]=useState({
         phone:"",
         password:""
     });
@@ -23,29 +32,49 @@ const LoginMain=()=>{
         //console.log("DD",e.target);
         const {name,value}=e.target;
 
-        let info={...userInfo};
+        let info={...userInfos};
 
         info[name]=value;
 
-        setUserInfo(info);
+        setUserInfos(info);
 
     }
 
     const handleOnSubmit=(e)=>{
-        //console.log("Called",userInfo)
+        //console.log("Called",userInfos)
         e.preventDefault();
 
        ConfigureAxios();
 
-        if(userInfo.phone && userInfo.password){
+        if(userInfos.phone && userInfos.password){
             const data={
-                email_or_mobile:userInfo.phone,
-                password:userInfo.password
+                email_or_mobile:userInfos.phone,
+                password:userInfos.password
             }
             axios.post(`/public/login`,JSON.stringify(data))
             .then((response)=>{
                 console.log(response)
+                if(response.status===200 && response.data){
+                    //console.log(response.data)
+                    const {token}=response.data;
+                    localStorage.setItem("token",token);
+                    setUserInfo(response.data);
+                    alert("Login Success")
+                    // toast('🦄 Wow so easy!', {
+                    // position: "top-right",
+                    // autoClose: 5000,
+                    // hideProgressBar: false,
+                    // closeOnClick: true,
+                    // pauseOnHover: true,
+                    // draggable: true,
+                    // progress: undefined,
+                    // theme: "light"
+                    // });
+                }else{
+                    alert("User Name or Password are wrong.")
+                }
             }).catch((error)=>{
+                alert("User Name or Password are wrong.")
                 console.log("error: ",error)
             })
         }else{
@@ -67,7 +96,7 @@ const LoginMain=()=>{
                             type="text" 
                             placeholder="phone"
                             name="phone"
-                            value={userInfo.phone}
+                            value={userInfos.phone}
                             onChange={handleOnLoginChange}
                             />
                         </Form.Group>
@@ -77,7 +106,7 @@ const LoginMain=()=>{
                             type="password" 
                             placeholder="password"
                             name="password"
-                            value={userInfo.password}
+                            value={userInfos.password}
                             onChange={handleOnLoginChange}
                             />
                         </Form.Group>
@@ -93,6 +122,7 @@ const LoginMain=()=>{
                     </Form>
                 </Col>
             </Row>
+           
         </>
     )
 }

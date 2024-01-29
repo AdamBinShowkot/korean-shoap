@@ -1,4 +1,9 @@
-import React from 'react';
+'use client'
+import React,{
+    useContext,
+    useEffect,
+    useState
+} from 'react';
 import {
     Col,
     Container,
@@ -13,8 +18,76 @@ import './index.scss'
 import Image from 'next/image';
 import HeaderSearchInput from '../shared/HeaderSearchInput';
 import Link from 'next/link';
+import { 
+    UserInfoContextApi 
+} from '@/contextApi/userInfoApi';
+import { 
+    AddToCartContext 
+} from '@/contextApi/addToCartApi';
+import ConfigureAxios from '@/utils/axiosConfig';
+import { 
+    ToastContainer 
+} from 'react-toastify';
+import axios from 'axios';
 
 const TopBarMain=()=>{
+    const {userInfo,setUserInfo}=useContext(UserInfoContextApi);
+    const {cartLists,setCartLists}=useContext(AddToCartContext);
+
+    useEffect(()=>{
+        const token=localStorage.getItem("token");
+
+        if(token){
+            getCartLists(token)
+        }
+    },[])
+
+    useEffect(()=>{
+        const token=localStorage.getItem("token");
+
+        if(token){
+            ConfigureAxios(token);
+            getCartLists(token)
+            let lists=localStorage.getItem("ProductCarts");
+            lists=JSON.parse(lists);
+            if(lists?.length){
+                let configData=[];
+                lists.map((dta)=>{
+                    const newObj={
+                        product_id:dta.product_id,
+                        product_variant_id:dta.product_variant_id,
+                        quantity:dta.quantity
+                    }
+                    configData=[...configData,newObj]
+                })
+                axios.post(`/cart-sync`,JSON.stringify(configData)).then((response)=>{
+                    //console.log(response)
+                    if(response.status===201){
+                        localStorage.removeItem("ProductCarts");
+                        getCartLists(token)
+                    }
+                }).catch((error)=>{
+
+                })
+            }
+        }
+    },[userInfo])
+    const getCartLists=async(token="")=>{
+        if(token){
+            ConfigureAxios(token);
+            axios.get(`/cart`)
+            .then((response)=>{
+                console.log("Cart Lists : ",response.data)
+                if(response.status===200){
+                    setCartLists(response.data)
+                }
+            }).catch((error)=>{
+
+            })
+        }
+
+    }
+    console.log("User : ",userInfo);
     return(
         <>
             <Col
@@ -134,6 +207,7 @@ const TopBarMain=()=>{
                     </Col>
                 </Row>
             </Col>
+          
         </>
     )
 }

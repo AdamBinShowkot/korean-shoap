@@ -23,6 +23,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProductHover from './partials/ProuctHover';
 import './index.scss';
+import ConfigureAxios from '@/utils/axiosConfig';
+import axios from 'axios';
 
 
 const Product=({data})=>{
@@ -47,14 +49,49 @@ const Product=({data})=>{
         }
     },[data]);
     const handleAddToCart=(infos)=>{
-        if(infos?.id){
-            let lists =[...cartLists];
-            const currentId=infos.id;
-            if(lists?.length){
-                const index = lists.map(e => e.id).indexOf(currentId);
-                if(index>=0){
-                    lists[index].quantity=lists[index].quantity+1;
-                    setCartLists([...lists])
+        const token=localStorage.getItem("token");
+        if(token && infos?.id){
+            ConfigureAxios(token);
+        
+            if(infos?.id){
+                let lists =[...cartLists];
+                const currentId=infos.id;
+                if(lists?.length){
+                    const index = lists.map(e => e.id).indexOf(currentId);
+                    
+                    if(index>=0){
+                        const currentProducts=lists[index];
+                        //console.log(currentProducts)
+                        currentProducts.quantity+=1;
+                        const product_id=currentProducts.product_id;
+                        const obj={
+                            quantity:currentProducts.quantity,
+                            _method:'PUT'
+                        }
+                        axios.post(`/cart/${product_id}`,JSON.stringify(obj))
+                        .then((response)=>{
+                            if(response.status===201){
+                                getCartLists(token);
+                            }
+                        }).catch((error)=>{
+
+                        })
+                        //setCartLists([...lists])
+                    }else{
+                        const newObj2={
+                            quantity:1,
+                            product_id:currentId,
+                            product_variant_id:variants.id?variants.id:0
+                        }
+                        axios.post(`/cart`,JSON.stringify(newObj2))
+                        .then((response)=>{
+                            //console.log("Cart response when logged in: ",response);
+                            //setCartLists([...lists,newObj])
+                            getCartLists(token);
+                        }).catch((error)=>{
+                            console.log("CCART",error)
+                        })
+                    }
                 }else{
                     const newObj={
                         id:currentId,
@@ -64,16 +101,66 @@ const Product=({data})=>{
                     }
                     setCartLists([...lists,newObj])
                 }
-            }else{
-                const newObj={
-                    id:currentId,
-                    name:infos?.name,
-                    price:parseFloat(variants.price-variants.discount_price).toFixed(0),
-                    quantity:1
+            }
+        }else{
+            if(infos?.id){
+                //console.log("In",infos)
+                //let lists =[...cartLists];
+                let lists=localStorage.getItem("ProductCarts");
+                lists=JSON.parse(lists);
+                //console.log("Lists: ",lists)
+                const currentId=infos.id;
+                if(lists?.length){
+                    const index = lists.map(e => e.id).indexOf(currentId);
+                    if(index>=0){
+                        lists[index].quantity+=1;
+                        localStorage.setItem("ProductCarts",JSON.stringify(lists));
+                        setCartLists([...lists])
+                    }else{
+                        const newObj={
+                            id:currentId,
+                            name:infos?.name,
+                            price:parseFloat(variants.price-variants.discount_price).toFixed(0),
+                            quantity:1,
+                            product_id:currentId,
+                            product_variant_id:variants.id?variants.id:0
+                        }
+                        lists=[...lists,newObj]
+                        localStorage.setItem("ProductCarts",JSON.stringify(lists));
+                        setCartLists([...lists,newObj])
+                    }
+                }else{
+                    lists=[];
+                    const newObj={
+                        id:currentId,
+                        name:infos?.name,
+                        price:parseFloat(variants.price-variants.discount_price).toFixed(0),
+                        quantity:1,
+                        product_id:currentId,
+                        product_variant_id:variants.id?variants.id:0
+                    }
+                    lists=[...lists,newObj]
+                    localStorage.setItem("ProductCarts",JSON.stringify(lists));
+                    setCartLists([...lists,newObj])
                 }
-                setCartLists([...lists,newObj])
             }
         }
+    }
+
+    const getCartLists=async(token="")=>{
+        if(token){
+            ConfigureAxios(token);
+            axios.get(`/cart`)
+            .then((response)=>{
+                //console.log("Cart Lists : ",response.data)
+                if(response.status===200){
+                    setCartLists(response.data)
+                }
+            }).catch((error)=>{
+
+            })
+        }
+
     }
 
     

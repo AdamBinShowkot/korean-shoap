@@ -1,4 +1,6 @@
 'use client'
+import ConfigureAxios from '@/utils/axiosConfig';
+import axios from 'axios';
 import React,{
     useEffect,
     useState
@@ -25,6 +27,33 @@ const RegistrationMain=()=>{
 
         setRegistrationInfo(data);
     }
+    const handleRegistration=(e)=>{
+        e.preventDefault();
+        const {
+            name,
+            mobile,
+            password
+        }=registrationInfo;
+
+        if(name && mobile && password){
+            const myObj={
+                name:name,
+                email:mobile,
+                password:password
+            }
+
+            ConfigureAxios();
+            axios.post(`/public/registration`,JSON.stringify(myObj))
+            .then((response)=>{
+                console.log("Registration response: ",response);
+                if(response.status===201){
+                    console.log(response.data)
+                }
+            }).catch((error)=>{
+                console.log(error)
+            })
+        }
+    }
     return(
         <>
             <Row>
@@ -43,7 +72,7 @@ const RegistrationMain=()=>{
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea2">
-                            <Form.Label><sup>*</sup>{" "}Mobile:</Form.Label>
+                            <Form.Label><sup>*</sup>{" "}Email:</Form.Label>
                             <Form.Control 
                             type="text" 
                             placeholder=""
@@ -72,6 +101,7 @@ const RegistrationMain=()=>{
                             <Button
                             //className='checkout-submit-button'
                             className="login-register-button"
+                            onClick={handleRegistration}
                             >
                                 REGISTRATION
                             </Button>
