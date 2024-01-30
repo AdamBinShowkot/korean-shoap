@@ -183,11 +183,11 @@ export default async function Home() {
           padding:'0'
         }}
         >
-          <Row
+          {/* <Row
           className='home-featured-main-row'
           >
             <HomeFeatured/>
-          </Row>
+          </Row> */}
           <Row>
             <ProductsSlider
             lists={productsLists}

@@ -58,10 +58,10 @@ const Product=({data})=>{
                 const currentId=infos.id;
                 if(lists?.length){
                     const index = lists.map(e => e.product_id).indexOf(currentId);
-                    console.log("Index : ",index,"FF",currentId)
+                    //console.log("Index : ",index,"FF",currentId)
                     ///console.log(lists)
                     if(index>=0){
-                        console.log("Im Calleddd")
+                        //console.log("Im Calleddd")
                         const currentProducts=lists[index];
                         console.log(currentProducts)
                         currentProducts.quantity=parseInt(currentProducts.quantity)+1;
