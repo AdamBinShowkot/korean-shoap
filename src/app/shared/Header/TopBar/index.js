@@ -100,7 +100,7 @@ const TopBarMain=()=>{
             ConfigureAxios(token);
             axios.get(`/cart`)
             .then((response)=>{
-                //console.log("Cart Lists : ",response.data)
+                console.log("Cart Lists : ",response.data)
                 if(response.status===200){
                     setCartLists(response.data)
                 }
@@ -110,9 +110,25 @@ const TopBarMain=()=>{
         }
 
     }
+    const handleRemoveCart=(data)=>{
+        if(data?.id){
+            const Token=localStorage.getItem("token");
+            ConfigureAxios(Token);
+
+            axios.delete(`/cart/${data.id}`)
+            .then((response)=>{
+                if(response.status===200){
+                    getCartLists(Token);
+                }
+                //console.log("delete response: ",response);
+            }).catch((error)=>{
+                console.log("delete error:",error)
+            })
+        }
+    }
     const handleUpdateCart=(data)=>{
         //console.log("Data : ",data)
-        if(data?.product_id){
+        if(data?.id){
             const Token=localStorage.getItem("token");
             ConfigureAxios(Token);
 
@@ -120,7 +136,7 @@ const TopBarMain=()=>{
                 quantity:data.quantity+1,
                 _method:'PUT'
             }
-            axios.post(`/cart/${data.product_id}`,JSON.stringify(obj))
+            axios.post(`/cart/${data.id}`,JSON.stringify(obj))
             .then((response)=>{
                 //console.log("response ",response)
                 if(response.status==201){
@@ -284,6 +300,9 @@ const TopBarMain=()=>{
                                         // left:10,
                                         // top:-6
                                     }}
+                                    onClick={()=>{
+                                        setShowModal(false)
+                                    }}
                                     className="modal-close-icon"
                                     ></Image>
                                 </Col>
@@ -350,6 +369,9 @@ const TopBarMain=()=>{
                                             height={20}
                                             width={20}
                                             alt="Cart Remove."
+                                            onClick={()=>{
+                                                handleRemoveCart(dta);
+                                            }}
                                             className="cart-item-remover"
                                             >
         
@@ -412,26 +434,33 @@ const TopBarMain=()=>{
                             textAlign:'right'
                         }}
                         > */}
-                            <Button
-                            className="processed-button"
-                            style={{
-                                width:'50% !important'
-                            }}
+                            <Link
+                            href="/products/checkout"
                             >
-                                Proceed
-                                <Image
-                                src="/next_process_icon.png"
-                                height={7}
-                                width={10}
-                                alt="Arrow"
+                                <Button
+                                className="processed-button"
                                 style={{
-                                    marginLeft:'5px'
+                                    width:'50% !important'
                                 }}
                                 onClick={()=>{
-                                    //setHoverShow(!hoverShow)
+                                    setShowModal(false);
                                 }}
-                                />
-                            </Button>      
+                                >
+                                    Proceed
+                                    <Image
+                                    src="/next_process_icon.png"
+                                    height={7}
+                                    width={10}
+                                    alt="Arrow"
+                                    style={{
+                                        marginLeft:'5px'
+                                    }}
+                                    onClick={()=>{
+                                        //setHoverShow(!hoverShow)
+                                    }}
+                                    />
+                                </Button> 
+                            </Link>     
                         </Col>
                     </Row>
                 </Modal.Footer>

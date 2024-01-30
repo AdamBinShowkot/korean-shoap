@@ -13,10 +13,21 @@ import {
     Form,
     Button
 } from 'react-bootstrap';
+import ConfigureAxios from '@/utils/axiosConfig';
+import axios from 'axios';
 
 const CheckoutMain=()=>{
     const {cartLists,setCartLists}=useContext(AddToCartContext);
+    const Token=localStorage.getItem("token");
     const [totalPrice,setTotalPrice]=useState(0);
+    const [customerInfo,setCustomerInfo]=useState({
+        name:"",
+        phone:"",
+        address:"",
+        note:"",
+        insideDhaka:true,
+        paymentMethod:"COD"
+    })
 
     useEffect(()=>{
         if(cartLists.length){
@@ -29,6 +40,92 @@ const CheckoutMain=()=>{
             setTotalPrice(0)
         }
     },[cartLists])
+
+    const onValueChange=(e)=>{
+        ///console.log(e)
+        const data={...customerInfo};
+        const {name,value}=e.target;
+
+        data[name]=value;
+
+        setCustomerInfo(data);
+    }
+
+    const getCartLists=async(token="")=>{
+        if(token){
+            ConfigureAxios(token);
+            axios.get(`/cart`)
+            .then((response)=>{
+                console.log("Cart Lists : ",response.data)
+                if(response.status===200){
+                    setCartLists(response.data)
+                }
+            }).catch((error)=>{
+
+            })
+        }
+
+    }
+
+    const checkoutSubmit=(e)=>{
+        e.preventDefault();
+
+        const lists=[...cartLists];
+
+
+        const {
+            paymentMethod,
+            name,
+            address,
+            phone,
+            note,
+            insideDhaka
+        }=customerInfo;
+
+        if(paymentMethod && name && note && address && phone && paymentMethod==="COD" && lists?.length){
+            const obj={
+                // coupon_code:"",
+                // postal_code: "",
+                // city: "",
+                payment_method:paymentMethod,
+                delivery_charge:49,
+                name:name,
+                mobile:phone,
+                full_address:address,
+                customer_note:note,
+                grand_total:(totalPrice+49),
+                products:[]
+            }
+
+            let myLists=[];
+            lists.map((dta)=>{
+                const newOBJ={
+                    product_id:dta?.product_id,
+                    product_variant_id:dta?.product_sku_id,
+                    quantity:dta?.quantity
+                }
+                myLists=[...myLists,newOBJ];
+            })
+
+            obj.products=myLists;
+
+            if(Token){
+               // ConfigureAxios(Token);
+                axios.post(`/public/orders`,JSON.stringify(obj))
+                .then((response)=>{
+                    console.log("order response: ",response);
+                    if(response.status===200){
+                        alert("Order Completed Suffessfully.")
+                    }
+                }).catch((error)=>{
+                    alert("Something Went Wrong.")
+                    console.log("order error: ",error)
+                })
+            }
+        }else{
+
+        }
+    }
     return(
         <>
             <Row>
@@ -89,19 +186,37 @@ const CheckoutMain=()=>{
                                 <Col xs={4}>
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea2">
                                         <Form.Label>NAME {" "}<sup>*</sup></Form.Label>
-                                        <Form.Control type="text" placeholder="" />
+                                        <Form.Control 
+                                        type="text" 
+                                        placeholder=""
+                                        name="name"
+                                        value={customerInfo.name}
+                                        onChange={onValueChange}
+                                        />
                                     </Form.Group>
                                 </Col>
                                 <Col xs={4}>
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea3">
                                         <Form.Label>PHONE {" "}<sup>*</sup></Form.Label>
-                                        <Form.Control type="text" placeholder="" />
+                                        <Form.Control 
+                                        type="text" 
+                                        placeholder=""
+                                        name="phone"
+                                        value={customerInfo.phone}
+                                        onChange={onValueChange}
+                                        />
                                     </Form.Group>
                                 </Col>
                                 <Col xs={4}>
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea3">
                                         <Form.Label>ADDRESS {" "}<sup>*</sup></Form.Label>
-                                        <Form.Control type="text" placeholder="" />
+                                        <Form.Control 
+                                        type="text" 
+                                        placeholder=""
+                                        name="address"
+                                        value={customerInfo.address}
+                                        onChange={onValueChange}
+                                        />
                                     </Form.Group>
                                 </Col>
                             </Row>
@@ -109,7 +224,13 @@ const CheckoutMain=()=>{
                                 <Col xs={12}>
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea3">
                                         <Form.Label>ORDER NOTE (OPTIONAL)</Form.Label>
-                                        <Form.Control as="textarea" rows={2} />
+                                        <Form.Control 
+                                        as="textarea" 
+                                        rows={2} 
+                                        name="note"
+                                        value={customerInfo.note}
+                                        onChange={onValueChange}
+                                        />
                                     </Form.Group>
                                 </Col>
                             </Row>
@@ -134,6 +255,13 @@ const CheckoutMain=()=>{
                                                     label="Delivery Outside Dhaka:"
                                                     name="group1"
                                                     type={"radio"}
+                                                    onChange={(e)=>{
+                                                        let lists={...customerInfo};
+
+                                                        lists.insideDhaka=false;
+                                                        setCustomerInfo(lists)
+                                                    }}
+                                                    checked={customerInfo.insideDhaka?false:true}
                                                     id={`inline-radio-1`}
                                                     />
                                                 </Col>
@@ -151,8 +279,15 @@ const CheckoutMain=()=>{
                                                     <Form.Check
                                                     inline
                                                     label="Delivery Inside Dhaka:"
-                                                    name="group2"
+                                                    name="group1"
                                                     type={"radio"}
+                                                    onChange={(e)=>{
+                                                        let lists={...customerInfo};
+
+                                                        lists.insideDhaka=true;
+                                                        setCustomerInfo(lists)
+                                                    }}
+                                                    checked={customerInfo.insideDhaka?true:false}
                                                     id={`inline-radio-2`}
                                                     />
                                                 </Col>
@@ -208,6 +343,13 @@ const CheckoutMain=()=>{
                                             label="Cash On Delivery"
                                             name="group2"
                                             type={"radio"}
+                                            onChange={(e)=>{
+                                                let lists={...customerInfo};
+
+                                                lists.paymentMethod="COD";
+                                                setCustomerInfo(lists)
+                                            }}
+                                            checked={customerInfo.paymentMethod==="COD"?true:false}
                                             id={`inline-radio-3`}
                                             />
                                             <Form.Check
@@ -215,6 +357,13 @@ const CheckoutMain=()=>{
                                             label="bKash"
                                             name="group2"
                                             type={"radio"}
+                                            onChange={(e)=>{
+                                                let lists={...customerInfo};
+
+                                                lists.paymentMethod="BKASH";
+                                                setCustomerInfo(lists)
+                                            }}
+                                            checked={customerInfo.paymentMethod==="BKASH"?true:false}
                                             id={`inline-radio-4`}
                                             />
                                             <Form.Check
@@ -222,6 +371,13 @@ const CheckoutMain=()=>{
                                             label="Pay with Card /Mobile Wallet"
                                             name="group2"
                                             type={"radio"}
+                                            onChange={(e)=>{
+                                                let lists={...customerInfo};
+
+                                                lists.paymentMethod="PCARD";
+                                                setCustomerInfo(lists)
+                                            }}
+                                            checked={customerInfo.paymentMethod==="PCARD"?true:false}
                                             id={`inline-radio-5`}
                                             />
 
@@ -236,6 +392,8 @@ const CheckoutMain=()=>{
                                                 width:'30%',
                                                 margin:'10px 0px'
                                             }}
+                                            onClick={checkoutSubmit}
+                                            disabled={Token?false:true}
                                             >
                                                 PLACE ORDER
                                             </Button>

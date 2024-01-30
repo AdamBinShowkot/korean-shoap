@@ -84,6 +84,8 @@ const Product=({data})=>{
                         const newObj2={
                             quantity:1,
                             product_id:currentId,
+                            image:infos.image,
+                            name:infos.name,
                             product_variant_id:variants.id?variants.id:0
                         }
                         axios.post(`/cart`,JSON.stringify(newObj2))
@@ -98,7 +100,8 @@ const Product=({data})=>{
                 }else{
                     const newObj={
                         id:currentId,
-                        name:infos?.name,
+                        image:infos.image,
+                        name:infos.name,
                         price:parseFloat(variants.price-variants.discount_price).toFixed(0),
                         quantity:1
                     }
@@ -123,6 +126,7 @@ const Product=({data})=>{
                         const newObj={
                             id:currentId,
                             name:infos?.name,
+                            image:infos.image,
                             price:parseFloat(variants.price-variants.discount_price).toFixed(0),
                             quantity:1,
                             product_id:currentId,
@@ -138,6 +142,7 @@ const Product=({data})=>{
                     const newObj={
                         id:currentId,
                         name:infos?.name,
+                        image:infos?.image,
                         price:parseFloat(variants.price-variants.discount_price).toFixed(0),
                         quantity:1,
                         product_id:currentId,

@@ -116,10 +116,8 @@
     padding: 8px 12px;
     //width: 100%;
 }
-.modal-close-icon{
-    :hover{
-        cursor: pointer;
-    }
+.modal-close-icon:hover{
+    cursor: pointer;
 }
 .modal.right .modal-dialog {
     position: fixed;
