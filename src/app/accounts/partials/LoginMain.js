@@ -60,6 +60,7 @@ const LoginMain=()=>{
                     localStorage.setItem("token",token);
                     setUserInfo(response.data);
                     alert("Login Success")
+                    window.location.href="/accounts"
                     // toast('🦄 Wow so easy!', {
                     // position: "top-right",
                     // autoClose: 5000,
