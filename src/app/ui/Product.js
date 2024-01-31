@@ -49,24 +49,28 @@ const Product=({data})=>{
         }
     },[data]);
     const handleAddToCart=(infos)=>{
+        console.log(infos)
         const token=localStorage.getItem("token");
         if(token && infos?.id){
-            console.log('CALLEDDD')
+            
             ConfigureAxios(token);
         
             if(infos?.id){
+               
                 let lists =[...cartLists];
                 const currentId=infos.id;
                 if(lists?.length){
+                    
                     const index = lists.map(e => e.product_id).indexOf(currentId);
                     //console.log("Index : ",index,"FF",currentId)
-                    ///console.log(lists)
+                    console.log(lists)
                     if(index>=0){
+                        console.log('One')
                         //console.log("Im Calleddd")
                         const currentProducts=lists[index];
                         console.log(currentProducts)
                         currentProducts.quantity=parseInt(currentProducts.quantity)+1;
-                        const product_id=currentProducts.product_id;
+                        const product_id=currentProducts.id;
                         const obj={
                             quantity:currentProducts.quantity,
                             _method:'PUT'
@@ -82,13 +86,15 @@ const Product=({data})=>{
                         })
                         //setCartLists([...lists])
                     }else{
+                       // console.log('Two')
                         const newObj2={
                             quantity:1,
-                            product_id:currentId,
-                            image:infos.image,
-                            name:infos.name,
+                            product_id:infos?.id,
+                            //image:infos.image,
+                           // name:infos.name,
                             product_variant_id:variants.id?variants.id:0
                         }
+                        //console.log(newObj2)
                         axios.post(`/cart`,JSON.stringify(newObj2))
                         .then((response)=>{
                             //console.log("Cart response when logged in: ",response);
@@ -99,14 +105,32 @@ const Product=({data})=>{
                         })
                     }
                 }else{
+                    console.log("Caleddd")
                     const newObj={
                         id:currentId,
+                        product_id:currentId,
                         image:infos.image,
                         name:infos.name,
                         price:parseFloat(variants.price-variants.discount_price).toFixed(0),
                         quantity:1
                     }
+                    const newObj2={
+                        quantity:1,
+                        product_id:infos?.id,
+                        //image:infos.image,
+                        //name:infos.name,
+                        product_variant_id:variants.id?variants.id:0
+                    }
+                    //console.log("NN",newObj)
                     setCartLists([...lists,newObj])
+                    axios.post(`/cart`,JSON.stringify(newObj2))
+                    .then((response)=>{
+                        console.log("Cart response when logged in: ",response);
+                        //setCartLists([...lists,newObj])
+                        getCartLists(token);
+                    }).catch((error)=>{
+                        console.log("CCART",error)
+                    })
                 }
             }
         }else{
