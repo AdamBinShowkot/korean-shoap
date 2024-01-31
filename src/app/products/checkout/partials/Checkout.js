@@ -18,7 +18,8 @@ import axios from 'axios';
 
 const CheckoutMain=()=>{
     const {cartLists,setCartLists}=useContext(AddToCartContext);
-    const Token=localStorage.getItem("token");
+    const [Token,setToken]=useState("");
+   
     const [totalPrice,setTotalPrice]=useState(0);
     const [customerInfo,setCustomerInfo]=useState({
         name:"",
@@ -27,6 +28,11 @@ const CheckoutMain=()=>{
         note:"",
         insideDhaka:true,
         paymentMethod:"COD"
+    })
+
+    useEffect(()=>{
+        const myToken=localStorage.getItem("token");
+        setToken(myToken)
     })
 
     useEffect(()=>{
@@ -110,11 +116,12 @@ const CheckoutMain=()=>{
             obj.products=myLists;
 
             if(Token){
-               // ConfigureAxios(Token);
+               ConfigureAxios(Token);
                 axios.post(`/public/orders`,JSON.stringify(obj))
                 .then((response)=>{
                     console.log("order response: ",response);
                     if(response.status===200){
+                        getCartLists(Token)
                         alert("Order Completed Suffessfully.")
                     }
                 }).catch((error)=>{
