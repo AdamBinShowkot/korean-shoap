@@ -15,8 +15,12 @@ import {
 } from 'react-bootstrap';
 import ConfigureAxios from '@/utils/axiosConfig';
 import axios from 'axios';
+import { 
+    useRouter 
+} from 'next/navigation';
 
 const CheckoutMain=()=>{
+    const router=useRouter();
     const {cartLists,setCartLists}=useContext(AddToCartContext);
     const [Token,setToken]=useState("");
    
@@ -123,6 +127,7 @@ const CheckoutMain=()=>{
                     if(response.status===200){
                         getCartLists(Token)
                         alert("Order Completed Suffessfully.")
+                        router.push("/checkout-success")
                     }
                 }).catch((error)=>{
                     alert("Something Went Wrong.")

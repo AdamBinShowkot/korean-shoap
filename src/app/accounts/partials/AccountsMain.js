@@ -23,6 +23,8 @@ const AccountsMain=({Token})=>{
     const router=useRouter();
 
     const [userInfo,setUserInfo]=useState({});
+    const [orderInfos,setOrderInfos]=useState([])
+
 
     useEffect(()=>{
         if(Token){
@@ -42,8 +44,23 @@ const AccountsMain=({Token})=>{
             }).catch((error)=>{
 
             })
+            getOrders(Token);
         }
     },[])
+
+    const getOrders=(token="")=>{
+        if(token){
+            axios.get(`/my-orders`)
+            .then((response)=>{
+                console.log("My Orders ",response)
+            }).catch((error)=>{
+
+            })
+        }
+    }
+    const getOrderDeails=(token="")=>{
+
+    }
     return(
         <>
             <Tab.Container id="left-tabs-example" defaultActiveKey="first">

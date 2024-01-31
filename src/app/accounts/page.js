@@ -6,7 +6,8 @@ import {
 import LoginRegistrationMain from './partials/LoginRegistrtationMain';
 import './index.scss';
 
-const ContactPage=()=>{
+const ContactPage=(context)=>{
+    //console.log("DD",context.query)
     return(
         <>
             <Row

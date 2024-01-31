@@ -51,6 +51,7 @@ const Product=({data})=>{
     const handleAddToCart=(infos)=>{
         const token=localStorage.getItem("token");
         if(token && infos?.id){
+            console.log('CALLEDDD')
             ConfigureAxios(token);
         
             if(infos?.id){

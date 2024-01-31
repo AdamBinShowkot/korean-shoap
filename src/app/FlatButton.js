@@ -167,7 +167,9 @@ const FlatButton=()=>{
             <Row 
             className='fixed-button'
             onClick={()=>{
-                setShowModal(true)
+                if(cartLists?.length){
+                    setShowModal(true)
+                }
             }}
             >
                 <Col 
