@@ -23,6 +23,7 @@ const CheckoutMain=()=>{
     const router=useRouter();
     const {cartLists,setCartLists}=useContext(AddToCartContext);
     const [Token,setToken]=useState("");
+    const [userInfo,setUserInfo]=useState({});
    
     const [totalPrice,setTotalPrice]=useState(0);
     const [customerInfo,setCustomerInfo]=useState({
@@ -37,7 +38,8 @@ const CheckoutMain=()=>{
     useEffect(()=>{
         const myToken=localStorage.getItem("token");
         setToken(myToken)
-    })
+        getUserInfo(myToken);
+    },[])
 
     useEffect(()=>{
         if(cartLists.length){
@@ -51,6 +53,32 @@ const CheckoutMain=()=>{
         }
     },[cartLists])
 
+    const getUserInfo=(token)=>{
+        if(token){
+            ConfigureAxios(token);
+            axios.get(`/my-info`)
+            .then((response)=>{
+                //console.log(response)
+                if(response.status===200){
+                    const {data}=response;
+                    //console.log("Users",data)
+                    //setUserInfo(data);
+                    if(data?.id){
+                        setCustomerInfo((state)=>({
+                            ...state,
+                            name:data?.name?data.name:"",
+                            phone:data?.phone?data.phone:"",
+                            address:data?.address?data.address:""
+                        }))
+                    }
+                }
+            }).catch((error)=>{
+
+            })
+        }else{
+            setUserInfo({})
+        }
+    }
     const onValueChange=(e)=>{
         ///console.log(e)
         const data={...customerInfo};
@@ -92,17 +120,17 @@ const CheckoutMain=()=>{
             insideDhaka
         }=customerInfo;
 
-        if(paymentMethod && name && note && address && phone && paymentMethod==="COD" && lists?.length){
+        if(paymentMethod && name  && address && phone && paymentMethod==="COD" && lists?.length){
             const obj={
                 // coupon_code:"",
                 // postal_code: "",
                 // city: "",
-                payment_method:paymentMethod,
+                payment_method:paymentMethod?paymentMethod:"",
                 delivery_charge:49,
-                name:name,
-                mobile:phone,
-                full_address:address,
-                customer_note:note,
+                name:name?name:"",
+                mobile:phone?phone:"",
+                full_address:address?address:"",
+                customer_note:note?note:"",
                 grand_total:(totalPrice+49),
                 products:[]
             }
@@ -135,7 +163,7 @@ const CheckoutMain=()=>{
                 })
             }
         }else{
-
+            alert("Please filled mandatory filed.")
         }
     }
     return(
@@ -405,7 +433,7 @@ const CheckoutMain=()=>{
                                                 margin:'10px 0px'
                                             }}
                                             onClick={checkoutSubmit}
-                                            disabled={Token?false:true}
+                                            disabled={cartLists?.length?false:true}
                                             >
                                                 PLACE ORDER
                                             </Button>

@@ -14,6 +14,7 @@ import {
     useRouter 
 } from 'next/navigation'
 import DashboardMain from './DashboardMain';
+import OrdersMain from './OdersMain';
 import ConfigureAxios from '@/utils/axiosConfig';
 import axios from 'axios';
 import './index.scss'
@@ -23,7 +24,8 @@ const AccountsMain=({Token})=>{
     const router=useRouter();
 
     const [userInfo,setUserInfo]=useState({});
-    const [orderInfos,setOrderInfos]=useState([])
+    const [orderInfos,setOrderInfos]=useState([]);
+    const [orderLists,setOrderLists]=useState([]);
 
 
     useEffect(()=>{
@@ -52,7 +54,16 @@ const AccountsMain=({Token})=>{
         if(token){
             axios.get(`/my-orders`)
             .then((response)=>{
-                console.log("My Orders ",response)
+                //console.log("My Orders ",response)
+                if(response.status===200){
+                    const {items}=response?.data;
+                    console.log("Items: ",items)
+                    if(items?.length){
+                        setOrderLists(items);
+                    }else{
+                        setOrderLists([]);
+                    }
+                }
             }).catch((error)=>{
 
             })
@@ -94,10 +105,10 @@ const AccountsMain=({Token})=>{
                                 />
                             </Tab.Pane>
                             <Tab.Pane eventKey="second">
-                                Orders tab content
+                                <OrdersMain items={orderLists}/>
                             </Tab.Pane>
                             <Tab.Pane eventKey="third">
-                                Account Details tab content
+                                Work In Progress...
                             </Tab.Pane>
                             <Tab.Pane eventKey="fourth">
                                 <Button
