@@ -15,7 +15,8 @@ const ConfigureAxios = (token="") => {
   axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
   axios.defaults.headers.post['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE,PATCH,OPTIONS';
   //axios.defaults.headers.post['Accept'] = 'application/json, text/plain, */*"';
-  axios.defaults.baseURL = "https://ksb.koreanshopbd.com/api/v1";
+  //axios.defaults.baseURL = "https://ksb.koreanshopbd.com/api/v1";
+  axios.defaults.baseURL = "https://ksb.softwaregiantbd.com/api/v1";
   //axios.defaults.baseURL = "http://165.22.223.102/api/v1";
 
   //let token = window.localStorage.getItem("token");

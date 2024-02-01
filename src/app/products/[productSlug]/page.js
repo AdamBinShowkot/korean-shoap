@@ -237,7 +237,8 @@ export default async function Page({params}){
                                 Buy Now
                             </Button>
                         </Col>
-                    </Row><br/>
+                    </Row>
+                    <br/>
                     <Row>
                         <Col 
                         xs={12}

@@ -23,7 +23,7 @@ const RegistrationMain=()=>{
         const {name,value}=e.target;
 
         const data={...registrationInfo};
-        data[name]=[value];
+        data[name]=value;
 
         setRegistrationInfo(data);
     }
@@ -43,11 +43,14 @@ const RegistrationMain=()=>{
             }
 
             ConfigureAxios();
+            //console.log(myObj);
             axios.post(`/public/registration`,JSON.stringify(myObj))
             .then((response)=>{
-                console.log("Registration response: ",response);
+                //console.log("Registration response: ",response);
                 if(response.status===201){
-                    console.log(response.data)
+                    alert(response.data)
+                    window.location.href="/accounts"
+                   // console.log(response.data)
                 }
             }).catch((error)=>{
                 console.log(error)
