@@ -155,7 +155,7 @@ const Product=({data})=>{
                             price:parseFloat(variants.price-variants.discount_price).toFixed(0),
                             quantity:1,
                             product_id:currentId,
-                            product_variant_id:variants.id?variants.id:0
+                            product_sku_id:variants.id?variants.id:0
                         }
                         lists=[...lists,newObj]
                         localStorage.setItem("ProductCarts",JSON.stringify(lists));
@@ -171,7 +171,7 @@ const Product=({data})=>{
                         price:parseFloat(variants.price-variants.discount_price).toFixed(0),
                         quantity:1,
                         product_id:currentId,
-                        product_variant_id:variants.id?variants.id:0
+                        product_sku_id:variants.id?variants.id:0
                     }
                     //newlists=[...newlists,newObj]
                     setCartLists([newObj])

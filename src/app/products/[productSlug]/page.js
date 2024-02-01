@@ -22,6 +22,7 @@ import ProductDetails from './partials/ProductDetails';
 import CommentMain from './partials/CommentMain';
 import FooterProductSlider from './partials/ProductsSlider';
 import './index.scss';
+import AddToBug from './partials/AddToBug';
 
 async function getProductsDetails({productSlug}){
     ConfigureAxios();
@@ -217,27 +218,7 @@ export default async function Page({params}){
                             </InputGroup>
                         </Col>
                     </Row><br/>
-                    <Row>
-                        <Col 
-                        xs={12}
-                        style={{
-                            display:'flex',
-                            justifyContent:'flex-start',
-                            alignItems:'center'
-                        }}
-                        >
-                            <Button
-                            className='add-to-bag-button'
-                            >
-                                Add To Bag
-                            </Button>
-                            <Button
-                            className='buy-now-button'
-                            >
-                                Buy Now
-                            </Button>
-                        </Col>
-                    </Row>
+                    <AddToBug data={details}/>
                     <br/>
                     <Row>
                         <Col 

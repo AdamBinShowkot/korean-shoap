@@ -84,7 +84,7 @@ const FlatButton=()=>{
                 lists.map((dta)=>{
                     const newObj={
                         product_id:dta.product_id,
-                        product_variant_id:dta.product_variant_id,
+                        product_variant_id:dta.product_sku_id,
                         quantity:dta.quantity
                     }
                     configData=[...configData,newObj]

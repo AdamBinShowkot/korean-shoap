@@ -49,10 +49,10 @@ const LoginMain=()=>{
 
        ConfigureAxios();
 
-        if(userInfos.phone && userInfos.password){
+        if(userInfos.phone){
             const data={
                 email_or_mobile:userInfos.phone,
-                password:userInfos.password
+                password:userInfos.password?userInfo.password:''
             }
             axios.post(`/public/login`,JSON.stringify(data))
             .then((response)=>{
