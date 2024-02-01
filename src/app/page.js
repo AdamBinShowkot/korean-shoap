@@ -44,7 +44,8 @@ async function getBrandProductLists(){
           return res.data;
       }
   }).catch((error)=>{
-    console.log(error)
+    //console.log(error)
+    console.log("Get Brand Product Lists error.")
     return [];
   });
 
@@ -59,7 +60,8 @@ async function getProductsLists(){
           return res.data.items;
       }
   }).catch((error)=>{
-    console.log(error)
+    //console.log(error)
+    console.log("Get Products Lists Error.")
     return [];
   });
 
@@ -73,7 +75,8 @@ async function getCleanserProducts(){
           return res.data?.length?res.data[0].products:[];
       }
   }).catch((error)=>{
-    console.log(error)
+    //console.log(error)
+    console.log("Get Cleanser Product Lists Error.")
     return [];
   });
 
@@ -87,7 +90,8 @@ async function getTonerProducts(){
           return res.data?.length?res.data[0].products:[];
       }
   }).catch((error)=>{
-    console.log(error)
+    //console.log(error)
+    console.log("Get Toner Products Error")
     return [];
   });
 
@@ -101,7 +105,8 @@ async function getEyeCareProducts(){
           return res.data?.length?res.data[0].products:[];
       }
   }).catch((error)=>{
-    console.log(error)
+   // console.log(error)
+   console.log("Get Eye Care Lists Error.")
     return [];
   });
 
@@ -115,7 +120,8 @@ async function getBodyCareProducts(){
           return res.data?.length?res.data[0].products:[];
       }
   }).catch((error)=>{
-    console.log(error)
+    //console.log(error)
+    console.log("Get Body Care Lists Error.")
     return [];
   });
 
@@ -129,7 +135,8 @@ async function getBodySerumProducts(){
           return res.data?.length?res.data[0].products:[];
       }
   }).catch((error)=>{
-    console.log(error)
+    //console.log(error)
+    console.log("Get Body Serum Lists Error.")
     return [];
   });
 
@@ -144,7 +151,8 @@ async function getHeroBgImage(){
       return res.data;
     }
   }).catch((error)=>{
-    console.log(error)
+    //console.log(error)
+    console.log("Get Home Page Image Error.")
     return [];
   });
 
@@ -159,6 +167,14 @@ export default async function Home() {
   const EyeCareItems=await getEyeCareProducts();
   const EyeSerumItems=await getBodySerumProducts();
   const HeroBgLists=await getHeroBgImage();
+  // const brandLists=[] ;
+  // const productsLists=[];
+  // const CleanserItems=[];
+  // const TonerItems=[];
+  // const BodyCareItems=[];
+  // const EyeCareItems=[];
+  // const EyeSerumItems=[];
+  // const HeroBgLists=[];
   //const brandLists=[];
   //const bodyCareDataLists= await getBodyCareLists();
   //console.log(bodyCareDataLists)

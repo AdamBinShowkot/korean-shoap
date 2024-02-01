@@ -48,7 +48,7 @@ const AccountsMain=({Token})=>{
             })
             getOrders(Token);
         }
-    },[])
+    },[Token])
 
     const getOrders=(token="")=>{
         if(token){
