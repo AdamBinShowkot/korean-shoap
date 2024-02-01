@@ -12,6 +12,7 @@ import {
 } from 'react-bootstrap';
 import Image from 'next/image';
 import Product from '@/app/ui/Product';
+//import ProductTwo from '@/app/ui/ProductTwo';
 import PaginationMain from './Pagination';
 import './index.scss';
 import Link from 'next/link';

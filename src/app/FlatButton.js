@@ -124,39 +124,89 @@ const FlatButton=()=>{
     const handleRemoveCart=(data)=>{
         if(data?.id){
             const Token=localStorage.getItem("token");
-            ConfigureAxios(Token);
+            if(Token){
+                ConfigureAxios(Token);
 
-            axios.delete(`/cart/${data.id}`)
-            .then((response)=>{
-                if(response.status===200){
-                    getCartLists(Token);
+                axios.delete(`/cart/${data.id}`)
+                .then((response)=>{
+                    if(response.status===200){
+                        getCartLists(Token);
+                    }
+                    //console.log("delete response: ",response);
+                }).catch((error)=>{
+                    console.log("delete error:",error)
+                })
+            }else{
+                let lists=localStorage.getItem("ProductCarts");
+                lists=JSON.parse(lists);
+
+                if(lists?.length){
+                    const newLists=lists.filter((dta)=>{return dta.id!==data.id});
+
+                    if(newLists?.length){
+                        localStorage.setItem("ProductCarts",JSON.stringify(newLists));
+                        setCartLists(newLists);
+                    }else{
+                        localStorage.setItem("ProductCarts",JSON.stringify([]));
+                        setCartLists([]);
+                    }
                 }
-                //console.log("delete response: ",response);
-            }).catch((error)=>{
-                console.log("delete error:",error)
-            })
+            }
         }
     }
     const handleUpdateCart=(data)=>{
         //console.log("Data : ",data)
         if(data?.id){
             const Token=localStorage.getItem("token");
-            ConfigureAxios(Token);
+            if(Token){
+                ConfigureAxios(Token);
 
-            const obj={
-                quantity:data.quantity+1,
-                _method:'PUT'
-            }
-            axios.post(`/cart/${data.id}`,JSON.stringify(obj))
-            .then((response)=>{
-                //console.log("response ",response)
-                if(response.status==201){
-                    //console.log(response)
-                    getCartLists(Token);
+                const obj={
+                    quantity:data.quantity+1,
+                    _method:'PUT'
                 }
-            }).catch((error)=>{
-                console.log("Err",error)
-            })
+                axios.post(`/cart/${data.id}`,JSON.stringify(obj))
+                .then((response)=>{
+                    //console.log("response ",response)
+                    if(response.status==201){
+                        //console.log(response)
+                        getCartLists(Token);
+                    }
+                }).catch((error)=>{
+                    console.log("Err",error)
+                })
+            }else{
+                let lists=localStorage.getItem("ProductCarts");
+                lists=JSON.parse(lists);
+
+                if(lists?.length){
+                    let newLists=[];
+
+
+                    lists.map((dta)=>{
+                        if(dta.id==data.id){
+                            const obj={
+                                ...data,
+                                quantity:data.quantity+1
+                            };
+
+                            newLists=[...newLists,obj]
+                        }else{
+                            newLists=[...newLists,dta];
+                        }
+                    })
+
+                    //console.log(newLists)
+                    if(newLists?.length){
+                        //localStorage.removeItem("ProductCarts");
+                        localStorage.setItem("ProductCarts",JSON.stringify(newLists));
+                        setCartLists(newLists);
+                    }else{
+                        localStorage.setItem("ProductCarts",JSON.stringify([]));
+                        setCartLists([]);
+                    }
+                }
+            }
         }
     }
 

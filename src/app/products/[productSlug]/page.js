@@ -28,13 +28,15 @@ async function getProductsDetails({productSlug}){
     ConfigureAxios();
     let response={};
     if(productSlug!=1){
+        console.log("Heloooo")
         response=axios.get(`/public/product-details/${productSlug}`).then((res)=>{
             if(res.status===200){
                 //console.log("Products : ",res.data);
                 return res.data;
             }
         }).catch((error)=>{
-          console.log(error)
+            console.log("Get Product Details Error")
+          //console.log(error)
           return [];
         });
     }
@@ -44,7 +46,7 @@ async function getProductsDetails({productSlug}){
 export default async function Page({params}){
     // console.log("Params",params)
     const details=await getProductsDetails(params)
-    console.log(details);
+    //console.log(details);
     return(
         <>
             <Row
