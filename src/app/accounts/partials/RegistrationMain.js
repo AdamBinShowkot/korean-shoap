@@ -27,6 +27,11 @@ const RegistrationMain=()=>{
 
         setRegistrationInfo(data);
     }
+    const validateEmailAddress = (email) => {
+        return email.match(
+          /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    };
     const handleRegistration=(e)=>{
         e.preventDefault();
         const {
@@ -36,11 +41,22 @@ const RegistrationMain=()=>{
         }=registrationInfo;
 
         if(name && mobile && password){
-            const myObj={
-                name:name,
-                email:mobile,
-                password:password
+            const isEmail=validateEmailAddress(mobile);
+            let myObj={};
+            if(isEmail){
+                myObj={
+                    name:name,
+                    email:mobile,
+                    password:password
+                }
+            }else{
+                myObj={
+                    name:name,
+                    mobile:mobile,
+                    password:password
+                }
             }
+            
 
             ConfigureAxios();
             //console.log(myObj);
