@@ -309,37 +309,36 @@ const ProductTwo=({data})=>{
                             </Image>
                         </Col>
                     </Row>
-                    <Row
-                    style={{
-                        display:'flex'
-                    }}
-                    className="fuck-class"
+                    <div
+                    className="products-action-container"
                     >
-
-                           <Col>
-                                <Button
-                                className="products-buttton left-side"
-                                onClick={()=>{
-                                    handleAddToCart(data?data:{})
-                                }}
-                                >
-                                    Add To Cart
-                                </Button>
-                           </Col>
-                   
-                    
-                            <Col>
-                                <Button
-                                className="products-buttton right-side"
-                                onClick={()=>{
-                                    handleAddToCart(data?data:{})
-                                }}
-                                >
-                                    Buy Now
-                                </Button>
-                            </Col>
-                     
-                    </Row>
+                        <div
+                        className='action-inner-div '
+                        >
+                            <Button
+                            className="products-buttton left-side"
+                            onClick={()=>{
+                                handleAddToCart(data?data:{})
+                            }}
+                            >
+                                Add To Cart
+                            </Button>
+                        </div>
+                
+                
+                        <div
+                        className='action-inner-div '
+                        >
+                            <Button
+                            className="products-buttton right-side"
+                            onClick={()=>{
+                                handleAddToCart(data?data:{})
+                            }}
+                            >
+                                Buy Now
+                            </Button>
+                        </div>
+                    </div>
                 </Card.Body>
             </Card>
         </>

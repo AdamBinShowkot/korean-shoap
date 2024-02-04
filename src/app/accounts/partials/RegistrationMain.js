@@ -75,7 +75,7 @@ const RegistrationMain=()=>{
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea2">
-                            <Form.Label><sup>*</sup>{" "}Email:</Form.Label>
+                            <Form.Label><sup>*</sup>{" "}Email/Phone:</Form.Label>
                             <Form.Control 
                             type="text" 
                             placeholder=""

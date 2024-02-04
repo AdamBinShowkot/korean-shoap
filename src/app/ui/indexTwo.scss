@@ -1,3 +1,7 @@
+.home-product-container{
+    border-radius: 10px;
+}
+
 .static-card-container{
     width:15.5rem;
     margin-right:1vw !important;
@@ -27,26 +31,33 @@
 .cart-discount-text{
 
 }
-.fuck-class{
-    padding: 0px !important;
-}
-.fuck-class .col{
-    margin: 0px !important;
-}
+
 .products-buttton{
     width: 50%;
     min-width: 6.5vw;
-    font-size: 11px;
+    font-size: 12px;
     background-color: #9f7a4f;
     border-radius: 0;
     border: none;
     
 }
+.products-action-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    .action-inner-div{
+        width: 50%;
+    }
+}
 .left-side{
-    border-bottom-left-radius: 5px;
+    width: 98%;
+    margin-right: 2%;
+    border-bottom-left-radius: 10px;
 }
 .right-side{
-    border-bottom-right-radius: 5px;
+    width: 98%;
+    margin-left: 2%;
+    border-bottom-right-radius: 10px;
 }
 .home-product-container{
     margin: 0 1vw;
@@ -83,10 +94,10 @@
     border: none !important;
     color: #fff;
     padding: 5px 12px !important;
-    border-top-right-radius: 0;
+    border-top-right-radius: 10px;
     border-bottom-right-radius: 0;
     border-top-left-radius: 0px;
-    border-bottom-left-radius: 8px;
+    border-bottom-left-radius: 10px;
     display: flex;
     top:-2px;
     right:-2px;

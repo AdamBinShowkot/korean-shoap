@@ -59,7 +59,7 @@ const FlatButton=()=>{
                 0,
             );
             const totalPrice=cartLists.reduce(
-                (accumulator, currentValue) => accumulator + (currentValue.quantity*currentValue.price),
+                (accumulator, currentValue) => accumulator + (parseInt(currentValue.quantity)*parseInt(currentValue.price)),
                 0,
             )
             setTotalPrice(totalPrice);
