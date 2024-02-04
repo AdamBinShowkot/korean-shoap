@@ -55,7 +55,7 @@ const FlatButton=()=>{
     useEffect(()=>{
         if(cartLists.length){
             const totalQuantity=cartLists.reduce(
-                (accumulator, currentValue) => accumulator + currentValue.quantity,
+                (accumulator, currentValue) => accumulator + parseInt(currentValue.quantity),
                 0,
             );
             const totalPrice=cartLists.reduce(

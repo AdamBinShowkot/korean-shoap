@@ -35,6 +35,7 @@ const LoginMain=()=>{
         //console.log("DD",e.target);
         const {name,value}=e.target;
 
+        console.log(name,value)
         let info={...userInfos};
 
         info[name]=value;
@@ -49,11 +50,12 @@ const LoginMain=()=>{
 
        ConfigureAxios();
 
-        if(userInfos.phone){
+        if(userInfos.phone && userInfos.password){
             const data={
                 email_or_mobile:userInfos.phone,
-                password:userInfos.password?userInfo.password:''
+                password:userInfos.password?userInfos.password:''
             }
+            //console.log(data)
             axios.post(`/public/login`,JSON.stringify(data))
             .then((response)=>{
                 console.log(response)
