@@ -81,12 +81,14 @@ const TopBarMain=()=>{
                     xs={3} 
                     className='logo-div'
                     >
-                        <Image
-                        src="/shop-logo.png"
-                        width={250}
-                        height={100}
-                        alt="Picture of the author"
-                        />
+                        <Link href="/">
+                            <Image
+                            src="/shop-logo.png"
+                            width={250}
+                            height={100}
+                            alt="Picture of the author"
+                            />
+                        </Link>
                     </Col>
                     <Col 
                     xs={5}

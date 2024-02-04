@@ -7,7 +7,8 @@ import {
     Button
 } from 'react-bootstrap';
 import StaticProducts from '@/app/ui/StaticCard';
-import Product from '@/app/ui/Product';
+//import Product from '@/app/ui/Product';
+import ProductTwo from '@/app/ui/ProductTwo';
 import useDeviceSize from '@/hooks/useDeviceSize';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
@@ -82,13 +83,13 @@ const ItemsContainer=({title,lists})=>{
             >
                 <Col xs={12}>
                     <Slider {...settings}>
-                        <div>
+                        {/* <div>
                             <StaticProducts/>
-                        </div>
+                        </div> */}
                         {
                             lists?.length?lists.map((dta)=>{
                                 return <div key={dta.id}>
-                                    <Product data={dta}/>
+                                    <ProductTwo data={dta}/>
                                 </div>
                             }):""
                         }

@@ -10,7 +10,8 @@ import {
     Button
 } from 'react-bootstrap';
 import StaticProducts from '@/app/ui/StaticCard';
-import Product from '@/app/ui/Product';
+//import Product from '@/app/ui/Product';
+import ProductTwo from '@/app/ui/ProductTwo';
 import useDeviceSize from '@/hooks/useDeviceSize';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
@@ -118,7 +119,7 @@ const SliderProducts=({lists})=>{
                 >
                     {
                         lists?.length?lists.map((dta)=>{
-                            return <Product 
+                            return <ProductTwo 
                             key={dta.id}
                             data={dta}
                             windowWisth={width}
