@@ -1,5 +1,5 @@
 .static-card-container{
-    width:13.8rem;
+    width:15.5rem;
     margin-right:1vw !important;
     min-height:28rem;
     .card-body{
@@ -9,14 +9,49 @@
         min-height:28rem;
         .image{
             height: 19rem;
-            width: 16rem;
+            //width: 16rem;
+            width: 98% !important;
+            margin-left: 1% !important;
         }
     }
 }
+.image{
+    background-color: grey;
+    width: 98% !important;
+    margin-left: 1% !important;
+}
+.cart-price-text{
+    font-size: 18px;
+    font-weight: 600;
+}
+.cart-discount-text{
+
+}
+.fuck-class{
+    padding: 0px !important;
+}
+.fuck-class .col{
+    margin: 0px !important;
+}
+.products-buttton{
+    width: 50%;
+    min-width: 6.5vw;
+    font-size: 11px;
+    background-color: #9f7a4f;
+    border-radius: 0;
+    border: none;
+    
+}
+.left-side{
+    border-bottom-left-radius: 5px;
+}
+.right-side{
+    border-bottom-right-radius: 5px;
+}
 .home-product-container{
-    margin: 0 2vw;
-    width: 14vw;
-    min-height:28rem;
+    margin: 0 1vw;
+    width: 14.5vw;
+    //min-height:28rem;
     border:none;
     padding:0;
     .product-card-body{
@@ -29,7 +64,8 @@
             border:1px solid rgba#e7e7e7;
             border-radius:5px;
             margin-bottom:10px;
-            width:14.8vw !important;
+            //padding: 2px;
+            width:15vw !important;
         }
     }
 }
@@ -42,7 +78,8 @@
 }
 
 .top-card-button{
-    background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1));
+    //background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1));
+    background-color: #9e794e;
     border: none !important;
     color: #fff;
     padding: 5px 12px !important;
@@ -51,6 +88,8 @@
     border-top-left-radius: 0px;
     border-bottom-left-radius: 8px;
     display: flex;
+    top:-2px;
+    right:-2px;
     flex-direction: column;
     span{
         color:#fff;
@@ -231,7 +270,9 @@
             }
             .image{
                 height: 10rem;
-                width: 8rem;
+                //width: 7.9rem;
+                width: 98% !important;
+                margin-left: 1% !important;
             }
             
         }
@@ -283,12 +324,12 @@
         // }
     }
     .home-product-container{
-        width: 13vw;
-        min-height:28rem;
+        width: 15vw;
+        //min-height:28rem;
         .product-card-body{
             //min-height:26.4rem;
             .card-container{
-                width:13vw !important;
+                width:15vw !important;
             }
         }
     }

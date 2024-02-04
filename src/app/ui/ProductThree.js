@@ -22,12 +22,12 @@ import Link from 'next/link';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import ProductHover from './partials/ProuctHover';
-import './index.scss';
+import './indexTwo.scss';
 import ConfigureAxios from '@/utils/axiosConfig';
 import axios from 'axios';
 
 
-const Product=({data})=>{
+const ProductTwo=({data})=>{
     //console.log(data)
     const [hoverShow,setHoverShow]=useState(false);
     const {cartLists,setCartLists}=useContext(AddToCartContext);
@@ -203,14 +203,9 @@ const Product=({data})=>{
         <>
             <Card 
             className='home-product-container'
-            // onMouseEnter={()=>{
-            //     setHoverShow(true)
-            //     //console.log("Heloooooooooooooo")
-            // }}
-            // onMouseLeave={()=>{
-            //     setHoverShow(false)
-            //     //console.log("Helooooooo1111111111")
-            // }}
+            style={{
+                border:'1px solid #e7e7e7'
+            }}
             >
                 {/* <Card.Img variant="top" src="/logo.png" /> */}
                 <Card.Body
@@ -218,7 +213,8 @@ const Product=({data})=>{
                 style={{
                     display:'flex',
                     flexDirection:'column',
-                    alignItems:'center'
+                    alignItems:'center',
+                    
                 }}
                 >
                     <Link href={`/products/${data?.slug?data.slug:1}`}>
@@ -228,25 +224,29 @@ const Product=({data})=>{
                             <Col 
                             xs={12}
                             style={{
-                                padding:'5px',
+                                padding:'0px',
                             }}
                             >
                                 <Card.Title
                                 style={{
-                                    textAlign:'left',
-                                    padding:'0'
+                                    textAlign:'right',
+                                    padding:'0',
+                                    display:'flex',
+                                    justifyContent:'flex-end',
+                                    alignItems:'flex-start'
                                 }}
                                 >
                                     <Button 
-                                    className='card-button'
+                                    className='top-card-button'
                                     >
-                                        Shop Now
+                                        <span>10%</span>
+                                        <span>OFF</span>
                                     </Button>
                                 </Card.Title>
                                 <Image
                                 src={`${data?.image?`${baseImageServer}/${data.image}`:'/products2.jpg'}`}
                                 height={250}
-                                width={200}
+                                width={190}
                                 alt={`${data?.img_alt?data?.img_alt:'Alter Text'}`}
                                 className='image'
                                 />
@@ -257,7 +257,7 @@ const Product=({data})=>{
                    className={`${hoverShow?'details-active':'details-active'}`}
                    style={{
                         bottom:"20px",
-                        minWidth:'14.8vw',
+                        minWidth:'13vw',
                         width:'100%',
                     }}
                    >
@@ -281,75 +281,36 @@ const Product=({data})=>{
                                     Energy Cream 80ml`}
                                 </span>
                             </Card.Text>
-                            <Button 
-                            className='card-button product-card-button'
-                            style={{
-                                position:'absolute',
-                                bottom:'25px',
-                                left:'-1.4vw',
-                                right:'0',
-                                minWidth:'14.8vw'
-                            }}
-                            onClick={()=>{
-                                handleAddToCart(data?data:{})
-                            }}
-                            >
-                                Add To Bag &nbsp;<del> ৳{variants?.price?parseFloat(variants.price).toFixed(0):0}</del>
-                                 ৳ {variants?.price && variants?.discount_price?parseFloat(variants.price-variants.discount_price).toFixed(0):0}
-                                <Image
-                                src="/upArrow.png"
-                                height={14}
-                                width={15}
-                                alt="Arrow"
-                                style={{
-                                    marginLeft:'5px'
-                                }}
-                                onClick={()=>{
-                                    setHoverShow(!hoverShow)
-                                }}
-                                />
-                            </Button>
                         </Col>
                     </Row>
-                    <Row
-                    onMouseLeave={()=>{
-                        setHoverShow(false)
-                    }}
-                    //className={`${hoverShow?'hover-card-active':'hover-card-deactive'}`}
-                    className={`${hoverShow?'hover-card-active':'hover-card-deactive'}`}
-                    >
-                        <Col 
-                        xs={12}
+                    <Row>
+                        <Col xs={12}>
+                            <h3></h3>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={6}>
+                        <Button 
+                        //className='card-button product-card-button'
                         style={{
-                            padding:"0"
+                            //position:'absolute',
+                            // bottom:'25px',
+                            // left:'-1.4vw',
+                            // right:'0',
+                            width:'100%'
+                            //minWidth:'14.8vw'
+                        }}
+                        onClick={()=>{
+                            handleAddToCart(data?data:{})
                         }}
                         >
-                            <ProductHover lists={sizes}/>
-                            <Button 
-                            className='product-card-button-hover'
-                            onClick={()=>{
-                                handleAddToCart(data?data:{})
-                            }}
-                            >
-                               Add To Bag &nbsp;<del>৳{variants?.price?parseFloat(variants.price).toFixed(0):0}</del> ৳ {variants?.price && variants?.discount_price?parseFloat(variants.price-variants.discount_price).toFixed(0):0}
-                               <Image
-                                src="/downArrow.png"
-                                height={14}
-                                width={15}
-                                alt="Arrow"
-                                style={{
-                                    marginLeft:'3px'
-                                }}
-                                onClick={()=>{
-                                    setHoverShow(!hoverShow)
-                                }}
-                                />
-                            </Button>
+                            Add To Cart
+                        </Button>
                         </Col>
-                   </Row>
+                    </Row>
                 </Card.Body>
             </Card>
         </>
     )
 }
-export default Product;
+export default ProductTwo;

@@ -11,8 +11,8 @@ import {
     InputGroupText
 } from 'react-bootstrap';
 import Image from 'next/image';
-import Product from '@/app/ui/Product';
-//import ProductTwo from '@/app/ui/ProductTwo';
+//import Product from '@/app/ui/Product';
+import ProductTwo from '@/app/ui/ProductTwo';
 import PaginationMain from './Pagination';
 import './index.scss';
 import Link from 'next/link';
@@ -285,7 +285,7 @@ const ProductsMain=()=>{
                         products?.length?(
                             products.map((dta)=>{  
                             return <div key={dta.id} style={{margin:'5px 0px'}}>
-                                    <Product  data={dta}/>
+                                    <ProductTwo  data={dta}/>
                                 </div>
                             })
                         ):""

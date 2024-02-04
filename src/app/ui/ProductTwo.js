@@ -207,16 +207,14 @@ const ProductTwo=({data})=>{
                 border:'1px solid #e7e7e7'
             }}
             >
-                {/* <Card.Img variant="top" src="/logo.png" /> */}
-                <Card.Body
+              <Card.Body
                 className='product-card-body'
                 style={{
                     display:'flex',
                     flexDirection:'column',
                     alignItems:'center',
                     
-                }}
-                >
+                }}>
                     <Link href={`/products/${data?.slug?data.slug:1}`}>
                         <Row
                         className='card-container'
@@ -246,18 +244,19 @@ const ProductTwo=({data})=>{
                                 <Image
                                 src={`${data?.image?`${baseImageServer}/${data.image}`:'/products2.jpg'}`}
                                 height={250}
-                                width={200}
+                                width={190}
                                 alt={`${data?.img_alt?data?.img_alt:'Alter Text'}`}
                                 className='image'
                                 />
                             </Col>
                         </Row>
                    </Link>
+
                    <Row
                    className={`${hoverShow?'details-active':'details-active'}`}
                    style={{
                         bottom:"20px",
-                        minWidth:'13vw',
+                        minWidth:'15vw',
                         width:'100%',
                     }}
                    >
@@ -283,66 +282,64 @@ const ProductTwo=({data})=>{
                             </Card.Text>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col xs={12}>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={6}>
-                        <Button 
-                        //className='card-button product-card-button'
+                     <Row
+                     style={{
+                        padding:"10px 0px"
+                     }}
+                     >
+                        <Col
                         style={{
-                            //position:'absolute',
-                            // bottom:'25px',
-                            // left:'-1.4vw',
-                            // right:'0',
-                            width:'100%'
-                            //minWidth:'14.8vw'
-                        }}
-                        onClick={()=>{
-                            handleAddToCart(data?data:{})
+                            display:"flex",
+                            justifyContent:'space-around',
+                            alignItems:'center'
                         }}
                         >
-                            Add To Cart
-                        </Button>
-                        </Col>
-                    </Row>
-                    {/* <Row
-                    onMouseLeave={()=>{
-                        setHoverShow(false)
-                    }}
-                    //className={`${hoverShow?'hover-card-active':'hover-card-deactive'}`}
-                    className={`${hoverShow?'hover-card-active':'hover-card-deactive'}`}
-                    >
-                        <Col 
-                        xs={12}
-                        style={{
-                            padding:"0"
-                        }}
-                        >
-                            <ProductHover lists={sizes}/>
-                            <Button 
-                            className='product-card-button-hover'
-                            onClick={()=>{
-                                handleAddToCart(data?data:{})
+                            <h3 className="cart-price-text">৳{variants?.price && variants?.discount_price?parseFloat(variants.price-variants.discount_price).toFixed(0):0}</h3>
+                            <h3 className="cart-discount-text">&nbsp;<del> ৳{variants?.price?parseFloat(variants.price).toFixed(0):0}</del></h3>
+                            <Image
+                            src="/love.png"
+                            height={25}
+                            width={25}
+                            alt="Wishlist"
+                            style={{
+                                marginLeft:'10px'
                             }}
                             >
-                               Add To Bag &nbsp;<del>৳{variants?.price?parseFloat(variants.price).toFixed(0):0}</del> ৳ {variants?.price && variants?.discount_price?parseFloat(variants.price-variants.discount_price).toFixed(0):0}
-                               <Image
-                                src="/downArrow.png"
-                                height={14}
-                                width={15}
-                                alt="Arrow"
-                                style={{
-                                    marginLeft:'3px'
-                                }}
-                                onClick={()=>{
-                                    setHoverShow(!hoverShow)
-                                }}
-                                />
-                            </Button>
+
+                            </Image>
                         </Col>
-                   </Row> */}
+                    </Row>
+                    <Row
+                    style={{
+                        display:'flex'
+                    }}
+                    className="fuck-class"
+                    >
+
+                           <Col>
+                                <Button
+                                className="products-buttton left-side"
+                                onClick={()=>{
+                                    handleAddToCart(data?data:{})
+                                }}
+                                >
+                                    Add To Cart
+                                </Button>
+                           </Col>
+                   
+                    
+                            <Col>
+                                <Button
+                                className="products-buttton right-side"
+                                onClick={()=>{
+                                    handleAddToCart(data?data:{})
+                                }}
+                                >
+                                    Buy Now
+                                </Button>
+                            </Col>
+                     
+                    </Row>
                 </Card.Body>
             </Card>
         </>
