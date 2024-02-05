@@ -1,11 +1,17 @@
 .products-product-container{
     border-radius: 10px;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+}
+.products-product-container:hover{
+    border-color: #9f7a4f !important;
+    transition: .3s ease-in;
 }
 
 .static-card-container{
     width:15.5rem;
     margin-right:1vw !important;
-    min-height:28rem;
+    min-height:26rem;
     .card-body{
         text-align:center;
         position:relative;
@@ -23,6 +29,11 @@
     background-color: grey;
     width: 98% !important;
     margin-left: 1% !important;
+    height: 22vh;
+}
+.image:hover{
+    transform: scale(.9); 
+    transition: .5s ease-in;
 }
 .cart-price-text{
     font-size: 18px;
@@ -35,11 +46,14 @@
 .products-buttton{
     width: 50%;
     min-width: 6.5vw;
-    font-size: 12px;
+    font-size: 13px;
     background-color: #9f7a4f;
     border-radius: 0;
     border: none;
-    
+}
+.products-buttton:hover{
+    background-color: #fb923c !important;
+    transition: .3s ease-in;
 }
 .products-action-container{
     display: flex;
@@ -268,7 +282,7 @@
     .static-card-container{
         width:45vw;
         margin-right:1vw !important;
-        min-height:20rem;
+        //min-height:20rem;
         .card-body{
             text-align:center;
             position:relative;

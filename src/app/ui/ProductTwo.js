@@ -63,7 +63,7 @@ const ProductTwo=({data})=>{
                     
                     const index = lists.map(e => e.product_id).indexOf(currentId);
                     //console.log("Index : ",index,"FF",currentId)
-                    console.log(lists)
+                    //console.log(lists)
                     if(index>=0){
                         console.log('One')
                         //console.log("Im Calleddd")
@@ -105,7 +105,7 @@ const ProductTwo=({data})=>{
                         })
                     }
                 }else{
-                    console.log("Caleddd")
+                    //console.log("Caleddd")
                     const newObj={
                         id:currentId,
                         product_id:currentId,
@@ -152,7 +152,8 @@ const ProductTwo=({data})=>{
                             id:currentId,
                             name:infos?.name,
                             image:infos.image,
-                            price:parseFloat(variants.price-variants.discount_price).toFixed(0),
+                            price:variants.price,
+                            discount_price:variants.discount_price,
                             quantity:1,
                             product_id:currentId,
                             product_sku_id:variants.id?variants.id:0
@@ -168,7 +169,8 @@ const ProductTwo=({data})=>{
                         id:currentId,
                         name:infos?.name,
                         image:infos?.image,
-                        price:parseFloat(variants.price-variants.discount_price).toFixed(0),
+                        price:variants.price,
+                        discount_price:variants.discount_price,
                         quantity:1,
                         product_id:currentId,
                         product_sku_id:variants.id?variants.id:0
@@ -243,7 +245,7 @@ const ProductTwo=({data})=>{
                                 </Card.Title>
                                 <Image
                                 src={`${data?.image?`${baseImageServer}/${data.image}`:'/products2.jpg'}`}
-                                height={250}
+                                height={220}
                                 width={190}
                                 alt={`${data?.img_alt?data?.img_alt:'Alter Text'}`}
                                 className='image'
@@ -255,9 +257,9 @@ const ProductTwo=({data})=>{
                    <Row
                    className={`${hoverShow?'details-active':'details-active'}`}
                    style={{
-                        bottom:"20px",
                         minWidth:'15vw',
                         width:'100%',
+                        minHeight:'12vh'
                     }}
                    >
                         <Col 
@@ -272,12 +274,17 @@ const ProductTwo=({data})=>{
                         >
                             <Card.Text
                             style={{
-                                
+                                fontSize:'10px',
+                                textAlign:'left',
+                                fontWeight:'700',
+                                padding:'6px'
                             }}
                             >
                                 <span>
-                                    {data?.name?data.name:`Neogen Dermalogy Black 
-                                    Energy Cream 80ml`}
+                                    <b>
+                                        {data?.name?data.name:`Neogen Dermalogy Black 
+                                        Energy Cream 80ml`}
+                                    </b>
                                 </span>
                             </Card.Text>
                         </Col>
@@ -291,11 +298,17 @@ const ProductTwo=({data})=>{
                         style={{
                             display:"flex",
                             justifyContent:'space-around',
-                            alignItems:'center'
+                            alignItems:'center',
+                            flexDirection:'row'
                         }}
+                        xs={9}
                         >
                             <h3 className="cart-price-text">৳{variants?.price && variants?.discount_price?parseFloat(variants.price-variants.discount_price).toFixed(0):0}</h3>
                             <h3 className="cart-discount-text">&nbsp;<del> ৳{variants?.price?parseFloat(variants.price).toFixed(0):0}</del></h3>
+                        </Col>
+                        <Col
+                        xs={3}
+                        >
                             <Image
                             src="/love.png"
                             height={25}
@@ -332,7 +345,7 @@ const ProductTwo=({data})=>{
                             <Button
                             className="products-buttton right-side"
                             onClick={()=>{
-                                handleAddToCart(data?data:{})
+                               // handleAddToCart(data?data:{})
                             }}
                             >
                                 Buy Now

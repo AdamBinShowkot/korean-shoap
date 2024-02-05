@@ -59,7 +59,7 @@ const FlatButton=()=>{
                 0,
             );
             const totalPrice=cartLists.reduce(
-                (accumulator, currentValue) => accumulator + (parseInt(currentValue.quantity)*parseInt(currentValue.price)),
+                (accumulator, currentValue) => accumulator + (parseInt(currentValue.quantity)*parseInt(parseInt(currentValue.price)-parseInt(currentValue.discount_price))),
                 0,
             )
             setTotalPrice(totalPrice);
@@ -350,7 +350,7 @@ const FlatButton=()=>{
                                         <Col xs={7}>
                                             <span className='cart-name-title-text'>
                                                 {dta?.name?dta.name:""}<br/>
-                                                ৳<b>{dta?.price?dta.price:""}</b>
+                                                ৳<b>{dta?.price?parseFloat(parseFloat(dta.price)-parseFloat(dta.discount_price)).toFixed(2):""}</b>
                                             </span>
                                         </Col>
                                         <Col 
@@ -402,7 +402,7 @@ const FlatButton=()=>{
                                     </Row>
                                 </Card.Body>
                                 <Card.Footer className="text-muted">
-                                   <span className='cart-items-footer-text'>৳ {dta?.price && dta?.quantity?parseFloat(parseFloat(dta.price)*dta.quantity).toFixed(2):""}</span>
+                                   <span className='cart-items-footer-text'>৳ {dta?.price && dta?.quantity?parseFloat(parseFloat(parseFloat(dta.price)-parseFloat(dta.discount_price))*dta.quantity).toFixed(2):""}</span>
                                 </Card.Footer>
                             </Card>
                         }):""
