@@ -280,12 +280,17 @@ const ProductTwo=({data})=>{
                                 padding:'6px'
                             }}
                             >
-                                <span>
-                                    <b>
-                                        {data?.name?data.name:`Neogen Dermalogy Black 
-                                        Energy Cream 80ml`}
-                                    </b>
-                                </span>
+                                <Link
+                                href={`/products/${data?.slug?data.slug:1}`}
+                                className="products-link-href"
+                                >
+                                    <span>
+                                        <b>
+                                            {data?.name?data.name:`Neogen Dermalogy Black 
+                                            Energy Cream 80ml`}
+                                        </b>
+                                    </span>
+                                </Link>
                             </Card.Text>
                         </Col>
                     </Row>

@@ -35,6 +35,9 @@
     transform: scale(.9); 
     transition: .5s ease-in;
 }
+.products-link-href:hover{
+    text-decoration: underline;
+}
 .cart-price-text{
     font-size: 18px;
     font-weight: 600;

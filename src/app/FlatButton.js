@@ -162,7 +162,7 @@ const FlatButton=()=>{
                 ConfigureAxios(Token);
 
                 const obj={
-                    quantity:data.quantity+1,
+                    quantity:parseInt(data.quantity)+1,
                     _method:'PUT'
                 }
                 axios.post(`/cart/${data.id}`,JSON.stringify(obj))
@@ -179,6 +179,7 @@ const FlatButton=()=>{
                 let lists=localStorage.getItem("ProductCarts");
                 lists=JSON.parse(lists);
 
+                console.log("Condition Working...")
                 if(lists?.length){
                     let newLists=[];
 
@@ -187,7 +188,7 @@ const FlatButton=()=>{
                         if(dta.id==data.id){
                             const obj={
                                 ...data,
-                                quantity:data.quantity+1
+                                quantity:parseInt(data.quantity)+1
                             };
 
                             newLists=[...newLists,obj]
@@ -204,6 +205,64 @@ const FlatButton=()=>{
                     }else{
                         localStorage.setItem("ProductCarts",JSON.stringify([]));
                         setCartLists([]);
+                    }
+                }
+            }
+        }
+    }
+    const handleUpdateCartMinus=(data)=>{
+        //console.log("Data : ",data)
+        if(data?.quantity>1){
+            if(data?.id){
+                const Token=localStorage.getItem("token");
+                if(Token){
+                    ConfigureAxios(Token);
+    
+                    const obj={
+                        quantity:parseInt(data.quantity)-1,
+                        _method:'PUT'
+                    }
+                    axios.post(`/cart/${data.id}`,JSON.stringify(obj))
+                    .then((response)=>{
+                        //console.log("response ",response)
+                        if(response.status==201){
+                            //console.log(response)
+                            getCartLists(Token);
+                        }
+                    }).catch((error)=>{
+                        console.log("Err",error)
+                    })
+                }else{
+                    let lists=localStorage.getItem("ProductCarts");
+                    lists=JSON.parse(lists);
+    
+                    console.log("Condition Working...")
+                    if(lists?.length){
+                        let newLists=[];
+    
+    
+                        lists.map((dta)=>{
+                            if(dta.id==data.id){
+                                const obj={
+                                    ...data,
+                                    quantity:parseInt(data.quantity)-1
+                                };
+    
+                                newLists=[...newLists,obj]
+                            }else{
+                                newLists=[...newLists,dta];
+                            }
+                        })
+    
+                        //console.log(newLists)
+                        if(newLists?.length){
+                            //localStorage.removeItem("ProductCarts");
+                            localStorage.setItem("ProductCarts",JSON.stringify(newLists));
+                            setCartLists(newLists);
+                        }else{
+                            localStorage.setItem("ProductCarts",JSON.stringify([]));
+                            setCartLists([]);
+                        }
                     }
                 }
             }
@@ -347,14 +406,14 @@ const FlatButton=()=>{
                                             width={50}
                                             />
                                         </Col>
-                                        <Col xs={7}>
+                                        <Col xs={6}>
                                             <span className='cart-name-title-text'>
                                                 {dta?.name?dta.name:""}<br/>
                                                 ৳<b>{dta?.price?parseFloat(parseFloat(dta.price)-parseFloat(dta.discount_price)).toFixed(2):""}</b>
                                             </span>
                                         </Col>
                                         <Col 
-                                        xs={2}
+                                        xs={3}
                                         style={{
                                             position:'relative',
                                             display:'flex',
@@ -376,7 +435,7 @@ const FlatButton=()=>{
         
                                             </Image>
         
-                                            <Button
+                                            {/* <Button
                                             size='small'
                                             style={{
                                                 width:'100% !important'
@@ -397,7 +456,33 @@ const FlatButton=()=>{
                                                     handleUpdateCart(dta)
                                                 }}
                                                 />
-                                            </Button>    
+                                            </Button>     */}
+                                            <InputGroup
+                                            className='cart-input-group'
+                                            >
+                                                <InputGroupText
+                                                className='normal-cart-input'
+                                                onClick={()=>{
+                                                    handleUpdateCartMinus(dta)
+                                                }}
+                                                disabled
+                                                >
+                                                    <b>-</b>
+                                                </InputGroupText>
+                                                <InputGroupText
+                                                className='normal-cart-input'
+                                                >
+                                                    <b>{dta?.quantity?dta.quantity:""}</b>
+                                                </InputGroupText>
+                                                <InputGroupText
+                                                className='normal-cart-input'
+                                                onClick={()=>{
+                                                    handleUpdateCart(dta)
+                                                }}
+                                                >
+                                                    <b>+</b>
+                                                </InputGroupText>
+                                            </InputGroup>
                                         </Col>
                                     </Row>
                                 </Card.Body>

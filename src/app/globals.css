@@ -233,6 +233,22 @@ ul li{
     padding:10px;
   }
 }
+
+.cart-name-title-text{
+  font-size: 12px;
+}
+
+.cart-input-group{
+  justify-content: flex-end;
+}
+.normal-cart-input{
+  padding: 4px 6px;
+  line-height: 18px;
+  font-size: 13px;
+}
+.normal-cart-input:hover{
+  cursor: pointer;
+}
 @media only screen and (min-width:768px) {
 
 }
