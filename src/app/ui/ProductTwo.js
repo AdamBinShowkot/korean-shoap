@@ -202,7 +202,7 @@ const ProductTwo=({data})=>{
     return(
         <>
             <Card 
-            className='home-product-container'
+            className='products-product-container'
             style={{
                 border:'1px solid #e7e7e7'
             }}
