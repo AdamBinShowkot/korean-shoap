@@ -61,13 +61,13 @@ const CheckoutMain=()=>{
                 //console.log(response)
                 if(response.status===200){
                     const {data}=response;
-                    //console.log("Users",data)
+                   // console.log("Users",data)
                     //setUserInfo(data);
                     if(data?.id){
                         setCustomerInfo((state)=>({
                             ...state,
                             name:data?.name?data.name:"",
-                            phone:data?.phone?data.phone:"",
+                            phone:data?.mobile?data.mobile:"",
                             address:data?.address?data.address:""
                         }))
                     }
