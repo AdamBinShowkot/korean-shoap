@@ -2,9 +2,11 @@
     border-radius: 10px;
     margin-top: 8px !important;
     margin-bottom: 8px !important;
+    z-index: 4;
+    overflow: hidden;
 }
 .products-product-container:hover{
-    border-color: #9f7a4f !important;
+    border-color: rgba(92, 51, 169, 1) !important;
     transition: .3s ease-in;
 }
 
@@ -27,12 +29,15 @@
 }
 .image{
     background-color: grey;
-    width: 98% !important;
-    margin-left: 1% !important;
+    width: 97% !important;
+    margin-left: 1.5% !important;
     height: 22vh;
 }
 .image:hover{
-    transform: scale(.9); 
+    transform: scale(1.1); 
+    z-index: -2;
+    width: 95%;
+    margin-left: 2% !important;
     transition: .5s ease-in;
 }
 .products-link-href:hover{
@@ -50,7 +55,7 @@
     width: 50%;
     min-width: 6.5vw;
     font-size: 13px;
-    background-color: #9f7a4f;
+    background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1));
     border-radius: 0;
     border: none;
 }
@@ -106,8 +111,8 @@
 }
 
 .top-card-button{
-    //background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1));
-    background-color: #9e794e;
+    background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1));
+    //background-color: #9e794e;
     border: none !important;
     color: #fff;
     padding: 5px 12px !important;
