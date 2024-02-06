@@ -1,53 +1,48 @@
 'use client'
 import React,{
-    useState,
     useEffect,
-    useContext
+    useContext,
+    useState
 } from 'react';
-import { 
-    AddToCartContext 
-} from '@/contextApi/addToCartApi';
 import {
     Card,
     Row,
     Col,
     Button
 } from 'react-bootstrap';
-import Image from 'next/image';
+import { 
+    AddToCartContext 
+} from '@/contextApi/addToCartApi';
 import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import './indexTwo.scss';
+import Image from 'next/image';
+import Link from 'next/link';
 import { 
     baseImageServer 
 } from '@/utils/config';
-import Link from 'next/link';
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
-import ProductHover from './partials/ProuctHover';
-import './indexTwo.scss';
 import ConfigureAxios from '@/utils/axiosConfig';
 import axios from 'axios';
 
-
-const ProductTwo=({data})=>{
-    //console.log(data)
+const FilterProductTwo=({details})=>{
     const [hoverShow,setHoverShow]=useState(false);
     const {cartLists,setCartLists}=useContext(AddToCartContext);
-    const variants=data?.variant?.length?data?.variant[0]:{}
-    const [sizes,setSizes]=useState([]);
-    const [sizeLists,setSizeLists]=useState([]);
+    const variants=details?.variant?.length?details?.variant[0]:{}
 
-    useEffect(()=>{
-        if(data?.variant?.length){
-            //console.log("V",data.variant)
-            let sizess=[];
-            data.variant.map((dta)=>{
-                if(dta.size){
-                    sizess.push(dta.size);
-                }
-            })
-            setSizes(sizess)
-            setSizeLists(variants[0]);
-        }
-    },[data]);
+    // useEffect(()=>{
+    //     if(details?.variant?.length){
+    //         //console.log("V",data.variant)
+    //         let sizess=[];
+    //         data.variant.map((dta)=>{
+    //             if(dta.size){
+    //                 sizess.push(dta.size);
+    //             }
+    //         })
+    //         setSizes(sizess)
+    //         setSizeLists(variants[0]);
+    //     }
+    // },[details]);
     const handleAddToCart=(infos)=>{
         console.log(infos)
         const token=localStorage.getItem("token");
@@ -199,12 +194,10 @@ const ProductTwo=({data})=>{
         }
 
     }
-
-    
     return(
-        <>
+        <>    
             <Card 
-            className='products-product-container'
+            className='new-filter-products-container'
             style={{
                 border:'1px solid #e7e7e7'
             }}
@@ -217,7 +210,7 @@ const ProductTwo=({data})=>{
                     alignItems:'center',
                     
                 }}>
-                    <Link href={`/products/${data?.slug?data.slug:1}`}>
+                    <Link href={`/products/${details?.slug?details.slug:1}`}>
                         <Row
                         className='card-container'
                         >
@@ -244,24 +237,24 @@ const ProductTwo=({data})=>{
                                     </Button>
                                 </Card.Title>
                                 <Image
-                                src={`${data?.image?`${baseImageServer}/${data.image}`:'/products2.jpg'}`}
+                                src={`${details?.image?`${baseImageServer}/${details.image}`:'/products2.jpg'}`}
                                 height={220}
                                 width={190}
-                                alt={`${data?.img_alt?data?.img_alt:'Alter Text'}`}
+                                alt={`${details?.img_alt?details?.img_alt:'Alter Text'}`}
                                 className='image'
                                 />
                             </Col>
                         </Row>
-                   </Link>
+                </Link>
 
-                   <Row
-                   className={`${hoverShow?'details-active':'details-active'}`}
-                   style={{
+                <Row
+                className={`${hoverShow?'details-active':'details-active'}`}
+                style={{
                         minWidth:'15vw',
                         width:'100%',
                         minHeight:'12vh'
                     }}
-                   >
+                >
                         <Col 
                         xs={12}
                         style={{
@@ -281,12 +274,12 @@ const ProductTwo=({data})=>{
                             }}
                             >
                                 <Link
-                                href={`/products/${data?.slug?data.slug:1}`}
+                                href={`/products/${details?.slug?details.slug:1}`}
                                 className="products-link-href"
                                 >
                                     <span>
                                         <b>
-                                            {data?.name?data.name:`Neogen Dermalogy Black 
+                                            {details?.name?details.name:`Neogen Dermalogy Black 
                                             Energy Cream 80ml`}
                                         </b>
                                     </span>
@@ -294,11 +287,11 @@ const ProductTwo=({data})=>{
                             </Card.Text>
                         </Col>
                     </Row>
-                     <Row
-                     style={{
+                    <Row
+                    style={{
                         padding:"10px 0px"
-                     }}
-                     >
+                    }}
+                    >
                         <Col
                         style={{
                             display:"flex",
@@ -336,7 +329,7 @@ const ProductTwo=({data})=>{
                             <Button
                             className="products-buttton left-side"
                             onClick={()=>{
-                                handleAddToCart(data?data:{})
+                                handleAddToCart(details?details:{})
                             }}
                             >
                                 Add To Cart
@@ -350,7 +343,7 @@ const ProductTwo=({data})=>{
                             <Button
                             className="products-buttton right-side"
                             onClick={()=>{
-                               // handleAddToCart(data?data:{})
+                            // handleAddToCart(data?data:{})
                             }}
                             >
                                 Buy Now
@@ -359,7 +352,8 @@ const ProductTwo=({data})=>{
                     </div>
                 </Card.Body>
             </Card>
+           
         </>
     )
 }
-export default ProductTwo;
+export default FilterProductTwo;
