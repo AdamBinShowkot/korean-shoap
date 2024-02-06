@@ -59,7 +59,7 @@ const FlatButton=()=>{
                 0,
             );
             const totalPrice=cartLists.reduce(
-                (accumulator, currentValue) => accumulator + (parseInt(currentValue.quantity)*parseInt(parseInt(currentValue.price)-parseInt(currentValue.discount_price))),
+                (accumulator, currentValue) => accumulator + (parseInt(currentValue.quantity)*parseInt(currentValue.discount_price)),
                 0,
             )
             setTotalPrice(totalPrice);
@@ -406,22 +406,19 @@ const FlatButton=()=>{
                                             width={50}
                                             />
                                         </Col>
-                                        <Col xs={6}>
-                                            <span className='cart-name-title-text'>
-                                                {dta?.name?dta.name:""}<br/>
-                                                ৳<b>{dta?.price?parseFloat(parseFloat(dta.price)-parseFloat(dta.discount_price)).toFixed(2):""}</b>
-                                            </span>
-                                        </Col>
                                         <Col 
-                                        xs={3}
+                                        xs={9}
                                         style={{
                                             position:'relative',
-                                            display:'flex',
-                                            flexDirection:'column',
-                                            justifyContent:'space-around',
-                                            alignItems:'flex-end'
+                                            float:'left'
                                         }}
                                         >
+                                            <span className='cart-name-title-text'>
+                                                {dta?.name?dta.name:""}<br/>
+                                                ৳<b>{dta?.price?parseFloat(dta.discount_price).toFixed(2):""}</b>
+                                            </span>
+                                       
+                                        
                                             <Image
                                             src="/cart_remove_icon.png"
                                             height={20}
@@ -434,29 +431,6 @@ const FlatButton=()=>{
                                             >
         
                                             </Image>
-        
-                                            {/* <Button
-                                            size='small'
-                                            style={{
-                                                width:'100% !important'
-                                            }}
-                                            id="cartButton"
-                                            >
-                                                {dta?.quantity?dta.quantity:""}
-                                                <Image
-                                                src="/increase_cart.png"
-                                                // style={{
-                                                //     position:'absolute',
-                                                //     right:0
-                                                // }}
-                                                height={7}
-                                                width={12}
-                                                alt="Arrow"
-                                                onClick={()=>{
-                                                    handleUpdateCart(dta)
-                                                }}
-                                                />
-                                            </Button>     */}
                                             <InputGroup
                                             className='cart-input-group'
                                             >
@@ -487,7 +461,9 @@ const FlatButton=()=>{
                                     </Row>
                                 </Card.Body>
                                 <Card.Footer className="text-muted">
-                                   <span className='cart-items-footer-text'>৳ {dta?.price && dta?.quantity?parseFloat(parseFloat(parseFloat(dta.price)-parseFloat(dta.discount_price))*dta.quantity).toFixed(2):""}</span>
+                                   <span className='cart-items-footer-text'>৳ 
+                                    {dta?.price && dta?.quantity?parseFloat(parseFloat(dta.discount_price)*dta.quantity).toFixed(2):""}
+                                   </span>
                                 </Card.Footer>
                             </Card>
                         }):""

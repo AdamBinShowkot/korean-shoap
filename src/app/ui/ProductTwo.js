@@ -61,14 +61,14 @@ const ProductTwo=({data})=>{
                 const currentId=infos.id;
                 if(lists?.length){
                     
-                    const index = lists.map(e => e.product_id).indexOf(currentId);
+                    const index = lists.map(e => parseInt(e.product_id)).indexOf(currentId);
                     //console.log("Index : ",index,"FF",currentId)
                     //console.log(lists)
                     if(index>=0){
-                        console.log('One')
+                        //console.log('One')
                         //console.log("Im Calleddd")
                         const currentProducts=lists[index];
-                        console.log(currentProducts)
+                        //console.log(currentProducts)
                         currentProducts.quantity=parseInt(currentProducts.quantity)+1;
                         const product_id=currentProducts.id;
                         const obj={
@@ -308,7 +308,7 @@ const ProductTwo=({data})=>{
                         }}
                         xs={9}
                         >
-                            <h3 className="cart-price-text">৳{variants?.price && variants?.discount_price?parseFloat(variants.price-variants.discount_price).toFixed(0):0}</h3>
+                            <h3 className="cart-price-text">৳{variants?.price && variants?.discount_price?parseFloat(variants.discount_price).toFixed(0):0}</h3>
                             <h3 className="cart-discount-text">&nbsp;<del> ৳{variants?.price?parseFloat(variants.price).toFixed(0):0}</del></h3>
                         </Col>
                         <Col

@@ -238,6 +238,12 @@ ul li{
   font-size: 12px;
 }
 
+.cart-item-remover{
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+}
 .cart-input-group{
   justify-content: flex-end;
 }

@@ -44,7 +44,7 @@ const CheckoutMain=()=>{
     useEffect(()=>{
         if(cartLists.length){
             const totalPrice=cartLists.reduce(
-                (accumulator, currentValue) => accumulator + (currentValue.quantity*(parseFloat(currentValue.price)-parseFloat(currentValue.discount_price))),
+                (accumulator, currentValue) => accumulator + (currentValue.quantity*parseFloat(currentValue.discount_price)),
                 0,
             )
             setTotalPrice(totalPrice)
