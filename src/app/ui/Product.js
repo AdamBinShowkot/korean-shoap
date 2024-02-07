@@ -11,7 +11,10 @@ import {
     Card,
     Row,
     Col,
-    Button
+    Button,
+    Modal,
+    Toast,
+    ToastContainer
 } from 'react-bootstrap';
 import Image from 'next/image';
 import Slider from 'react-slick';
@@ -34,6 +37,10 @@ const Product=({data})=>{
     const variants=data?.variant?.length?data?.variant[0]:{}
     const [sizes,setSizes]=useState([]);
     const [sizeLists,setSizeLists]=useState([]);
+    const [showA, setShowA] = useState(false);
+    const [loginSuccess,setLoginSuccess]=useState(false);
+    const [loginWarning,setLoginWarning]=useState(false);
+    const [loginError,setLoginError]=useState(false);
 
     useEffect(()=>{
         if(data?.variant?.length){
@@ -79,9 +86,22 @@ const Product=({data})=>{
                         .then((response)=>{
                             if(response.status==201){
                                 //console.log(response)
+
                                 getCartLists(token);
+                                setShowA(true);
+                                setLoginSuccess(true);
+                                setTimeout(()=>{
+                                    setShowA(false);
+                                    setLoginSuccess(false)
+                                },2000)
                             }
                         }).catch((error)=>{
+                            setShowA(true);
+                            setLoginError(true);
+                            setTimeout(()=>{
+                                setShowA(false);
+                                setLoginError(false)
+                            },2000)
                             console.log("Err",error)
                         })
                         //setCartLists([...lists])
@@ -100,7 +120,19 @@ const Product=({data})=>{
                             //console.log("Cart response when logged in: ",response);
                             //setCartLists([...lists,newObj])
                             getCartLists(token);
+                            setShowA(true);
+                            setLoginSuccess(true);
+                            setTimeout(()=>{
+                                setShowA(false);
+                                setLoginSuccess(false)
+                            },2000)
                         }).catch((error)=>{
+                            setShowA(true);
+                            setLoginError(true);
+                            setTimeout(()=>{
+                                setShowA(false);
+                                setLoginError(false)
+                            },2000)
                             console.log("CCART",error)
                         })
                     }
@@ -128,7 +160,19 @@ const Product=({data})=>{
                         console.log("Cart response when logged in: ",response);
                         //setCartLists([...lists,newObj])
                         getCartLists(token);
+                        setShowA(true);
+                        setLoginSuccess(true);
+                        setTimeout(()=>{
+                            setShowA(false);
+                            setLoginSuccess(false)
+                        },2000)
                     }).catch((error)=>{
+                        setShowA(true);
+                        setLoginError(true);
+                        setTimeout(()=>{
+                            setShowA(false);
+                            setLoginError(false)
+                        },2000)
                         console.log("CCART",error)
                     })
                 }
@@ -160,6 +204,12 @@ const Product=({data})=>{
                         lists=[...lists,newObj]
                         localStorage.setItem("ProductCarts",JSON.stringify(lists));
                         setCartLists([...lists2,newObj])
+                        setShowA(true);
+                        setLoginSuccess(true);
+                        setTimeout(()=>{
+                            setShowA(false);
+                            setLoginSuccess(false)
+                        },2000)
                     }
                 }else{
                     //console.log('Calleddd')
@@ -176,7 +226,12 @@ const Product=({data})=>{
                     //newlists=[...newlists,newObj]
                     setCartLists([newObj])
                     localStorage.setItem("ProductCarts",JSON.stringify([newObj]));
-
+                    setShowA(true);
+                    setLoginSuccess(true);
+                    setTimeout(()=>{
+                        setShowA(false);
+                        setLoginSuccess(false)
+                    },2000)
                 }
             }
         }
@@ -349,6 +404,33 @@ const Product=({data})=>{
                    </Row>
                 </Card.Body>
             </Card>
+            <ToastContainer
+            className="p-3"
+            position={"bottom-end"}
+            style={{ 
+                zIndex: 10000,
+                position:'fixed',
+                top:"0",
+                right:'0'
+            }}
+            >
+                <Toast show={showA}>
+                    {/* <Toast.Header closeButton={true}>
+                    <img
+                        src="holder.js/20x20?text=%20"
+                        className="rounded me-2"
+                        alt=""
+                    />
+                    <strong className="me-auto">Bootstrap</strong>
+                    <small>11 mins ago</small>
+                    </Toast.Header> */}
+                    <Toast.Body
+                    className={`${loginSuccess && !loginWarning?'toast-login-success':'toast-login-warning'}`}
+                    >
+                        <h4>{loginSuccess?"Item Add Successfully.":"Item Added Failed."}</h4>
+                    </Toast.Body>
+                </Toast>
+            </ToastContainer>
         </>
     )
 }

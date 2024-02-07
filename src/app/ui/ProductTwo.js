@@ -11,7 +11,10 @@ import {
     Card,
     Row,
     Col,
-    Button
+    Button,
+    Toast,
+    Modal,
+    ToastContainer
 } from 'react-bootstrap';
 import Image from 'next/image';
 import Slider from 'react-slick';
@@ -34,6 +37,14 @@ const ProductTwo=({data})=>{
     const variants=data?.variant?.length?data?.variant[0]:{}
     const [sizes,setSizes]=useState([]);
     const [sizeLists,setSizeLists]=useState([]);
+    const [showA, setShowA] = useState(false);
+    const [loginSuccess,setLoginSuccess]=useState(false);
+    const [loginWarning,setLoginWarning]=useState(false);
+    const [loginError,setLoginError]=useState(false);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     useEffect(()=>{
         if(data?.variant?.length){
@@ -80,8 +91,21 @@ const ProductTwo=({data})=>{
                             if(response.status==201){
                                 //console.log(response)
                                 getCartLists(token);
+                                setShowA(true);
+                                setLoginSuccess(true);
+                                setShow(true);
+                                setTimeout(()=>{
+                                    setShowA(false);
+                                    setLoginSuccess(false)
+                                },2000)
                             }
                         }).catch((error)=>{
+                            setShowA(true);
+                            setLoginError(true);
+                            setTimeout(()=>{
+                                setShowA(false);
+                                setLoginError(false)
+                            },2000)
                             console.log("Err",error)
                         })
                         //setCartLists([...lists])
@@ -99,6 +123,13 @@ const ProductTwo=({data})=>{
                         .then((response)=>{
                             //console.log("Cart response when logged in: ",response);
                             //setCartLists([...lists,newObj])
+                            setShowA(true);
+                            setLoginSuccess(true);
+                            setShow(true);
+                            setTimeout(()=>{
+                                setShowA(false);
+                                setLoginSuccess(false)
+                            },2000)
                             getCartLists(token);
                         }).catch((error)=>{
                             console.log("CCART",error)
@@ -127,8 +158,22 @@ const ProductTwo=({data})=>{
                     .then((response)=>{
                         console.log("Cart response when logged in: ",response);
                         //setCartLists([...lists,newObj])
+                        setShowA(true);
+                        setLoginSuccess(true);
+                        setShow(true);
+                        setTimeout(()=>{
+                            setShowA(false);
+                            setLoginSuccess(false)
+                        },2000)
                         getCartLists(token);
                     }).catch((error)=>{
+                        setShowA(true);
+                        setLoginSuccess(true);
+                        setShow(true);
+                        setTimeout(()=>{
+                            setShowA(false);
+                            setLoginSuccess(false)
+                        },2000)
                         console.log("CCART",error)
                     })
                 }
@@ -145,6 +190,14 @@ const ProductTwo=({data})=>{
                     const index = lists.map(e => e.id).indexOf(currentId);
                     if(index>=0){
                         lists[index].quantity+=1;
+                        setShow(true);
+                        setCartLists([...lists2,newObj])
+                        setShowA(true);
+                        setLoginSuccess(true);
+                        setTimeout(()=>{
+                            setShowA(false);
+                            setLoginSuccess(false)
+                        },2000)
                         localStorage.setItem("ProductCarts",JSON.stringify(lists));
                         setCartLists([...lists])
                     }else{
@@ -160,7 +213,14 @@ const ProductTwo=({data})=>{
                         }
                         lists=[...lists,newObj]
                         localStorage.setItem("ProductCarts",JSON.stringify(lists));
+                        setShow(true);
                         setCartLists([...lists2,newObj])
+                        setShowA(true);
+                        setLoginSuccess(true);
+                        setTimeout(()=>{
+                            setShowA(false);
+                            setLoginSuccess(false)
+                        },2000)
                     }
                 }else{
                     //console.log('Calleddd')
@@ -178,7 +238,13 @@ const ProductTwo=({data})=>{
                     //newlists=[...newlists,newObj]
                     setCartLists([newObj])
                     localStorage.setItem("ProductCarts",JSON.stringify([newObj]));
-
+                    setShow(true);
+                    setShowA(true);
+                    setLoginSuccess(true);
+                    setTimeout(()=>{
+                        setShowA(false);
+                        setLoginSuccess(false)
+                    },2000)
                 }
             }
         }
@@ -359,6 +425,52 @@ const ProductTwo=({data})=>{
                     </div>
                 </Card.Body>
             </Card>
+            <Modal 
+            show={show} 
+            onHide={handleClose}
+            centered={true}
+            >
+                <Modal.Body>
+                    Work In Progress...
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button  
+                    onClick={handleClose}
+                    style={{
+                        backgroundColor:"blue"
+                    }}
+                    >
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+            <ToastContainer
+            className="p-3"
+            position={"bottom-end"}
+            style={{ 
+                zIndex: 10000,
+                position:'fixed',
+                bottom:"0",
+                right:'0'
+            }}
+            >
+                <Toast show={showA}>
+                    {/* <Toast.Header closeButton={true}>
+                    <img
+                        src="holder.js/20x20?text=%20"
+                        className="rounded me-2"
+                        alt=""
+                    />
+                    <strong className="me-auto">Bootstrap</strong>
+                    <small>11 mins ago</small>
+                    </Toast.Header> */}
+                    <Toast.Body
+                    className={`${loginSuccess && !loginError?'toast-login-success':'toast-login-warning'}`}
+                    >
+                        <h4>{loginSuccess?"Item Add Successfully.":"Item Added Failed."}</h4>
+                    </Toast.Body>
+                </Toast>
+            </ToastContainer>
         </>
     )
 }
