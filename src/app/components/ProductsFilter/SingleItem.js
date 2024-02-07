@@ -9,6 +9,7 @@ import {
     Row
 } from 'react-bootstrap'
 import FilterProduct from "@/app/ui/FilterProduct";
+import FilterProductTwo from "@/app/ui/FilterProductTwo";
 import './index.scss'
 
 const SingleItem=({className,details})=>{
@@ -17,7 +18,7 @@ const SingleItem=({className,details})=>{
             <div 
             className={`grid-item isotope-items ${className}`}
             >
-                <FilterProduct details={details}/>
+                <FilterProductTwo details={details}/>
             </div>
         </>
     )

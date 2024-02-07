@@ -59,7 +59,7 @@ const FlatButton=()=>{
                 0,
             );
             const totalPrice=cartLists.reduce(
-                (accumulator, currentValue) => accumulator + (parseInt(currentValue.quantity)*parseInt(parseInt(currentValue.price)-parseInt(currentValue.discount_price))),
+                (accumulator, currentValue) => accumulator + (parseInt(currentValue.quantity)*parseInt(currentValue.discount_price)),
                 0,
             )
             setTotalPrice(totalPrice);
@@ -406,88 +406,83 @@ const FlatButton=()=>{
                                             width={50}
                                             />
                                         </Col>
-                                        <Col xs={6}>
-                                            <span className='cart-name-title-text'>
-                                                {dta?.name?dta.name:""}<br/>
-                                                ৳<b>{dta?.price?parseFloat(parseFloat(dta.price)-parseFloat(dta.discount_price)).toFixed(2):""}</b>
-                                            </span>
-                                        </Col>
                                         <Col 
-                                        xs={3}
+                                        xs={9}
                                         style={{
                                             position:'relative',
-                                            display:'flex',
-                                            flexDirection:'column',
-                                            justifyContent:'space-around',
-                                            alignItems:'flex-end'
+                                            float:'left'
                                         }}
                                         >
-                                            <Image
-                                            src="/cart_remove_icon.png"
-                                            height={20}
-                                            width={20}
-                                            alt="Cart Remove."
-                                            onClick={()=>{
-                                                handleRemoveCart(dta);
-                                            }}
-                                            className="cart-item-remover"
-                                            >
-        
-                                            </Image>
-        
-                                            {/* <Button
-                                            size='small'
-                                            style={{
-                                                width:'100% !important'
-                                            }}
-                                            id="cartButton"
-                                            >
-                                                {dta?.quantity?dta.quantity:""}
-                                                <Image
-                                                src="/increase_cart.png"
-                                                // style={{
-                                                //     position:'absolute',
-                                                //     right:0
-                                                // }}
-                                                height={7}
-                                                width={12}
-                                                alt="Arrow"
-                                                onClick={()=>{
-                                                    handleUpdateCart(dta)
-                                                }}
-                                                />
-                                            </Button>     */}
-                                            <InputGroup
-                                            className='cart-input-group'
-                                            >
-                                                <InputGroupText
-                                                className='normal-cart-input'
-                                                onClick={()=>{
-                                                    handleUpdateCartMinus(dta)
-                                                }}
-                                                disabled
+                                            <Row>
+                                                <Col 
+                                                xs={10}
                                                 >
-                                                    <b>-</b>
-                                                </InputGroupText>
-                                                <InputGroupText
-                                                className='normal-cart-input'
+                                                    <span className='cart-name-title-text'>
+                                                        {dta?.name?dta.name:""}
+                                                    </span>
+                                                </Col>
+                                                <Col
+                                                xs={2}
                                                 >
-                                                    <b>{dta?.quantity?dta.quantity:""}</b>
-                                                </InputGroupText>
-                                                <InputGroupText
-                                                className='normal-cart-input'
-                                                onClick={()=>{
-                                                    handleUpdateCart(dta)
-                                                }}
+                                                    <Image
+                                                    src="/cart_remove_icon.png"
+                                                    height={20}
+                                                    width={20}
+                                                    alt="Cart Remove."
+                                                    onClick={()=>{
+                                                        handleRemoveCart(dta);
+                                                    }}
+                                                    className="cart-item-remover"
+                                                    >
+                                                    </Image>
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col 
+                                                xs={5}
                                                 >
-                                                    <b>+</b>
-                                                </InputGroupText>
-                                            </InputGroup>
+                                                    <span className='cart-name-title-text'>
+                                                        ৳<b>{dta?.price?parseFloat(dta.discount_price).toFixed(2):""}</b>
+                                                    </span>
+                                                </Col>
+                                                <Col 
+                                                xs={7}
+                                                >
+                                                    <InputGroup
+                                                    className='cart-input-group'
+                                                    >
+                                                        <InputGroupText
+                                                        className='normal-cart-input'
+                                                        onClick={()=>{
+                                                            handleUpdateCartMinus(dta)
+                                                        }}
+                                                        disabled
+                                                        >
+                                                            <b>-</b>
+                                                        </InputGroupText>
+                                                        <InputGroupText
+                                                        className='normal-cart-input'
+                                                        >
+                                                            <b>{dta?.quantity?dta.quantity:""}</b>
+                                                        </InputGroupText>
+                                                        <InputGroupText
+                                                        className='normal-cart-input'
+                                                        onClick={()=>{
+                                                            handleUpdateCart(dta)
+                                                        }}
+                                                        >
+                                                            <b>+</b>
+                                                        </InputGroupText>
+                                                    </InputGroup>
+                                                </Col>
+                                            </Row>
                                         </Col>
                                     </Row>
                                 </Card.Body>
                                 <Card.Footer className="text-muted">
-                                   <span className='cart-items-footer-text'>৳ {dta?.price && dta?.quantity?parseFloat(parseFloat(parseFloat(dta.price)-parseFloat(dta.discount_price))*dta.quantity).toFixed(2):""}</span>
+                                   <span className='cart-items-footer-text'>৳ 
+                                    {dta?.price && dta?.quantity?parseFloat(parseFloat(dta.discount_price)*dta.quantity).toFixed(2):""}
+                                   </span>
                                 </Card.Footer>
                             </Card>
                         }):""
@@ -500,7 +495,6 @@ const FlatButton=()=>{
                             display:'flex',
                             justifyContent:'space-around',
                             alignItems:'center'
-
                         }}
                         >
                             <span 

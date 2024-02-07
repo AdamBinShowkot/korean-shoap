@@ -238,13 +238,23 @@ ul li{
   font-size: 12px;
 }
 
+.cart-item-remover{
+  /* position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3; */
+}
 .cart-input-group{
   justify-content: flex-end;
+  /* border:1px solid #5C33A9;
+  border-radius: 5px; */
+  padding: 0px;
 }
 .normal-cart-input{
-  padding: 4px 6px;
-  line-height: 18px;
-  font-size: 13px;
+  padding: 4px 16px;
+  line-height: 20px;
+  font-size: 15px;
+  font-weight: 700;
 }
 .normal-cart-input:hover{
   cursor: pointer;
