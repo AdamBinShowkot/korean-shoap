@@ -8,7 +8,9 @@ import {
     Row,
     Col,
     Form,
-    Button
+    Button,
+    Toast,
+    ToastContainer
 } from 'react-bootstrap';
 import axios from 'axios';
 import queryString from 'query-string';
@@ -16,16 +18,18 @@ import {
     UserInfoContextApi 
 } from '@/contextApi/userInfoApi';
 import ConfigureAxios from '@/utils/axiosConfig';
-import { 
-    ToastContainer,
-    toast
-} from 'react-toastify';
+
 import { 
     useRouter 
 } from 'next/navigation';
 
 const LoginMain=()=>{
-    const {userInfo,setUserInfo}=useContext(UserInfoContextApi)
+    const {userInfo,setUserInfo}=useContext(UserInfoContextApi);
+    const [showA, setShowA] = useState(false);
+    const [loginSuccess,setLoginSuccess]=useState(false);
+    const [loginWarning,setLoginWarning]=useState(false);
+    const [loginError,setLoginError]=useState(false);
+
     const [userInfos,setUserInfos]=useState({
         phone:"",
         password:""
@@ -64,23 +68,25 @@ const LoginMain=()=>{
                     const {token}=response.data;
                     localStorage.setItem("token",token);
                     setUserInfo(response.data);
-                    alert("Login Success")
-                    window.location.href="/accounts"
-                    // toast('🦄 Wow so easy!', {
-                    // position: "top-right",
-                    // autoClose: 5000,
-                    // hideProgressBar: false,
-                    // closeOnClick: true,
-                    // pauseOnHover: true,
-                    // draggable: true,
-                    // progress: undefined,
-                    // theme: "light"
-                    // });
+                   
+                    setShowA(true)
+                    setLoginSuccess(true);
+                    setTimeout(()=>{
+                        setShowA(false);
+                        setLoginSuccess(false);
+                        window.location.href="/accounts"
+                    },2000)
                 }else{
-                    alert("User Name or Password are wrong.")
+                    //alert("User Name or Password are wrongkkjkj.")
                 }
             }).catch((error)=>{
-                alert("User Name or Password are wrong.")
+                //alert("User Name or Password are wrong.")
+                setShowA(true);
+                setLoginWarning(true);
+                setTimeout(()=>{
+                    setShowA(false)
+                    setLoginWarning(false);
+                },2000)
                 console.log("error: ",error)
             })
         }else{
@@ -128,7 +134,33 @@ const LoginMain=()=>{
                     </Form>
                 </Col>
             </Row>
-           
+            <ToastContainer
+            className="p-3"
+            position={"top-end"}
+            style={{ 
+                zIndex: 10000,
+                position:'fixed',
+                top:"0",
+                right:'0'
+            }}
+            >
+                <Toast show={showA}>
+                    {/* <Toast.Header closeButton={true}>
+                    <img
+                        src="holder.js/20x20?text=%20"
+                        className="rounded me-2"
+                        alt=""
+                    />
+                    <strong className="me-auto">Bootstrap</strong>
+                    <small>11 mins ago</small>
+                    </Toast.Header> */}
+                    <Toast.Body
+                    className={`${loginSuccess && !loginWarning?'toast-login-success':'toast-login-warning'}`}
+                    >
+                        <h4>{loginSuccess?"Login Successfully.":"Email/Phone or Password Are wrong."}</h4>
+                    </Toast.Body>
+                </Toast>
+            </ToastContainer>
         </>
     )
 }

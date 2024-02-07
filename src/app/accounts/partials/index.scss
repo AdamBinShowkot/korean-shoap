@@ -23,3 +23,34 @@
     border-color: var(--prio-vai-like, linear-gradient(90deg, #5C33A9 0.25%, #E8639A 99.81%));
     border-radius: 4px;
 }
+.toast-container{
+    min-width: 200px !important;
+    background: transparent;
+}
+.toast-body{
+    padding: 10px 20px !important;
+    background: transparent;
+    // width: 200px;
+}
+.toast-login-success{
+    background-color: #389e0d !important;
+    display:flex;
+    justify-content:center;
+    border-radius:8px;
+    color: #fff;
+    h4{
+        color: #fff;
+        font-weight: 600;
+    }
+}
+.toast-login-warning{
+    background-color: #fa8c16 !important;
+    display:flex;
+    justify-content:center;
+    border-radius:8px;
+    color: #fff;
+    h4{
+        color: #fff;
+        font-weight: 600;
+    }
+}
