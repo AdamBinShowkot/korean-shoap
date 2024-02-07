@@ -9,6 +9,7 @@ import {
 import StaticProducts from '@/app/ui/StaticCard';
 //import Product from '@/app/ui/Product';
 import ProductTwo from '@/app/ui/ProductTwo';
+import EmptyCard from '@/app/ui/EmptyCard';
 import useDeviceSize from '@/hooks/useDeviceSize';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
@@ -37,14 +38,15 @@ function SamplePrevArrow(props) {
       />
     );
 }
-const ItemsContainer=({title,lists})=>{
+const ItemsContainer=({title,lists,len})=>{
+    const [myLists,setMyLists]=useState([]);
     const [settings,setSettings]=useState(
         {
             dots: false,
             infinite: true,
             speed: 500,
             slidesToShow: 5,
-            slidesToScroll: 3,
+            slidesToScroll: 1,
             nextArrow: <SampleNextArrow />,
             prevArrow: <SamplePrevArrow />
         }
@@ -57,7 +59,61 @@ const ItemsContainer=({title,lists})=>{
             let newSettings={...settings,slidesToShow:2};
             setSettings(newSettings)
         }else{
+            let newLists=[...lists];
             let newSettings={...settings,slidesToShow:5};
+            if(len==7 || len>=7){
+                setMyLists(newLists);
+            }else if(len>=6){
+                //console.log("Heloooooooooooo")
+                for(let i=0; i<1; i++){
+                    const newObj={
+                        id:"1000"+i,
+                        emptyPost:true
+                    }
+                    newLists=[newObj,...newLists];
+                }
+                setMyLists(newLists)
+            }else if(len>=5){
+                //console.log("Heloooooooooooo5")
+                for(let i=0; i<1; i++){
+                    const newObj={
+                        id:"1000"+i,
+                        emptyPost:true
+                    }
+                    newLists=[newObj,...newLists];
+                }
+                setMyLists(newLists)
+            }else if(len>=4){
+                //console.log("Heloooooooooooo4")
+                for(let i=0; i<3; i++){
+                    const newObj={
+                        id:"1000"+i,
+                        emptyPost:true
+                    }
+                    newLists=[newObj,...newLists];
+                }
+                setMyLists(newLists)
+            }else if(len>=3){
+               // console.log("Heloooooooooooo3")
+                for(let i=0; i<4; i++){
+                    const newObj={
+                        id:"1000"+i,
+                        emptyPost:true
+                    }
+                    newLists=[newObj,...newLists];
+                }
+                setMyLists(newLists)
+            }else{
+                //console.log("Helooooooooooooelse")
+                for(let i=0; i<5; i++){
+                    const newObj={
+                        id:"1000"+i,
+                        emptyPost:true
+                    }
+                    newLists=[newObj,...newLists];
+                }
+                setMyLists(newLists)
+            }
             setSettings(newSettings)
         }
     
@@ -87,10 +143,17 @@ const ItemsContainer=({title,lists})=>{
                             <StaticProducts/>
                         </div> */}
                         {
-                            lists?.length?lists.map((dta)=>{
-                                return <div key={dta.id}>
-                                    <ProductTwo data={dta}/>
-                                </div>
+                            myLists?.length?myLists.map((dta)=>{
+                                if(!dta?.emptyPost){
+                                    return <div key={dta.id}>
+                                        <ProductTwo data={dta}/>
+                                    </div>
+                                    
+                                }else{
+                                    return <div key={dta.id}>
+                                        <EmptyCard />
+                                    </div>
+                                }
                             }):""
                         }
                         {/* <div >

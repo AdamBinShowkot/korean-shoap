@@ -216,33 +216,47 @@ export default async function Home() {
           >
             <BannerTwo/>
           </Row> */}
-          <Row>
+          <Row
+          
+          >
             <ItemsContainer 
             title="CLEANSER "
             lists={CleanserItems}
+            len={CleanserItems?.length?CleanserItems.length:0}
             />
           </Row>
-          <Row>
+          <Row
+          >
             <ItemsContainer 
             lists={TonerItems}
+            len={TonerItems?.length?TonerItems.length:0}
             title="TONER "/>
           </Row>
-          <Row>
+          <Row
+
+          >
             <ItemsContainer 
             title="SERUM/ESSENCE/AMPOULE "
             lists={EyeSerumItems}
+            len={EyeSerumItems?.length?EyeSerumItems.length:0}
             />
           </Row>
-          <Row>
+          <Row
+          
+          >
             <ItemsContainer 
             title="BODY CARE "
             lists={BodyCareItems}
+            len={BodyCareItems?.length?BodyCareItems.length:0}
             />
           </Row>
-          <Row>
+          <Row
+          
+          >
             <ItemsContainer 
             title="EYE CARE "
             lists={EyeCareItems}
+            len={EyeCareItems?.length?EyeCareItems.length:0}
             />
           </Row>
         </Col>

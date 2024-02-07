@@ -17,6 +17,11 @@
     border-color: rgba(92, 51, 169, 1) !important;
     transition: .3s ease-in;
 }
+.empty-card-container{
+    min-width: 14vw;
+    min-height: 26vh;
+    background-color: transparent;
+}
 .new-filter-products-container:hover{
     border-color: rgba(92, 51, 169, 1) !important;
     transition: .3s ease-in;
@@ -51,6 +56,11 @@
     width: 95%;
     margin-left: 2% !important;
     transition: .5s ease-in;
+}
+.products-link-href{
+    span{
+        font-size: 12px !important;
+    }
 }
 .products-link-href:hover{
     text-decoration: underline;
