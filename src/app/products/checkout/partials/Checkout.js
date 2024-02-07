@@ -148,26 +148,27 @@ const CheckoutMain=()=>{
             obj.products=myLists;
 
             // if(Token){
-                ConfigureAxios(Token);
-                axios.post(`/public/orders`,JSON.stringify(obj))
-                .then((response)=>{
-                    console.log("order response: ",response);
-                    if(response.status===200){
-                        getCartLists(Token)
-                        alert("Order Completed Suffessfully.")
-                        try{
-                            localStorage.removeItem("ProductCarts");
-                            setCartLists([]);
-                        }catch{
+            console.log("Post Object : ",obj)
+            ConfigureAxios(Token);
+            axios.post(`/public/orders`,JSON.stringify(obj))
+            .then((response)=>{
+                console.log("order response: ",response);
+                if(response.status===200){
+                    getCartLists(Token)
+                    alert("Order Completed Suffessfully.")
+                    try{
+                        localStorage.removeItem("ProductCarts");
+                        setCartLists([]);
+                    }catch{
 
-                        }
-                        router.push("/checkout-success")
                     }
-                }).catch((error)=>{
-                    alert("Something Went Wrong.")
-                    console.log("order error: ",error)
-                })
-        
+                    router.push("/checkout-success")
+                }
+            }).catch((error)=>{
+                alert("Something Went Wrong.")
+                console.log("order error: ",error)
+            })
+    
         }else{
             alert("Please filled mandatory filed.")
         }
