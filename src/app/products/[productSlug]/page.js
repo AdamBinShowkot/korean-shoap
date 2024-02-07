@@ -23,6 +23,7 @@ import CommentMain from './partials/CommentMain';
 import FooterProductSlider from './partials/ProductsSlider';
 import './index.scss';
 import AddToBug from './partials/AddToBug';
+import StockQuantitySection from './partials/StockQuantitySection';
 
 async function getProductsDetails({productSlug}){
     ConfigureAxios();
@@ -158,68 +159,8 @@ export default async function Page({params}){
                             <span>Size: <b>&nbsp;80ml</b>&nbsp;&nbsp;&nbsp; Origin: <b>&nbsp;American</b>&nbsp;&nbsp;&nbsp; SKU: <b>&nbsp;{details?.sku?details.sku:'111'}</b></span>
                         </Col>
                     </Row><br/>
-                    <Row>
-                        <Col 
-                        xs={12}
-                        style={{
-                            display:'flex',
-                            justifyContent:'flex-start',
-                            alignItems:'center'
-                        }}
-                        >
-                            <Image
-                            src='/greenCheck.png'
-                            height={20}
-                            width={20}
-                            alt=""
-                            />
-                            <span><b style={{color:'green'}}>&nbsp;&nbsp; In Stock</b></span>
-                        </Col>
-                    </Row><br/>
-                    <Row>
-                        <Col 
-                        xs={12}
-                        style={{
-                            display:'flex',
-                            justifyContent:'flex-start',
-                            alignItems:'center'
-                        }}
-                        >
-                            <span style={{fontSize:'15px',fontWeight:"700"}}><b>৳119.99</b>&nbsp;
-                            <b><del>৳119.99</del></b>&nbsp;&nbsp; | &nbsp;&nbsp;</span>
-                            <Image
-                            src='/qurier.png'
-                            width={20}
-                            height={20}
-                            alt=""
-                            />
-                            &nbsp;&nbsp;
-                            <span>Free delivery from ৳45</span>
-                        </Col>
-                    </Row><br/>
-                    <Row>
-                        <Col 
-                        xs={12}
-                        >
-                            <InputGroup>
-                                <InputGroupText
-                                className='normal-input global-search'
-                                >
-                                    <b>-</b>
-                                </InputGroupText>
-                                <InputGroupText
-                                className='normal-input global-search'
-                                >
-                                    <b>5</b>
-                                </InputGroupText>
-                                <InputGroupText
-                                className='normal-input global-search'
-                                >
-                                    <b>+</b>
-                                </InputGroupText>
-                            </InputGroup>
-                        </Col>
-                    </Row><br/>
+                    <StockQuantitySection data={details}/>
+                    <br/>
                     <AddToBug data={details}/>
                     <br/>
                     <Row>

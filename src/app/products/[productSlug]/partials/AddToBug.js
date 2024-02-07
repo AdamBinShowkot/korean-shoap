@@ -12,7 +12,8 @@ import {
 import { 
     AddToCartContext 
 } from '@/contextApi/addToCartApi';
-
+import ConfigureAxios from '@/utils/axiosConfig';
+import axios from 'axios';
 
 
 const AddToBug=({data})=>{
@@ -33,15 +34,12 @@ const AddToBug=({data})=>{
                 let lists =[...cartLists];
                 const currentId=infos.id;
                 if(lists?.length){
-                    
-                    const index = lists.map(e => e.product_id).indexOf(currentId);
-                    //console.log("Index : ",index,"FF",currentId)
-                    console.log(lists)
+                    const index = lists.map(e => parseInt(e.product_id)).indexOf(currentId);
                     if(index>=0){
-                        console.log('One')
+                        //console.log('One')
                         //console.log("Im Calleddd")
                         const currentProducts=lists[index];
-                        console.log(currentProducts)
+                        //console.log(currentProducts)
                         currentProducts.quantity=parseInt(currentProducts.quantity)+1;
                         const product_id=currentProducts.id;
                         const obj={
@@ -58,7 +56,8 @@ const AddToBug=({data})=>{
                             console.log("Err",error)
                         })
                         //setCartLists([...lists])
-                    }else{
+                    }
+                    else{
                        // console.log('Two')
                         const newObj2={
                             quantity:1,
@@ -70,21 +69,20 @@ const AddToBug=({data})=>{
                         //console.log(newObj2)
                         axios.post(`/cart`,JSON.stringify(newObj2))
                         .then((response)=>{
-                            //console.log("Cart response when logged in: ",response);
-                            //setCartLists([...lists,newObj])
                             getCartLists(token);
                         }).catch((error)=>{
                             console.log("CCART",error)
                         })
                     }
                 }else{
-                    console.log("Caleddd")
+                    //console.log("Caleddd")
                     const newObj={
                         id:currentId,
                         product_id:currentId,
                         image:infos.image,
                         name:infos.name,
-                        price:parseFloat(variants.price-variants.discount_price).toFixed(0),
+                        price:parseFloat(variants.price).toFixed(0),
+                        discount_price:parseFloat(variants.discount_price).toFixed(0),
                         quantity:1
                     }
                     const newObj2={
@@ -125,7 +123,8 @@ const AddToBug=({data})=>{
                             id:currentId,
                             name:infos?.name,
                             image:infos.image,
-                            price:parseFloat(variants.price-variants.discount_price).toFixed(0),
+                            price:parseFloat(variants.price).toFixed(0),
+                            discount_price:parseFloat(variants.discount_price).toFixed(0),
                             quantity:1,
                             product_id:currentId,
                             product_sku_id:variants.id?variants.id:0
@@ -141,7 +140,8 @@ const AddToBug=({data})=>{
                         id:currentId,
                         name:infos?.name,
                         image:infos?.image,
-                        price:parseFloat(variants.price-variants.discount_price).toFixed(0),
+                        price:parseFloat(variants.price).toFixed(0),
+                        discount_price:parseFloat(variants.discount_price).toFixed(0),
                         quantity:1,
                         product_id:currentId,
                         product_sku_id:variants.id?variants.id:0
@@ -172,7 +172,7 @@ const AddToBug=({data})=>{
     }
 
 
-    console.log("Data: ",data);
+    //console.log("Data: ",data);
     return(
         <>
             <Row>
@@ -195,7 +195,7 @@ const AddToBug=({data})=>{
                     <Button
                     className='buy-now-button'
                     onClick={()=>{
-                        handleAddToCart(data)
+                        //handleAddToCart(data)
                     }}
                     >
                         Buy Now
