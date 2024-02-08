@@ -14,18 +14,21 @@ import {
 } from 'react-bootstrap';
 import axios from 'axios';
 import queryString from 'query-string';
+import SuccessToaster from '@/app/ui/SuccessToaster';
+import WarningToaster from '@/app/ui/WarningToaster';
+import ErrorToaster from '@/app/ui/ErrorToaster';
 import { 
     UserInfoContextApi 
 } from '@/contextApi/userInfoApi';
 import ConfigureAxios from '@/utils/axiosConfig';
-
+import Image from 'next/image';
 import { 
     useRouter 
 } from 'next/navigation';
 
 const LoginMain=()=>{
     const {userInfo,setUserInfo}=useContext(UserInfoContextApi);
-    const [showA, setShowA] = useState(false);
+    const [showA, setShowA] = useState(true);
     const [loginSuccess,setLoginSuccess]=useState(false);
     const [loginWarning,setLoginWarning]=useState(false);
     const [loginError,setLoginError]=useState(false);
@@ -69,10 +72,8 @@ const LoginMain=()=>{
                     localStorage.setItem("token",token);
                     setUserInfo(response.data);
                    
-                    setShowA(true)
                     setLoginSuccess(true);
                     setTimeout(()=>{
-                        setShowA(false);
                         setLoginSuccess(false);
                         window.location.href="/accounts"
                     },2000)
@@ -81,10 +82,8 @@ const LoginMain=()=>{
                 }
             }).catch((error)=>{
                 //alert("User Name or Password are wrong.")
-                setShowA(true);
                 setLoginWarning(true);
                 setTimeout(()=>{
-                    setShowA(false)
                     setLoginWarning(false);
                 },2000)
                 console.log("error: ",error)
@@ -134,33 +133,20 @@ const LoginMain=()=>{
                     </Form>
                 </Col>
             </Row>
-            <ToastContainer
-            className="p-3"
-            position={"top-end"}
-            style={{ 
-                zIndex: 10000,
-                position:'fixed',
-                top:"0",
-                right:'0'
-            }}
-            >
-                <Toast show={showA}>
-                    {/* <Toast.Header closeButton={true}>
-                    <img
-                        src="holder.js/20x20?text=%20"
-                        className="rounded me-2"
-                        alt=""
-                    />
-                    <strong className="me-auto">Bootstrap</strong>
-                    <small>11 mins ago</small>
-                    </Toast.Header> */}
-                    <Toast.Body
-                    className={`${loginSuccess && !loginWarning?'toast-login-success':'toast-login-warning'}`}
-                    >
-                        <h4>{loginSuccess?"Login Successfully.":"Email/Phone or Password Are wrong."}</h4>
-                    </Toast.Body>
-                </Toast>
-            </ToastContainer>
+            <SuccessToaster 
+            IsShow={loginSuccess} 
+            ToastMsg="Login Success" 
+            Postion={"top-end"}/>
+            <WarningToaster 
+            IsShow={loginWarning} 
+            ToastMsg="Email/Phone or Password Are Wrong."
+            Width={'25vw'}
+            Postion={"top-end"}/>
+            {/* <ErrorToaster 
+            IsShow={false} 
+            ToastMsg="Email/Phone or Password Are Wrong."
+            Width={'25vw'}
+            Postion={"top-end"}/> */}
         </>
     )
 }

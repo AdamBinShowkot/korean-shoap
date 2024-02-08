@@ -1,0 +1,41 @@
+.koraen-shoap-toaster-container{
+    //min-width: 20vw !important;
+    border-radius: 6px;
+    .toast-body{
+    padding: 10px 20px !important;
+    background: transparent;
+    }
+}
+.toast-login-success{
+    background-color: #fff!important;
+    display:flex;
+    justify-content:center;
+    border-radius:6px;
+    color: #fff;
+    h4{
+        color: #389e0d;
+        font-weight: 600;
+    }
+}
+.toast-login-warning{
+    background-color: #fff !important;
+    display:flex;
+    justify-content:center;
+    border-radius:6px;
+    color: #fa541c;
+    h4{
+        color: #fa541c;
+        font-weight: 600;
+    }
+}
+.toast-login-error{
+    background-color: #fff !important;
+    display:flex;
+    justify-content:center;
+    border-radius:6px;
+    color: #f5222d;
+    h4{
+        color: #f5222d;
+        font-weight: 600;
+    }
+}
