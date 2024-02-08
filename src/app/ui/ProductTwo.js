@@ -431,9 +431,87 @@ const ProductTwo=({data})=>{
             centered={true}
             >
                 <Modal.Body>
-                    Work In Progress...
+                   <Row>
+                        <Col 
+                        xs={12}
+                        style={{
+                            display:'flex',
+                            justifyContent:'center',
+                            alignItems:'center',
+                            flexDirection:'column',
+                            padding:"20px 0px"
+                        }}
+                        >
+                            <Image
+                            src="/cart_success.png"
+                            height={70}
+                            width={70}
+                            alt="Cart Success"
+                            />
+                            <Row>
+                                <Col
+                                style={{
+                                    display:'flex',
+                                    justifyContent:'center',
+                                    alignItems:'center',
+                                    flexDirection:'row',
+                                    marginTop:"10px"
+                                }}
+                                >
+                                    <h3 style={{fontSize:'24px',fontWeight:'600'}}>Product Added on cart successfully</h3>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col
+                                style={{
+                                    display:'flex',
+                                    justifyContent:'center',
+                                    alignItems:'center',
+                                    flexDirection:'row',
+                                    marginTop:"20px"
+                                }}
+                                >
+                                    <Link href="/products">
+                                        <Button
+                                        style={{
+                                            margin:"0px 15px",
+                                            backgroundImage:'linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1))',
+                                            border:"none"
+                                        }}
+                                        onClick={()=>{
+                                            setShow(false)
+                                        }}
+                                        >
+                                            Buy More
+                                        </Button>
+                                    </Link>
+                                    <Button
+                                    style={{
+                                        margin:"0px 15px",
+                                        backgroundColor:"#389e0d",
+                                        border:'none'
+                                    }}
+                                    >
+                                        Go To Cart
+                                    </Button>
+                                    <Button
+                                    style={{
+                                        margin:"0px 15px",
+                                        backgroundColor:'#fa541c',
+                                        border:'none'
+                                    }}
+                                    onClick={()=>{
+                                        setShow(false)
+                                    }}
+                                    >
+                                        Close
+                                    </Button>
+                                </Col>
+                            </Row>
+                        </Col>
+                   </Row>
                 </Modal.Body>
-                <Modal.Footer>
+                {/* <Modal.Footer>
                     <Button  
                     onClick={handleClose}
                     style={{
@@ -442,7 +520,7 @@ const ProductTwo=({data})=>{
                     >
                         Close
                     </Button>
-                </Modal.Footer>
+                </Modal.Footer> */}
             </Modal>
             <ToastContainer
             className="p-3"
