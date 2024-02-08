@@ -21,6 +21,8 @@ import Slider from 'react-slick';
 import { 
     baseImageServer 
 } from '@/utils/config';
+import SuccessToaster from './SuccessToaster';
+import ErrorToaster from './ErrorToaster';
 import Link from 'next/link';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -38,9 +40,9 @@ const ProductTwo=({data})=>{
     const [sizes,setSizes]=useState([]);
     const [sizeLists,setSizeLists]=useState([]);
     const [showA, setShowA] = useState(false);
-    const [loginSuccess,setLoginSuccess]=useState(false);
-    const [loginWarning,setLoginWarning]=useState(false);
-    const [loginError,setLoginError]=useState(false);
+    const [addToCartSuccess,setAddToCartSuccess]=useState(false);
+    const [addToCartError,setAddToCartError]=useState(false);
+   // const [loginError,setLoginError]=useState(false);
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -91,20 +93,16 @@ const ProductTwo=({data})=>{
                             if(response.status==201){
                                 //console.log(response)
                                 getCartLists(token);
-                                setShowA(true);
-                                setLoginSuccess(true);
+                                setAddToCartSuccess(true);
                                 setShow(true);
                                 setTimeout(()=>{
-                                    setShowA(false);
-                                    setLoginSuccess(false)
+                                    setAddToCartSuccess(false)
                                 },2000)
                             }
                         }).catch((error)=>{
-                            setShowA(true);
-                            setLoginError(true);
+                            setAddToCartError(true);
                             setTimeout(()=>{
-                                setShowA(false);
-                                setLoginError(false)
+                                setAddToCartError(false)
                             },2000)
                             console.log("Err",error)
                         })
@@ -121,17 +119,17 @@ const ProductTwo=({data})=>{
                         //console.log(newObj2)
                         axios.post(`/cart`,JSON.stringify(newObj2))
                         .then((response)=>{
-                            //console.log("Cart response when logged in: ",response);
-                            //setCartLists([...lists,newObj])
-                            setShowA(true);
-                            setLoginSuccess(true);
+                            setAddToCartSuccess(true);
                             setShow(true);
                             setTimeout(()=>{
-                                setShowA(false);
-                                setLoginSuccess(false)
+                                setAddToCartSuccess(false)
                             },2000)
                             getCartLists(token);
                         }).catch((error)=>{
+                            setAddToCartError(true);
+                            setTimeout(()=>{
+                                setAddToCartError(false)
+                            },2000)
                             console.log("CCART",error)
                         })
                     }
@@ -156,23 +154,17 @@ const ProductTwo=({data})=>{
                     setCartLists([...lists,newObj])
                     axios.post(`/cart`,JSON.stringify(newObj2))
                     .then((response)=>{
-                        console.log("Cart response when logged in: ",response);
-                        //setCartLists([...lists,newObj])
-                        setShowA(true);
-                        setLoginSuccess(true);
+                        //console.log("Cart response when logged in: ",response);
+                        setAddToCartSuccess(true);
                         setShow(true);
                         setTimeout(()=>{
-                            setShowA(false);
-                            setLoginSuccess(false)
+                            setAddToCartSuccess(false)
                         },2000)
                         getCartLists(token);
                     }).catch((error)=>{
-                        setShowA(true);
-                        setLoginSuccess(true);
-                        setShow(true);
+                        setAddToCartError(true);
                         setTimeout(()=>{
-                            setShowA(false);
-                            setLoginSuccess(false)
+                            setAddToCartError(false)
                         },2000)
                         console.log("CCART",error)
                     })
@@ -192,11 +184,9 @@ const ProductTwo=({data})=>{
                         lists[index].quantity+=1;
                         setShow(true);
                         setCartLists([...lists2,newObj])
-                        setShowA(true);
-                        setLoginSuccess(true);
+                        setAddToCartSuccess(true);
                         setTimeout(()=>{
-                            setShowA(false);
-                            setLoginSuccess(false)
+                            setAddToCartSuccess(false)
                         },2000)
                         localStorage.setItem("ProductCarts",JSON.stringify(lists));
                         setCartLists([...lists])
@@ -215,11 +205,9 @@ const ProductTwo=({data})=>{
                         localStorage.setItem("ProductCarts",JSON.stringify(lists));
                         setShow(true);
                         setCartLists([...lists2,newObj])
-                        setShowA(true);
-                        setLoginSuccess(true);
+                        setAddToCartSuccess(true);
                         setTimeout(()=>{
-                            setShowA(false);
-                            setLoginSuccess(false)
+                            setAddToCartSuccess(false)
                         },2000)
                     }
                 }else{
@@ -239,11 +227,9 @@ const ProductTwo=({data})=>{
                     setCartLists([newObj])
                     localStorage.setItem("ProductCarts",JSON.stringify([newObj]));
                     setShow(true);
-                    setShowA(true);
-                    setLoginSuccess(true);
+                    setAddToCartSuccess(true);
                     setTimeout(()=>{
-                        setShowA(false);
-                        setLoginSuccess(false)
+                        setAddToCartSuccess(false)
                     },2000)
                 }
             }
@@ -511,44 +497,18 @@ const ProductTwo=({data})=>{
                         </Col>
                    </Row>
                 </Modal.Body>
-                {/* <Modal.Footer>
-                    <Button  
-                    onClick={handleClose}
-                    style={{
-                        backgroundColor:"blue"
-                    }}
-                    >
-                        Close
-                    </Button>
-                </Modal.Footer> */}
             </Modal>
-            <ToastContainer
-            className="p-3"
-            position={"bottom-end"}
-            style={{ 
-                zIndex: 10000,
-                position:'fixed',
-                bottom:"0",
-                right:'0'
-            }}
-            >
-                <Toast show={showA}>
-                    {/* <Toast.Header closeButton={true}>
-                    <img
-                        src="holder.js/20x20?text=%20"
-                        className="rounded me-2"
-                        alt=""
-                    />
-                    <strong className="me-auto">Bootstrap</strong>
-                    <small>11 mins ago</small>
-                    </Toast.Header> */}
-                    <Toast.Body
-                    className={`${loginSuccess && !loginError?'toast-login-success':'toast-login-warning'}`}
-                    >
-                        <h4>{loginSuccess?"Item Add Successfully.":"Item Added Failed."}</h4>
-                    </Toast.Body>
-                </Toast>
-            </ToastContainer>
+            <SuccessToaster
+            IsShow={addToCartSuccess}
+            Width={'220vw'} 
+            ToastMsg="Add to on cart successfull." 
+            Postion={"bottom-end"}
+            />
+            <ErrorToaster 
+            IsShow={addToCartError} 
+            ToastMsg="Add to on cart failed"
+            Width={'20vw'}
+            Postion={"bottom-end"}/>
         </>
     )
 }

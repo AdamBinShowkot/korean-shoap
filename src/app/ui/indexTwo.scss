@@ -1,41 +1,11 @@
-.toast-container{
-    min-width: 200px !important;
-    background: transparent;
-}
-.toast-body{
-    padding: 10px 20px !important;
-    background: transparent;
-    // width: 200px;
-}
-.toast-login-success{
-    background-color: #389e0d !important;
-    display:flex;
-    justify-content:center;
-    border-radius:8px;
-    color: #fff;
-    h4{
-        color: #fff;
-        font-weight: 600;
-    }
-}
-.toast-login-warning{
-    background-color: #fa8c16 !important;
-    display:flex;
-    justify-content:center;
-    border-radius:8px;
-    color: #fff;
-    h4{
-        color: #fff;
-        font-weight: 600;
-    }
-}
+
 div.fade.in.modal {
     display:flex !important;
-  }
+}
   
-  .modal-dialog {
+.modal-dialog {
     margin: auto;
-  }
+}
 .products-product-container{
     border-radius: 10px;
     margin-top: 8px !important;

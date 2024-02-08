@@ -23,6 +23,8 @@ import {
     UserInfoContextApi 
 } from '@/contextApi/userInfoApi';
 import ConfigureAxios from '@/utils/axiosConfig';
+import SuccessToaster from './ui/SuccessToaster';
+import ErrorToaster from './ui/ErrorToaster';
 import axios from 'axios';
 import { 
     baseImageServer 
@@ -31,6 +33,8 @@ import {
 const FlatButton=()=>{
     const {userInfo,setUserInfo}=useContext(UserInfoContextApi);
     const {cartLists,setCartLists}=useContext(AddToCartContext);
+    const [addToCartSuccess,setAddToCartSuccess]=useState(false);
+    const [addToCartError,setAddToCartError]=useState(false);
     const [cartTotal,setCartTotal]=useState(0);
     const [showModal,setShowModal]=useState(false);
     const [quantity,setQuantity]=useState(0);
@@ -131,6 +135,10 @@ const FlatButton=()=>{
                 .then((response)=>{
                     if(response.status===200){
                         getCartLists(Token);
+                        setAddToCartSuccess(true);
+                        setTimeout(()=>{
+                            setAddToCar
+                        },2000)
                     }
                     //console.log("delete response: ",response);
                 }).catch((error)=>{
