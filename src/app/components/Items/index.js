@@ -61,56 +61,55 @@ const ItemsContainer=({title,lists,len})=>{
         }else{
             let newLists=[...lists];
             let newSettings={...settings,slidesToShow:5};
-            if(len==7 || len>=7){
-                setMyLists(newLists);
-            }else if(len>=6){
-                //console.log("Heloooooooooooo")
-                for(let i=0; i<1; i++){
-                    const newObj={
-                        id:"1000"+i,
-                        emptyPost:true
-                    }
-                    newLists=[newObj,...newLists];
-                }
-                setMyLists(newLists)
-            }else if(len>=5){
+            if(len>=5){
                 //console.log("Heloooooooooooo5")
-                for(let i=0; i<1; i++){
-                    const newObj={
-                        id:"1000"+i,
-                        emptyPost:true
-                    }
-                    newLists=[newObj,...newLists];
-                }
-                setMyLists(newLists)
+                setMyLists(newLists);
             }else if(len>=4){
                 //console.log("Heloooooooooooo4")
-                for(let i=0; i<3; i++){
+                for(let i=0; i<1; i++){
                     const newObj={
                         id:"1000"+i,
                         emptyPost:true
                     }
-                    newLists=[newObj,...newLists];
+                    newLists=[...newLists,newObj];
                 }
                 setMyLists(newLists)
             }else if(len>=3){
                // console.log("Heloooooooooooo3")
+                for(let i=0; i<2; i++){
+                    const newObj={
+                        id:"1000"+i,
+                        emptyPost:true
+                    }
+                   
+                    newLists=[...newLists,newObj]; 
+                }
+                // const temp=newLists[0]
+                // newLists[0]=newLists[3]
+                // newLists[3]=temp
+                setMyLists(newLists)
+            }else if(len>=2){
+                // console.log("Heloooooooooooo3")
+                 for(let i=0; i<3; i++){
+                     const newObj={
+                         id:"1000"+i,
+                         emptyPost:true
+                     }
+                    
+                     newLists=[...newLists,newObj]; 
+                 }
+                 // const temp=newLists[0]
+                 // newLists[0]=newLists[3]
+                 // newLists[3]=temp
+                 setMyLists(newLists)
+            }else{
+                //console.log("Helooooooooooooelse")
                 for(let i=0; i<4; i++){
                     const newObj={
                         id:"1000"+i,
                         emptyPost:true
                     }
-                    newLists=[newObj,...newLists];
-                }
-                setMyLists(newLists)
-            }else{
-                //console.log("Helooooooooooooelse")
-                for(let i=0; i<5; i++){
-                    const newObj={
-                        id:"1000"+i,
-                        emptyPost:true
-                    }
-                    newLists=[newObj,...newLists];
+                    newLists=[...newLists,newObj];
                 }
                 setMyLists(newLists)
             }
@@ -122,6 +121,7 @@ const ItemsContainer=({title,lists,len})=>{
         };
     }, [width]);
 
+    console.log(title,myLists)
     return(
         <>
             <Row>
@@ -143,7 +143,7 @@ const ItemsContainer=({title,lists,len})=>{
                             <StaticProducts/>
                         </div> */}
                         {
-                            myLists?.length?myLists.map((dta)=>{
+                            myLists?.length?myLists.map((dta,index)=>{
                                 if(!dta?.emptyPost){
                                     return <div key={dta.id}>
                                         <ProductTwo data={dta}/>
@@ -151,7 +151,7 @@ const ItemsContainer=({title,lists,len})=>{
                                     
                                 }else{
                                     return <div key={dta.id}>
-                                        <EmptyCard />
+                                        <EmptyCard index={index}/>
                                     </div>
                                 }
                             }):""

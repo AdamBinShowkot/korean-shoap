@@ -5,10 +5,11 @@ import {
 } from 'react-bootstrap';
 import './indexTwo.scss';
 
-const EmptyCard=()=>{
+const EmptyCard=({index})=>{
     return(
         <Row className="empty-card-container">
             <Col>
+                
             </Col>
         </Row>
     )
