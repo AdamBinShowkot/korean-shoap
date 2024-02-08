@@ -39,7 +39,6 @@ const ProductTwo=({data})=>{
     const variants=data?.variant?.length?data?.variant[0]:{}
     const [sizes,setSizes]=useState([]);
     const [sizeLists,setSizeLists]=useState([]);
-    const [showA, setShowA] = useState(false);
     const [addToCartSuccess,setAddToCartSuccess]=useState(false);
     const [addToCartError,setAddToCartError]=useState(false);
    // const [loginError,setLoginError]=useState(false);
@@ -311,7 +310,7 @@ const ProductTwo=({data})=>{
                    style={{
                         minWidth:'15vw',
                         width:'100%',
-                        minHeight:'12vh'
+                        minHeight:'9vh'
                     }}
                    >
                         <Col 
@@ -348,23 +347,29 @@ const ProductTwo=({data})=>{
                     </Row>
                      <Row
                      style={{
-                        padding:"10px 0px"
+                        padding:"6px 0px"
                      }}
                      >
                         <Col
                         style={{
                             display:"flex",
-                            justifyContent:'space-around',
+                            justifyContent:'flex-start',
                             alignItems:'center',
                             flexDirection:'row'
                         }}
                         xs={9}
                         >
-                            <h3 className="cart-price-text">৳{variants?.price && variants?.discount_price?parseFloat(variants.discount_price).toFixed(0):0}</h3>
+                            <h3 className="cart-price-text" style={{marginRight:'5px'}}>৳{variants?.price && variants?.discount_price?parseFloat(variants.discount_price).toFixed(0):0}</h3>
                             <h3 className="cart-discount-text">&nbsp;<del> ৳{variants?.price?parseFloat(variants.price).toFixed(0):0}</del></h3>
                         </Col>
                         <Col
                         xs={3}
+                        style={{
+                            display:"flex",
+                            justifyContent:'flex-end',
+                            alignItems:'center',
+                            flexDirection:'row'
+                        }}
                         >
                             <Image
                             src="/love.png"
@@ -500,9 +505,13 @@ const ProductTwo=({data})=>{
             </Modal>
             <SuccessToaster
             IsShow={addToCartSuccess}
-            Width={'220vw'} 
+            Width={'20vw'} 
             ToastMsg="Add to on cart successfull." 
             Postion={"bottom-end"}
+            IsTopLeft={false}
+            IsTopRight={false}
+            IsBottomLeft={false}
+            IsBottomRight={true}
             />
             <ErrorToaster 
             IsShow={addToCartError} 

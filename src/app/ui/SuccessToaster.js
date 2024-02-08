@@ -10,19 +10,23 @@ import {
 import Image from 'next/image';
 import './toaster.scss';
 
-const SuccessToaster=({IsShow,ToastMsg,Postion})=>{
+const SuccessToaster=({IsShow,ToastMsg,Postion,Width,IsTopLeft,IsTopRight,IsBottomLeft,IsBottomRight})=>{
     return(
         <ToastContainer
             className="p-3"
             position={`${Postion}`}
             style={{ 
                 zIndex: 10000,
-                position:'fixed'
+                position:'fixed',
+               
             }}
             >
                 <Toast 
                 show={IsShow?IsShow:false}
                 className='koraen-shoap-toaster-container'
+                style={{
+                    width:Width?Width:'20vw'
+                }}
                 >
                     <Toast.Body
                     style={{

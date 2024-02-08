@@ -8,7 +8,8 @@ import {
     Card,
     Row,
     Col,
-    Button
+    Button,
+    Modal
 } from 'react-bootstrap';
 import { 
     AddToCartContext 
@@ -22,6 +23,8 @@ import Link from 'next/link';
 import { 
     baseImageServer 
 } from '@/utils/config';
+import SuccessToaster from './SuccessToaster';
+import ErrorToaster from './ErrorToaster';
 import ConfigureAxios from '@/utils/axiosConfig';
 import axios from 'axios';
 
@@ -29,6 +32,13 @@ const FilterProductTwo=({details})=>{
     const [hoverShow,setHoverShow]=useState(false);
     const {cartLists,setCartLists}=useContext(AddToCartContext);
     const variants=details?.variant?.length?details?.variant[0]:{}
+    const [addToCartSuccess,setAddToCartSuccess]=useState(false);
+    const [addToCartError,setAddToCartError]=useState(false);
+   // const [loginError,setLoginError]=useState(false);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     // useEffect(()=>{
     //     if(details?.variant?.length){
@@ -74,9 +84,18 @@ const FilterProductTwo=({details})=>{
                         .then((response)=>{
                             if(response.status==201){
                                 //console.log(response)
+                                setShow(true);
+                                setAddToCartSuccess(true);
                                 getCartLists(token);
+                                setTimeout(()=>{
+                                    setAddToCartSuccess(false)
+                                },[])
                             }
                         }).catch((error)=>{
+                                setAddToCartError(true);
+                                setTimeout(()=>{
+                                    setAddToCartError(false)
+                                },[])
                             console.log("Err",error)
                         })
                         //setCartLists([...lists])
@@ -94,8 +113,17 @@ const FilterProductTwo=({details})=>{
                         .then((response)=>{
                             //console.log("Cart response when logged in: ",response);
                             //setCartLists([...lists,newObj])
+                            setShow(true);
+                            setAddToCartSuccess(true);
                             getCartLists(token);
+                            setTimeout(()=>{
+                                setAddToCartSuccess(false)
+                            },[])
                         }).catch((error)=>{
+                            setAddToCartError(true);
+                            setTimeout(()=>{
+                                setAddToCartError(false)
+                            },[])
                             console.log("CCART",error)
                         })
                     }
@@ -120,10 +148,19 @@ const FilterProductTwo=({details})=>{
                     setCartLists([...lists,newObj])
                     axios.post(`/cart`,JSON.stringify(newObj2))
                     .then((response)=>{
-                        console.log("Cart response when logged in: ",response);
+                        //console.log("Cart response when logged in: ",response);
                         //setCartLists([...lists,newObj])
+                        setShow(true);
+                        setAddToCartSuccess(true);
                         getCartLists(token);
+                        setTimeout(()=>{
+                            setAddToCartSuccess(false)
+                        },[])
                     }).catch((error)=>{
+                        setAddToCartError(true);
+                        setTimeout(()=>{
+                            setAddToCartError(false)
+                        },[])
                         console.log("CCART",error)
                     })
                 }
@@ -142,6 +179,11 @@ const FilterProductTwo=({details})=>{
                         lists[index].quantity+=1;
                         localStorage.setItem("ProductCarts",JSON.stringify(lists));
                         setCartLists([...lists])
+                        setShow(true);
+                        setAddToCartSuccess(true);
+                        setTimeout(()=>{
+                            setAddToCartSuccess(false)
+                        },[])
                     }else{
                         const newObj={
                             id:currentId,
@@ -156,6 +198,11 @@ const FilterProductTwo=({details})=>{
                         lists=[...lists,newObj]
                         localStorage.setItem("ProductCarts",JSON.stringify(lists));
                         setCartLists([...lists2,newObj])
+                        setShow(true);
+                        setAddToCartSuccess(true);
+                        setTimeout(()=>{
+                            setAddToCartSuccess(false)
+                        },[])
                     }
                 }else{
                     //console.log('Calleddd')
@@ -173,6 +220,11 @@ const FilterProductTwo=({details})=>{
                     //newlists=[...newlists,newObj]
                     setCartLists([newObj])
                     localStorage.setItem("ProductCarts",JSON.stringify([newObj]));
+                    setShow(true);
+                    setAddToCartSuccess(true);
+                    setTimeout(()=>{
+                        setAddToCartSuccess(false)
+                    },[])
 
                 }
             }
@@ -295,7 +347,7 @@ const FilterProductTwo=({details})=>{
                         <Col
                         style={{
                             display:"flex",
-                            justifyContent:'space-around',
+                            justifyContent:'flex-start',
                             alignItems:'center',
                             flexDirection:'row'
                         }}
@@ -306,6 +358,12 @@ const FilterProductTwo=({details})=>{
                         </Col>
                         <Col
                         xs={3}
+                        style={{
+                            display:"flex",
+                            justifyContent:'flex-end',
+                            alignItems:'center',
+                            flexDirection:'row'
+                        }}
                         >
                             <Image
                             src="/love.png"
@@ -352,7 +410,108 @@ const FilterProductTwo=({details})=>{
                     </div>
                 </Card.Body>
             </Card>
-           
+            <Modal 
+            show={show} 
+            onHide={handleClose}
+            centered={true}
+            >
+                <Modal.Body>
+                   <Row>
+                        <Col 
+                        xs={12}
+                        style={{
+                            display:'flex',
+                            justifyContent:'center',
+                            alignItems:'center',
+                            flexDirection:'column',
+                            padding:"20px 0px"
+                        }}
+                        >
+                            <Image
+                            src="/cart_success.png"
+                            height={70}
+                            width={70}
+                            alt="Cart Success"
+                            />
+                            <Row>
+                                <Col
+                                style={{
+                                    display:'flex',
+                                    justifyContent:'center',
+                                    alignItems:'center',
+                                    flexDirection:'row',
+                                    marginTop:"10px"
+                                }}
+                                >
+                                    <h3 style={{fontSize:'24px',fontWeight:'600'}}>Product Added on cart successfully</h3>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col
+                                style={{
+                                    display:'flex',
+                                    justifyContent:'center',
+                                    alignItems:'center',
+                                    flexDirection:'row',
+                                    marginTop:"20px"
+                                }}
+                                >
+                                    <Link href="/products">
+                                        <Button
+                                        style={{
+                                            margin:"0px 15px",
+                                            backgroundImage:'linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1))',
+                                            border:"none"
+                                        }}
+                                        onClick={()=>{
+                                            setShow(false)
+                                        }}
+                                        >
+                                            Buy More
+                                        </Button>
+                                    </Link>
+                                    <Button
+                                    style={{
+                                        margin:"0px 15px",
+                                        backgroundColor:"#389e0d",
+                                        border:'none'
+                                    }}
+                                    >
+                                        Go To Cart
+                                    </Button>
+                                    <Button
+                                    style={{
+                                        margin:"0px 15px",
+                                        backgroundColor:'#fa541c',
+                                        border:'none'
+                                    }}
+                                    onClick={()=>{
+                                        setShow(false)
+                                    }}
+                                    >
+                                        Close
+                                    </Button>
+                                </Col>
+                            </Row>
+                        </Col>
+                   </Row>
+                </Modal.Body>
+            </Modal>
+            <SuccessToaster
+            IsShow={addToCartSuccess}
+            Width={'20vw'} 
+            ToastMsg="Add to on cart successfull." 
+            Postion={"bottom-end"}
+            IsTopLeft={false}
+            IsTopRight={false}
+            IsBottomLeft={false}
+            IsBottomRight={true}
+            />
+            <ErrorToaster 
+            IsShow={addToCartError} 
+            ToastMsg="Add to on cart failed"
+            Width={'20vw'}
+            Postion={"bottom-end"}/>
         </>
     )
 }

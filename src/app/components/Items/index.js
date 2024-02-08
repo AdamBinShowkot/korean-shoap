@@ -121,7 +121,6 @@ const ItemsContainer=({title,lists,len})=>{
         };
     }, [width]);
 
-    console.log(title,myLists)
     return(
         <>
             <Row>
