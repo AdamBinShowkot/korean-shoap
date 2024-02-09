@@ -22,3 +22,45 @@
     background: none;
     border: none;
 }
+.dropdown-toggle::after{
+    display: none;
+}
+.filter-sub-menu-container{
+    z-index: 10 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    max-height: 30vw !important;
+    padding: 0px;
+}
+.filter-toggle-button{
+    width:10vw;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:6px 6px;
+    border-right: 1px solid rgba(92, 51, 169, 1);
+}
+.filter-toggle-button:hover{
+    cursor: pointer;
+}
+.filter-item-menu{
+    padding: 12px 6px;
+    background-color: #efdbff;
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid #b37feb;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.filter-item-menu-active{
+    background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1)) !important;
+    color: #fff;
+}
+.filter-item-menu:last-of-type{
+    border-bottom: 1px solid #b37feb;
+}
