@@ -3,7 +3,8 @@ import React,{
     useState,
     useEffect,
     useContext,
-    forwardRef
+    forwardRef,
+    Children
 } from 'react';
 import {
     Form,
@@ -33,7 +34,7 @@ import {
 
 
 const CustomMenu = forwardRef(
-    ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
+    function CustomMenu({ children, style, className, 'aria-labelledby': labeledBy }, ref) {
       const [value, setValue] = useState('');
   
       return (
@@ -51,7 +52,7 @@ const CustomMenu = forwardRef(
             value={value}
           />
           <ul className="list-unstyled">
-            {React.Children.toArray(children).filter(
+            {Children.toArray(children).filter(
               (child) =>
                 !value || child.props.children.toLowerCase().startsWith(value),
             )}
@@ -61,8 +62,8 @@ const CustomMenu = forwardRef(
     },
 );
 
-const CustomToggle = forwardRef(({ children, onClick }, ref) => (
-    <div
+const CustomToggle = forwardRef(function CustomToggle({ children, onClick }, ref)  {
+    return <div
     className='filter-toggle-button'
     ref={ref}
     onClick={(e) => {
@@ -111,7 +112,7 @@ const CustomToggle = forwardRef(({ children, onClick }, ref) => (
     //   {children}
     //   &#x25bc;
     // </a>
-));
+})
   
 const ProductsMain=()=>{
     // const products = await getProductLists();
