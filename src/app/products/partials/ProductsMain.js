@@ -2,7 +2,8 @@
 import React,{
     useState,
     useEffect,
-    useContext
+    useContext,
+    forwardRef
 } from 'react';
 import {
     Form,
@@ -31,7 +32,7 @@ import {
 } from '@/contextApi/productsApi';
 
 
-const CustomMenu = React.forwardRef(
+const CustomMenu = forwardRef(
     ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
       const [value, setValue] = useState('');
   
@@ -60,7 +61,7 @@ const CustomMenu = React.forwardRef(
     },
 );
 
-const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+const CustomToggle = forwardRef(({ children, onClick }, ref) => (
     <div
     className='filter-toggle-button'
     ref={ref}
@@ -422,6 +423,7 @@ const ProductsMain=()=>{
                                         onClick={(e)=>{
                                             handleOnFilterMenuChange(dta,'category')
                                         }}
+                                        key={dta.id}
                                         className={`filter-item-menu ${activeCategories==dta.id?'filter-item-menu-active':''}`}
                                         >
                                             {dta.name}
@@ -544,6 +546,7 @@ const ProductsMain=()=>{
                                         onClick={(e)=>{
                                             handleOnFilterMenuChange(dta,'brand')
                                         }}
+                                        key={dta.id}
                                         >
                                             {dta.name}
                                         </Dropdown.Item>
@@ -577,6 +580,7 @@ const ProductsMain=()=>{
                                         onClick={(e)=>{
                                             handleOnFilterMenuChange(dta,'skin-type')
                                         }}
+                                        key={dta.id}
                                         className={`filter-item-menu ${activeSkinType==dta.id?'filter-item-menu-active':''}`}
                                         >
                                             {dta.name}
@@ -612,6 +616,7 @@ const ProductsMain=()=>{
                                         onClick={(e)=>{
                                             handleOnFilterMenuChange(dta,'skin-concern')
                                         }}
+                                        key={dta.id}
                                         className={`filter-item-menu ${activeSkinConcern==dta.id?'filter-item-menu-active':''}`}
                                         >
                                             {dta.name}
@@ -646,6 +651,7 @@ const ProductsMain=()=>{
                                         onClick={(e)=>{
                                             handleOnFilterMenuChange(dta,'ingredient')
                                         }}
+                                        key={dta.id}
                                         className={`filter-item-menu ${activeIngreidients==dta.id?'filter-item-menu-active':''}`}
                                         >
                                             {dta.name}
