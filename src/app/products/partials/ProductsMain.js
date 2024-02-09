@@ -11,6 +11,9 @@ import {
     InputGroupText
 } from 'react-bootstrap';
 import Image from 'next/image';
+import { 
+    useSearchParams 
+} from 'next/navigation';
 //import Product from '@/app/ui/Product';
 import ProductTwo from '@/app/ui/ProductTwo';
 import PaginationMain from './Pagination';
@@ -34,6 +37,8 @@ import {
 // }
 const ProductsMain=()=>{
     // const products = await getProductLists();
+    const searchParams = useSearchParams()
+    const cats = searchParams.get('category')
     const [products,setProducts]=useState([]);
     const [perPage,setPerPage]=useState(10);
     const [page,setPage]=useState(1);
@@ -54,6 +59,8 @@ const ProductsMain=()=>{
 
         })
     },[page])
+
+    console.log("Params",cats)
 
     return(
         <>

@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Col,
     Container,
@@ -10,17 +10,187 @@ import {
 } from 'react-bootstrap';
 import Image from 'next/image';
 import Link from 'next/link';
+import axios from 'axios';
+import ConfigureAxios from '@/utils/axiosConfig';
 import './index2.scss';
 
 const NavBarTwo=()=>{
+    const [categoryLists,setCategoryLists]=useState([]);
+    const [skinTypeLists,setSkinTypeLists]=useState([]);
+    const [skinConcernLists,setSkinConernLists]=useState([]);
+    const [ingredientLists,setIngredientLists]=useState([]);
+    const [brandLists,setBrandLists]=useState([]);
+
+    useEffect(()=>{
+        inittialLoad();
+    },[])
+
+    const inittialLoad=async()=>{
+        ConfigureAxios();
+        const categories=await getCategoryLists();
+        const skinTypes=await getSkinTypeLists();
+        const skinConcerns=await getSkinTypeLists();
+        const ingredients=await getIngredientsLists();
+        const brands=await getBrandLists();
+
+        if(categories.length){
+            setCategoryLists(categories)
+        }else{
+            setCategoryLists([])
+        }
+
+        if(skinTypes.length){
+            setSkinTypeLists(skinTypes)
+        }else{
+            setSkinTypeLists([])
+        }
+
+        if(skinConcerns.length){
+            setSkinConernLists(skinConcerns)
+        }else{
+            setSkinConernLists([])
+        }
+
+        if(ingredients.length){
+            setIngredientLists(ingredients)
+        }else{
+            setIngredientLists([])
+        }
+
+        if(brands.length){
+            setBrandLists(brands)
+        }else{
+            setBrandLists([])
+        }
+        // console.log("Cat: ",categories);
+        // console.log("Skin: ",skinTypes);
+        // console.log("Concerns: ",skinConcerns);
+        // console.log("Ingredients: ",ingredients);
+        // console.log("Brands: ",brands);
+
+    }
+    const getCategoryLists=async()=>{
+        const lists=await axios.get(`/public/category/list?page=1&per_page=20`).then((response)=>{
+            if(response.status==200){
+                //console.log(response)
+                if(response.data.items.length){
+                    const datas=response.data.items;
+                    return datas;
+                }
+                return []
+            }
+        }).catch((error)=>{
+            console.log("get category lists error.");
+            return []
+        })
+        return lists;
+    }
+    const getSkinTypeLists=async()=>{
+        const lists=await axios.get(`/public/skin-type/list?page=1&per_page=100`).then((response)=>{
+            if(response.status==200){
+               // console.log(response)
+                if(response.data.items.length){
+                    const datas=response.data.items;
+                    return datas;
+                }
+                return []
+            }
+        }).catch((error)=>{
+            console.log("get skin type lists error.");
+            return []
+        })
+        return lists;
+    }
+    const getConcernLists=async()=>{
+        const lists=await axios.get(`/public/skin-concern/list?page=1&per_page=100`).then((response)=>{
+            if(response.status==200){
+                //console.log(response)
+                if(response.data.items.length){
+                    const datas=response.data.items;
+                    return datas;
+                }
+                return []
+            }
+        }).catch((error)=>{
+            console.log("get skin concern lists error.");
+            return []
+        })
+        return lists;
+    }
+    const getBrandLists=async()=>{
+        const lists=await axios.get(`/public/brand/list?page=1&per_page=100`).then((response)=>{
+            if(response.status==200){
+               // console.log(response)
+                if(response.data.items.length){
+                    const datas=response.data.items;
+                    return datas;
+                }
+                return []
+            }
+        }).catch((error)=>{
+            console.log("get brand lists error.");
+            return []
+        })
+        return lists;
+    }
+    const getIngredientsLists=async()=>{
+        const lists=await axios.get(`/public/ingredient/list?page=2&per_page=100`).then((response)=>{
+            if(response.status==200){
+               // console.log(response)
+                if(response.data.items.length){
+                    const datas=response.data.items;
+                    return datas;
+                }
+                return []
+            }
+        }).catch((error)=>{
+            console.log("get ingredients lists error.");
+            return []
+        })
+        return lists;
+    }
     return(
         <>
             <Col
             className="navbar-container"
             >
                 <ul class="exo-menu navbar-container">
-                    <li>
+                    {/* <li>
                         <a  href="#" className='category-menu-href'><i className="fa fa-home"></i> CATEGORIES</a>
+                    </li> */}
+                     <li className="mega-drop-down">
+                        <a className="mega-menu-href" href="#">
+                            <i className="fa fa-list"></i> CATEGORY
+                            &nbsp;
+                            <Image
+                            src={'/downArrow.png'}
+                            height={8}
+                            width={14}
+                            alt="Image"
+                            className="navbar-arrow-image"
+                            />
+                        </a>
+                        <div className="animated fadeIn mega-menu">
+                            <div className="mega-menu-wrap">
+                                <Row>
+                                    <Col
+                                    className="mega-menu-left-container"
+                                    >
+                                        {
+                                            categoryLists?.length?categoryLists.map((dta)=>{
+                                                return <Link 
+                                                key={dta.id}
+                                                href={`/products?category=${dta.slug}&page=1&per_page=10`}
+                                                className="link-href"
+                                                >
+                                                    {dta.name}
+                                                </Link>
+                                            }):""
+                                        }
+                                    </Col>
+                                </Row>
+                            </div>	
+                        </div>
                     </li>
                     <li className="mega-drop-down">
                         <a className="mega-menu-href" href="#">
@@ -40,13 +210,18 @@ const NavBarTwo=()=>{
                                     <Col
                                     className="mega-menu-left-container"
                                     >
-                                        <Link 
-                                        href="/"
-                                        className="link-href"
-                                        >
-                                            Brightening Care
-                                        </Link>
-                                        <Link 
+                                        {
+                                            skinConcernLists?.length?skinConcernLists.map((dta)=>{
+                                                return <Link 
+                                                key={dta.id}
+                                                href={`/products?skin-concern=${dta.slug}&page=1&per_page=10`}
+                                                className="link-href"
+                                                >
+                                                    {dta.name}
+                                                </Link>
+                                            }):""
+                                        }
+                                        {/* <Link 
                                         href="/"
                                         className="link-href"
                                         >
@@ -75,16 +250,7 @@ const NavBarTwo=()=>{
                                         className="link-href"
                                         >
                                            Anti Agening & Wrinkle Care
-                                        </Link>
-                                    </Col>
-                                    <Col>
-                                        <Image
-                                        src="/skin-care-banner.jpg"
-                                        height={500}
-                                        width={500}
-                                        alt="Banner"
-                                        className="banner-image"
-                                        />
+                                        </Link> */}
                                     </Col>
                                 </Row>
                             </div>	
@@ -108,51 +274,17 @@ const NavBarTwo=()=>{
                                     <Col
                                     className="mega-menu-left-container"
                                     >
-                                        <Link 
-                                        href="/"
-                                        className="link-href"
-                                        >
-                                            Oily Skin
-                                        </Link>
-                                        <Link 
-                                        href="/"
-                                        className="link-href"
-                                        >
-                                            Dry Skin
-                                        </Link>
-                                        <Link 
-                                        href="/"
-                                        className="link-href"
-                                        >
-                                            Combination Skin
-                                        </Link>
-                                        <Link 
-                                        href="/"
-                                        className="link-href"
-                                        >
-                                            Sensitive Skin
-                                        </Link>
-                                        <Link 
-                                        href="/"
-                                        className="link-href"
-                                        >
-                                            Normal Skin
-                                        </Link>
-                                        <Link 
-                                        href="/"
-                                        className="link-href"
-                                        >
-                                            Damaged Skin
-                                        </Link>
-                                    </Col>
-                                    <Col>
-                                        <Image
-                                        src="/skin-care-banner.jpg"
-                                        height={500}
-                                        width={500}
-                                        alt="Banner"
-                                        className="banner-image"
-                                        />
+                                        {
+                                            skinTypeLists?.length?skinTypeLists.map((dta)=>{
+                                                return <Link 
+                                                key={dta.id}
+                                                href={`/products?skin-type=${dta.slug}&page=1&per_page=10`}
+                                                className="link-href"
+                                                >
+                                                    {dta.name}
+                                                </Link>
+                                            }):""
+                                        }
                                     </Col>
                                 </Row>
                             </div>	
@@ -172,7 +304,23 @@ const NavBarTwo=()=>{
                         </a>
                         <div className="animated fadeIn mega-menu">
                             <div className="mega-menu-wrap">
-                            
+                                <Row>
+                                    <Col
+                                    className="mega-menu-left-container"
+                                    >
+                                        {
+                                            ingredientLists?.length?ingredientLists.map((dta)=>{
+                                                return <Link 
+                                                key={dta.id}
+                                                href={`/products?ingredients=${dta.slug}&page=1&per_page=10`}
+                                                className="link-href"
+                                                >
+                                                    {dta.name}
+                                                </Link>
+                                            }):""
+                                        }
+                                    </Col>
+                                </Row>
                             </div>	
                         </div>
                     </li>
@@ -190,130 +338,26 @@ const NavBarTwo=()=>{
                         </a>
                         <div className="animated fadeIn mega-menu">
                             <div className="mega-menu-wrap">
-                            
+                                <Row>
+                                    <Col
+                                    className="mega-menu-left-container"
+                                    >
+                                        {
+                                            brandLists?.length?brandLists.map((dta)=>{
+                                                return <Link 
+                                                key={dta.id}
+                                                href={`/products?brands=${dta.slug}&page=1&per_page=10`}
+                                                className="link-href"
+                                                >
+                                                    {dta.name}
+                                                </Link>
+                                            }):""
+                                        }
+                                    </Col>
+                                </Row>
                             </div>	
                         </div>
                     </li>
-                    {/* <li className="mega-drop-down"><a href="#"><i className="fa fa-list"></i> BRANDS</a>
-                        <div className="animated fadeIn mega-menu">
-                            <div className="mega-menu-wrap">
-                                <div className="row">
-                                <div className="col-md-4">
-                                    <h4 className="row mega-title">Feature</h4>
-                                        <img className="img-responsive" src="https://3.bp.blogspot.com/-rUk36pd-LbM/VcLb48X4f-I/AAAAAAAAGCI/Y_UxBAgEqwA/s1600/Magento_themes.jpg"/>
-                                    </div>
-                                    <div className="col-md-2">
-                                            <h4 className="row mega-title">Standers</h4>
-                                        <ul className="stander">
-                                            <li><a href="#">Mobile</a></li>
-                                            <li><a href="#">Computer</a></li>
-                                            <li><a href="#">Watch</a></li>
-                                            <li><a href="#">laptop</a></li>
-                                            <li><a href="#">Camera</a></li>
-                                            <li><a href="#">I pad</a></li>
-                                            <li><a className="view-more btn- btn-sm" href="#">View more</a></li>
-                                        </ul>
-                                    </div>
-                                    <div className="col-md-3">
-                                        <h4 className="row mega-title">Description</h4>
-                                        <ul className="description">
-                                            <li><a href="#">Women</a>
-                                                <span>Description of Women</span>
-                                            </li>
-                                            <li><a href="#">Men</a>
-                                                    <span>Description of men Cloths</span>
-                                            </li>
-                                            <li><a href="#">Kids</a>
-                                                    <span>Description of Kids Cloths</span>
-                                            </li>
-                                            <li><a href="#">Others</a>
-                                                    <span>Description of Others Cloths</span>
-                                            </li>
-                                            <li>
-                                            <a className="view-more btn btn-sm " href="#">View more</a>
-                                                    
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="col-md-3">
-                                    <h4 className="row mega-title">Icon + Description</h4>
-                                        <ul className="icon-des">
-                                            <li><a href="#"><i className="fa fa-globe"></i>Web</a></li>
-                                            <li><a href="#"><i className="fa fa-mobile"></i>Mobile</a></li>
-                                            <li><a href="#"><i className="fa fa-arrows-h"></i>Responsive</a></li>
-                                            <li><a href="#"><i className="fa fa-desktop"></i>Desktop</a></li>
-                                            <li><a href="#"><i className="fa fa-paint-brush"></i>UI/UX</a></li>
-                                        </ul>
-                                    </div>
-                                    
-                                </div>
-                            </div>	
-                        </div>
-                    </li> */}
-
-                    {/* <li className="blog-drop-down"><a href="#"><i className="fa fa-bullhorn"></i> Blog</a>
-                        <div className="Blog animated fadeIn">
-                            <div className="col-md-4">
-                                <img className="img-responsive" src="https://2.bp.blogspot.com/-VG_e0pKfrDo/VcLb6JwZqfI/AAAAAAAAGCk/8ZgA9kZqTQ8/s1600/images3.jpg"/>
-                                <div className="blog-des">
-                            <h4 className="blog-title">Lorem ipsum dolor sit amet</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
-                                    tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-                                    nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
-                                    Duis autem vel eum iriure dolor in hendrerit in vulputate. </p>
-                                    <a className="view-more btn- btn-sm" href="#">Read More</a>
-                                </div>
-                            </div>
-                            <div className="col-md-4">
-                                <img className="img-responsive" src="https://3.bp.blogspot.com/-hUt5FrdZHio/VcLb5dlwTBI/AAAAAAAAGCU/UUH5N1JkoQc/s1600/images1.jpg"/>
-                                <div className="blog-des">
-                                <h4 className="blog-title">Lorem ipsum dolor sit amet</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
-                                    tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-                                    nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
-                                    Duis autem vel eum iriure dolor in hendrerit in vulputate. </p>
-                                            <a className="view-more btn- btn-sm" href="#">Read More</a>
-                                </div>
-                            </div>
-                            <div className="col-md-4">
-                                <img className="img-responsive" src="https://4.bp.blogspot.com/-A7U1uPlSq6Y/VcLb5kKHCkI/AAAAAAAAGCc/7WghyndTEuY/s1600/images2.jpg"/>
-                                <div className="blog-des">
-                                <h4 className="blog-title">Lorem ipsum dolor sit amet</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
-                                    tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-                                    nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
-                                    Duis autem vel eum iriure dolor in hendrerit in vulputate. </p>
-                                            <a className="view-more btn- btn-sm" href="#">Read More</a>
-                                </div>
-                            </div>
-                            
-                            
-                        </div>
-                    </li>
-                    <li  className="images-drop-down"><a  href="#"><i className="fa fa-photo"></i> Images</a>
-                        <div className="Images animated fadeIn">
-                            <div className="col-md-3">
-                                <h4>Images Title </h4>
-                                <img className="img-responsive" src="https://2.bp.blogspot.com/-VG_e0pKfrDo/VcLb6JwZqfI/AAAAAAAAGCk/8ZgA9kZqTQ8/s1600/images3.jpg"/>
-                            </div>
-                            <div className="col-md-3">
-                            <h4>Images Title </h4>
-                                <img className="img-responsive" src="https://3.bp.blogspot.com/-hUt5FrdZHio/VcLb5dlwTBI/AAAAAAAAGCU/UUH5N1JkoQc/s1600/images1.jpg"/>
-                            </div>
-                            <div className="col-md-3">
-                            <h4>Images Title </h4>
-                                <img className="img-responsive" src="https://4.bp.blogspot.com/-A7U1uPlSq6Y/VcLb5kKHCkI/AAAAAAAAGCc/7WghyndTEuY/s1600/images2.jpg"/>
-                            </div>
-                            <div className="col-md-3">
-                            <h4>Images Title </h4>
-                                <img className="img-responsive"  src="https://3.bp.blogspot.com/-hGrnZIjzL2k/VcLb47kyQKI/AAAAAAAAGCQ/J6Q2IAHIQvQ/s1600/image4.jpg"/>
-                            </div>
-                            
-                        </div>
-                    
-                    </li> */}
-                    
-                    {/* <a href="#" class="toggle-menu visible-xs-block">|||</a>		 */}
                 </ul>
             </Col> 
         </>
