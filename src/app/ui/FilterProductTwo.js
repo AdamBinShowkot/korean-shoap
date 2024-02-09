@@ -339,9 +339,12 @@ const FilterProductTwo=({details})=>{
                             </Card.Text>
                         </Col>
                     </Row>
-                    <Row
+                    <div
                     style={{
-                        padding:"10px 0px"
+                        padding:"6px 5px",
+                        width:'100%',
+                        display:'flex',
+                        flexDirection:'row'
                     }}
                     >
                         <Col
@@ -377,7 +380,7 @@ const FilterProductTwo=({details})=>{
 
                             </Image>
                         </Col>
-                    </Row>
+                    </div>
                     <div
                     className="products-action-container"
                     >

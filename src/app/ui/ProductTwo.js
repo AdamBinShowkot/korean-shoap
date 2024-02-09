@@ -345,11 +345,14 @@ const ProductTwo=({data})=>{
                             </Card.Text>
                         </Col>
                     </Row>
-                     <Row
-                     style={{
-                        padding:"6px 0px"
-                     }}
-                     >
+                    <div
+                    style={{
+                        padding:"6px 5px",
+                        width:'100%',
+                        display:'flex',
+                        flexDirection:'row'
+                    }}
+                    >
                         <Col
                         style={{
                             display:"flex",
@@ -383,7 +386,7 @@ const ProductTwo=({data})=>{
 
                             </Image>
                         </Col>
-                    </Row>
+                    </div>
                     <div
                     className="products-action-container"
                     >

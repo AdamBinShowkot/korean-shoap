@@ -241,7 +241,7 @@ const ProductsMain=()=>{
         ConfigureAxios();
         const categories=await getCategoryLists();
         const skinTypes=await getSkinTypeLists();
-        const skinConcerns=await getSkinTypeLists();
+        const skinConcerns=await getConcernLists();
         const ingredients=await getIngredientsLists();
         const brands=await getBrandLists();
 
@@ -431,95 +431,8 @@ const ProductsMain=()=>{
                                         </Dropdown.Item>
                                     }):""
                                 }
-                               
-                                {/* <Dropdown.Item eventKey="3" active>
-                                    Orange
-                                </Dropdown.Item> */}
-                                {/* <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item> */}
                             </Dropdown.Menu>
                         </Dropdown>
-                        {/* <div
-                        xs={3}
-                        className='products-filter-group-button'
-                        >
-                            <div
-                            style={{
-                                width:'100%',
-                                display:'flex',
-                                justifyContent:'center',
-                                alignItems:'center'
-                            }}
-                            >
-                                <div
-                                style={{
-                                    width:'80%',
-                                    
-                                }}
-                                >
-                                    <span
-                                    style={{
-                                        marginRight:'10px'
-                                    }}
-                                    >
-                                        Body Care
-                                    </span>
-                                </div>
-                                <div
-                                style={{
-                                    width:'20%',
-                                    textAlign:'right'
-                                }}
-                                >
-                                    <Image
-                                    src="/filterBtn1.png"
-                                    width={18}
-                                    height={18}
-                                    alt="search"
-                                    />
-                                </div>
-                            </div>
-                        </div> */}
-                        {/* <div
-                        xs={3}
-                        className='products-filter-group-button'
-                        >
-                            <div
-                            style={{
-                                width:'100%',
-                                display:'flex',
-                                justifyContent:'center',
-                                alignItems:'center'
-                            }}
-                            >
-                                <div
-                                style={{
-                                    width:'80%',
-                                    
-                                }}
-                                >
-                                    <span
-                                    style={{
-                                        marginRight:'10px'
-                                    }}
-                                    >
-                                        Body Care
-                                    </span>
-                                </div>
-                                <div
-                                style={{
-                                    width:'20%',
-                                    textAlign:'right'
-                                }}
-                                >
-                                    <Image
-                                    src="/filterBtn1.png"
-                                    width={18}
-                                    height={18}
-                                    alt="search"
-                                    />
-                                </div>
-                            </div>
-                        </div> */}
                         <Dropdown 
                         >
                             <Dropdown.Toggle 

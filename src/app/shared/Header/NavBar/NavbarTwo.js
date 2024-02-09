@@ -29,7 +29,7 @@ const NavBarTwo=()=>{
         ConfigureAxios();
         const categories=await getCategoryLists();
         const skinTypes=await getSkinTypeLists();
-        const skinConcerns=await getSkinTypeLists();
+        const skinConcerns=await getConcernLists();
         const ingredients=await getIngredientsLists();
         const brands=await getBrandLists();
 

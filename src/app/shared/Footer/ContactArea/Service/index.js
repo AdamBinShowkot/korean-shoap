@@ -72,7 +72,7 @@ const ServiceMain=()=>{
                         {/* <Link href="/products">
                             Products
                         </Link> */}
-                        <Link href="/products?category=testCat">
+                        <Link href="/products?page=1&per_page=10">
                             Products
                         </Link>
                     </li>
