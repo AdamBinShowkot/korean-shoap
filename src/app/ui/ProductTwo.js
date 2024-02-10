@@ -182,7 +182,7 @@ const ProductTwo=({data})=>{
                     if(index>=0){
                         lists[index].quantity+=1;
                         setShow(true);
-                        setCartLists([...lists2,newObj])
+                        //setCartLists([...lists2,newObj])
                         setAddToCartSuccess(true);
                         setTimeout(()=>{
                             setAddToCartSuccess(false)
@@ -511,10 +511,6 @@ const ProductTwo=({data})=>{
             Width={'20vw'} 
             ToastMsg="Add to on cart successfull." 
             Postion={"bottom-end"}
-            IsTopLeft={false}
-            IsTopRight={false}
-            IsBottomLeft={false}
-            IsBottomRight={true}
             />
             <ErrorToaster 
             IsShow={addToCartError} 

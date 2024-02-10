@@ -25,6 +25,7 @@ import {
 import ProductTwo from '@/app/ui/ProductTwo';
 import PaginationMain from './Pagination';
 import PlaceHolder from '@/app/ui/PlaceHolder';
+import NotFoundComponent from '@/app/ui/NotFound';
 import './index.scss';
 import Link from 'next/link';
 import axios from 'axios';
@@ -210,10 +211,12 @@ const ProductsMain=()=>{
                         setProducts(response.data.items)
                     }else{
                         setProducts([])
+                        setDummyproducts([])
                     }
                 }
             }).catch((error)=>{
-
+                setProducts([])
+                setDummyproducts([])
             })
         }
         else if(brand_id){
@@ -245,10 +248,12 @@ const ProductsMain=()=>{
                         setProducts(response.data.items)
                     }else{
                         setProducts([])
+                        setDummyproducts([])
                     }
                 }
             }).catch((error)=>{
-
+                setProducts([])
+                setDummyproducts([])
             })
         }
         else if(skin_type_id){
@@ -280,10 +285,12 @@ const ProductsMain=()=>{
                         setProducts(response.data.items)
                     }else{
                         setProducts([])
+                        setDummyproducts([])
                     }
                 }
             }).catch((error)=>{
-
+                setProducts([])
+                setDummyproducts([])
             })
         }
         else if(skin_concern_id){
@@ -350,10 +357,12 @@ const ProductsMain=()=>{
                         setProducts(response.data.items)
                     }else{
                         setProducts([])
+                        setDummyproducts([])
                     }
                 }
             }).catch((error)=>{
-
+                setProducts([])
+                setDummyproducts([])
             })
         }else{
             axios.get(`/public/product-list?per_page=${per_page}&page=${page}`)
@@ -403,10 +412,11 @@ const ProductsMain=()=>{
                         setProducts(response.data.items)
                     }else{
                         setProducts([])
+                        setDummyproducts([])
                     }
                 }
             }).catch((error)=>{
-
+                setDummyproducts([])
             })
         }
     },[page,per_page,category_id,brand_id,skin_type_id,skin_concern_id,ingredient_id])
@@ -422,7 +432,7 @@ const ProductsMain=()=>{
         if(categories.length){
             setCategoryLists(categories)
         }else{
-            setCategoryLists([])
+            setCategoryLists([]);
         }
 
         if(skinTypes.length){
@@ -769,15 +779,15 @@ const ProductsMain=()=>{
                                     <ProductTwo  data={dta}/>
                                 </div>
                             })
-                        ):dummyProducts.map((dta)=>{
+                        ):dummyProducts?.length?dummyProducts.map((dta)=>{
                             return <div key={dta.id}>
                                 <PlaceHolder/>
                             </div>
-                        })
+                        }):<NotFoundComponent/>
                     }
                 </Col>
             </Row>
-          {
+           {
             page && per_page?(
                 <Row>
                 <Col 

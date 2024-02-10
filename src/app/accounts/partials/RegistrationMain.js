@@ -11,8 +11,12 @@ import {
     Form,
     Button
 } from 'react-bootstrap';
+import SuccessToaster from '@/app/ui/SuccessToaster';
+import WarningToaster from '@/app/ui/WarningToaster';
 
 const RegistrationMain=()=>{
+    const [loginSuccess,setLoginSuccess]=useState(false);
+    const [loginWarning,setLoginWarning]=useState(false);
     const [registrationInfo,setRegistrationInfo]=useState({
         name:"",
         mobile:"",
@@ -64,11 +68,20 @@ const RegistrationMain=()=>{
             .then((response)=>{
                 //console.log("Registration response: ",response);
                 if(response.status===201){
-                    alert(response.data)
-                    window.location.href="/accounts"
+                    //alert(response.data)
+                    //window.location.href="/accounts";
+                    setLoginSuccess(true);
+                    setTimeout(()=>{
+                        setLoginSuccess(false);
+                        window.location.href="/accounts"
+                    },2000)
                    // console.log(response.data)
                 }
             }).catch((error)=>{
+                setLoginWarning(true);
+                setTimeout(()=>{
+                    setLoginWarning(false);
+                },2000)
                 console.log(error)
             })
         }
@@ -128,6 +141,15 @@ const RegistrationMain=()=>{
                     </Form>
                 </Col>
             </Row>
+            <SuccessToaster 
+            IsShow={loginSuccess} 
+            ToastMsg="Registration Success" 
+            Postion={"top-end"}/>
+            <WarningToaster 
+            IsShow={loginWarning} 
+            ToastMsg="Registration Failed"
+            Width={'22vw'}
+            Postion={"top-end"}/>
         </>
     )
 }

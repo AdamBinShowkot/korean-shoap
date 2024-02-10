@@ -29,6 +29,8 @@ import axios from 'axios';
 import { 
     baseImageServer 
 } from '@/utils/config';
+import WarningModal from '@/app/ui/WarningModal';
+import NotFoundComponent from '@/app/ui/NotFound';
 
 const CartModal=({IsModalShow,setIsModalShow})=>{
     const {userInfo,setUserInfo}=useContext(UserInfoContextApi);
@@ -39,6 +41,11 @@ const CartModal=({IsModalShow,setIsModalShow})=>{
     //const [showModal,setShowModal]=useState(IsModalShow);
     const [quantity,setQuantity]=useState(0);
     const [totalPrice,setTotalPrice]=useState(0);
+    const [IsShow,setIsShow]=useState(false);
+    const [yesDelete,setYesDelete]=useState(false);
+    const [removeData,setRemoveData]=useState({});
+    const [successMsg,setSuccessMsg]=useState("");
+    const [errorMsg,setErrorMsg]=useState("");
 
     // get cart lists on initial load
     useEffect(()=>{
@@ -136,12 +143,18 @@ const CartModal=({IsModalShow,setIsModalShow})=>{
                     if(response.status===200){
                         getCartLists(Token);
                         setAddToCartSuccess(true);
+                        setSuccessMsg("Delete Successfull.")
                         setTimeout(()=>{
-                            setAddToCar
+                            setAddToCartSuccess(false)
                         },2000)
                     }
                     //console.log("delete response: ",response);
                 }).catch((error)=>{
+                    setAddToCartError(true);
+                    setErrorMsg("Delete failed.")
+                    setTimeout(()=>{
+                        setAddToCartError(false)
+                    },2000)
                     console.log("delete error:",error)
                 })
             }else{
@@ -153,10 +166,20 @@ const CartModal=({IsModalShow,setIsModalShow})=>{
 
                     if(newLists?.length){
                         localStorage.setItem("ProductCarts",JSON.stringify(newLists));
+                        setAddToCartSuccess(true);
+                        setSuccessMsg("Delete Successfull.")
+                        setTimeout(()=>{
+                            setAddToCartSuccess(false)
+                        },2000)
                         setCartLists(newLists);
                     }else{
                         localStorage.setItem("ProductCarts",JSON.stringify([]));
                         setCartLists([]);
+                        setAddToCartSuccess(true);
+                        setSuccessMsg("Delete Successfull.")
+                        setTimeout(()=>{
+                            setAddToCartSuccess(false)
+                        },2000)
                     }
                 }
             }
@@ -178,16 +201,26 @@ const CartModal=({IsModalShow,setIsModalShow})=>{
                     //console.log("response ",response)
                     if(response.status==201){
                         //console.log(response)
+                        setSuccessMsg("Add to on cart success");
+                        setAddToCartSuccess(true)
                         getCartLists(Token);
+                        setTimeout(()=>{
+                            setAddToCartSuccess(false)
+                        },2000)
                     }
                 }).catch((error)=>{
+                    setErrorMsg("Add to on cart failed")
+                    setAddToCartError(true);
+                    setTimeout(()=>{
+                        setAddToCartError(false)
+                    },2000)
                     console.log("Err",error)
                 })
             }else{
                 let lists=localStorage.getItem("ProductCarts");
                 lists=JSON.parse(lists);
 
-                console.log("Condition Working...")
+                //console.log("Condition Working...")
                 if(lists?.length){
                     let newLists=[];
 
@@ -208,11 +241,22 @@ const CartModal=({IsModalShow,setIsModalShow})=>{
                     //console.log(newLists)
                     if(newLists?.length){
                         //localStorage.removeItem("ProductCarts");
+
                         localStorage.setItem("ProductCarts",JSON.stringify(newLists));
                         setCartLists(newLists);
+                        setSuccessMsg("Add to on cart success")
+                        setAddToCartSuccess(true);
+                        setTimeout(()=>{
+                            setAddToCartSuccess(false)
+                        },2000)
                     }else{
                         localStorage.setItem("ProductCarts",JSON.stringify([]));
                         setCartLists([]);
+                        setErrorMsg("Add to on cart failed")
+                        setAddToCartError(true);
+                        setTimeout(()=>{
+                            setAddToCartError(false)
+                        },2000)
                     }
                 }
             }
@@ -236,15 +280,25 @@ const CartModal=({IsModalShow,setIsModalShow})=>{
                         if(response.status==201){
                             //console.log(response)
                             getCartLists(Token);
+                            setSuccessMsg("Remove cart success")
+                            setAddToCartSuccess(true);
+                            setTimeout(()=>{
+                                setAddToCartSuccess(false)
+                            },2000)
                         }
                     }).catch((error)=>{
+                        setErrorMsg("Remove cart failed")
+                        setAddToCartError(true);
+                        setTimeout(()=>{
+                            setAddToCartError(false)
+                        },2000)
                         console.log("Err",error)
                     })
                 }else{
                     let lists=localStorage.getItem("ProductCarts");
                     lists=JSON.parse(lists);
     
-                    console.log("Condition Working...")
+                    //console.log("Condition Working...")
                     if(lists?.length){
                         let newLists=[];
     
@@ -267,9 +321,19 @@ const CartModal=({IsModalShow,setIsModalShow})=>{
                             //localStorage.removeItem("ProductCarts");
                             localStorage.setItem("ProductCarts",JSON.stringify(newLists));
                             setCartLists(newLists);
+                            setSuccessMsg("Remove cart success")
+                            setAddToCartSuccess(true);
+                            setTimeout(()=>{
+                                setAddToCartSuccess(false)
+                            },2000)
                         }else{
                             localStorage.setItem("ProductCarts",JSON.stringify([]));
                             setCartLists([]);
+                            setErrorMsg("Remove cart failed")
+                            setAddToCartError(true);
+                            setTimeout(()=>{
+                                setAddToCartError(false)
+                            },2000)
                         }
                     }
                 }
@@ -381,7 +445,9 @@ const CartModal=({IsModalShow,setIsModalShow})=>{
                                                     width={20}
                                                     alt="Cart Remove."
                                                     onClick={()=>{
-                                                        handleRemoveCart(dta);
+                                                        setIsShow(true);
+                                                        setRemoveData(dta);
+                                                       // handleRemoveCart(dta);
                                                     }}
                                                     className="cart-item-remover"
                                                     >
@@ -436,7 +502,7 @@ const CartModal=({IsModalShow,setIsModalShow})=>{
                                    </span>
                                 </Card.Footer>
                             </Card>
-                        }):""
+                        }):<NotFoundComponent/>
                     }
                 </Modal.Body>
                 <Modal.Footer>
@@ -474,6 +540,7 @@ const CartModal=({IsModalShow,setIsModalShow})=>{
                                 onClick={()=>{
                                     setIsModalShow(false);
                                 }}
+                                disabled={cartLists?.length?false:true}
                                 >
                                     Proceed
                                     <Image
@@ -494,6 +561,24 @@ const CartModal=({IsModalShow,setIsModalShow})=>{
                     </Row>
                 </Modal.Footer>
             </Modal>
+            <WarningModal 
+            IsShow={IsShow} 
+            setIsShow={setIsShow} 
+            setYesDelete={setYesDelete}
+            deletData={removeData}
+            handleRemoveCart={handleRemoveCart}
+            />
+            <SuccessToaster
+            IsShow={addToCartSuccess}
+            Width={'20vw'} 
+            ToastMsg={successMsg}
+            Postion={"bottom-end"}
+            />
+            <ErrorToaster 
+            IsShow={addToCartError} 
+            ToastMsg={errorMsg}
+            Width={'20vw'}
+            Postion={"bottom-end"}/>
         </>
     )
 }

@@ -18,12 +18,16 @@ import axios from 'axios';
 import { 
     useRouter 
 } from 'next/navigation';
+import SuccessToaster from '@/app/ui/SuccessToaster';
+import WarningToaster from '@/app/ui/WarningToaster';
 
 const CheckoutMain=()=>{
     const router=useRouter();
     const {cartLists,setCartLists}=useContext(AddToCartContext);
     const [Token,setToken]=useState("");
     const [userInfo,setUserInfo]=useState({});
+    const [checkoutSuccess,setCheckoutSuccess]=useState(false);
+    const [checkoutError,setCheckoutError]=useState(false);
    
     const [totalPrice,setTotalPrice]=useState(0);
     const [customerInfo,setCustomerInfo]=useState({
@@ -155,7 +159,12 @@ const CheckoutMain=()=>{
                 console.log("order response: ",response);
                 if(response.status===200){
                     getCartLists(Token)
-                    alert("Order Completed Suffessfully.")
+                    setCheckoutSuccess(true);
+                    setTimeout(()=>{
+                        setCheckoutSuccess(false);
+                        //window.location.href="/accounts"
+                    },2000)
+                    //alert("Order Completed Suffessfully.")
                     try{
                         localStorage.removeItem("ProductCarts");
                         setCartLists([]);
@@ -165,12 +174,22 @@ const CheckoutMain=()=>{
                     router.push("/checkout-success")
                 }
             }).catch((error)=>{
-                alert("Something Went Wrong.")
+                //alert("Something Went Wrong.")
+                setCheckoutError(true);
+                setTimeout(()=>{
+                    setCheckoutError(false);
+                    //window.location.href="/accounts"
+                },2000)
                 console.log("order error: ",error)
             })
     
         }else{
-            alert("Please filled mandatory filed.")
+            setCheckoutError(true);
+            setTimeout(()=>{
+                setCheckoutError(false);
+                //window.location.href="/accounts"
+            },2000)
+            //alert("Please filled mandatory filed.")
         }
     }
     return(
@@ -453,6 +472,15 @@ const CheckoutMain=()=>{
                     </Row>
                 </Col>
             </Row>
+            <SuccessToaster 
+            IsShow={checkoutSuccess} 
+            ToastMsg="Checkout Success." 
+            Postion={"top-end"}/>
+            <WarningToaster 
+            IsShow={checkoutError} 
+            ToastMsg="Checkout Error."
+            Width={'20vw'}
+            Postion={"top-end"}/>
         </>
     )
 }
