@@ -126,6 +126,7 @@ const ProductsMain=()=>{
     const skin_type_id=searchParams.get('skin_type_id');
     const skin_concern_id=searchParams.get('skin_concern_id');
     const ingredient_id=searchParams.get('ingredient_id');
+    const name=searchParams.get("name");
     const [dummyProducts,setDummyproducts]=useState([
         {
             id:1
@@ -153,11 +154,26 @@ const ProductsMain=()=>{
     const [skinConcernLists,setSkinConernLists]=useState([]);
     const [ingredientLists,setIngredientLists]=useState([]);
     const [brandLists,setBrandLists]=useState([]);
-    const [activeBrand,setActiveBrand]=useState(brand_id?brand_id:0);
-    const [activeCategories,setActiveCategories]=useState(category_id?category_id:0);
-    const [activeSkinConcern,setActiveSkinConcern]=useState(skin_concern_id?skin_concern_id:0);
-    const [activeSkinType,setActiveSkinType]=useState(skin_type_id?skin_type_id:0);
-    const [activeIngreidients,setActiveIngreidients]=useState(ingredient_id?ingredient_id:0);
+    const [activeBrand,setActiveBrand]=useState({
+        brand_id:brand_id?brand_id:0,
+        name:"Brands"
+    });
+    const [activeCategories,setActiveCategories]=useState({
+        category_id:category_id?category_id:0,
+        name:"Categories"
+    });
+    const [activeSkinConcern,setActiveSkinConcern]=useState({
+        skin_concern_id:skin_concern_id?skin_concern_id:0,
+        name:"Skin Concern"
+    });
+    const [activeSkinType,setActiveSkinType]=useState({
+        skin_type_id:skin_type_id?skin_type_id:0,
+        name:"Skin Type"
+    });
+    const [activeIngreidients,setActiveIngreidients]=useState({
+        ingredient_id:ingredient_id?ingredient_id:0,
+        name:"Ingreidients"
+    });
 
     useEffect(()=>{
         inittialLoad()
@@ -166,10 +182,26 @@ const ProductsMain=()=>{
     useEffect(()=>{
         ConfigureAxios();
         if(category_id){
-            setActiveBrand(0);
-            setActiveSkinType(0);
-            setActiveSkinConcern(0);
-            setActiveIngreidients(0);
+            setActiveCategories({
+                category_id:category_id,
+                name:name
+            })
+            setActiveBrand({
+                brand_id:0,
+                name:"Brands"
+            });
+            setActiveSkinType({
+                skin_type_id:0,
+                name:"Skin Type"
+            });
+            setActiveSkinConcern({
+                skin_concern_id:0,
+                name:"Skin Concern"
+            });
+            setActiveIngreidients({
+                ingredient_id:0,
+                name:"Ingredients"
+            });
             axios.get(`/public/product-filter?category_id=${category_id}`)
             .then((response)=>{
                 if(response.status===200){
@@ -184,11 +216,27 @@ const ProductsMain=()=>{
 
             })
         }
-        if(brand_id){
-            setActiveCategories(0);
-            setActiveSkinType(0);
-            setActiveSkinConcern(0);
-            setActiveIngreidients(0);
+        else if(brand_id){
+            setActiveCategories({
+                category_id:0,
+                name:"Categories"
+            })
+            setActiveBrand({
+                brand_id:brand_id,
+                name:name
+            });
+            setActiveSkinType({
+                skin_type_id:0,
+                name:"Skin Type"
+            });
+            setActiveSkinConcern({
+                skin_concern_id:0,
+                name:"Skin Concern"
+            });
+            setActiveIngreidients({
+                ingredient_id:0,
+                name:"Ingredients"
+            });
             axios.get(`/public/product-filter?brand_id=${brand_id}`)
             .then((response)=>{
                 if(response.status===200){
@@ -203,11 +251,27 @@ const ProductsMain=()=>{
 
             })
         }
-        if(skin_type_id){
-            setActiveBrand(0);
-            setActiveCategories(0);
-            setActiveSkinConcern(0);
-            setActiveIngreidients(0);
+        else if(skin_type_id){
+            setActiveCategories({
+                category_id:0,
+                name:"Categories"
+            })
+            setActiveBrand({
+                brand_id:0,
+                name:"Brands"
+            });
+            setActiveSkinType({
+                skin_type_id:skin_type_id,
+                name:name
+            });
+            setActiveSkinConcern({
+                skin_concern_id:0,
+                name:"Skin Concern"
+            });
+            setActiveIngreidients({
+                ingredient_id:0,
+                name:"Ingredients"
+            });
             axios.get(`/public/product-filter?skin_type_id=${skin_type_id}`)
             .then((response)=>{
                 if(response.status===200){
@@ -222,11 +286,27 @@ const ProductsMain=()=>{
 
             })
         }
-        if(skin_concern_id){
-            setActiveBrand(0);
-            setActiveSkinType(0);
-            setActiveCategories(0);
-            setActiveIngreidients(0);
+        else if(skin_concern_id){
+            setActiveCategories({
+                category_id:0,
+                name:"Categories"
+            })
+            setActiveBrand({
+                brand_id:0,
+                name:"Brands"
+            });
+            setActiveSkinType({
+                skin_type_id:0,
+                name:"Skin Type"
+            });
+            setActiveSkinConcern({
+                skin_concern_id:skin_concern_id,
+                name:name
+            });
+            setActiveIngreidients({
+                ingredient_id:0,
+                name:"Ingredients"
+            });
             axios.get(`/public/product-filter?skin_concern_id=${skin_concern_id}`)
             .then((response)=>{
                 if(response.status===200){
@@ -241,11 +321,27 @@ const ProductsMain=()=>{
 
             })
         }
-        if(ingredient_id){
-            setActiveBrand(0);
-            setActiveSkinType(0);
-            setActiveSkinConcern(0);
-            setActiveCategories(0);
+        else if(ingredient_id){
+            setActiveCategories({
+                category_id:0,
+                name:"Categories"
+            })
+            setActiveBrand({
+                brand_id:0,
+                name:"Brands"
+            });
+            setActiveSkinType({
+                skin_type_id:0,
+                name:"Skin Type"
+            });
+            setActiveSkinConcern({
+                skin_concern_id:0,
+                name:"Skin Concern"
+            });
+            setActiveIngreidients({
+                ingredient_id:ingredient_id,
+                name:name
+            });
             axios.get(`/public/product-filter?ingredient_id=${ingredient_id}`)
             .then((response)=>{
                 if(response.status===200){
@@ -439,28 +535,34 @@ const ProductsMain=()=>{
     const handleOnFilterMenuChange=(data,name)=>{
         if(name=="category"){
             if(data.id){
-                setActiveCategories(data.id)
-                history.push(`/products?category_id=${data.id}`)
+               // setActiveCategories(data.id)
+                history.push(
+                    `/products?name=${data.name}&category_id=${data.id}`,
+                    `/products?name=${data.name}`
+                )
+                // history.push({
+                //     pathname:
+                // })
             }
         }else if(name=="brand"){
             if(data.id){
-                setActiveBrand(data.id);
-                history.push(`/products?brand_id=${data.id}`)
+               // setActiveBrand(data.id);
+                history.push(`/products?name=${data.name}&brand_id=${data.id}`)
             }
         }else if(name=="skin-type"){
             if(data.id){
-                setActiveSkinType(data.id)
-                history.push(`/products?skin_type_id=${data.id}`)
+                //setActiveSkinType(data.id)
+                history.push(`/products?name=${data.name}&skin_type_id=${data.id}`)
             }
         }else if(name=="skin-concern"){
             if(data.id){
-                setActiveSkinConcern(data.id)
-                history.push(`/products?skin_concern_id=${data.id}`)
+                //setActiveSkinConcern(data.id)
+                history.push(`/products?name=${data.name}&skin_concern_id=${data.id}`)
             }
         }else if(name=="ingredient"){
             if(data.id){
-                setActiveIngreidients(data.id)
-                history.push(`/products?ingredient_id=${data.id}`)
+                //setActiveIngreidients(data.id)
+                history.push(`/products?name=${data.name}ingredient_id=${data.id}`)
             }
         }
     }
@@ -488,7 +590,7 @@ const ProductsMain=()=>{
                                 width:'10vw !important',
                             }}
                             >
-                               Category
+                               {activeCategories?.name?activeCategories.name:""}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu 
@@ -503,7 +605,7 @@ const ProductsMain=()=>{
                                             handleOnFilterMenuChange(dta,'category')
                                         }}
                                         key={dta.id}
-                                        className={`filter-item-menu ${activeCategories==dta.id?'filter-item-menu-active':''}`}
+                                        className={`filter-item-menu ${activeCategories.category_id==dta.id?'filter-item-menu-active':''}`}
                                         >
                                             {dta.name}
                                         </Dropdown.Item>
@@ -524,7 +626,7 @@ const ProductsMain=()=>{
                                 width:'10vw !important',
                             }}
                             >
-                               Brands
+                               {activeBrand?.name?activeBrand.name:""}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu
@@ -534,7 +636,7 @@ const ProductsMain=()=>{
                                     brandLists?.length?brandLists.map((dta)=>{
                                         return <Dropdown.Item 
                                         eventKey={`${dta.id}`}
-                                        className={`filter-item-menu ${activeBrand==dta.id?'filter-item-menu-active':''}`}
+                                        className={`filter-item-menu ${activeBrand.brand_id==dta.id?'filter-item-menu-active':''}`}
                                         onClick={(e)=>{
                                             handleOnFilterMenuChange(dta,'brand')
                                         }}
@@ -559,7 +661,7 @@ const ProductsMain=()=>{
                                 width:'10vw !important',
                             }}
                             >
-                               Skin Type
+                               {activeSkinType?.name?activeSkinType.name:""}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu
@@ -573,7 +675,7 @@ const ProductsMain=()=>{
                                             handleOnFilterMenuChange(dta,'skin-type')
                                         }}
                                         key={dta.id}
-                                        className={`filter-item-menu ${activeSkinType==dta.id?'filter-item-menu-active':''}`}
+                                        className={`filter-item-menu ${activeSkinType.skin_type_id==dta.id?'filter-item-menu-active':''}`}
                                         >
                                             {dta.name}
                                         </Dropdown.Item>
@@ -594,7 +696,7 @@ const ProductsMain=()=>{
                                 width:'10vw !important',
                             }}
                             >
-                               Skin Concern
+                               {activeSkinConcern?.name?activeSkinConcern.name:""}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu 
@@ -609,7 +711,7 @@ const ProductsMain=()=>{
                                             handleOnFilterMenuChange(dta,'skin-concern')
                                         }}
                                         key={dta.id}
-                                        className={`filter-item-menu ${activeSkinConcern==dta.id?'filter-item-menu-active':''}`}
+                                        className={`filter-item-menu ${activeSkinConcern.skin_concern_id==dta.id?'filter-item-menu-active':''}`}
                                         >
                                             {dta.name}
                                         </Dropdown.Item>
@@ -630,7 +732,7 @@ const ProductsMain=()=>{
                                 width:'10vw !important',
                             }}
                             >
-                               Ingredients
+                               {activeIngreidients?.name?activeIngreidients.name:""}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu
@@ -644,7 +746,7 @@ const ProductsMain=()=>{
                                             handleOnFilterMenuChange(dta,'ingredient')
                                         }}
                                         key={dta.id}
-                                        className={`filter-item-menu ${activeIngreidients==dta.id?'filter-item-menu-active':''}`}
+                                        className={`filter-item-menu ${activeIngreidients.ingredient_id==dta.id?'filter-item-menu-active':''}`}
                                         >
                                             {dta.name}
                                         </Dropdown.Item>
@@ -660,22 +762,6 @@ const ProductsMain=()=>{
                 xs={12}
                 className="products-bottom-container-col"
                 >
-                    {/* <Row>
-                        {
-                            products?.length?(
-                                products.map((dta)=>{  
-                                return <Col xs={3}
-                                style={{
-                                    margin:'20px 0px'
-                                }}>
-                                    <Link href="/products/2">
-                                        <Product data={dta}/>
-                                    </Link>
-                                </Col>
-                                })
-                            ):""
-                        }
-                    </Row> */}
                     {
                         products?.length?(
                             products.map((dta)=>{  

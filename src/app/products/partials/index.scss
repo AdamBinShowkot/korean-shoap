@@ -33,7 +33,8 @@
     padding: 0px;
 }
 .filter-toggle-button{
-    width:10vw;
+    max-width: 18vw;
+    min-width: 12vw;
     display:flex;
     justify-content:center;
     align-items:center;
