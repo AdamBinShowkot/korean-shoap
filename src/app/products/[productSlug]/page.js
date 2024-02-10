@@ -32,7 +32,7 @@ async function getProductsDetails({productSlug}){
         console.log("Heloooo")
         response=axios.get(`/public/product-details/${productSlug}`).then((res)=>{
             if(res.status===200){
-                //console.log("Products : ",res.data);
+                console.log("Products : ",res.data);
                 return res.data;
             }
         }).catch((error)=>{

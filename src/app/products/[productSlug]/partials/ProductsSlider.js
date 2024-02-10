@@ -3,7 +3,8 @@ import React from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import Product from '@/app/ui/Product';
+//import Product from '@/app/ui/Product';
+import ProductTwo from '@/app/ui/ProductTwo';
 
 const FooterProductSlider=()=>{
     const settings = {
@@ -24,34 +25,34 @@ const FooterProductSlider=()=>{
         <>
             <Slider {...settings}>
                 <div>
-                    <Product/>
+                    <ProductTwo/>
                 </div>
                 <div>
-                    <Product/>
+                    <ProductTwo/>
                 </div>
                 <div>
-                    <Product/>
+                    <ProductTwo/>
                 </div>
                 <div>
-                    <Product/>
+                    <ProductTwo/>
                 </div>
                 <div>
-                    <Product/>
+                    <ProductTwo/>
                 </div>
                 <div>
-                    <Product/>
+                    <ProductTwo/>
                 </div>
                 <div>
-                    <Product/>
+                    <ProductTwo/>
                 </div>
                 <div>
-                    <Product/>
+                    <ProductTwo/>
                 </div>
                 <div>
-                    <Product/>
+                    <ProductTwo/>
                 </div>
                 <div>
-                    <Product/>
+                    <ProductTwo/>
                 </div>
             </Slider>
         </>

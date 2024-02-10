@@ -268,7 +268,7 @@ const ProductTwo=({data})=>{
                     alignItems:'center',
                     
                 }}>
-                    <Link href={`/products/${data?.slug?data.slug:1}`}>
+                    <Link href={`${data?.slug?`/products/${data?.slug}`:'/products/page=1&per_page=10'}`}>
                         <Row
                         className='card-container'
                         >
@@ -332,7 +332,7 @@ const ProductTwo=({data})=>{
                             }}
                             >
                                 <Link
-                                href={`/products/${data?.slug?data.slug:1}`}
+                                href={`${data?.slug?`/products/${data?.slug}`:'/products/page=1&per_page=10'}`}
                                 className="products-link-href"
                                 >
                                     <span>
