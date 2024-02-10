@@ -61,6 +61,23 @@
     background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1)) !important;
     color: #fff;
 }
+.page-next-prev-button{
+    color: #000;
+}
+.pagination-button{
+    margin: 0px 5px;
+    border-radius: 50px;
+    background-color: #fff;
+    color: #000;
+    border-color: grey;
+    padding-left:15px;
+    padding-right: 15px;
+}
+.pagination-active-lists{
+    background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1)) !important;
+    color: #fff;
+    border-color: none;
+}
 .filter-item-menu:last-of-type{
     border-bottom: 1px solid #b37feb;
 }

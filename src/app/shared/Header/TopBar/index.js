@@ -34,33 +34,31 @@ import axios from 'axios';
 import { 
     baseImageServer 
 } from '@/utils/config';
+import CartModal from '../../CartModal';
 
 const TopBarMain=()=>{
     const {userInfo,setUserInfo}=useContext(UserInfoContextApi);
     const {cartLists,setCartLists}=useContext(AddToCartContext);
+    const [totalQty,setTotalQty]=useState(0);
     const [cartTotal,setCartTotal]=useState(0);
     const [showModal,setShowModal]=useState(false);
+    const [token,setToken]=useState("");
     
 
     useEffect(()=>{
-        // const token=localStorage.getItem("token");
-
-        // if(token){
-        //     getCartLists(token)
-        // }else{
-        //     let lists=localStorage.getItem("ProductCarts");
-        //     lists=JSON.parse(lists);
-        //     if(lists?.length){
-        //         setCartLists(lists)
-        //     }
-        // }
-    },[])
-
-    useEffect(()=>{
+        const Token=localStorage.getItem("token");
+        if(Token){
+            setToken(Token)
+        }else{
+            setToken("")
+        }
         if(cartLists?.length){
             const total=cartLists.reduce((accum,current)=>{return accum+(parseFloat(current.price)*current.quantity)},0)
+            const totalQty=cartLists.reduce((accum,current)=>{return accum+parseInt(current.quantity)},0);
+
             const totals=parseFloat(total).toFixed(2);
             setCartTotal(totals);
+            setTotalQty(totalQty);
         }
     },[cartLists])
 
@@ -78,7 +76,7 @@ const TopBarMain=()=>{
                 }}
                 >
                     <Col 
-                    xs={3} 
+                    xs={2} 
                     className='logo-div'
                     >
                         <Link href="/">
@@ -96,33 +94,22 @@ const TopBarMain=()=>{
                         <HeaderSearchInput/>
                     </Col>
                     <Col 
-                    xs={2}
+                    xs={3}
                     style={{
                         textAlign:'right'
                     }}
                     >
-                        <Link
-                        href="/accounts"
-                        >
-                            <Button
-                            className='user-button'
-                            >
-                                <Image
-                                src="/user.png"
-                                width={16}
-                                height={16}
-                                alt="search"
-                                />
-                            </Button>
-                        </Link>
-
-                       <Link
+                        {/* <Link
                         href="/my-order"
-                       >
+                        > */}
                             <Button
                             className='user-button'
-                            style={{
-                                marginLeft:'10px'
+                            onClick={()=>{
+                                if(cartLists.length){
+                                    setShowModal(true)
+                                }else{
+
+                                }
                             }}
                             >
                                 <Image
@@ -133,9 +120,54 @@ const TopBarMain=()=>{
                                 onClick={()=>{
                                 
                                 }}
+                                >
+                                </Image>
+                                <span
+                                style={{
+                                    zIndex:'100',
+                                    position:'relative',
+                                    top:'-26px !important',
+                                    fontSize:'11px',
+                                    padding:'2px 4px',
+                                    borderRadius:'50px',
+                                    backgroundColor:'#05f600',
+                                    left:'5px'
+                                }}
+                                >
+                                    {totalQty?totalQty:0}
+                                </span>
+                            </Button>
+                        {/* </Link> */}
+                        <Link
+                        href="/accounts"
+                        >
+                            <Button
+                            className='user-button'
+                            style={{
+                                margin:'0px 5px'
+                            }}
+                            >
+                                <Image
+                                src="/user.png"
+                                width={16}
+                                height={16}
+                                alt="search"
                                 />
                             </Button>
-                       </Link>
+                        </Link>
+                        {
+                            !token?<Link href="accounts">
+                            <span
+                                style={{
+                                    fontSize:'12px'
+                                }}
+                                >
+                                    <b>
+                                        Sign In / Login In
+                                    </b>
+                                </span>
+                        </Link>:""
+                        }
                     </Col>
                     <Col 
                     className='header-social-container'
@@ -158,6 +190,10 @@ const TopBarMain=()=>{
                             <InputGroupText
                             className='normal-input global-search'
                             > */}
+                                <a
+                                href='https://www.facebook.com/koreanshopsBangladesh'
+                                target="_blank"
+                                >
                                 <Image
                                 className="header-social-image"
                                 src="/facebook.png"
@@ -165,6 +201,7 @@ const TopBarMain=()=>{
                                 height={11}
                                 alt="search"
                                 />
+                                </a>
                             {/* </InputGroupText>
                             <InputGroupText
                             className='normal-input global-search'
@@ -193,6 +230,7 @@ const TopBarMain=()=>{
                     </Col>
                 </Row>
             </Col>
+            <CartModal IsModalShow={showModal} setIsModalShow={setShowModal}/>
         </>
     )
 }

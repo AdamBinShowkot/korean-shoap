@@ -8,12 +8,14 @@ import {
 import {
     Row,
     Col,
-    Pagination
+    Pagination,
+    Button
 } from 'react-bootstrap';
 import './index.scss';
+import Link from 'next/link';
 
-const PaginationMain=()=>{
-    const {page,setPage}=useContext(ProductsContextApi);
+const PaginationMain=({props})=>{
+   // const {page,setPage}=useContext(ProductsContextApi);
     return(
         <>
             <Pagination
@@ -21,17 +23,31 @@ const PaginationMain=()=>{
             //     console.log(e)
             // }}
             >
-                <Pagination.Prev />
-                <Pagination.Item 
-                key={1}
-                onClick={()=>{
-                    setPage(1)
-                }}
-                active={page==1}
+                <Link
+                // herf={`/products?${}`}
+                href={`/products?${props.previousPageUrl}`}
                 >
-                    {1}
-                </Pagination.Item>
-                <Pagination.Item 
+                    <Button
+                    className={`page-next-prev-button `}
+                    >
+                        {"<"}
+                    </Button>
+                </Link>
+                {
+                    props.pagesArr?.length?props.pagesArr.map((dta)=>{
+                        return <Link
+                        key={dta.id}
+                        href={`/products?page=${dta.page_no}&per_page=${props.per_page}`}
+                        >
+                            <Button
+                            className={`pagination-button ${dta.id==props.currentPage?'pagination-active-lists':""}`}
+                            >
+                                {dta.id}
+                            </Button>
+                        </Link>
+                    }):""
+                }
+                {/* <Pagination.Item 
                 key={2}
                 onClick={()=>{
                     setPage(2)
@@ -48,8 +64,18 @@ const PaginationMain=()=>{
                 active={page==3}
                 >
                     {3}
-                </Pagination.Item>
-                <Pagination.Next />
+                </Pagination.Item> */}
+                {/* <Pagination.Next /> */}
+                <Link
+                // herf={`/products?${}`}
+                href={`/products?${props.nextPagesUrl}`}
+                >
+                    <Button
+                    className={`page-next-prev-button `}
+                    >
+                        {">"}
+                    </Button>
+                </Link>
             </Pagination>
         </>
     )
