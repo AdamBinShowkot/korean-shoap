@@ -121,6 +121,7 @@ const ProductsMain=()=>{
     const history=useRouter();
     const searchParams = useSearchParams()
     const page = searchParams.get('page');
+    const query = searchParams.get('q');
     const per_page = searchParams.get('per_page');
     const category_id = searchParams.get('category_id');
     const brand_id=searchParams.get('brand_id');
@@ -364,7 +365,62 @@ const ProductsMain=()=>{
                 setProducts([])
                 setDummyproducts([])
             })
-        }else{
+        }else if(query){
+            axios.get(`/public/product-search?q=${query}`)
+            .then((response)=>{
+                if(response.status===200){
+                    // console.log(response.data)
+                    if(response.data?.items?.length){
+                        const {meta}=response.data;
+                        //console.log(meta)
+                        const {
+                            total_item,
+                            total_page,
+                            per_page,
+                            current_page,
+                            first_page_url,
+                            last_page_url
+                        }=meta;
+
+                        let myArr=[]
+                        for(let i=1; i<=total_page; i++){
+                            const newObj={
+                                id:i,
+                                page_no:i
+                            }
+                            myArr=[...myArr,newObj];
+                        }
+
+                        let myLast=last_page_url.split("/");
+                        let myFirst=first_page_url.split("/");
+
+                        if(myLast.length){
+                            let len=myLast.length;
+                            myLast=myLast[len-1];
+                            myLast=myLast.split("?")
+                            setNextPagesUrl(myLast[1])
+                           // console.log("My last : ",myLast[1]);
+                        }
+                        if(myFirst.length){
+                            let len=myFirst.length;
+                            myFirst=myFirst[len-1];
+                            myFirst=myFirst.split("?")
+                            setPreviousPageUrl(myFirst[1])
+                            //console.log("My last : ",myFirst[1]);
+                        }
+                        setCurrentPage(current_page);
+                        setPagesArr(myArr);
+                        setProducts(response.data.items)
+                    }else{
+                        setProducts([])
+                        setDummyproducts([])
+                    }
+                }
+            }).catch((error)=>{
+                setDummyproducts([])
+            })
+        }
+        else{
             axios.get(`/public/product-list?per_page=${per_page}&page=${page}`)
             .then((response)=>{
                 if(response.status===200){
@@ -419,7 +475,7 @@ const ProductsMain=()=>{
                 setDummyproducts([])
             })
         }
-    },[page,per_page,category_id,brand_id,skin_type_id,skin_concern_id,ingredient_id])
+    },[page,per_page,category_id,brand_id,skin_type_id,skin_concern_id,ingredient_id,query])
 
     const inittialLoad=async()=>{
         ConfigureAxios();
