@@ -114,7 +114,7 @@ export default async function Page({params}){
                     >
                         <Col xs={12}>
                             {/* <NormalProduct/> */}
-                            <ProductSlider/>
+                            {/* <ProductSlider/> */}
                         </Col>
                     </Row>
                 </Col>

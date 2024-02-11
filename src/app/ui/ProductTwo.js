@@ -465,7 +465,7 @@ const ProductTwo=({data})=>{
                                     marginTop:"20px"
                                 }}
                                 >
-                                    <Link href="/products">
+                                    <Link href="/products?page=1&per_page=10">
                                         <Button
                                         style={{
                                             margin:"0px 15px",

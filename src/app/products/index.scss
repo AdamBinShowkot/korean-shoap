@@ -44,7 +44,7 @@
     }
     .products-bottom-container-col{
         padding: 15px 4px;
-        justify-content: space-between;
+        justify-content: flex-start;
         .home-product-container{
             width: 44vw !important;
         }
@@ -59,6 +59,6 @@
     }
     .products-bottom-container-col{
         padding: 30px 80px;
-        justify-content: center;
+        justify-content: flex-start;
     }
 }
