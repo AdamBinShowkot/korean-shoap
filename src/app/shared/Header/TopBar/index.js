@@ -194,25 +194,27 @@ const TopBarMain=()=>{
                                 href='https://www.facebook.com/koreanshopsBangladesh'
                                 target="_blank"
                                 >
-                                <Image
-                                className="header-social-image"
-                                src="/facebook.png"
-                                width={11}
-                                height={11}
-                                alt="search"
-                                />
+                                    <Image
+                                    className="header-social-image"
+                                    src="/facebook.png"
+                                    width={11}
+                                    height={11}
+                                    alt="search"
+                                    />
                                 </a>
                             {/* </InputGroupText>
                             <InputGroupText
                             className='normal-input global-search'
                             > */}
-                                <Image
-                                className="header-social-image"
-                                src="/instagram.png"
-                                width={20}
-                                height={20}
-                                alt="search"
-                                />
+                                <a href="https://www.instagram.com/koreanshopbd/" target='_blank'>
+                                    <Image
+                                    className="header-social-image"
+                                    src="/instagram.png"
+                                    width={20}
+                                    height={20}
+                                    alt="search"
+                                    /> 
+                                </a>
                             {/* </InputGroupText>
                         </InputGroup> */}
                         {/* </Button> */}

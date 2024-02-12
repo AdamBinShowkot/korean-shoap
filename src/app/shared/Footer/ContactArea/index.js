@@ -46,23 +46,33 @@ const ContactAreaMain=()=>{
                         {/* <Button
                         className='normal-social-button no-left-margin'
                         > */}
+                        <a
+                        href='https://www.facebook.com/koreanshopsBangladesh'
+                        target="_blank"
+                        >
                             <Image
                             src="/facebook.png"
                             width={11}
                             height={11}
                             alt="search"
                             />
+                        </a>
+                           
                         {/* </Button> */}
                     
                         {/* <Button
                         className='normal-social-button'
+
                         > */}
+                        <a href="https://www.instagram.com/koreanshopbd/" target='_blank'>
                             <Image
                             src="/instagram.png"
                             width={20}
                             height={20}
                             alt="search"
                             />
+                        </a>
+                            
                         {/* </Button> */}
                         {/* <Button
                         className='normal-social-button'
