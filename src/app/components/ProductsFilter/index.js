@@ -21,14 +21,15 @@ function getProductLists(){
     ConfigureAxios();
     axios.get('/public/feature-product/brand')
     .then((response)=>{
-        console.log("Res",response)
+       // console.log("Res",response)
     }).catch((error)=>{
 
     })
 }
 
 const IsotopeReact = ({lists}) => {
-  const isotope = useRef()
+    //console.log("Lists : ",lists)
+   const isotope = useRef()
   // store the filter keyword in a state
     const [filterKey, setFilterKey] = useState('*')
     const [products,setProducts]=useState([]);
@@ -52,11 +53,11 @@ const IsotopeReact = ({lists}) => {
     useEffect(()=>{
     if(lists.length){
         lists.map((dta)=>{
-            if(dta.name=="Neogen"){
+            if(dta.slug=="neogen"){
                 if(dta?.products?.length){
                     setNeogenLists(dta.products);
                 }
-            }else if(dta.name=="COSRX"){
+            }else if(dta.slug=="cosrx"){
                 if(dta?.products?.length){
                     setCosrxLists(dta.products);
                 }

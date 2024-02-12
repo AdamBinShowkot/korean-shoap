@@ -38,6 +38,11 @@ const HeaderSearchInput=()=>{
                 onChange={(e)=>{
                     setSearchParams(e.target.value);
                 }}
+                onKeyDown={(e)=>{
+                    if(e.key=="Enter" && searchParams){
+                        router.push(`/products?q=${searchParams}`)
+                    }
+                }}
                 >
 
                 </FormControl>
