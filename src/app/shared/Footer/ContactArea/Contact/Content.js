@@ -9,10 +9,10 @@ const Content=({isContentShow})=>{
                 50 Zigatola Kacha Bazar,Dhaka,Bangladesh
                 </span><br/>
                 <span>
-                koreanshopbangladesh@gmail.com
+                Mail:koreanshopbangladesh@gmail.com
                 </span>
                 <br/>
-                <span>+8801303-779646</span>
+                <span>Phone:+8801303-779646</span>
             </p>
         </>
     )

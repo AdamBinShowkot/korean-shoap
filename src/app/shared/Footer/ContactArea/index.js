@@ -90,7 +90,7 @@ const ContactAreaMain=()=>{
                     xs={12}
                     className='footer-copyright-column'
                     >
-                       <span>© 2023 Korean Shop BD | All Rights Reserved.</span> 
+                       <span>© 2024 Korean Shop BD | All Rights Reserved.</span> 
                     </Col>
                     <Col 
                     xl={3}

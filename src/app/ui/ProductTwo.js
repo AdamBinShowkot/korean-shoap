@@ -29,12 +29,14 @@ import "slick-carousel/slick/slick-theme.css";
 import ProductHover from './partials/ProuctHover';
 import './indexTwo.scss';
 import ConfigureAxios from '@/utils/axiosConfig';
+import CartModal from '../shared/CartModal';
 import axios from 'axios';
 
 
 const ProductTwo=({data})=>{
     //console.log(data)
     const [hoverShow,setHoverShow]=useState(false);
+    const [showModal,setShowModal]=useState(false);
     const {cartLists,setCartLists}=useContext(AddToCartContext);
     const variants=data?.variant?.length?data?.variant[0]:{}
     const [sizes,setSizes]=useState([]);
@@ -485,6 +487,10 @@ const ProductTwo=({data})=>{
                                         backgroundColor:"#389e0d",
                                         border:'none'
                                     }}
+                                    onClick={()=>{
+                                        setShowModal(true);
+                                        handleClose();
+                                    }}
                                     >
                                         Go To Cart
                                     </Button>
@@ -517,6 +523,7 @@ const ProductTwo=({data})=>{
             ToastMsg="Add to on cart failed"
             Width={'20vw'}
             Postion={"bottom-end"}/>
+            <CartModal IsModalShow={showModal} setIsModalShow={setShowModal}/>
         </>
     )
 }

@@ -26,10 +26,12 @@ import {
 import SuccessToaster from './SuccessToaster';
 import ErrorToaster from './ErrorToaster';
 import ConfigureAxios from '@/utils/axiosConfig';
+import CartModal from '../shared/CartModal';
 import axios from 'axios';
 
 const FilterProductTwo=({details})=>{
     const [hoverShow,setHoverShow]=useState(false);
+    const [showModal,setShowModal]=useState(false);
     const {cartLists,setCartLists}=useContext(AddToCartContext);
     const variants=details?.variant?.length?details?.variant[0]:{}
     const [addToCartSuccess,setAddToCartSuccess]=useState(false);
@@ -479,6 +481,10 @@ const FilterProductTwo=({details})=>{
                                         backgroundColor:"#389e0d",
                                         border:'none'
                                     }}
+                                    onClick={()=>{
+                                        setShowModal(true);
+                                        handleClose();
+                                    }}
                                     >
                                         Go To Cart
                                     </Button>
@@ -515,6 +521,7 @@ const FilterProductTwo=({details})=>{
             ToastMsg="Add to on cart failed"
             Width={'20vw'}
             Postion={"bottom-end"}/>
+            <CartModal IsModalShow={showModal} setIsModalShow={setShowModal}/>
         </>
     )
 }
