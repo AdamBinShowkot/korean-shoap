@@ -29,7 +29,7 @@ const ListMain=()=>{
                             <Row>
                                 <Col xs={6}>
                                     <h3>Marry</h3>
-                                    <StarComponent rate={5} size={10}/>
+                                    <StarComponent rate={0} size={10}/>
                                 </Col>
                                 <Col 
                                 xs={6}

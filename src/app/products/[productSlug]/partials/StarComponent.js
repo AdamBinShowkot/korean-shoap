@@ -4,7 +4,7 @@ import { Rating } from 'react-simple-star-rating';
 import './index.scss';
 
 const StarComponent=({rate,size})=>{
-    const [rating, setRating] = useState(rate?rate:3)
+    const [rating, setRating] = useState(rate?rate:0)
     return(
         <>
             <div className='star-rating' style={{display:"flex !important"}}>

@@ -144,7 +144,7 @@ export default async function Page({params}){
                             alignItems:'center'
                         }}
                         >
-                            <StarComponent rate={details?.avg_rating?details.avg_rating:3}/> <span>&nbsp;&nbsp;<b>3</b> Customer review &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Sold: <b>32</b></span>
+                            <StarComponent rate={details?.avg_rating?details.avg_rating:0}/> <span>&nbsp;&nbsp;<b>3</b> Customer review &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Sold: <b>32</b></span>
                         </Col>
                     </Row>
                     <Row>
@@ -237,7 +237,7 @@ export default async function Page({params}){
                         >
                             <StarComponent
                             size={15}
-                            rate={4}
+                            rate={0}
                             />
                             &nbsp; &nbsp;
                             <span style={{fontSize:'11px'}}>12 review</span>
