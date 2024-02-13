@@ -18,13 +18,13 @@ const CommentMain=()=>{
             id="uncontrolled-tab-example"
             className="mb-3"
             >
-                <Tab eventKey="home" title={`Reviews (12)`}>
-                    <ListMain/>
+                <Tab eventKey="home" title={`Reviews (0)`}>
+                    {/* <ListMain/>
                     <hr className='comment-footer-hr'/>
-                    <ListMain/>
-                    <hr className='comment-footer-hr'/>
-                    <ListMain/>
-                    <Row>
+                    <ListMain/> */}
+                    {/* <hr className='comment-footer-hr'/>
+                    <ListMain/> */}
+                    {/* <Row>
                         <Col 
                         xs={12}
                         style={{
@@ -42,10 +42,10 @@ const CommentMain=()=>{
                                 <Pagination.Next />
                             </Pagination>
                         </Col>
-                    </Row>
+                    </Row> */}
                 </Tab>
                 <Tab eventKey="profile" title={`Questions (0)`}>
-                 Tab content for Profile
+                 {/* Tab content for Profile */}
                 </Tab>
             </Tabs>
         </>

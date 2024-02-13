@@ -42,19 +42,7 @@ const FilterProductTwo=({details})=>{
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    // useEffect(()=>{
-    //     if(details?.variant?.length){
-    //         //console.log("V",data.variant)
-    //         let sizess=[];
-    //         data.variant.map((dta)=>{
-    //             if(dta.size){
-    //                 sizess.push(dta.size);
-    //             }
-    //         })
-    //         setSizes(sizess)
-    //         setSizeLists(variants[0]);
-    //     }
-    // },[details]);
+
     const handleAddToCart=(infos)=>{
         console.log(infos)
         const token=localStorage.getItem("token");
@@ -91,13 +79,13 @@ const FilterProductTwo=({details})=>{
                                 getCartLists(token);
                                 setTimeout(()=>{
                                     setAddToCartSuccess(false)
-                                },[])
+                                },2000)
                             }
                         }).catch((error)=>{
-                                setAddToCartError(true);
-                                setTimeout(()=>{
-                                    setAddToCartError(false)
-                                },[])
+                            setAddToCartError(true);
+                            setTimeout(()=>{
+                                setAddToCartError(false)
+                            },2000)
                             console.log("Err",error)
                         })
                         //setCartLists([...lists])
@@ -120,12 +108,12 @@ const FilterProductTwo=({details})=>{
                             getCartLists(token);
                             setTimeout(()=>{
                                 setAddToCartSuccess(false)
-                            },[])
+                            },2000)
                         }).catch((error)=>{
                             setAddToCartError(true);
                             setTimeout(()=>{
                                 setAddToCartError(false)
-                            },[])
+                            },2000)
                             console.log("CCART",error)
                         })
                     }
@@ -157,12 +145,12 @@ const FilterProductTwo=({details})=>{
                         getCartLists(token);
                         setTimeout(()=>{
                             setAddToCartSuccess(false)
-                        },[])
+                        },2000)
                     }).catch((error)=>{
                         setAddToCartError(true);
                         setTimeout(()=>{
                             setAddToCartError(false)
-                        },[])
+                        },2000)
                         console.log("CCART",error)
                     })
                 }
@@ -185,7 +173,7 @@ const FilterProductTwo=({details})=>{
                         setAddToCartSuccess(true);
                         setTimeout(()=>{
                             setAddToCartSuccess(false)
-                        },[])
+                        },2000)
                     }else{
                         const newObj={
                             id:currentId,
@@ -204,7 +192,7 @@ const FilterProductTwo=({details})=>{
                         setAddToCartSuccess(true);
                         setTimeout(()=>{
                             setAddToCartSuccess(false)
-                        },[])
+                        },2000)
                     }
                 }else{
                     //console.log('Calleddd')
@@ -226,7 +214,7 @@ const FilterProductTwo=({details})=>{
                     setAddToCartSuccess(true);
                     setTimeout(()=>{
                         setAddToCartSuccess(false)
-                    },[])
+                    },2000)
 
                 }
             }

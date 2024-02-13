@@ -14,6 +14,8 @@ import {
 import axios from 'axios';
 import ConfigureAxios from '@/utils/axiosConfig';
 import Image from 'next/image';
+import SuccessToaster from '@/app/ui/SuccessToaster';
+import ErrorToaster from '@/app/ui/ErrorToaster';
 import { 
     AddToCartContext 
 } from '@/contextApi/addToCartApi';
@@ -21,6 +23,8 @@ import {
 const StockQuantitySection=({data})=>{
     const {cartLists,setCartLists}=useContext(AddToCartContext);
     const [cartsproducts,setCartProducts]=useState({});
+    const [addToCartSuccess,setAddToCartSuccess]=useState(false);
+    const [addToCartError,setAddToCartError]=useState(false);
     const variants=data?.variant[0];
 
     useEffect(()=>{
@@ -29,7 +33,6 @@ const StockQuantitySection=({data})=>{
             if(filterProducts?.length){
                 setCartProducts(filterProducts[0])
             }
-           //console.log("DD",filterProducts[0])
         }
     },[cartLists]);
     const handleUpdateCartMinus=(data)=>{

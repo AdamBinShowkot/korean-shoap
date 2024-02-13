@@ -240,7 +240,7 @@ export default async function Page({params}){
                             rate={0}
                             />
                             &nbsp; &nbsp;
-                            <span style={{fontSize:'11px'}}>12 review</span>
+                            <span style={{fontSize:'11px'}}>0 review</span>
                         </Col>
                     </Row>
                     <Row>

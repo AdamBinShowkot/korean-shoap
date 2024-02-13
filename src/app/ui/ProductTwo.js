@@ -21,6 +21,9 @@ import Slider from 'react-slick';
 import { 
     baseImageServer 
 } from '@/utils/config';
+import { 
+    useRouter 
+} from 'next/navigation';
 import SuccessToaster from './SuccessToaster';
 import ErrorToaster from './ErrorToaster';
 import Link from 'next/link';
@@ -34,7 +37,7 @@ import axios from 'axios';
 
 
 const ProductTwo=({data})=>{
-    //console.log(data)
+    const router=useRouter();
     const [hoverShow,setHoverShow]=useState(false);
     const [showModal,setShowModal]=useState(false);
     const {cartLists,setCartLists}=useContext(AddToCartContext);
@@ -62,8 +65,8 @@ const ProductTwo=({data})=>{
             setSizeLists(variants[0]);
         }
     },[data]);
-    const handleAddToCart=(infos)=>{
-        console.log(infos)
+    const handleAddToCart=(infos,name)=>{
+        //console.log(infos)
         const token=localStorage.getItem("token");
         if(token && infos?.id){
             
@@ -93,12 +96,22 @@ const ProductTwo=({data})=>{
                         .then((response)=>{
                             if(response.status==201){
                                 //console.log(response)
-                                getCartLists(token);
-                                setAddToCartSuccess(true);
-                                setShow(true);
-                                setTimeout(()=>{
-                                    setAddToCartSuccess(false)
-                                },2000)
+                                // getCartLists(token);
+                                // setAddToCartSuccess(true);
+                                // setShow(true);
+                                // setTimeout(()=>{
+                                //     setAddToCartSuccess(false)
+                                // },2000)
+                                if(name=="buy-now"){
+                                    router.push("/products/checkout")
+                                }else{
+                                    setShow(true);
+                                    setAddToCartSuccess(true);
+                                    getCartLists(token);
+                                    setTimeout(()=>{
+                                        setAddToCartSuccess(false)
+                                    },2000)
+                                }
                             }
                         }).catch((error)=>{
                             setAddToCartError(true);
@@ -120,12 +133,16 @@ const ProductTwo=({data})=>{
                         //console.log(newObj2)
                         axios.post(`/cart`,JSON.stringify(newObj2))
                         .then((response)=>{
-                            setAddToCartSuccess(true);
-                            setShow(true);
-                            setTimeout(()=>{
-                                setAddToCartSuccess(false)
-                            },2000)
-                            getCartLists(token);
+                            if(name=="buy-now"){
+                                router.push("/products/checkout")
+                            }else{
+                                setShow(true);
+                                setAddToCartSuccess(true);
+                                getCartLists(token);
+                                setTimeout(()=>{
+                                    setAddToCartSuccess(false)
+                                },2000)
+                            }
                         }).catch((error)=>{
                             setAddToCartError(true);
                             setTimeout(()=>{
@@ -156,12 +173,16 @@ const ProductTwo=({data})=>{
                     axios.post(`/cart`,JSON.stringify(newObj2))
                     .then((response)=>{
                         //console.log("Cart response when logged in: ",response);
-                        setAddToCartSuccess(true);
-                        setShow(true);
-                        setTimeout(()=>{
-                            setAddToCartSuccess(false)
-                        },2000)
-                        getCartLists(token);
+                        if(name=="buy-now"){
+                            router.push("/products/checkout")
+                        }else{
+                            setShow(true);
+                            setAddToCartSuccess(true);
+                            getCartLists(token);
+                            setTimeout(()=>{
+                                setAddToCartSuccess(false)
+                            },2000)
+                        }
                     }).catch((error)=>{
                         setAddToCartError(true);
                         setTimeout(()=>{
@@ -183,14 +204,17 @@ const ProductTwo=({data})=>{
                     const index = lists.map(e => e.id).indexOf(currentId);
                     if(index>=0){
                         lists[index].quantity+=1;
-                        setShow(true);
-                        //setCartLists([...lists2,newObj])
-                        setAddToCartSuccess(true);
-                        setTimeout(()=>{
-                            setAddToCartSuccess(false)
-                        },2000)
                         localStorage.setItem("ProductCarts",JSON.stringify(lists));
                         setCartLists([...lists])
+                        if(name=="buy-now"){
+                            router.push("/products/checkout")
+                        }else{
+                            setShow(true);
+                            setAddToCartSuccess(true);
+                            setTimeout(()=>{
+                                setAddToCartSuccess(false)
+                            },2000)
+                        }
                     }else{
                         const newObj={
                             id:currentId,
@@ -204,12 +228,16 @@ const ProductTwo=({data})=>{
                         }
                         lists=[...lists,newObj]
                         localStorage.setItem("ProductCarts",JSON.stringify(lists));
-                        setShow(true);
                         setCartLists([...lists2,newObj])
-                        setAddToCartSuccess(true);
-                        setTimeout(()=>{
-                            setAddToCartSuccess(false)
-                        },2000)
+                        if(name=="buy-now"){
+                            router.push("/products/checkout")
+                        }else{
+                            setShow(true);
+                            setAddToCartSuccess(true);
+                            setTimeout(()=>{
+                                setAddToCartSuccess(false)
+                            },2000)
+                        }
                     }
                 }else{
                     //console.log('Calleddd')
@@ -227,11 +255,15 @@ const ProductTwo=({data})=>{
                     //newlists=[...newlists,newObj]
                     setCartLists([newObj])
                     localStorage.setItem("ProductCarts",JSON.stringify([newObj]));
-                    setShow(true);
-                    setAddToCartSuccess(true);
-                    setTimeout(()=>{
-                        setAddToCartSuccess(false)
-                    },2000)
+                    if(name=="buy-now"){
+                        router.push("/products/checkout")
+                    }else{
+                        setShow(true);
+                        setAddToCartSuccess(true);
+                        setTimeout(()=>{
+                            setAddToCartSuccess(false)
+                        },2000)
+                    }
                 }
             }
         }
@@ -398,7 +430,7 @@ const ProductTwo=({data})=>{
                             <Button
                             className="products-buttton left-side"
                             onClick={()=>{
-                                handleAddToCart(data?data:{})
+                                handleAddToCart(data?data:{},"add-to-cart")
                             }}
                             >
                                 Add To Cart
@@ -412,7 +444,7 @@ const ProductTwo=({data})=>{
                             <Button
                             className="products-buttton right-side"
                             onClick={()=>{
-                               // handleAddToCart(data?data:{})
+                                handleAddToCart(data?data:{},"buy-now")
                             }}
                             >
                                 Buy Now
@@ -467,7 +499,7 @@ const ProductTwo=({data})=>{
                                     marginTop:"20px"
                                 }}
                                 >
-                                    <Link href="/products?page=1&per_page=10">
+                                 
                                         <Button
                                         style={{
                                             margin:"0px 15px",
@@ -476,11 +508,12 @@ const ProductTwo=({data})=>{
                                         }}
                                         onClick={()=>{
                                             setShow(false)
+                                            router.push("/products/checkout")
                                         }}
                                         >
                                             Buy More
                                         </Button>
-                                    </Link>
+                               
                                     <Button
                                     style={{
                                         margin:"0px 15px",
