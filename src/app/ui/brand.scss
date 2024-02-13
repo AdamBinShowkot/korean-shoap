@@ -1,0 +1,27 @@
+.brand-main-container{
+    min-width: 15.4vw;
+    margin: 10px 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    .image-container{
+        padding:0px 20px;
+        height:27vh;
+        width: 15.2vw;
+        .brand-image{
+            height: 100% !important;
+            width: 100% !important;
+        }
+    }
+    .brand-title-container{
+        margin: 30px auto;
+        h3{
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .brand-title-link:hover{
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+}

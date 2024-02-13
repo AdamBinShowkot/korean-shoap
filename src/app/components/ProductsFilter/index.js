@@ -16,6 +16,7 @@ import FilterProduct from "@/app/ui/FilterProduct";
 import StaticCardWithImage from "@/app/ui/StaticCardWithImage";
 import './index.scss';
 import SingleItem from "./SingleItem";
+import Link from "next/link";
 
 function getProductLists(){
     ConfigureAxios();
@@ -187,13 +188,18 @@ const IsotopeReact = ({lists,brands}) => {
                                     </Button>
                                 }):""
                             }
-                            <Button
-                            variant="outline-primary"
-                            className={`filter-button ${filterKey=="*"?"filter-active-button":""}`}
-                            onClick={handleFilterKeyChange('*')}
+                            <Link
+                            href={`/products/brands`}
+                            target="_blank"
                             >
-                                ALL BRAND
-                            </Button>
+                                <Button
+                                variant="outline-primary"
+                                className={`filter-button ${filterKey=="*"?"filter-active-button":""}`}
+                                onClick={handleFilterKeyChange('*')}
+                                >
+                                    ALL BRAND
+                                </Button>
+                            </Link>
                         </Col>
                     </Row>
                     <div 
