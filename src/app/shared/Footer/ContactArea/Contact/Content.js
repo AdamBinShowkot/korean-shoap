@@ -6,13 +6,13 @@ const Content=({isContentShow})=>{
         <>
             <p className={`${isContentShow?'show-contact-content content':'hide-contact-content content'}`}>
                 <span>
-                Zigatola dhanmondi 1209
+                50 Zigatola Kacha Bazar,Dhaka,Bangladesh
                 </span><br/>
                 <span>
-                Email: koreanshop@gmail.com
+                Email: koreanshopbangladesh@gmail.com
                 </span>
                 <br/>
-                <span>Hotline: +880170000000</span>
+                <span>Hotline: +8801303-779646</span>
             </p>
         </>
     )

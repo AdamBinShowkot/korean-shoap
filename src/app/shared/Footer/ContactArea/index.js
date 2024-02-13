@@ -47,7 +47,7 @@ const ContactAreaMain=()=>{
                         className='normal-social-button no-left-margin'
                         > */}
                         <a
-                        href='https://www.facebook.com/koreanshopsBangladesh'
+                        href='https://www.facebook.com/koreanshopsBangladesh/'
                         target="_blank"
                         >
                             <Image
