@@ -51,6 +51,21 @@ async function getBrandProductLists(){
 
   return response;
 }
+async function getFeturedBrands(){
+  ConfigureAxios();
+  const response=axios.get('/public/features/brand').then((res)=>{
+      if(res.status===200){
+        //console.log("Products : ",res.data);
+        return res.data?.length?res.data:[];
+      }
+  }).catch((error)=>{
+    //console.log(error)
+    console.log("Get Featured Brand List Error.")
+    return [];
+  });
+
+  return response;
+}
 
 async function getProductsLists(){
   ConfigureAxios();
@@ -127,6 +142,7 @@ async function getBodyCareProducts(){
 
   return response;
 }
+
 async function getBodySerumProducts(){
   ConfigureAxios();
   const response=axios.get('/public/feature-product/category/serum').then((res)=>{
@@ -159,6 +175,7 @@ async function getHeroBgImage(){
   return response;
 }
 export default async function Home() {
+  const featredBrandLists=await getFeturedBrands();
   const brandLists=await getBrandProductLists();
   const productsLists=await getProductsLists();
   const CleanserItems=await getCleanserProducts();
@@ -266,7 +283,10 @@ export default async function Home() {
         <BannerThree/>
       </Row>
       <Row>
-        <IsotopeReact lists={brandLists}/>
+        <IsotopeReact 
+        lists={brandLists}
+        brands={featredBrandLists}
+        />
       </Row>
       <Row>
         <Col xs={12}>

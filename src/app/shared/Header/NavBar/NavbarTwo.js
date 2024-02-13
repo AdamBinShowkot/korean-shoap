@@ -180,7 +180,8 @@ const NavBarTwo=()=>{
                                             categoryLists?.length?categoryLists.map((dta)=>{
                                                 return <Link 
                                                 key={dta.id}
-                                                href={`/products/categories?name=${dta.slug}&page=1&per_page=10`}
+                                                href={`/products?category=${dta.name}&category_id=${dta.id}&IsFromMenu=1`}
+                                                as={`/products?category=${dta.name}&category_id=${dta.id}&menu=1`}
                                                 className="link-href"
                                                 >
                                                     {dta.name}
@@ -214,7 +215,7 @@ const NavBarTwo=()=>{
                                             skinConcernLists?.length?skinConcernLists.map((dta)=>{
                                                 return <Link 
                                                 key={dta.id}
-                                                href={`/products/skin-concern/?name=${dta.slug}&page=1&per_page=10`}
+                                                href={`/products?skin_concern=${dta.name}&skin_concern_id=${dta.id}&menu=1`}
                                                 className="link-href"
                                                 >
                                                     {dta.name}
@@ -278,7 +279,7 @@ const NavBarTwo=()=>{
                                             skinTypeLists?.length?skinTypeLists.map((dta)=>{
                                                 return <Link 
                                                 key={dta.id}
-                                                href={`/products/skin-type?name=${dta.slug}&page=1&per_page=10`}
+                                                href={`/products?skin_type=${dta.name}&skin_type_id=${dta.id}&menu=1`}
                                                 className="link-href"
                                                 >
                                                     {dta.name}
@@ -312,7 +313,7 @@ const NavBarTwo=()=>{
                                             ingredientLists?.length?ingredientLists.map((dta)=>{
                                                 return <Link 
                                                 key={dta.id}
-                                                href={`/products/ingredients?name=${dta.slug}&page=1&per_page=10`}
+                                                href={`/products?ingredients=${dta.name}&ingredient_id=${dta.id}&menu=1`}
                                                 className="link-href"
                                                 >
                                                     {dta.name}
@@ -346,7 +347,7 @@ const NavBarTwo=()=>{
                                             brandLists?.length?brandLists.map((dta)=>{
                                                 return <Link 
                                                 key={dta.id}
-                                                href={`/products/brands?name=${dta.slug}&page=1&per_page=10`}
+                                                href={`/products?brand=${dta.name}&brand_id=${dta.id}&menu=1`}
                                                 className="link-href"
                                                 >
                                                     {dta.name}

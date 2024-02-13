@@ -152,7 +152,7 @@ const ProductsMain=()=>{
 
     useEffect(()=>{
         ConfigureAxios();
-        if(category_name){
+        if(brand_name){
             axios.get(`/public/brand/products/${brand_name}?page=${page}&per_page=${per_page}`)
             .then((response)=>{
                 if(response.status===200){
@@ -207,7 +207,7 @@ const ProductsMain=()=>{
                 setDummyproducts([])
             })
         }
-    },[page,per_page,category_name])
+    },[page,per_page,brand_name])
 
     
    

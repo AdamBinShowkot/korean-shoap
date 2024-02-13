@@ -12,7 +12,8 @@ import {
     Col,
     InputGroup,
     InputGroupText,
-    Dropdown
+    Dropdown,
+    Button
 } from 'react-bootstrap';
 import Image from 'next/image';
 import { 
@@ -97,7 +98,7 @@ const CustomToggle = forwardRef(function CustomToggle({ children, onClick }, ref
         >
             <Image
             src="/filterBtn1.png"
-            width={18}
+            width={25}
             height={18}
             alt="search"
             />
@@ -123,12 +124,18 @@ const ProductsMain=()=>{
     const page = searchParams.get('page');
     const query = searchParams.get('q');
     const per_page = searchParams.get('per_page');
-    const category_id = searchParams.get('category_id');
-    const brand_id=searchParams.get('brand_id');
-    const skin_type_id=searchParams.get('skin_type_id');
-    const skin_concern_id=searchParams.get('skin_concern_id');
-    const ingredient_id=searchParams.get('ingredient_id');
+    const category_id = searchParams.get('category_id')?searchParams.get('category_id'):'';
+    const brand_id=searchParams.get('brand_id')?searchParams.get('brand_id'):'';
+    const skin_type_id=searchParams.get('skin_type_id')?searchParams.get('skin_type_id'):'';
+    const skin_concern_id=searchParams.get('skin_concern_id')?searchParams.get('skin_concern_id'):'';
+    const ingredient_id=searchParams.get('ingredient_id')?searchParams.get('ingredient_id'):'';
     const name=searchParams.get("name");
+    const isFromMenu=searchParams.get("menu");
+    const category_name=searchParams.get("category");
+    const brand_name=searchParams.get("brand");
+    const skin_type=searchParams.get("skin_type");
+    const skin_concern=searchParams.get("skin_concern");
+    const ingredients=searchParams.get("ingredients");
     const [dummyProducts,setDummyproducts]=useState([
         {
             id:1
@@ -157,24 +164,29 @@ const ProductsMain=()=>{
     const [ingredientLists,setIngredientLists]=useState([]);
     const [brandLists,setBrandLists]=useState([]);
     const [activeBrand,setActiveBrand]=useState({
-        brand_id:brand_id?brand_id:0,
-        name:"Brands"
+        brand_id:brand_id?brand_id:'',
+        name:"",
+        slugs:"Brands"
     });
     const [activeCategories,setActiveCategories]=useState({
-        category_id:category_id?category_id:0,
-        name:"Categories"
+        category_id:category_id?category_id:'',
+        name:"",
+        slugs:"Categories"
     });
     const [activeSkinConcern,setActiveSkinConcern]=useState({
-        skin_concern_id:skin_concern_id?skin_concern_id:0,
-        name:"Skin Concern"
+        skin_concern_id:skin_concern_id?skin_concern_id:'',
+        name:"",
+        slugs:"Skin Concern"
     });
     const [activeSkinType,setActiveSkinType]=useState({
-        skin_type_id:skin_type_id?skin_type_id:0,
-        name:"Skin Type"
+        skin_type_id:skin_type_id?skin_type_id:'',
+        name:"",
+        slugs:"Skin Type"
     });
     const [activeIngreidients,setActiveIngreidients]=useState({
-        ingredient_id:ingredient_id?ingredient_id:0,
-        name:"Ingreidients"
+        ingredient_id:ingredient_id?ingredient_id:'',
+        name:"",
+        slugs:"Ingreidients"
     });
 
     useEffect(()=>{
@@ -186,171 +198,185 @@ const ProductsMain=()=>{
         if(category_id){
             setActiveCategories({
                 category_id:category_id,
-                name:name
+                name:category_name,
+                slugs:category_name
             })
-            setActiveBrand({
-                brand_id:0,
-                name:"Brands"
-            });
-            setActiveSkinType({
-                skin_type_id:0,
-                name:"Skin Type"
-            });
-            setActiveSkinConcern({
-                skin_concern_id:0,
-                name:"Skin Concern"
-            });
-            setActiveIngreidients({
-                ingredient_id:0,
-                name:"Ingredients"
-            });
-            axios.get(`/public/product-filter?category_id=${category_id}`)
-            .then((response)=>{
-                if(response.status===200){
-                    //console.log(response.data)
-                    if(response.data?.items?.length){
-                        setProducts(response.data.items)
-                    }else{
-                        setProducts([])
-                        setDummyproducts([])
-                    }
-                }
-            }).catch((error)=>{
-                setProducts([])
-                setDummyproducts([])
-            })
+            if(isFromMenu){
+                setActiveCategories({
+                    category_id:category_id,
+                    name:category_name,
+                    slugs:category_name
+                })
+                setActiveBrand({
+                    brand_id:'',
+                    name:"",
+                    slugs:"Brand"
+                })
+                setActiveSkinType({
+                    skin_type_id:'',
+                    name:"",
+                    slugs:"Skin Type"
+                })
+                setActiveSkinConcern({
+                    skin_concern_id:'',
+                    name:"",
+                    slugs:"Skin Concern"
+                })
+                setActiveIngreidients({
+                    ingredient_id:'',
+                    name:"",
+                    slugs:"Ingredients"
+                })
+            }
         }
-        else if(brand_id){
-            setActiveCategories({
-                category_id:0,
-                name:"Categories"
-            })
+        if(brand_id){
             setActiveBrand({
                 brand_id:brand_id,
-                name:name
+                name:brand_name,
+                slugs:brand_name
             });
-            setActiveSkinType({
-                skin_type_id:0,
-                name:"Skin Type"
-            });
-            setActiveSkinConcern({
-                skin_concern_id:0,
-                name:"Skin Concern"
-            });
-            setActiveIngreidients({
-                ingredient_id:0,
-                name:"Ingredients"
-            });
-            axios.get(`/public/product-filter?brand_id=${brand_id}`)
-            .then((response)=>{
-                if(response.status===200){
-                    //console.log(response.data)
-                    if(response.data?.items?.length){
-                        setProducts(response.data.items)
-                    }else{
-                        setProducts([])
-                        setDummyproducts([])
-                    }
-                }
-            }).catch((error)=>{
-                setProducts([])
-                setDummyproducts([])
-            })
+
+            if(isFromMenu){
+                setActiveCategories({
+                    category_id:"",
+                    name:"",
+                    slugs:"Category"
+                })
+                setActiveBrand({
+                    brand_id:brand_id,
+                    name:brand_name,
+                    slugs:brand_name
+                })
+                setActiveSkinType({
+                    skin_type_id:'',
+                    name:"",
+                    slugs:"Skin Type"
+                })
+                setActiveSkinConcern({
+                    skin_concern_id:'',
+                    name:"",
+                    slugs:"Skin Concern"
+                })
+                setActiveIngreidients({
+                    ingredient_id:'',
+                    name:"",
+                    slugs:"Ingredients"
+                })
+            }
         }
-        else if(skin_type_id){
-            setActiveCategories({
-                category_id:0,
-                name:"Categories"
-            })
-            setActiveBrand({
-                brand_id:0,
-                name:"Brands"
-            });
+        if(skin_type_id){
             setActiveSkinType({
                 skin_type_id:skin_type_id,
-                name:name
+                name:skin_type,
+                slugs:skin_type
             });
-            setActiveSkinConcern({
-                skin_concern_id:0,
-                name:"Skin Concern"
-            });
-            setActiveIngreidients({
-                ingredient_id:0,
-                name:"Ingredients"
-            });
-            axios.get(`/public/product-filter?skin_type_id=${skin_type_id}`)
-            .then((response)=>{
-                if(response.status===200){
-                    //console.log(response.data)
-                    if(response.data?.items?.length){
-                        setProducts(response.data.items)
-                    }else{
-                        setProducts([])
-                        setDummyproducts([])
-                    }
-                }
-            }).catch((error)=>{
-                setProducts([])
-                setDummyproducts([])
-            })
+            if(isFromMenu){
+                setActiveCategories({
+                    category_id:"",
+                    name:"",
+                    slugs:"Category"
+                })
+                setActiveBrand({
+                    brand_id:'',
+                    name:"",
+                    slugs:""
+                })
+                setActiveSkinType({
+                    skin_type_id:skin_type_id,
+                    name:skin_type,
+                    slugs:skin_type
+                })
+                setActiveSkinConcern({
+                    skin_concern_id:'',
+                    name:"",
+                    slugs:"Skin Concern"
+                })
+                setActiveIngreidients({
+                    ingredient_id:'',
+                    name:"",
+                    slugs:"Ingredients"
+                })
+            }
         }
-        else if(skin_concern_id){
-            setActiveCategories({
-                category_id:0,
-                name:"Categories"
-            })
-            setActiveBrand({
-                brand_id:0,
-                name:"Brands"
-            });
-            setActiveSkinType({
-                skin_type_id:0,
-                name:"Skin Type"
-            });
+        if(skin_concern_id){
             setActiveSkinConcern({
                 skin_concern_id:skin_concern_id,
-                name:name
+                name:skin_concern,
+                slugs:skin_concern
             });
-            setActiveIngreidients({
-                ingredient_id:0,
-                name:"Ingredients"
-            });
-            axios.get(`/public/product-filter?skin_concern_id=${skin_concern_id}`)
-            .then((response)=>{
-                if(response.status===200){
-                    //console.log(response.data)
-                    if(response.data?.items?.length){
-                        setProducts(response.data.items)
-                    }else{
-                        setProducts([])
-                    }
-                }
-            }).catch((error)=>{
 
-            })
+            if(isFromMenu){
+                setActiveCategories({
+                    category_id:"",
+                    name:"",
+                    slugs:"Category"
+                })
+                setActiveBrand({
+                    brand_id:'',
+                    name:"",
+                    slugs:"Brand"
+                })
+                setActiveSkinType({
+                    skin_type_id:'',
+                    name:"",
+                    slugs:"Skin Type"
+                })
+                setActiveSkinConcern({
+                    skin_concern_id:skin_concern_id,
+                    name:skin_concern,
+                    slugs:skin_concern
+                })
+                setActiveIngreidients({
+                    ingredient_id:'',
+                    name:"",
+                    slugs:"Ingredients"
+                })
+            }
         }
-        else if(ingredient_id){
-            setActiveCategories({
-                category_id:0,
-                name:"Categories"
-            })
-            setActiveBrand({
-                brand_id:0,
-                name:"Brands"
-            });
-            setActiveSkinType({
-                skin_type_id:0,
-                name:"Skin Type"
-            });
-            setActiveSkinConcern({
-                skin_concern_id:0,
-                name:"Skin Concern"
-            });
+        if(ingredient_id){
             setActiveIngreidients({
                 ingredient_id:ingredient_id,
-                name:name
+                name:ingredients,
+                slugs:ingredients
             });
-            axios.get(`/public/product-filter?ingredient_id=${ingredient_id}`)
+
+            if(isFromMenu){
+                setActiveCategories({
+                    category_id:"",
+                    name:"",
+                    slugs:"Category"
+                })
+                setActiveBrand({
+                    brand_id:'',
+                    name:"",
+                    slugs:"Brand"
+                })
+                setActiveSkinType({
+                    skin_type_id:'',
+                    name:"",
+                    slugs:"Skin Type"
+                })
+                setActiveSkinConcern({
+                    skin_concern_id:'',
+                    name:"",
+                    slugs:"Skin Concern"
+                })
+                setActiveIngreidients({
+                    ingredient_id:ingredient_id,
+                    name:ingredients,
+                    slugs:ingredients
+                })
+            }
+          
+        }
+
+        if(category_id || brand_id && skin_type_id || skin_concern_id || ingredient_id){
+            let queryStr=`category_id=${category_id?category_id:''}`;
+            queryStr+=`&brand_id=${brand_id?brand_id:''}`;
+            queryStr+=`&skin_type_id=${skin_type_id?skin_type_id:''}`;
+            queryStr+=`&skin_concern_id=${skin_concern_id?skin_concern_id:''}`;
+            queryStr+`&ingredient_id=${ingredient_id?ingredient_id:''}`
+            axios.get(`/public/product-filter?${queryStr}`)
             .then((response)=>{
                 if(response.status===200){
                     //console.log(response.data)
@@ -365,7 +391,8 @@ const ProductsMain=()=>{
                 setProducts([])
                 setDummyproducts([])
             })
-        }else if(query){
+        }
+        else if(query){
             axios.get(`/public/product-search?q=${query}`)
             .then((response)=>{
                 if(response.status===200){
@@ -602,9 +629,13 @@ const ProductsMain=()=>{
         if(name=="category"){
             if(data.id){
                // setActiveCategories(data.id)
+                let queryStr=`category=${data.name}&category_id=${data.id}`;
+                queryStr+=`&brand=${activeBrand?.name}&brand_id=${activeBrand.brand_id?activeBrand.brand_id:''}`;
+                queryStr+=`&skin_type=${activeSkinType?.name}&skin_type_id=${activeSkinType?.skin_type_id?activeSkinType.skin_type_id:''}`;
+                queryStr+=`&skin_concern=${activeSkinConcern?.name}&skin_concern_id=${activeSkinConcern?.skin_concern_id?activeSkinConcern.skin_concern_id:''}`;
+                queryStr+=`&ingredients=${activeIngreidients?.name}&ingredient_id=${activeIngreidients?.ingredient_id?activeIngreidients.ingredient_id:''}`;
                 history.push(
-                    `/products?name=${data.name}&category_id=${data.id}`,
-                    `/products?name=${data.name}`
+                    `/products?${queryStr}`
                 )
                 // history.push({
                 //     pathname:
@@ -613,24 +644,60 @@ const ProductsMain=()=>{
         }else if(name=="brand"){
             if(data.id){
                // setActiveBrand(data.id);
-                history.push(`/products?name=${data.name}&brand_id=${data.id}`)
+               let queryStr=`category=${activeCategories?.name?activeCategories.name:''}&category_id=${activeCategories?.category_id?activeCategories.category_id:''}`;
+               queryStr+=`&brand=${data.name}&brand_id=${data.id}`;
+               queryStr+=`&skin_type=${activeSkinType?.name}&skin_type_id=${activeSkinType?.skin_type_id?activeSkinType.skin_type_id:''}`;
+               queryStr+=`&skin_concern=${activeSkinConcern?.name}&skin_concern_id=${activeSkinConcern?.skin_concern_id?activeSkinConcern.skin_concern_id:''}`;
+               queryStr+=`&ingredients=${activeIngreidients?.name}&ingredient_id=${activeIngreidients?.ingredient_id?activeIngreidients.ingredient_id:''}`;
+                history.push(`/products?${queryStr}`)
             }
         }else if(name=="skin-type"){
             if(data.id){
-                //setActiveSkinType(data.id)
-                history.push(`/products?name=${data.name}&skin_type_id=${data.id}`)
+                const queryStr=`category=${activeCategories?.name}&category_id=${activeCategories?.category_id}&brand=${activeBrand?.name}&brand_id=${activeBrand?.brand_id}&skin_type=${data.name}&skin_type_id=${data.id}&skin_concern=${activeSkinConcern?.name}&skin_concern_id=${activeSkinConcern?.skin_concern_id}&ingredients=${activeIngreidients?.name}&ingredients_id=${activeIngreidients?.ingredient_id}`;
+                history.push(`/products?${queryStr}`)
             }
         }else if(name=="skin-concern"){
             if(data.id){
-                //setActiveSkinConcern(data.id)
-                history.push(`/products?name=${data.name}&skin_concern_id=${data.id}`)
+                const queryStr=`category=${activeCategories?.name}&category_id=${activeCategories?.category_id}&brand=${activeBrand?.name}&brand_id=${activeBrand?.brand_id}&skin_type=${activeSkinType?.name}&skin_type_id=${activeSkinType?.skin_type_id}&skin_concern=${data.name}&skin_concern_id=${data.id}&ingredients=${activeIngreidients?.name}&ingredient_id=${activeIngreidients?.ingredient_id}`;
+                history.push(`/products?${queryStr}`)
             }
         }else if(name=="ingredient"){
             if(data.id){
-                //setActiveIngreidients(data.id)
-                history.push(`/products?name=${data.name}ingredient_id=${data.id}`)
+                const queryStr=`category=${activeCategories?.name}&category_id=${activeCategories?.category_id}&brand=${activeBrand?.name}&brand_id=${activeBrand?.brand_id}&skin_type=${activeSkinType?.name}&skin_type_id=${activeSkinType?.skin_type_id}&skin_concern=${activeSkinConcern?.name}&skin_concern_id=${activeSkinConcern?.skin_concern_id}&ingredients=${data?.name}&ingredient_id=${data?.id}`;
+                history.push(`/products?${queryStr}`)
             }
         }
+    }
+
+    const handleReset=(e)=>{
+        e.preventDefault();
+        setActiveCategories({
+            category_id:'',
+            name:'',
+            slugs:"Categories"
+        })
+        setActiveBrand({
+            brand_id:'',
+            name:'',
+            slugs:"Brands"
+        })
+        setActiveSkinType({
+            skin_type_id:'',
+            name:'',
+            slugs:"Skin Type"
+        })
+        setActiveSkinConcern({
+            skin_concern_id:'',
+            name:'',
+            slugs:"Skin Concern"
+        })
+        setActiveIngreidients({
+            category_id:'',
+            name:'',
+            slugs:"Ingredients"
+        })
+
+        history.push(`/products?page=1&per_page=10`);
     }
     return(
         <>
@@ -656,7 +723,7 @@ const ProductsMain=()=>{
                                 width:'10vw !important',
                             }}
                             >
-                               {activeCategories?.name?activeCategories.name:""}
+                               {activeCategories?.slugs?activeCategories.slugs:""}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu 
@@ -692,7 +759,7 @@ const ProductsMain=()=>{
                                 width:'10vw !important',
                             }}
                             >
-                               {activeBrand?.name?activeBrand.name:""}
+                               {activeBrand?.slugs?activeBrand.slugs:""}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu
@@ -727,7 +794,7 @@ const ProductsMain=()=>{
                                 width:'10vw !important',
                             }}
                             >
-                               {activeSkinType?.name?activeSkinType.name:""}
+                               {activeSkinType?.slugs?activeSkinType.slugs:""}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu
@@ -762,7 +829,7 @@ const ProductsMain=()=>{
                                 width:'10vw !important',
                             }}
                             >
-                               {activeSkinConcern?.name?activeSkinConcern.name:""}
+                               {activeSkinConcern?.slugs?activeSkinConcern.slugs:""}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu 
@@ -798,7 +865,7 @@ const ProductsMain=()=>{
                                 width:'10vw !important',
                             }}
                             >
-                               {activeIngreidients?.name?activeIngreidients.name:""}
+                               {activeIngreidients?.slugs?activeIngreidients.slugs:""}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu
@@ -820,6 +887,25 @@ const ProductsMain=()=>{
                                 }
                             </Dropdown.Menu>
                         </Dropdown>
+                        <Button
+                        style={{
+                            position:'absolute',
+                            right:'0',
+                            border:'none',
+                            borderRadius:'4px',
+                            borderLeft:'1px solid rgb(92, 51, 169)',
+                            borderTopLeftRadius:'0',
+                            borderBottomLeftRadius:'0'
+                        }}
+                        onClick={handleReset}
+                        >
+                            <Image
+                            src="/reset_buttton.png"
+                            height={15}
+                            width={25}
+                            alt="Reset Image"
+                            />
+                        </Button>
                     </InputGroup>
                 </Col>
             </Row>

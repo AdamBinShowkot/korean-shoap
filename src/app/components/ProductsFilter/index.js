@@ -27,9 +27,9 @@ function getProductLists(){
     })
 }
 
-const IsotopeReact = ({lists}) => {
+const IsotopeReact = ({lists,brands}) => {
     //console.log("Lists : ",lists)
-   const isotope = useRef()
+    const isotope = useRef()
   // store the filter keyword in a state
     const [filterKey, setFilterKey] = useState('*')
     const [products,setProducts]=useState([]);
@@ -147,34 +147,46 @@ const IsotopeReact = ({lists}) => {
                             alignItems:'center'
                         }}
                         >
-                            <Button
+                            {/* <Button
                             variant="outline-primary"
                             className={`filter-button ${filterKey=="cosrx"?"filter-active-button":""}`}
                             onClick={handleFilterKeyChange('cosrx')}
                             >
                                 COSRX
-                            </Button>
-                            <Button
+                            </Button> */}
+                            {/* <Button
                             variant="outline-primary"
                             className={`filter-button ${filterKey=="neogen"?"filter-active-button":""}`}
                             onClick={handleFilterKeyChange('neogen')}
                             >
                                 NEOGEN
-                            </Button>
-                            <Button
+                            </Button> */}
+                            {/* <Button
                             variant="outline-primary"
                             className={`filter-button ${filterKey=="fruit"?"filter-active-button":""}`}
                             onClick={handleFilterKeyChange('fruit')}
                             >
                                 TIAM
-                            </Button>
-                            <Button
+                            </Button> */}
+                            {/* <Button
                             variant="outline-primary"
                             className={`filter-button ${filterKey=="vege"?"filter-active-button":""}`}
                             onClick={handleFilterKeyChange('vege')}
                             >
                                 SUM BY MI
-                            </Button>
+                            </Button> */}
+                            {
+                                brands?.length?brands.map((dta)=>{
+                                    return <Button
+                                    key={dta.id}
+                                    variant="outline-primary"
+                                    className={`filter-button ${filterKey==`${dta?.slug}`?"filter-active-button":""}`}
+                                    onClick={handleFilterKeyChange(`${dta?.slug}`)}
+                                    >
+                                        {dta?.name.toUpperCase()}
+                                    </Button>
+                                }):""
+                            }
                             <Button
                             variant="outline-primary"
                             className={`filter-button ${filterKey=="*"?"filter-active-button":""}`}
