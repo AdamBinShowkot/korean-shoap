@@ -56,7 +56,61 @@ const ItemsContainer=({title,lists,len})=>{
     useEffect(() => {
         if(width<420){
 
+            let newLists=[...lists];
             let newSettings={...settings,slidesToShow:2};
+            if(len>=5){
+                //console.log("Heloooooooooooo5")
+                setMyLists(newLists);
+            }else if(len>=4){
+                //console.log("Heloooooooooooo4")
+                for(let i=0; i<1; i++){
+                    const newObj={
+                        id:"1000"+i,
+                        emptyPost:true
+                    }
+                    newLists=[...newLists,newObj];
+                }
+                setMyLists(newLists)
+            }else if(len>=3){
+               // console.log("Heloooooooooooo3")
+                for(let i=0; i<2; i++){
+                    const newObj={
+                        id:"1000"+i,
+                        emptyPost:true
+                    }
+                   
+                    newLists=[...newLists,newObj]; 
+                }
+                // const temp=newLists[0]
+                // newLists[0]=newLists[3]
+                // newLists[3]=temp
+                setMyLists(newLists)
+            }else if(len>=2){
+                // console.log("Heloooooooooooo3")
+                 for(let i=0; i<3; i++){
+                     const newObj={
+                         id:"1000"+i,
+                         emptyPost:true
+                     }
+                    
+                     newLists=[...newLists,newObj]; 
+                 }
+                 // const temp=newLists[0]
+                 // newLists[0]=newLists[3]
+                 // newLists[3]=temp
+                 setMyLists(newLists)
+            }else{
+                //console.log("Helooooooooooooelse")
+                for(let i=0; i<4; i++){
+                    const newObj={
+                        id:"1000"+i,
+                        emptyPost:true
+                    }
+                    newLists=[...newLists,newObj];
+                }
+                setMyLists(newLists)
+            }
+          
             setSettings(newSettings)
         }else{
             let newLists=[...lists];
