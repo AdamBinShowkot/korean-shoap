@@ -24,6 +24,7 @@ import {
 } from 'next/navigation';
 //import Product from '@/app/ui/Product';
 import ProductTwo from '@/app/ui/ProductTwo';
+//import NewProduct from '@/app/ui/NewProduct';
 import PaginationMain from './Pagination';
 import PlaceHolder from '@/app/ui/PlaceHolder';
 import NotFoundComponent from '@/app/ui/NotFound';

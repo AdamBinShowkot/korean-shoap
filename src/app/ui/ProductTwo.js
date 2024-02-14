@@ -46,7 +46,6 @@ const ProductTwo=({data})=>{
     const [sizeLists,setSizeLists]=useState([]);
     const [addToCartSuccess,setAddToCartSuccess]=useState(false);
     const [addToCartError,setAddToCartError]=useState(false);
-   // const [loginError,setLoginError]=useState(false);
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -54,7 +53,6 @@ const ProductTwo=({data})=>{
 
     useEffect(()=>{
         if(data?.variant?.length){
-            //console.log("V",data.variant)
             let sizess=[];
             data.variant.map((dta)=>{
                 if(dta.size){
@@ -66,26 +64,16 @@ const ProductTwo=({data})=>{
         }
     },[data]);
     const handleAddToCart=(infos,name)=>{
-        //console.log(infos)
         const token=localStorage.getItem("token");
         if(token && infos?.id){
-            
             ConfigureAxios(token);
-        
             if(infos?.id){
-               
                 let lists =[...cartLists];
                 const currentId=infos.id;
                 if(lists?.length){
-                    
                     const index = lists.map(e => parseInt(e.product_id)).indexOf(currentId);
-                    //console.log("Index : ",index,"FF",currentId)
-                    //console.log(lists)
                     if(index>=0){
-                        //console.log('One')
-                        //console.log("Im Calleddd")
                         const currentProducts=lists[index];
-                        //console.log(currentProducts)
                         currentProducts.quantity=parseInt(currentProducts.quantity)+1;
                         const product_id=currentProducts.id;
                         const obj={
@@ -95,13 +83,6 @@ const ProductTwo=({data})=>{
                         axios.post(`/cart/${product_id}`,JSON.stringify(obj))
                         .then((response)=>{
                             if(response.status==201){
-                                //console.log(response)
-                                // getCartLists(token);
-                                // setAddToCartSuccess(true);
-                                // setShow(true);
-                                // setTimeout(()=>{
-                                //     setAddToCartSuccess(false)
-                                // },2000)
                                 if(name=="buy-now"){
                                     router.push("/products/checkout")
                                 }else{
@@ -120,17 +101,12 @@ const ProductTwo=({data})=>{
                             },2000)
                             console.log("Err",error)
                         })
-                        //setCartLists([...lists])
                     }else{
-                       // console.log('Two')
                         const newObj2={
                             quantity:1,
                             product_id:infos?.id,
-                            //image:infos.image,
-                           // name:infos.name,
                             product_variant_id:variants.id?variants.id:0
                         }
-                        //console.log(newObj2)
                         axios.post(`/cart`,JSON.stringify(newObj2))
                         .then((response)=>{
                             if(name=="buy-now"){
@@ -152,7 +128,6 @@ const ProductTwo=({data})=>{
                         })
                     }
                 }else{
-                    //console.log("Caleddd")
                     const newObj={
                         id:currentId,
                         product_id:currentId,
@@ -164,15 +139,11 @@ const ProductTwo=({data})=>{
                     const newObj2={
                         quantity:1,
                         product_id:infos?.id,
-                        //image:infos.image,
-                        //name:infos.name,
                         product_variant_id:variants.id?variants.id:0
                     }
-                    //console.log("NN",newObj)
                     setCartLists([...lists,newObj])
                     axios.post(`/cart`,JSON.stringify(newObj2))
                     .then((response)=>{
-                        //console.log("Cart response when logged in: ",response);
                         if(name=="buy-now"){
                             router.push("/products/checkout")
                         }else{
@@ -194,11 +165,9 @@ const ProductTwo=({data})=>{
             }
         }else{
             if(infos?.id){
-                //console.log("In",infos)
                 let lists2 =[...cartLists];
                 let lists=localStorage.getItem("ProductCarts");
                 lists=JSON.parse(lists);
-                //console.log("Lists: ",lists)
                 const currentId=infos.id;
                 if(lists?.length){
                     const index = lists.map(e => e.id).indexOf(currentId);
@@ -240,7 +209,6 @@ const ProductTwo=({data})=>{
                         }
                     }
                 }else{
-                    //console.log('Calleddd')
                     let newlists=[];
                     const newObj={
                         id:currentId,
@@ -252,7 +220,6 @@ const ProductTwo=({data})=>{
                         product_id:currentId,
                         product_sku_id:variants.id?variants.id:0
                     }
-                    //newlists=[...newlists,newObj]
                     setCartLists([newObj])
                     localStorage.setItem("ProductCarts",JSON.stringify([newObj]));
                     if(name=="buy-now"){
@@ -274,7 +241,6 @@ const ProductTwo=({data})=>{
             ConfigureAxios(token);
             axios.get(`/cart`)
             .then((response)=>{
-                //console.log("Cart Lists : ",response.data)
                 if(response.status===200){
                     setCartLists(response.data)
                 }
@@ -337,7 +303,7 @@ const ProductTwo=({data})=>{
                                 />
                             </Col>
                         </Row>
-                   </Link>
+                    </Link>
 
                    <Row
                    className={`${hoverShow?'details-active':'details-active'}`}
@@ -453,6 +419,7 @@ const ProductTwo=({data})=>{
                     </div>
                 </Card.Body>
             </Card>
+
             <Modal 
             show={show} 
             onHide={handleClose}
