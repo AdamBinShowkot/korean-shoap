@@ -78,7 +78,7 @@ div.fade.in.modal {
     font-weight: 600;
 }
 .cart-discount-text{
-
+    font-size: 18px;
 }
 
 .products-buttton{
@@ -370,6 +370,13 @@ div.fade.in.modal {
             //width: 50%;
             //min-width: 6.5vw;
             font-size: 10px;
+            padding: 4px;
+        }
+        .cart-price-text{
+            font-size: 15px;
+        }
+        .cart-discount-text{
+            font-size: 15px;
         }
     }
     .filter-products-container{
@@ -403,6 +410,12 @@ div.fade.in.modal {
         }
         .products-buttton{
             font-size: 13px;
+        }
+        .cart-price-text{
+            font-size: 18px;
+        }
+        .cart-discount-text{
+            font-size: 18px;
         }
     }
     .filter-products-container{
