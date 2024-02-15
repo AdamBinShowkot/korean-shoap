@@ -16,6 +16,7 @@ import FilterProduct from "@/app/ui/FilterProduct";
 import StaticCardWithImage from "@/app/ui/StaticCardWithImage";
 import './index.scss';
 import SingleItem from "./SingleItem";
+import NewProduct from "@/app/ui/NewProduct";
 import Link from "next/link";
 
 function getProductLists(){

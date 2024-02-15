@@ -1,10 +1,8 @@
 .korean-shop-cart{
     //z-index: 10;
     overflow: hidden;
-    width: 15.2vw;
     border: 1px solid grey;
     border-radius: 10px;
-    margin: 6px 1vw;
     display: flex;
     flex-direction: column;
     .cart-body{
@@ -48,13 +46,12 @@
         }
     }
     .cart-content{
-        
         .title{
-            min-height: 6vh;
+            height: 8vh;
             padding: 0px 5px;
             display: flex;
             justify-content: flex-start;
-            align-items: center;
+            align-items: flex-start;
             overflow: hidden;
             .products-link-href{
                 span{
@@ -84,7 +81,6 @@
                 .cart-discount-text{
                     font-size: 18px;
                 }
-                
             }
             .wishlist{
 
@@ -109,6 +105,166 @@
         }
         .buy-now{
             width: 49%;
+        }
+    }
+}
+.cart-from-products-page{
+    width: 15.2vw;
+    margin: 6px 1vw;
+}
+.cart-from-home-page{
+    width: 15.2vw;
+    margin: 6px 1vw;
+}
+.korean-shop-cart:hover{
+    cursor: pointer;
+        border:  1px solid rgba(92, 51, 169, 1) ;
+        transition: .3s ease-in;
+}
+
+/*** RESPONSIVE AREA ***/
+@media only screen and (max-width:480px) {
+    .korean-shop-cart{
+        .cart-body{
+            position: relative;
+            width: 100%;
+            min-height: 35vh;
+            .discount-section{
+                color: #fff;
+                padding: 5px 12px !important;
+                span{
+                    color:#fff;
+                    font-size: 14px;
+                }
+            }
+            .image-section{
+                margin: 0px 1.7vw;
+                min-height: 35vh;
+                .image{
+                    height: 32vh;
+                }
+            }
+        }
+        .cart-content{
+            .title{
+                height: 8vh;
+                padding: 0px 5px;
+                .products-link-href{
+                    span{
+                        font-size: 12px !important;
+                    }
+                }
+                .products-link-href:hover{
+                    text-decoration: underline;
+                }
+            }
+            .price-wishlist{
+                padding: 3px 5px;
+                .price{
+
+                    .cart-price-text{
+                        font-size: 14px;
+                        font-weight: 600;
+                    }
+                    .cart-discount-text{
+                        font-size: 13px;
+                    }
+                }
+                .wishlist{
+    
+                }
+            }
+        }
+        .cart-action{
+            .product-action-button{
+                width: 100%;
+                font-size: 10px;
+                padding: 6px;
+            }
+            .add-to-cart{
+                width: 49%;
+            }
+            .buy-now{
+                width: 49%;
+            }
+        }
+    }
+    .cart-from-products-page{
+        width: 46.4vw;
+        margin: 6px 1vw;
+    }
+    .cart-from-home-page{
+        width: 43vw;
+        margin: 6px 1vw;
+    }
+}
+
+@media only screen and (min-width:980px) {
+    .korean-shop-cart{
+        width: 15.2vw;
+        border-radius: 10px;
+        margin: 6px 1vw;
+        .cart-body{
+            min-height: 35vh;
+            .discount-section{
+                padding: 5px 12px !important;
+                span{
+                    font-size: 14px;
+                }
+            }
+            .image-section{
+                margin: 0px 1.7vw;
+                min-height: 35vh;
+                .image{
+                    height: 32vh;
+                }
+                .image:hover{
+                    transform: scale(1.1); 
+                    z-index: -3;
+                    transition: .5s ease-in;
+                }
+            }
+        }
+        .cart-content{
+            .title{
+                height: 8vh;
+                padding: 0px 5px;
+                .products-link-href{
+                    span{
+                        font-size: 12px !important;
+                    }
+                }
+                .products-link-href:hover{
+                    text-decoration: underline;
+                }
+            }
+            .price-wishlist{
+                margin-bottom: 12px;
+                padding: 3px 5px;
+                .price{
+                    .cart-price-text{
+                        font-size: 18px;
+                        font-weight: 600;
+                    }
+                    .cart-discount-text{
+                        font-size: 18px;
+                    }
+                }
+                .wishlist{
+    
+                }
+            }
+        }
+        .cart-action{
+            .product-action-button{
+                font-size: 13px;
+            }
+            .add-to-cart{
+                width: 49%;
+            }
+            .buy-now{
+                width: 49%;
+            }
         }
     }
 }

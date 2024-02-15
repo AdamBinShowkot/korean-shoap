@@ -221,11 +221,16 @@ export default async function Home() {
           >
             <HomeFeatured/>
           </Row> */}
-          <Row>
+          <div
+          style={{
+            display:'flex',
+            width:'100%'
+          }}
+          >
             <ProductsSlider
             lists={productsLists}
             />
-          </Row>
+          </div>
           {/* <Row
           style={{
             padding:'0'
@@ -233,49 +238,55 @@ export default async function Home() {
           >
             <BannerTwo/>
           </Row> */}
-          <Row
-          
-          >
+          <div style={{
+            display:'flex',
+            width:'100%'
+          }}>
             <ItemsContainer 
             title="CLEANSER "
             lists={CleanserItems}
             len={CleanserItems?.length?CleanserItems.length:0}
             />
-          </Row>
-          <Row
-          >
+          </div>
+          <div style={{
+            display:'flex',
+            width:'100%'
+          }}>
             <ItemsContainer 
             lists={TonerItems}
             len={TonerItems?.length?TonerItems.length:0}
             title="TONER "/>
-          </Row>
-          <Row
-
-          >
+          </div>
+          <div style={{
+            display:'flex',
+            width:'100%'
+          }}>
             <ItemsContainer 
             title="SERUM/ESSENCE/AMPOULE "
             lists={EyeSerumItems}
             len={EyeSerumItems?.length?EyeSerumItems.length:0}
             />
-          </Row>
-          <Row
-          
-          >
+          </div>
+          <div style={{
+            display:'flex',
+            width:'100%'
+          }}>
             <ItemsContainer 
             title="BODY CARE "
             lists={BodyCareItems}
             len={BodyCareItems?.length?BodyCareItems.length:0}
             />
-          </Row>
-          <Row
-          
-          >
-            <ItemsContainer 
-            title="EYE CARE "
-            lists={EyeCareItems}
-            len={EyeCareItems?.length?EyeCareItems.length:0}
-            />
-          </Row>
+          </div>
+          <div style={{
+            display:'flex',
+            width:'100%'
+          }}>
+              <ItemsContainer 
+              title="EYE CARE "
+              lists={EyeCareItems}
+              len={EyeCareItems?.length?EyeCareItems.length:0}
+              />
+          </div>
         </Col>
       </Row>
 

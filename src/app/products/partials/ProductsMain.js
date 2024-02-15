@@ -35,6 +35,7 @@ import ConfigureAxios from '../../../utils/axiosConfig'
 import { 
     ProductsContextApi 
 } from '@/contextApi/productsApi';
+import NewProduct from '@/app/ui/NewProduct';
 
 
 const CustomMenu = forwardRef(
@@ -919,7 +920,10 @@ const ProductsMain=()=>{
                         products?.length?(
                             products.map((dta)=>{  
                             return <div key={dta.id} style={{margin:'5px 0px'}}>
-                                    <ProductTwo  data={dta}/>
+                                    <NewProduct  
+                                    data={dta}
+                                    IsFromProductsPage={true}
+                                    />
                                 </div>
                             })
                         ):dummyProducts?.length?dummyProducts.map((dta)=>{

@@ -10,6 +10,7 @@ import {
 } from 'react-bootstrap'
 import FilterProduct from "@/app/ui/FilterProduct";
 import FilterProductTwo from "@/app/ui/FilterProductTwo";
+import NewProduct from "@/app/ui/NewProduct";
 import './index.scss'
 
 const SingleItem=({className,details})=>{
@@ -18,7 +19,7 @@ const SingleItem=({className,details})=>{
             <div 
             className={`grid-item isotope-items ${className}`}
             >
-                <FilterProductTwo details={details}/>
+                <NewProduct IsFromHomePage={true} data={details}/>
             </div>
         </>
     )

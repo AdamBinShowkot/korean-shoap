@@ -9,6 +9,7 @@ import {
 import StaticProducts from '@/app/ui/StaticCard';
 //import Product from '@/app/ui/Product';
 import ProductTwo from '@/app/ui/ProductTwo';
+import NewProduct from '@/app/ui/NewProduct';
 import EmptyCard from '@/app/ui/EmptyCard';
 import useDeviceSize from '@/hooks/useDeviceSize';
 import Slider from 'react-slick';

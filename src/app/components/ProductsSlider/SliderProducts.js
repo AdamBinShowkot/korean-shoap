@@ -11,6 +11,7 @@ import {
 } from 'react-bootstrap';
 import StaticProducts from '@/app/ui/StaticCard';
 //import Product from '@/app/ui/Product';
+import NewProduct from '@/app/ui/NewProduct';
 import ProductTwo from '@/app/ui/ProductTwo';
 import useDeviceSize from '@/hooks/useDeviceSize';
 import Slider from 'react-slick';
@@ -119,8 +120,9 @@ const SliderProducts=({lists})=>{
                 >
                     {
                         lists?.length?lists.map((dta)=>{
-                            return <ProductTwo 
+                            return <NewProduct 
                             key={dta.id}
+                            IsFromHomePage={true}
                             data={dta}
                             windowWisth={width}
                             />
