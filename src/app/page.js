@@ -213,34 +213,22 @@ export default async function Home() {
         <Col 
         xs={12}
         style={{
-          padding:'0'
+          padding:'0',
+          display:'flex',
+          flexDirection:'column'
         }}
         >
-          {/* <Row
-          className='home-featured-main-row'
-          >
-            <HomeFeatured/>
-          </Row> */}
           <div
           style={{
-            display:'flex',
-            width:'100%'
+            width:'100%',
           }}
           >
             <ProductsSlider
             lists={productsLists}
             />
           </div>
-          {/* <Row
-          style={{
-            padding:'0'
-          }}
-          >
-            <BannerTwo/>
-          </Row> */}
           <div style={{
-            display:'flex',
-            width:'100%'
+            width:'100%',
           }}>
             <ItemsContainer 
             title="CLEANSER "
@@ -249,8 +237,7 @@ export default async function Home() {
             />
           </div>
           <div style={{
-            display:'flex',
-            width:'100%'
+            width:'100%',
           }}>
             <ItemsContainer 
             lists={TonerItems}
@@ -258,8 +245,7 @@ export default async function Home() {
             title="TONER "/>
           </div>
           <div style={{
-            display:'flex',
-            width:'100%'
+            width:'100%',
           }}>
             <ItemsContainer 
             title="SERUM/ESSENCE/AMPOULE "
@@ -268,8 +254,7 @@ export default async function Home() {
             />
           </div>
           <div style={{
-            display:'flex',
-            width:'100%'
+            width:'100%',
           }}>
             <ItemsContainer 
             title="BODY CARE "
@@ -278,8 +263,7 @@ export default async function Home() {
             />
           </div>
           <div style={{
-            display:'flex',
-            width:'100%'
+            width:'100%',
           }}>
               <ItemsContainer 
               title="EYE CARE "

@@ -252,6 +252,7 @@ const ProductTwo=({data})=>{
     }
 
     
+    
     return(
         <>
             <Card 

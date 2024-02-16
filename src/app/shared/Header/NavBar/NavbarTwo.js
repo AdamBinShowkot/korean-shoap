@@ -27,41 +27,14 @@ const NavBarTwo=()=>{
 
     const inittialLoad=async()=>{
         ConfigureAxios();
-        const categories=await getCategoryLists();
-        const skinTypes=await getSkinTypeLists();
-        const skinConcerns=await getConcernLists();
-        const ingredients=await getIngredientsLists();
-        const brands=await getBrandLists();
+        getCategoryLists();
+        getSkinTypeLists();
+        getConcernLists();
+        getIngredientsLists();
+        getBrandLists();
 
-        if(categories.length){
-            setCategoryLists(categories)
-        }else{
-            setCategoryLists([])
-        }
 
-        if(skinTypes.length){
-            setSkinTypeLists(skinTypes)
-        }else{
-            setSkinTypeLists([])
-        }
 
-        if(skinConcerns.length){
-            setSkinConernLists(skinConcerns)
-        }else{
-            setSkinConernLists([])
-        }
-
-        if(ingredients.length){
-            setIngredientLists(ingredients)
-        }else{
-            setIngredientLists([])
-        }
-
-        if(brands.length){
-            setBrandLists(brands)
-        }else{
-            setBrandLists([])
-        }
         // console.log("Cat: ",categories);
         // console.log("Skin: ",skinTypes);
         // console.log("Concerns: ",skinConcerns);
@@ -70,84 +43,100 @@ const NavBarTwo=()=>{
 
     }
     const getCategoryLists=async()=>{
-        const lists=await axios.get(`/public/category/list?page=1&per_page=20`).then((response)=>{
+        axios.get(`/public/category/list`).then((response)=>{
             if(response.status==200){
                 //console.log(response)
                 if(response.data.items.length){
                     const datas=response.data.items;
-                    return datas;
+                    if(datas.length){
+                        setCategoryLists(datas)
+                    }else{
+                        setCategoryLists([])
+                    }
+                    //return datas;
                 }
-                return []
+                //setCategoryLists([])
             }
         }).catch((error)=>{
             console.log("get category lists error.");
-            return []
+            setCategoryLists([])
         })
-        return lists;
     }
     const getSkinTypeLists=async()=>{
-        const lists=await axios.get(`/public/skin-type/list?page=1&per_page=100`).then((response)=>{
+        axios.get(`/public/skin-type/list`).then((response)=>{
             if(response.status==200){
                // console.log(response)
                 if(response.data.items.length){
                     const datas=response.data.items;
-                    return datas;
+                    if(datas.length){
+                        setSkinTypeLists(datas)
+                    }else{
+                        setSkinTypeLists([])
+                    }
                 }
-                return []
+                //setSkinTypeLists([])
             }
         }).catch((error)=>{
             console.log("get skin type lists error.");
-            return []
+            setSkinTypeLists([])
         })
-        return lists;
     }
     const getConcernLists=async()=>{
-        const lists=await axios.get(`/public/skin-concern/list?page=1&per_page=100`).then((response)=>{
+        axios.get(`/public/skin-concern/list`).then((response)=>{
             if(response.status==200){
                 //console.log(response)
                 if(response.data.items.length){
                     const datas=response.data.items;
-                    return datas;
+                    if(datas.length){
+                        setSkinConernLists(datas)
+                    }else{
+                        setSkinConernLists([])
+                    }
                 }
-                return []
+                //setSkinConernLists([])
             }
         }).catch((error)=>{
             console.log("get skin concern lists error.");
-            return []
+            setSkinConernLists([])
         })
-        return lists;
     }
     const getBrandLists=async()=>{
-        const lists=await axios.get(`/public/brand/list?page=1&per_page=100`).then((response)=>{
+        axios.get(`/public/brand/list`).then((response)=>{
             if(response.status==200){
                // console.log(response)
                 if(response.data.items.length){
                     const datas=response.data.items;
-                    return datas;
+                    if(datas.length){
+                        setBrandLists(datas)
+                    }else{
+                        setBrandLists([])
+                    }
                 }
-                return []
+                //setBrandLists([])
             }
         }).catch((error)=>{
             console.log("get brand lists error.");
-            return []
+            setBrandLists([])
         })
-        return lists;
     }
     const getIngredientsLists=async()=>{
-        const lists=await axios.get(`/public/ingredient/list?page=2&per_page=100`).then((response)=>{
+        axios.get(`/public/ingredient/list`).then((response)=>{
             if(response.status==200){
                // console.log(response)
                 if(response.data.items.length){
                     const datas=response.data.items;
-                    return datas;
+                    if(datas.length){
+                        setIngredientLists(datas)
+                    }else{
+                        setIngredientLists([])
+                    }
                 }
-                return []
+               // setIngredientLists([])
             }
         }).catch((error)=>{
             console.log("get ingredients lists error.");
-            return []
+            setIngredientLists([])
         })
-        return lists;
     }
     return(
         <>

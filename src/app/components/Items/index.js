@@ -40,6 +40,7 @@ function SamplePrevArrow(props) {
     );
 }
 const ItemsContainer=({title,lists,len})=>{
+   
     const [myLists,setMyLists]=useState([]);
     const [settings,setSettings]=useState(
         {
@@ -114,6 +115,7 @@ const ItemsContainer=({title,lists,len})=>{
           
             setSettings(newSettings)
         }else{
+          
             let newLists=[...lists];
             let newSettings={...settings,slidesToShow:5};
             if(len>=5){
@@ -146,12 +148,12 @@ const ItemsContainer=({title,lists,len})=>{
             }else if(len>=2){
                 // console.log("Heloooooooooooo3")
                  for(let i=0; i<3; i++){
-                     const newObj={
-                         id:"1000"+i,
-                         emptyPost:true
-                     }
+                    const newObj={
+                        id:"1000"+i,
+                        emptyPost:true
+                    }
                     
-                     newLists=[...newLists,newObj]; 
+                    newLists=[...newLists,newObj]; 
                  }
                  // const temp=newLists[0]
                  // newLists[0]=newLists[3]
@@ -167,8 +169,10 @@ const ItemsContainer=({title,lists,len})=>{
                     newLists=[...newLists,newObj];
                 }
                 setMyLists(newLists)
+                console.log(title,newLists)
             }
             setSettings(newSettings)
+           
         }
     
         return () => {
@@ -176,6 +180,8 @@ const ItemsContainer=({title,lists,len})=>{
         };
     }, [width]);
 
+    // console.log("TWO",myLists);
+    // console.log("TWO",title);
     return(
         <>
             <Row>
@@ -200,7 +206,7 @@ const ItemsContainer=({title,lists,len})=>{
                             myLists?.length?myLists.map((dta,index)=>{
                                 if(!dta?.emptyPost){
                                     return <div key={dta.id}>
-                                        <ProductTwo data={dta}/>
+                                        <NewProduct data={dta}/>
                                     </div>
                                     
                                 }else{

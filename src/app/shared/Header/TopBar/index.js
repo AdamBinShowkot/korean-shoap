@@ -68,34 +68,42 @@ const TopBarMain=()=>{
             <Col
             className='top-bar-container'
             >
-                <Row
+                <div
                 style={{
                     justifyContent:'center',
                     display:'flex',
-                    alignItems:'center'
+                    alignItems:'center',
+                    flexDirection:'row',
+                    width:'90vw'
                 }}
                 >
-                    <Col 
-                    xs={2} 
+                    <div 
                     className='logo-div'
+                    style={{
+                        width:'25vw'
+                    }}
                     >
                         <Link href="/">
                             <Image
+                            className='korean-shop-logo'
                             src="/shop-logo.png"
                             width={250}
                             height={100}
                             alt="Picture of the author"
                             />
                         </Link>
-                    </Col>
-                    <Col 
-                    xs={5}
+                    </div>
+                    <div 
+                    style={{
+                        width:'35vw'
+                    }}
                     >
                         <HeaderSearchInput/>
-                    </Col>
-                    <Col 
-                    xs={3}
+                    </div>
+                    <div 
+                    //xs={3}
                     style={{
+                        width:'20vw',
                         textAlign:'right'
                     }}
                     >
@@ -168,69 +176,43 @@ const TopBarMain=()=>{
                                 </span>
                         </Link>:""
                         }
-                    </Col>
-                    <Col 
+                    </div>
+                    <div 
                     className='header-social-container'
-                    xs={2}>
-                        {/* <Button
-                        className='normal-social-button'
+                    style={{
+                        width:'12vw'
+                    }}
+                    >
+                        <a
+                        href='https://www.facebook.com/koreanshopsBangladesh'
+                        target="_blank"
                         >
                             <Image
+                            className="header-social-image"
                             src="/facebook.png"
-                            width={16}
-                            height={16}
+                            width={11}
+                            height={11}
                             alt="search"
                             />
-                        </Button> */}
-                    
-                        {/* <Button
-                        className='normal-social-button'
-                        > */}
-                        {/* <InputGroup>
-                            <InputGroupText
-                            className='normal-input global-search'
-                            > */}
-                                <a
-                                href='https://www.facebook.com/koreanshopsBangladesh'
-                                target="_blank"
-                                >
-                                    <Image
-                                    className="header-social-image"
-                                    src="/facebook.png"
-                                    width={11}
-                                    height={11}
-                                    alt="search"
-                                    />
-                                </a>
-                            {/* </InputGroupText>
-                            <InputGroupText
-                            className='normal-input global-search'
-                            > */}
-                                <a href="https://www.instagram.com/koreanshopbd/" target='_blank'>
-                                    <Image
-                                    className="header-social-image"
-                                    src="/instagram.png"
-                                    width={20}
-                                    height={20}
-                                    alt="search"
-                                    /> 
-                                </a>
-                            {/* </InputGroupText>
-                        </InputGroup> */}
-                        {/* </Button> */}
-                        {/* <Button
-                        className='normal-social-button'
-                        > */}
+                        </a>
+                        <a href="https://www.instagram.com/koreanshopbd/" target='_blank'>
                             <Image
                             className="header-social-image"
-                            src="/youtube.png"
-                            width={22}
-                            height={22}
+                            src="/instagram.png"
+                            width={20}
+                            height={20}
                             alt="search"
-                            />
-                        {/* </Button> */}
-                    </Col>
-                </Row>
+                            /> 
+                        </a>
+                        <Image
+                        className="header-social-image"
+                        src="/youtube.png"
+                        width={22}
+                        height={22}
+                        alt="search"
+                        />
+                    </div>
+                </div>
             </Col>
             <CartModal IsModalShow={showModal} setIsModalShow={setShowModal}/>
         </>
