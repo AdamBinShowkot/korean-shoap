@@ -32,7 +32,7 @@ async function getProductsDetails({productSlug}){
         console.log("Heloooo")
         response=axios.get(`/public/product-details/${productSlug}`).then((res)=>{
             if(res.status===200){
-                console.log("Products : ",res.data);
+                //console.log("Products : ",res.data);
                 return res.data;
             }
         }).catch((error)=>{
@@ -47,7 +47,7 @@ async function getProductsDetails({productSlug}){
 export default async function Page({params}){
     // console.log("Params",params)
     const details=await getProductsDetails(params)
-    //console.log(details);
+    //console.log("Details:",details);
     return(
         <>
             <Row
@@ -56,7 +56,7 @@ export default async function Page({params}){
             }}
             >
                 <Col 
-                xs={6}
+                xs={4}
                 >
                     <Row>
                         <Col xs={12}>
@@ -79,15 +79,7 @@ export default async function Page({params}){
                                         </Button>
                                     </Col>
                                 </Row>
-                                <Row
-                                // style={{
-                                //     width: '500px',
-                                //     height:'500px',
-                                //     backgroundImage:`url('/detailsImage.png')`,
-                                //     backgroundRepeat: 'no-repeat',
-                                //     backgroundSize: '100% 100%',
-                                // }}
-                                >
+                                <Row>
                                     <Col 
                                     xs={12}
                                     style={{
@@ -98,8 +90,8 @@ export default async function Page({params}){
                                     >
                                         <Image
                                         src={`${details?.image?`${baseImageServer}/${details.image}`:'/detailsImage.png'}`}
-                                        height={500}
-                                        width={500}
+                                        height={320}
+                                        width={320}
                                         alt="Image"
                                         />
                                     </Col>
@@ -119,7 +111,7 @@ export default async function Page({params}){
                     </Row>
                 </Col>
                 <Col 
-                xs={6}
+                xs={8}
                 style={{
                     padding:"0px 0px 20px 20px",
                 }}
@@ -144,10 +136,26 @@ export default async function Page({params}){
                             alignItems:'center'
                         }}
                         >
-                            <StarComponent rate={details?.avg_rating?details.avg_rating:0}/> <span>&nbsp;&nbsp;<b>3</b> Customer review &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Sold: <b>32</b></span>
+                            <StarComponent rate={details?.avg_rating?details.avg_rating:0}/> 
+                            <span>&nbsp;&nbsp;<b>3</b> Customer review &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Sold: <b>32</b>
+                            &nbsp;&nbsp;Size: <b>&nbsp;80ml</b>&nbsp;&nbsp;&nbsp;
+                            SKU: <b>&nbsp;{details?.sku?details.sku:'111'}</b>
+                            </span>
                         </Col>
                     </Row>
                     <Row>
+                        <Col xs={12}>
+                            <p style={{color:'#000'}}>
+                            {details?.short_description?details.short_description:`Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
+                            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
+                            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
+                            vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+                            Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
+                            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.`}
+                            </p>
+                        </Col>
+                    </Row><br/>
+                    {/* <Row>
                         <Col 
                         xs={12}
                         style={{
@@ -156,9 +164,9 @@ export default async function Page({params}){
                             alignItems:'center'
                         }}
                         >
-                            <span>Size: <b>&nbsp;80ml</b>&nbsp;&nbsp;&nbsp; Origin: <b>&nbsp;American</b>&nbsp;&nbsp;&nbsp; SKU: <b>&nbsp;{details?.sku?details.sku:'111'}</b></span>
+                            <span> </span>
                         </Col>
-                    </Row><br/>
+                    </Row><br/> */}
                     <StockQuantitySection data={details}/>
                     <br/>
                     <AddToBug data={details}/>
@@ -190,18 +198,6 @@ export default async function Page({params}){
                             />
                             &nbsp;&nbsp;
                             <span><b>Share</b></span>
-                        </Col>
-                    </Row><br/>
-                    <Row>
-                        <Col xs={12}>
-                            <p style={{color:'#000'}}>
-                            {details?.short_description?details.short_description:`Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-                            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
-                            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
-                            vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-                            Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-                            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.`}
-                            </p>
                         </Col>
                     </Row><br/>
                     <Row>
@@ -375,7 +371,9 @@ export default async function Page({params}){
             }}
             >
                 <Col xs={12}>
-                    <FooterProductSlider/>
+                    <FooterProductSlider
+                    product_lists={details?.related_products?.length?details.related_products:[]}
+                    />
                 </Col>
             </Row>
         </>

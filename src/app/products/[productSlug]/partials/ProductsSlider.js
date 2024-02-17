@@ -4,9 +4,10 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 //import Product from '@/app/ui/Product';
-import ProductTwo from '@/app/ui/ProductTwo';
+//import ProductTwo from '@/app/ui/ProductTwo';
+import NewProduct from '@/app/ui/NewProduct';
 
-const FooterProductSlider=()=>{
+const FooterProductSlider=({product_lists})=>{
     const settings = {
         // className: "center",
         // centerMode: true,
@@ -24,36 +25,28 @@ const FooterProductSlider=()=>{
     return(
         <>
             <Slider {...settings}>
-                <div>
-                    <ProductTwo/>
+               {
+                    product_lists?.length?product_lists.map((dta)=>{
+                        return  <div key={dta.id}>
+                            <NewProduct data={dta}/>
+                        </div>
+                    }):""
+               }
+                {/* <div>
+                    <NewProduct/>
                 </div>
                 <div>
-                    <ProductTwo/>
+                    <NewProduct/>
                 </div>
                 <div>
-                    <ProductTwo/>
+                    <NewProduct/>
                 </div>
                 <div>
-                    <ProductTwo/>
+                    <NewProduct/>
                 </div>
                 <div>
-                    <ProductTwo/>
-                </div>
-                <div>
-                    <ProductTwo/>
-                </div>
-                <div>
-                    <ProductTwo/>
-                </div>
-                <div>
-                    <ProductTwo/>
-                </div>
-                <div>
-                    <ProductTwo/>
-                </div>
-                <div>
-                    <ProductTwo/>
-                </div>
+                    <NewProduct/>
+                </div> */}
             </Slider>
         </>
     )

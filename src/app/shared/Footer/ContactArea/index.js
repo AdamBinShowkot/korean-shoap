@@ -40,7 +40,8 @@ const ContactAreaMain=()=>{
                         textAlign:'left',
                         display:'flex',
                         alignItems:'center',
-                        justifyContent:'space-between'
+                        justifyContent:'flex-start',
+                        gap:'20px'
                     }}
                     >
                         {/* <Button
