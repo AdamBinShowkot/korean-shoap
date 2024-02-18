@@ -30,7 +30,7 @@ import NotFoundComponent from '@/app/ui/NotFound';
 import './index.scss';
 import Link from 'next/link';
 import axios from 'axios';
-import ConfigureAxios from '../../../../utils/axiosConfig'
+import ConfigureAxios from '@/utils/axiosConfig';
 import { 
     ProductsContextApi 
 } from '@/contextApi/productsApi';

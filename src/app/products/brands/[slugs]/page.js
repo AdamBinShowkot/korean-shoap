@@ -3,7 +3,7 @@ import {
     Row,
     Col
 } from 'react-bootstrap';
-import TopBanner from '../TopBanner';
+import TopBanner from '../../TopBanner';
 import ProductsMain from './partials/ProductsMain';
 
 export const metadata = {
