@@ -703,6 +703,26 @@ const ProductsMain=()=>{
     }
     return(
         <>
+            <div
+            className="bread-crumb"
+            >
+                <div className='bread-crumb-container'>
+                    <Image
+                    src={'/bread_crumb_home.png'}
+                    height={20}
+                    width={20}
+                    alt="Home"
+                    />
+                    <span>Home</span>
+                    <Image
+                    src={'/bread_crumb_middle.png'}
+                    height={8}
+                    width={8}
+                    alt="Middle"
+                    />
+                     <span>Products</span>
+                </div>
+            </div>
             <Row
             >
                 <Col 
@@ -712,6 +732,77 @@ const ProductsMain=()=>{
                     <InputGroup
                     className='product-filter-input-group'
                     >
+                        <Dropdown 
+                        >
+                            <Dropdown.Toggle 
+                            as={CustomToggle}
+                            className="filter-sub-menu-container"
+                            id="dropdown-basic"
+                            style={{
+                                display:'flex',
+                                alignItems:'center',
+                                justifyContent:'center',
+                                width:'10vw !important',
+                            }}
+                            >
+                               {activeSkinConcern?.slugs?activeSkinConcern.slugs:""}
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu 
+                            as={CustomMenu}
+                            className="filter-sub-menu-container"
+                            >
+                                {
+                                    skinConcernLists?.length?skinConcernLists.map((dta)=>{
+                                        return <Dropdown.Item 
+                                        eventKey={`${dta.id}`}
+                                        onClick={(e)=>{
+                                            handleOnFilterMenuChange(dta,'skin-concern')
+                                        }}
+                                        key={dta.id}
+                                        className={`filter-item-menu ${activeSkinConcern.skin_concern_id==dta.id?'filter-item-menu-active':''}`}
+                                        >
+                                            {dta.name}
+                                        </Dropdown.Item>
+                                    }):""
+                                }
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        <Dropdown 
+                        >
+                            <Dropdown.Toggle 
+                            as={CustomToggle}
+                        
+                            id="dropdown-basic"
+                            style={{
+                                display:'flex',
+                                alignItems:'center',
+                                justifyContent:'center',
+                                width:'10vw !important',
+                            }}
+                            >
+                               {activeSkinType?.slugs?activeSkinType.slugs:""}
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu
+                            className="filter-sub-menu-container"
+                            as={CustomMenu}>
+                                {
+                                    skinTypeLists?.length?skinTypeLists.map((dta)=>{
+                                        return <Dropdown.Item 
+                                        eventKey={`${dta.id}`}
+                                        onClick={(e)=>{
+                                            handleOnFilterMenuChange(dta,'skin-type')
+                                        }}
+                                        key={dta.id}
+                                        className={`filter-item-menu ${activeSkinType.skin_type_id==dta.id?'filter-item-menu-active':''}`}
+                                        >
+                                            {dta.name}
+                                        </Dropdown.Item>
+                                    }):""
+                                }
+                            </Dropdown.Menu>
+                        </Dropdown>
                         <Dropdown 
                         >
                             <Dropdown.Toggle 
@@ -776,77 +867,6 @@ const ProductsMain=()=>{
                                             handleOnFilterMenuChange(dta,'brand')
                                         }}
                                         key={dta.id}
-                                        >
-                                            {dta.name}
-                                        </Dropdown.Item>
-                                    }):""
-                                }
-                            </Dropdown.Menu>
-                        </Dropdown>
-                        <Dropdown 
-                        >
-                            <Dropdown.Toggle 
-                            as={CustomToggle}
-                        
-                            id="dropdown-basic"
-                            style={{
-                                display:'flex',
-                                alignItems:'center',
-                                justifyContent:'center',
-                                width:'10vw !important',
-                            }}
-                            >
-                               {activeSkinType?.slugs?activeSkinType.slugs:""}
-                            </Dropdown.Toggle>
-
-                            <Dropdown.Menu
-                            className="filter-sub-menu-container"
-                            as={CustomMenu}>
-                                {
-                                    skinTypeLists?.length?skinTypeLists.map((dta)=>{
-                                        return <Dropdown.Item 
-                                        eventKey={`${dta.id}`}
-                                        onClick={(e)=>{
-                                            handleOnFilterMenuChange(dta,'skin-type')
-                                        }}
-                                        key={dta.id}
-                                        className={`filter-item-menu ${activeSkinType.skin_type_id==dta.id?'filter-item-menu-active':''}`}
-                                        >
-                                            {dta.name}
-                                        </Dropdown.Item>
-                                    }):""
-                                }
-                            </Dropdown.Menu>
-                        </Dropdown>
-                        <Dropdown 
-                        >
-                            <Dropdown.Toggle 
-                            as={CustomToggle}
-                            className="filter-sub-menu-container"
-                            id="dropdown-basic"
-                            style={{
-                                display:'flex',
-                                alignItems:'center',
-                                justifyContent:'center',
-                                width:'10vw !important',
-                            }}
-                            >
-                               {activeSkinConcern?.slugs?activeSkinConcern.slugs:""}
-                            </Dropdown.Toggle>
-
-                            <Dropdown.Menu 
-                            as={CustomMenu}
-                            className="filter-sub-menu-container"
-                            >
-                                {
-                                    skinConcernLists?.length?skinConcernLists.map((dta)=>{
-                                        return <Dropdown.Item 
-                                        eventKey={`${dta.id}`}
-                                        onClick={(e)=>{
-                                            handleOnFilterMenuChange(dta,'skin-concern')
-                                        }}
-                                        key={dta.id}
-                                        className={`filter-item-menu ${activeSkinConcern.skin_concern_id==dta.id?'filter-item-menu-active':''}`}
                                         >
                                             {dta.name}
                                         </Dropdown.Item>
