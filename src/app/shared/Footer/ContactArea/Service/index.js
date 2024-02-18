@@ -77,7 +77,7 @@ const ServiceMain=()=>{
                         </Link>
                     </li>
                     <li>
-                        <Link href="/">
+                        <Link href="/products/skin-concern">
                             Skip Concern
                         </Link>
                     </li>

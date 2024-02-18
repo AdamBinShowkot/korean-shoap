@@ -508,23 +508,12 @@ const ProductsMain=()=>{
 
     const inittialLoad=async()=>{
         ConfigureAxios();
-        const categories=await getCategoryLists();
-        const skinTypes=await getSkinTypeLists();
+        getCategoryLists();
+        getSkinTypeLists();
         const skinConcerns=await getConcernLists();
         const ingredients=await getIngredientsLists();
         const brands=await getBrandLists();
 
-        if(categories.length){
-            setCategoryLists(categories)
-        }else{
-            setCategoryLists([]);
-        }
-
-        if(skinTypes.length){
-            setSkinTypeLists(skinTypes)
-        }else{
-            setSkinTypeLists([])
-        }
 
         if(skinConcerns.length){
             setSkinConernLists(skinConcerns)
@@ -546,36 +535,36 @@ const ProductsMain=()=>{
 
     }
     const getCategoryLists=async()=>{
-        const lists=await axios.get(`/public/category/list?page=1&per_page=20`).then((response)=>{
+        axios.get(`/public/category/list?page=1&per_page=20`).then((response)=>{
             if(response.status==200){
                 //console.log(response)
                 if(response.data.items.length){
                     const datas=response.data.items;
-                    return datas;
+                    setCategoryLists(datas);
+                }else{
+                    setCategoryLists([]);
                 }
-                return []
             }
         }).catch((error)=>{
             console.log("get category lists error.");
-            return []
+            setCategoryLists([])
         })
-        return lists;
     }
     const getSkinTypeLists=async()=>{
-        const lists=await axios.get(`/public/skin-type/list?page=1&per_page=100`).then((response)=>{
+        axios.get(`/public/skin-type/list?page=1&per_page=100`).then((response)=>{
             if(response.status==200){
                // console.log(response)
                 if(response.data.items.length){
                     const datas=response.data.items;
-                    return datas;
+                    setSkinTypeLists(datas)
+                }else{
+                    setSkinTypeLists([])
                 }
-                return []
             }
         }).catch((error)=>{
             console.log("get skin type lists error.");
-            return []
+            setSkinTypeLists([])
         })
-        return lists;
     }
     const getConcernLists=async()=>{
         const lists=await axios.get(`/public/skin-concern/list?page=1&per_page=100`).then((response)=>{

@@ -10,7 +10,7 @@ import './brand.scss';
 import Link from 'next/link';
 
 
-const BrandCard=({data})=>{
+const BrandCard=({data,IsBrand})=>{
     return(
         <>
             <Card
@@ -34,7 +34,7 @@ const BrandCard=({data})=>{
                     className='brand-title-container'
                     >
                         <Link
-                        href={`/products/brands/${data.slug}`}
+                        href={`${IsBrand?`/products/brands/${data.slug}`:`/products/skin-concern/${data.slug}`}`}
                         className='brand-title-link'
                         >
                             <h3>{data.name}</h3>

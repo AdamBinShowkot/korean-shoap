@@ -22,6 +22,7 @@ import {
     useSearchParams 
 } from 'next/navigation';
 //import Product from '@/app/ui/Product';
+import NewProduct from '@/app/ui/NewProduct';
 import ProductTwo from '@/app/ui/ProductTwo';
 import BrandCard from '@/app/ui/BrandCard';
 import PaginationMain from './Pagination';
@@ -30,15 +31,16 @@ import NotFoundComponent from '@/app/ui/NotFound';
 import './index.scss';
 import Link from 'next/link';
 import axios from 'axios';
-import ConfigureAxios from '../../../../utils/axiosConfig'
+import ConfigureAxios from '@/utils/axiosConfig';
 import { 
     ProductsContextApi 
 } from '@/contextApi/productsApi';
 
 
 
-const ProductsMain=()=>{
+const ProductsMain=({params})=>{
     // const products = await getProductLists();
+    //console.log("Params: ",params)
     const history=useRouter();
     const searchParams = useSearchParams()
     const page = searchParams.get('page');
@@ -77,7 +79,7 @@ const ProductsMain=()=>{
     },[])
 
     const getBrandLists=async()=>{
-        const lists=await axios.get(`/public/brand/list?page=1&per_page=100`).then((response)=>{
+        const lists=await axios.get(`/public/skin-concern/products/${params.slugs}`).then((response)=>{
             if(response.status==200){
                // console.log(response)
                 if(response.data.items.length){
@@ -113,10 +115,7 @@ const ProductsMain=()=>{
                         products?.length?(
                             products.map((dta)=>{  
                             return <div key={dta.id} style={{margin:'5px 0px'}}>
-                                    <BrandCard
-                                    IsBrand={true}
-                                    IsSkinConcern={false}  
-                                    data={dta}/>
+                                    <NewProduct  data={dta}/>
                                 </div>
                             })
                         ):dummyProducts?.length?dummyProducts.map((dta)=>{

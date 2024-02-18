@@ -77,7 +77,7 @@ const ProductsMain=()=>{
     },[])
 
     const getBrandLists=async()=>{
-        const lists=await axios.get(`/public/brand/list?page=1&per_page=100`).then((response)=>{
+        const lists=await axios.get(`/public/skin-concern/list`).then((response)=>{
             if(response.status==200){
                // console.log(response)
                 if(response.data.items.length){
@@ -92,7 +92,7 @@ const ProductsMain=()=>{
                 //return []
             }
         }).catch((error)=>{
-            console.log("get brand lists error.");
+            console.log("get skin concern lists error.");
             setProducts([])
             setDummyproducts([])
             //return []
@@ -114,8 +114,8 @@ const ProductsMain=()=>{
                             products.map((dta)=>{  
                             return <div key={dta.id} style={{margin:'5px 0px'}}>
                                     <BrandCard
-                                    IsBrand={true}
-                                    IsSkinConcern={false}  
+                                    IsBrand={false}
+                                    IsSkinConcern={true}  
                                     data={dta}/>
                                 </div>
                             })
