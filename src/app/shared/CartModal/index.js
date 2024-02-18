@@ -31,6 +31,7 @@ import {
 } from '@/utils/config';
 import WarningModal from '@/app/ui/WarningModal';
 import NotFoundComponent from '@/app/ui/NotFound';
+import './index.scss';
 
 const CartModal=({IsModalShow,setIsModalShow})=>{
     const {userInfo,setUserInfo}=useContext(UserInfoContextApi);
