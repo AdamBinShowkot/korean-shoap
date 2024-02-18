@@ -74,7 +74,7 @@ const TopBarMain=()=>{
                     display:'flex',
                     alignItems:'center',
                     flexDirection:'row',
-                    width:'90vw'
+                    width:'86vw'
                 }}
                 >
                     <div 
@@ -95,7 +95,7 @@ const TopBarMain=()=>{
                     </div>
                     <div 
                     style={{
-                        width:'35vw'
+                        width:'32vw'
                     }}
                     >
                         <HeaderSearchInput/>
@@ -180,7 +180,7 @@ const TopBarMain=()=>{
                     <div 
                     className='header-social-container'
                     style={{
-                        width:'12vw'
+                        width:'11vw'
                     }}
                     >
                         <a
