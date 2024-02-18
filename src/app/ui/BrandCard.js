@@ -34,7 +34,7 @@ const BrandCard=({data})=>{
                     className='brand-title-container'
                     >
                         <Link
-                        href={`/products?brand=${data.name}&brand_id=${data.id}&menu=1`}
+                        href={`/products/brands/${data.slug}`}
                         className='brand-title-link'
                         >
                             <h3>{data.name}</h3>
