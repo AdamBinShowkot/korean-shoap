@@ -53,7 +53,7 @@ const QuickLinks=()=>{
                         width={16}
                         height={16}
                         alt="search"
-                        className={`${isButtonShow?'show image':'hide image'}`}
+                        className={`${isButtonShow?'show footer-image':'hide footer-image'}`}
                         />
                     </Col>
                 </Row>

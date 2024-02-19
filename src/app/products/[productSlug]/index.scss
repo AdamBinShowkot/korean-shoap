@@ -1,3 +1,9 @@
+.products-details-container{
+    padding:40px 100px;
+    .products-title{
+        font-size: 24px;
+    }
+}
 .add-to-bag-button{
     color: #fff;
     background-color: rgba(92, 51, 169, 1);
@@ -27,4 +33,23 @@
 .product-details-comment-button span{
     color: #fff;
     font-size: 11px;
+}
+
+
+// RESPONSIVE AREA
+@media only screen and (max-width:480px) {
+    .products-details-container{
+        padding:1px 10px;
+        .products-title{
+            font-size: 20px;
+        }
+    }
+}
+@media only screen and (min-width:980px) {
+    .products-details-container{
+        padding:40px 100px;
+        .products-title{
+            font-size: 24px;
+        }
+    }
 }

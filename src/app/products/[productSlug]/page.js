@@ -29,7 +29,7 @@ async function getProductsDetails({productSlug}){
     ConfigureAxios();
     let response={};
     if(productSlug!=1){
-        console.log("Heloooo")
+        //console.log("Heloooo")
         response=axios.get(`/public/product-details/${productSlug}`).then((res)=>{
             if(res.status===200){
                 //console.log("Products : ",res.data);
@@ -51,12 +51,11 @@ export default async function Page({params}){
     return(
         <>
             <Row
-            style={{
-                padding:"40px 100px"
-            }}
+            className='products-details-container'
             >
                 <Col 
-                xs={4}
+                xs={12}
+                lg={4}
                 >
                     <Row>
                         <Col xs={12}>
@@ -111,14 +110,17 @@ export default async function Page({params}){
                     </Row>
                 </Col>
                 <Col 
-                xs={8}
+                xs={12}
+                lg={8}
                 style={{
                     padding:"0px 0px 20px 20px",
                 }}
                 >
                     <Row>
                         <Col xs={12}>
-                            <h2 style={{marginBottom:'5px'}}>
+                            <h2 
+                            className='products-title'
+                            >
                                 {details?.name?details.name:`Neogen Dermalogy Black Energy Cream 80ml`}
                             </h2>
                         </Col>
