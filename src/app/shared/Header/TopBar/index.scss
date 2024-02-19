@@ -6,16 +6,24 @@
     height: 66px;
     .korean-shop-logo{
         height: 100%;
-        width: 100%;
+        width: 80%;
     }
 }
 
 .global-search:hover{
     cursor: pointer;
 }
+.header-user-cart-section{
+    width:20vw;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+}
 .header-social-container{
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
+    gap:20px;
     align-items: center;
     
 }

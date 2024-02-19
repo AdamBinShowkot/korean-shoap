@@ -86,7 +86,7 @@ const TopBarMain=()=>{
                         <Link href="/">
                             <Image
                             className='korean-shop-logo'
-                            src="/shop-logo.png"
+                            src="/shop-logo-two.jpg"
                             width={250}
                             height={100}
                             alt="Picture of the author"
@@ -101,11 +101,7 @@ const TopBarMain=()=>{
                         <HeaderSearchInput/>
                     </div>
                     <div 
-                    //xs={3}
-                    style={{
-                        width:'20vw',
-                        textAlign:'right'
-                    }}
+                    className='header-user-cart-section'
                     >
                         {/* <Link
                         href="/my-order"
