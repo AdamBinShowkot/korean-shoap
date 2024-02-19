@@ -283,11 +283,11 @@ export default async function Home() {
         brands={featredBrandLists}
         />
       </Row>
-      <Row>
+      {/* <Row>
         <Col xs={12}>
           <HomeBlogSection/>
         </Col>
-      </Row>
+      </Row> */}
     </>
   )
 }
