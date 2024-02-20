@@ -54,7 +54,13 @@ ul li{
   display:flex;
   justify-content:center;
   align-items:center;
-  padding:20px 7vw;
+  padding: 20px 7.5vw;
+}
+.home-page-products-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding: 20px 7.5vw;
 }
 /* .col-12{
   padding: 0;
@@ -270,7 +276,7 @@ ul li{
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:20px 7vw;
+    padding: 20px 7.25vw;
   }
 }
 @media only screen and (min-width:1360px) {

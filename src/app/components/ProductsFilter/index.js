@@ -10,6 +10,7 @@ import {
     Button,
     Container
 } from 'react-bootstrap';
+import useDeviceSize from "@/hooks/useDeviceSize";
 import ConfigureAxios from "@/utils/axiosConfig";
 import axios from "axios";
 import FilterProduct from "@/app/ui/FilterProduct";
@@ -32,6 +33,7 @@ function getProductLists(){
 const IsotopeReact = ({lists,brands}) => {
     //console.log("Lists : ",lists)
     const isotope = useRef()
+    const [width, height] = useDeviceSize();
   // store the filter keyword in a state
     const [filterKey, setFilterKey] = useState('*')
     const [products,setProducts]=useState([]);
@@ -77,7 +79,7 @@ const IsotopeReact = ({lists,brands}) => {
    },400)
     // cleanup
    // return () => isotope.current.destroy()
-  }, [])
+  }, [width])
 
 
   // handling filter key change

@@ -45,3 +45,35 @@
         width: 100%;
     }
 }
+
+
+/*** RESPONSIVE AREA ***/
+@media only screen and (max-width:480px) {
+    .isotope-items{
+        width: 43%;
+        margin: 1% .4%;
+        .isotope-filter-image{
+            height: 36vh;
+            width: 100%;
+        }
+    }
+}
+  @media only screen and (min-width:768px) {
+    /* .slider-controll-row .slider-controll-col .slick-slide{
+        overflow: hidden;
+        height: 16vh;
+        width: 12.5% !important;
+        padding: 2.5vh 2.5vw;
+        background-color: antiquewhite;
+    } */
+  }
+@media only screen and (min-width:980px) {
+    .isotope-items{
+        width: 16%;
+        margin: 1% .4%;
+        .isotope-filter-image{
+            height: 36vh;
+            width: 100%;
+        }
+    }
+}
