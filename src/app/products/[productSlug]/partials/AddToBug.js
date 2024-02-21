@@ -266,7 +266,7 @@ const AddToBug=({data})=>{
                 }}
                 >
                     <Button
-                    className='add-to-bag-button'
+                    className='add-to-bag-button details-action-button'
                     onClick={()=>{
                         handleAddToCart(data,"add-to-cart")
                     }}
@@ -274,7 +274,7 @@ const AddToBug=({data})=>{
                         Add To Bag
                     </Button>
                     <Button
-                    className='buy-now-button'
+                    className='buy-now-button details-action-button'
                     onClick={()=>{
                         handleAddToCart(data,"buy-now")
                     }}

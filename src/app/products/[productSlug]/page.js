@@ -57,64 +57,48 @@ export default async function Page({params}){
                 xs={12}
                 lg={4}
                 >
-                    <Row>
-                        <Col xs={12}>
-                            <Card
-                            style={{
-                                borderRadius:'10px'
-                            }}
-                            >
-                                <Row>
-                                    <Col 
-                                    xs={12}
-                                    style={{
-                                        padding:'10px 30px'
-                                    }}
-                                    >
-                                        <Button
-                                        className='save-off-button'
-                                        >
-                                            Save 20%
-                                        </Button>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col 
-                                    xs={12}
-                                    style={{
-                                        display:'flex',
-                                        justifyContent:'center',
-                                        alignItems:'center'
-                                    }}
-                                    >
-                                        <Image
-                                        src={`${details?.image?`${baseImageServer}/${details.image}`:'/detailsImage.png'}`}
-                                        height={320}
-                                        width={320}
-                                        alt="Image"
-                                        />
-                                    </Col>
-                                </Row>
-                            </Card>
-                        </Col>
-                    </Row>
-                    <Row
+                    <Card
                     style={{
-                        padding:'40px 0px'
+                        borderRadius:'10px'
                     }}
                     >
-                        <Col xs={12}>
-                            {/* <NormalProduct/> */}
-                            {/* <ProductSlider/> */}
-                        </Col>
-                    </Row>
+                        <Row>
+                            <Col 
+                            xs={12}
+                            style={{
+                                padding:'10px 30px'
+                            }}
+                            >
+                                <Button
+                                className='save-off-button'
+                                >
+                                    Save 20%
+                                </Button>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col 
+                            xs={12}
+                            style={{
+                                display:'flex',
+                                justifyContent:'center',
+                                alignItems:'center'
+                            }}
+                            >
+                                <Image
+                                src={`${details?.image?`${baseImageServer}/${details.image}`:'/detailsImage.png'}`}
+                                height={320}
+                                width={320}
+                                alt="Image"
+                                />
+                            </Col>
+                        </Row>
+                    </Card>
                 </Col>
                 <Col 
                 xs={12}
                 lg={8}
-                style={{
-                    padding:"0px 0px 20px 20px",
-                }}
+                className='product-details-left'
                 >
                     <Row>
                         <Col xs={12}>
@@ -137,12 +121,23 @@ export default async function Page({params}){
                             justifyContent:'flex-start',
                             alignItems:'center'
                         }}
+                        className=''
                         >
-                            <StarComponent rate={details?.avg_rating?details.avg_rating:0}/> 
-                            <span>&nbsp;&nbsp;<b>3</b> Customer review &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Sold: <b>32</b>
-                            &nbsp;&nbsp;Size: <b>&nbsp;80ml</b>&nbsp;&nbsp;&nbsp;
-                            SKU: <b>&nbsp;{details?.sku?details.sku:'111'}</b>
+                            
+                            <span
+                            className="details-top-info"
+                            >
+                                <span className="left">
+                                    <StarComponent rate={details?.avg_rating?details.avg_rating:0}/> 
+                                    &nbsp;&nbsp;&nbsp;<b>3</b> &nbsp;&nbsp; Customer review &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Sold: <b>32</b>
+                                    &nbsp;&nbsp;
+                                </span>
+                                <span className="right">
+                                    Size: <b>&nbsp;80ml</b>&nbsp;&nbsp;&nbsp;
+                                    SKU: <b>&nbsp;{details?.sku?details.sku:'111'}</b>
+                                </span>
                             </span>
+                            
                         </Col>
                     </Row>
                     <Row>
@@ -157,18 +152,6 @@ export default async function Page({params}){
                             </p>
                         </Col>
                     </Row><br/>
-                    {/* <Row>
-                        <Col 
-                        xs={12}
-                        style={{
-                            display:'flex',
-                            justifyContent:'flex-start',
-                            alignItems:'center'
-                        }}
-                        >
-                            <span> </span>
-                        </Col>
-                    </Row><br/> */}
                     <StockQuantitySection data={details}/>
                     <br/>
                     <AddToBug data={details}/>
@@ -211,12 +194,11 @@ export default async function Page({params}){
             </Row>
             <hr className='product-details-hr'/>
             <Row
-            style={{
-                padding:'0px 100px 20px'
-            }}
+            className="details-comments-area"
             >
                 <Col 
-                xs={6}
+                xs={12}
+                xl={6}
                 >
                     <Row
                     // style={{
@@ -227,6 +209,7 @@ export default async function Page({params}){
                     >
                         <Col 
                         xs={12}
+                        xl={12}
                         style={{
                             display:'flex',
                             justifyContent:'flex-start',
@@ -256,13 +239,12 @@ export default async function Page({params}){
                     </Row>
                 </Col>
                 <Col 
-                xs={6}
+                xs={12}
+                xl={6}
+                className='comments-button-section'
                 >
                     <InputGroup
-                    style={{
-                        display:'flex',
-                        justifyContent:'flex-end'
-                    }}
+                    className="button-container"
                     >
                         <InputGroupText
                         className='product-details-comment-button'
@@ -307,11 +289,7 @@ export default async function Page({params}){
                         </InputGroupText>
                     </InputGroup>
                     <InputGroup
-                    style={{
-                        marginTop:'10px',
-                        display:'flex',
-                        justifyContent:'flex-end'
-                    }}
+                    className="button-container"
                     >
                         <InputGroupText
                         className='product-details-comment-button'
@@ -357,9 +335,7 @@ export default async function Page({params}){
                 </Col>
             </Row>
             <Row
-            style={{
-                padding:'20px 100px'
-            }}
+            className="products-comments-area"
             >
                 <Col 
                 xs={12}
@@ -368,9 +344,7 @@ export default async function Page({params}){
                 </Col>
             </Row>
             <Row
-            style={{
-                padding:'20px 100px 30px'
-            }}
+            className="products-footer-slider-area"
             >
                 <Col xs={12}>
                     <FooterProductSlider
