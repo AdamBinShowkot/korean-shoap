@@ -375,6 +375,7 @@ export default async function Page({params}){
                 <Col xs={12}>
                     <FooterProductSlider
                     product_lists={details?.related_products?.length?details.related_products:[]}
+                    len={details?.related_products?.length?details?.related_products.length:0}
                     />
                 </Col>
             </Row>

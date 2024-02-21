@@ -265,11 +265,11 @@ export default async function Home() {
           <div style={{
             width:'100%',
           }}>
-              <ItemsContainer 
-              title="EYE CARE "
-              lists={EyeCareItems}
-              len={EyeCareItems?.length?EyeCareItems.length:0}
-              />
+            <ItemsContainer 
+            title="EYE CARE "
+            lists={EyeCareItems}
+            len={EyeCareItems?.length?EyeCareItems.length:0}
+            />
           </div>
         </Col>
       </Row>
