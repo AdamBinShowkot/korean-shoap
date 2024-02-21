@@ -10,7 +10,7 @@ import {
 
 const PlaceHolder=()=>{
     return(
-        <Card style={{ width: '13.6rem' ,margin:'0px 8px'}}>
+      <Card style={{ width: '13.6rem' ,margin:'0px 8px'}}>
         <Card.Img variant="top" src="/place_holder.svg" />
         <Card.Body>
           <Placeholder as={Card.Title} animation="glow">

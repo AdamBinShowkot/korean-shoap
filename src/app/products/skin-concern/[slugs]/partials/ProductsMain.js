@@ -115,7 +115,7 @@ const ProductsMain=({params})=>{
                         products?.length?(
                             products.map((dta)=>{  
                             return <div key={dta.id} style={{margin:'5px 0px'}}>
-                                    <NewProduct  data={dta}/>
+                                    <NewProduct IsFromProductsPage={true} data={dta}/>
                                 </div>
                             })
                         ):dummyProducts?.length?dummyProducts.map((dta)=>{
