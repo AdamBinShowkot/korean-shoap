@@ -863,7 +863,7 @@ const ProductsMain=()=>{
                                 }
                             </Dropdown.Menu>
                         </Dropdown>
-                        <Dropdown 
+                        {/* <Dropdown 
                         >
                             <Dropdown.Toggle 
                             as={CustomToggle}
@@ -897,7 +897,7 @@ const ProductsMain=()=>{
                                     }):""
                                 }
                             </Dropdown.Menu>
-                        </Dropdown>
+                        </Dropdown> */}
                         <Button
                         style={{
                             position:'absolute',

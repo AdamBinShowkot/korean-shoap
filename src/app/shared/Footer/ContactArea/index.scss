@@ -9,7 +9,7 @@
             display:flex;
             justify-content:space-between;
             align-items:center;
-            .show.image{
+            .show.footer-image{
                 display: block;
                 height: 16px;
                 width: 16px;
@@ -17,7 +17,7 @@
                     cursor: pointer;
                 }
             }
-            .hide.image{
+            .hide.footer-image{
                 display: none;
             }
         }

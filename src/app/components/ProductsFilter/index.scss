@@ -1,3 +1,9 @@
+.isotope-container{
+    padding: 60px 7vw;
+    display: flex;
+    width: 100vw;
+
+}
 .filter-container{
     display: flex;
     //flex-wrap: wrap;
@@ -38,7 +44,7 @@
     overflow: hidden;
 }
 .isotope-items{
-    width: 16%;
+    width: 18.5%;
     margin: 1% .4%;
     .isotope-filter-image{
         height: 36vh;
@@ -49,13 +55,22 @@
 
 /*** RESPONSIVE AREA ***/
 @media only screen and (max-width:480px) {
+    .filter-products-container{
+        padding: 0px 0px;
+    }
     .isotope-items{
-        width: 43%;
+        width: 48%;
         margin: 1% .4%;
         .isotope-filter-image{
             height: 36vh;
             width: 100%;
         }
+    }
+    .filter-button{
+        font-size:18px;
+    }
+    .isotope-container{
+        padding: 60px 10px;
     }
 }
   @media only screen and (min-width:768px) {
@@ -68,12 +83,21 @@
     } */
   }
 @media only screen and (min-width:980px) {
+    .filter-products-container{
+        padding: 0px 100px;
+    }
     .isotope-items{
-        width: 16%;
+        width: 18.5%;
         margin: 1% .4%;
         .isotope-filter-image{
             height: 36vh;
             width: 100%;
         }
+    }
+    .filter-button{
+        font-size:27px;
+    }
+    .isotope-container{
+        padding: 60px 7vw;
     }
 }

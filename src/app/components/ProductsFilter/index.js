@@ -112,158 +112,154 @@ const IsotopeReact = ({lists,brands}) => {
 
   return (
     <>
-        <Container>
-            <Row
+        <div
+        className="isotope-container"
+        >
+            <Col 
+            xs={12}
             style={{
-                padding:'60px 0px',
-                // display:'flex',
-                // justifyContent:'center',
-                // alignItems:'center'
+                width:"100%",
+                display:'flex',
+                flexWrap:'wrap',
+                flexDirection:'column'
             }}
             >
-                <Col 
-                xs={12}
-                style={{
-                    width:"100%"
-                }}
-                >
-                    <Row>
-                        <Col 
-                        xs={12}
-                        style={{
-                            padding:'10px 0px',
-                            display:'flex',
-                            justifyContent:'center',
-                            alignItems:'center'
-                        }}
-                        >
-                            <h2>BEST <strong style={{color:'rgba(232, 99, 154, 1)'}}>BRAND</strong></h2>
-                        </Col>
-                    </Row>
-                    <Row
-                    >
-                        <Col 
-                        xs={12}
-                        style={{
-                            padding:'30px 0px',
-                            display:'flex',
-                            justifyContent:'center',
-                            alignItems:'center'
-                        }}
-                        >
-                            {/* <Button
-                            variant="outline-primary"
-                            className={`filter-button ${filterKey=="cosrx"?"filter-active-button":""}`}
-                            onClick={handleFilterKeyChange('cosrx')}
-                            >
-                                COSRX
-                            </Button> */}
-                            {/* <Button
-                            variant="outline-primary"
-                            className={`filter-button ${filterKey=="neogen"?"filter-active-button":""}`}
-                            onClick={handleFilterKeyChange('neogen')}
-                            >
-                                NEOGEN
-                            </Button> */}
-                            {/* <Button
-                            variant="outline-primary"
-                            className={`filter-button ${filterKey=="fruit"?"filter-active-button":""}`}
-                            onClick={handleFilterKeyChange('fruit')}
-                            >
-                                TIAM
-                            </Button> */}
-                            {/* <Button
-                            variant="outline-primary"
-                            className={`filter-button ${filterKey=="vege"?"filter-active-button":""}`}
-                            onClick={handleFilterKeyChange('vege')}
-                            >
-                                SUM BY MI
-                            </Button> */}
-                            {
-                                brands?.length?brands.map((dta)=>{
-                                    return <Button
-                                    key={dta.id}
-                                    variant="outline-primary"
-                                    className={`filter-button ${filterKey==`${dta?.slug}`?"filter-active-button":""}`}
-                                    onClick={handleFilterKeyChange(`${dta?.slug}`)}
-                                    >
-                                        {dta?.name.toUpperCase()}
-                                    </Button>
-                                }):""
-                            }
-                            <Link
-                            href={`/products/brands`}
-                            target="_blank"
-                            >
-                                <Button
-                                variant="outline-primary"
-                                className={`filter-button ${filterKey=="*"?"filter-active-button":""}`}
-                                onClick={handleFilterKeyChange('*')}
-                                >
-                                    ALL BRAND
-                                </Button>
-                            </Link>
-                        </Col>
-                    </Row>
-                    <div 
-                    className="filter-products-container filter-container"
+                <Row>
+                    <Col 
+                    xs={12}
                     style={{
+                        padding:'10px 0px',
                         display:'flex',
-                        flexWrap:'wrap'
+                        justifyContent:'center',
+                        alignItems:'center'
                     }}
                     >
+                        <h2>BEST <strong style={{color:'rgba(232, 99, 154, 1)'}}>BRAND</strong></h2>
+                    </Col>
+                </Row>
+                <Row
+                >
+                    <Col 
+                    xs={12}
+                    style={{
+                        padding:'30px 0px',
+                        display:'flex',
+                        justifyContent:'center',
+                        alignItems:'center'
+                    }}
+                    >
+                        {/* <Button
+                        variant="outline-primary"
+                        className={`filter-button ${filterKey=="cosrx"?"filter-active-button":""}`}
+                        onClick={handleFilterKeyChange('cosrx')}
+                        >
+                            COSRX
+                        </Button> */}
+                        {/* <Button
+                        variant="outline-primary"
+                        className={`filter-button ${filterKey=="neogen"?"filter-active-button":""}`}
+                        onClick={handleFilterKeyChange('neogen')}
+                        >
+                            NEOGEN
+                        </Button> */}
+                        {/* <Button
+                        variant="outline-primary"
+                        className={`filter-button ${filterKey=="fruit"?"filter-active-button":""}`}
+                        onClick={handleFilterKeyChange('fruit')}
+                        >
+                            TIAM
+                        </Button> */}
+                        {/* <Button
+                        variant="outline-primary"
+                        className={`filter-button ${filterKey=="vege"?"filter-active-button":""}`}
+                        onClick={handleFilterKeyChange('vege')}
+                        >
+                            SUM BY MI
+                        </Button> */}
                         {
-                            neogenLists?.length?neogenLists.map((dta)=>{
-                                return  <SingleItem
-                                className={"neogen"}
+                            brands?.length?brands.map((dta)=>{
+                                return <Button
                                 key={dta.id}
-                                details={dta}
-                                />
+                                variant="outline-primary"
+                                className={`filter-button ${filterKey==`${dta?.slug}`?"filter-active-button":""}`}
+                                onClick={handleFilterKeyChange(`${dta?.slug}`)}
+                                >
+                                    {dta?.name.toUpperCase()}
+                                </Button>
                             }):""
                         }
-                        {
-                            cosrxLists?.length?cosrxLists.map((dta)=>{
-                                return  <SingleItem
-                                className={"cosrx"}
-                                key={dta.id}
-                                details={dta}
-                                />
-                            }):""
-                        }
-                        {/* <ItemsContainer/> */}
-                        
-                        {/* <Col
-                        style={{
-                            width:'22% !important'
-                        }} 
-                        className="grid-item vege ">
-                            <StaticCardWithImage/>
-                        </Col>
-                        <Col
-                        style={{
-                            width:'22% !important'
-                        }} 
-                        className="grid-item fruit">
-                            <FilterProduct/>
-                        </Col>
-                        <Col
-                        style={{
-                            width:'22% !important'
-                        }} 
-                        className="grid-item fruit">
-                            <FilterProduct/>
-                        </Col>
-                        <Col
-                        style={{
-                            width:'22% !important'
-                        }} 
-                        className="grid-item fruit">
-                            <FilterProduct/>
-                        </Col> */}
-                    </div>
-                </Col>
-            </Row>
-        </Container>
+                        <Link
+                        href={`/products/brands`}
+                        target="_blank"
+                        >
+                            <Button
+                            variant="outline-primary"
+                            className={`filter-button ${filterKey=="*"?"filter-active-button":""}`}
+                            onClick={handleFilterKeyChange('*')}
+                            >
+                                ALL BRAND
+                            </Button>
+                        </Link>
+                    </Col>
+                </Row>
+                <div 
+                //className="filter-products-container filter-container"
+                style={{
+                    display:'flex',
+                    flexWrap:'wrap'
+                }}
+                >
+                    {
+                        neogenLists?.length?neogenLists.map((dta)=>{
+                            return  <SingleItem
+                            className={"neogen"}
+                            key={dta.id}
+                            details={dta}
+                            />
+                        }):""
+                    }
+                    {
+                        cosrxLists?.length?cosrxLists.map((dta)=>{
+                            return  <SingleItem
+                            className={"cosrx"}
+                            key={dta.id}
+                            details={dta}
+                            />
+                        }):""
+                    }
+                    {/* <ItemsContainer/> */}
+                    
+                    {/* <Col
+                    style={{
+                        width:'22% !important'
+                    }} 
+                    className="grid-item vege ">
+                        <StaticCardWithImage/>
+                    </Col>
+                    <Col
+                    style={{
+                        width:'22% !important'
+                    }} 
+                    className="grid-item fruit">
+                        <FilterProduct/>
+                    </Col>
+                    <Col
+                    style={{
+                        width:'22% !important'
+                    }} 
+                    className="grid-item fruit">
+                        <FilterProduct/>
+                    </Col>
+                    <Col
+                    style={{
+                        width:'22% !important'
+                    }} 
+                    className="grid-item fruit">
+                        <FilterProduct/>
+                    </Col> */}
+                </div>
+            </Col>
+        </div>
     </>
   )
 }
