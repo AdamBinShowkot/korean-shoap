@@ -77,26 +77,14 @@ const CustomToggle = forwardRef(function CustomToggle({ children, onClick }, ref
     }}
     >
         <div
-        style={{
-            width:'80%',
-            
-        }}
+        className="filter-box"
         >
-            <span
-            style={{
-                marginRight:'10px',
-                fontSize:'13px',
-                fontWeight:'600'
-            }}
-            >
+            <span>
                 {children}
             </span>
         </div>
         <div
-        style={{
-            width:'20%',
-            textAlign:'right'
-        }}
+        className="filter-box"
         >
             <Image
             src="/filterBtn1.png"

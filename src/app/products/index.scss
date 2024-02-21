@@ -16,7 +16,7 @@
     //opacity: .9;
 }
 .products-top-container-row{
-    padding:30px 80px;
+    padding:30px 6.8vw;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -53,13 +53,13 @@
 }
 @media only screen and (min-width:980px) {
     .products-top-container-row{
-        padding: 30px 80px;
+        padding: 30px 6.8vw;
         .products-filter-group-button{
             width: 12% !important;
         }
     }
     .products-bottom-container-col{
-        padding: 30px 80px;
+        padding: 30px 6.8vw;
         justify-content: flex-start;
     }
 }
