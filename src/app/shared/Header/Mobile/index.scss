@@ -35,7 +35,17 @@
         }
     }
 }
-
+.footer-cart-button{
+    background: transparent;
+    border: none;
+    position: relative;
+    height: 40px;
+    width: 65px;
+}
+.footer-cart-button:hover{
+    background: transparent;
+    border: none;
+}
 
 /*** RESPONSIVE AREA ***/
 @media only screen and (min-width:360px) {
