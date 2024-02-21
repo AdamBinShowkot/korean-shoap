@@ -121,7 +121,8 @@ const IsotopeReact = ({lists,brands}) => {
                 width:"100%",
                 display:'flex',
                 flexWrap:'wrap',
-                flexDirection:'column'
+                flexDirection:'column',
+                //position:'relative'
             }}
             >
                 <Row>
@@ -203,11 +204,11 @@ const IsotopeReact = ({lists,brands}) => {
                     </Col>
                 </Row>
                 <div 
-                //className="filter-products-container filter-container"
-                style={{
-                    display:'flex',
-                    flexWrap:'wrap'
-                }}
+                className="filter-products-container-two filter-container"
+                // style={{
+                //     display:'flex',
+                //     flexWrap:'wrap'
+                // }}
                 >
                     {
                         neogenLists?.length?neogenLists.map((dta)=>{
