@@ -98,7 +98,7 @@ const CheckoutMain=()=>{
             ConfigureAxios(token);
             axios.get(`/cart`)
             .then((response)=>{
-                console.log("Cart Lists : ",response.data)
+                //console.log("Cart Lists : ",response.data)
                 if(response.status===200){
                     setCartLists(response.data)
                 }
@@ -249,7 +249,10 @@ const CheckoutMain=()=>{
                     >
                         <Col>
                             <Row>
-                                <Col xs={4}>
+                                <Col 
+                                xl={4}
+                                xs={12}
+                                >
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea2">
                                         <Form.Label>NAME {" "}<sup>*</sup></Form.Label>
                                         <Form.Control 
@@ -261,7 +264,10 @@ const CheckoutMain=()=>{
                                         />
                                     </Form.Group>
                                 </Col>
-                                <Col xs={4}>
+                                <Col 
+                                xl={4}
+                                xs={12}
+                                >
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea3">
                                         <Form.Label>PHONE {" "}<sup>*</sup></Form.Label>
                                         <Form.Control 
@@ -273,7 +279,10 @@ const CheckoutMain=()=>{
                                         />
                                     </Form.Group>
                                 </Col>
-                                <Col xs={4}>
+                                <Col 
+                                xl={4}
+                                xs={12}
+                                >
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea3">
                                         <Form.Label>ADDRESS {" "}<sup>*</sup></Form.Label>
                                         <Form.Control 
@@ -287,7 +296,10 @@ const CheckoutMain=()=>{
                                 </Col>
                             </Row>
                             <Row>
-                                <Col xs={12}>
+                                <Col 
+                                xl={4}
+                                xs={12}
+                                >
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea3">
                                         <Form.Label>ORDER NOTE (OPTIONAL)</Form.Label>
                                         <Form.Control 
@@ -311,6 +323,7 @@ const CheckoutMain=()=>{
                                     >
                                         <Col 
                                         xl={6}
+                                        xs={12}
                                         className="right-side side"
                                         >
                                             <h3 className='inner-title'>Choose Shipping Method</h3>
@@ -400,7 +413,8 @@ const CheckoutMain=()=>{
                                             </Row>
                                         </Col>
                                         <Col 
-                                        xl={6}
+                                       xl={6}
+                                       xs={12}
                                         className="left-side side"
                                         >
                                             <h3 className='inner-title'>Choose Shipping Method</h3>
@@ -454,10 +468,6 @@ const CheckoutMain=()=>{
                                             >Before confirming Your Order Please Check Our terms & conditions for Return Policy *</span>
                                             <Button
                                             className='checkout-submit-button'
-                                            style={{
-                                                width:'30%',
-                                                margin:'10px 0px'
-                                            }}
                                             onClick={checkoutSubmit}
                                             disabled={cartLists?.length?false:true}
                                             >

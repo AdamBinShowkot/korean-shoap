@@ -31,6 +31,8 @@
     border: none;
     font-weight: 600;
     line-height: normal;
+    width:30%;
+    margin:10px 0px;
 }
 .checkout-submit-button:hover {
     transform: scale(1.1);
@@ -72,4 +74,131 @@
             }
         }
     }
+}
+
+/*** RESPONSIVE AREA ***/
+@media only screen and (max-width:480px) {
+    .checkout-container{
+        padding: 5vh 10px 30px;
+        .break-section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 10px;
+            .heading{
+                width: 20% !important;
+                text-align: center;
+            }
+            .hr{
+                background-color: #000;
+                height: 2px !important;
+                width: 40% !important;
+            }
+        }
+    }
+    .billing-shipping-container{
+        padding: 10px 10px 30px;
+        display: flex;
+        flex-direction: column;
+        .form-container{
+            padding: 15px 0px;
+            .option-container{
+                padding: 10px;
+                .title{
+                    font-size: 16px;
+                }
+                .cupon{
+                    color: #E8639A;
+                    margin-bottom: 10px;
+                }
+                .side{
+                    .inner-title{
+                        font-size: 14px;
+                    }
+                }
+                .right-side{
+                    display: flex;
+                    flex-direction: column;
+                    border-right: 1px solid #000;
+                }
+                .left-side{
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+    .checkout-submit-button{
+        width:50%;
+    }
+}
+@media only screen and (min-width:768px) {
+  
+}
+@media only screen and (min-width:980px) {
+    .checkout-container{
+        padding: 15vh 30vw 100px;
+        .break-section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 0px;
+            .heading{
+                width: 20% !important;
+                text-align: center;
+            }
+            .hr{
+                background-color: #000;
+                height: 2px !important;
+                width: 40% !important;
+            }
+        }
+    }
+    .billing-shipping-container{
+        padding: 20px 12vw 100px;
+        display: flex;
+        flex-direction: column;
+        .form-container{
+            padding: 40px 0px;
+            .option-container{
+                display: flex;
+                flex-direction: column;
+                padding: 50px 0px 10px;
+                .title{
+                    font-size: 18px;
+                    font-weight: 700;
+                    margin: 10px 0px;
+                }
+                .cupon{
+                    color: #E8639A;
+                    margin-bottom: 10PX;
+                }
+                .side{
+                    .inner-title{
+                        margin: 10px 0px;
+                        font-size: 16px;
+                        font-weight: 700;
+                    }
+                }
+                .right-side{
+                    display: flex;
+                    flex-direction: column;
+                    border-right: 1px solid #000;
+                }
+                .left-side{
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+    .checkout-submit-button{
+        width:30%;
+    }
+}
+@media only screen and (min-width:1360px) {
+    
+}
+@media only screen and (min-width:1920px) {
+    
 }
