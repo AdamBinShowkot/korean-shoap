@@ -94,7 +94,7 @@ const RegistrationMain=()=>{
                     className="contact-form"
                     >
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                            <Form.Label><sup>*</sup>{" "}Name:</Form.Label>
+                            <Form.Label className={`checkout-require-input ${registrationInfo?.name?'':'is-empty'}`}><sup>*</sup>{" "}Name:</Form.Label>
                             <Form.Control 
                             type="text" 
                             placeholder=""
@@ -104,7 +104,7 @@ const RegistrationMain=()=>{
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea2">
-                            <Form.Label><sup>*</sup>{" "}Email/Phone:</Form.Label>
+                            <Form.Label className={`checkout-require-input ${registrationInfo?.mobile?'':'is-empty'}`}><sup>*</sup>{" "}Email/Phone:</Form.Label>
                             <Form.Control 
                             type="text" 
                             placeholder=""
@@ -114,7 +114,7 @@ const RegistrationMain=()=>{
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea3">
-                            <Form.Label><sup>*</sup>{" "}Password:</Form.Label>
+                            <Form.Label className={`checkout-require-input ${registrationInfo?.password?'':'is-empty'}`}><sup>*</sup>{" "}Password:</Form.Label>
                             <Form.Control 
                             type="password" 
                             placeholder=""

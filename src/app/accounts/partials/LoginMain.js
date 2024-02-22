@@ -102,7 +102,7 @@ const LoginMain=()=>{
                    
                     >
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                            <Form.Label><sup>*</sup>{" "}Phone/Email:</Form.Label>
+                            <Form.Label className={`checkout-require-input ${userInfo?.phone?'':'is-empty'}`}><sup>*</sup>{" "}Phone/Email:</Form.Label>
                             <Form.Control 
                             type="text" 
                             placeholder="phone"
@@ -112,7 +112,7 @@ const LoginMain=()=>{
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea2">
-                            <Form.Label><sup>*</sup>{" "}Password:</Form.Label>
+                            <Form.Label className={`checkout-require-input ${userInfo?.password?'':'is-empty'}`}><sup>*</sup>{" "}Password:</Form.Label>
                             <Form.Control 
                             type="password" 
                             placeholder="password"

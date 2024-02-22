@@ -15,7 +15,14 @@
             width: 40% !important;
         }
     }
+   
     
+}
+.checkout-require-input{
+    color: #000;
+}
+.checkout-require-input.is-empty{
+    color: #fa541c;
 }
 
 .checkout-submit-button{

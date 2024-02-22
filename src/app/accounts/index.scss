@@ -5,6 +5,13 @@
     padding: 0px 20px 0px 20px;
 }
 
+.checkout-require-input{
+    color: #000;
+}
+.checkout-require-input.is-empty{
+    color: #fa541c;
+}
+
 .others-login-container{
     padding: 0 10vw 40px;
     .break-section{

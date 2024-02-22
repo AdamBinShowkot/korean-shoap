@@ -254,7 +254,7 @@ const CheckoutMain=()=>{
                                 xs={12}
                                 >
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea2">
-                                        <Form.Label>NAME {" "}<sup>*</sup></Form.Label>
+                                        <Form.Label className={`checkout-require-input ${customerInfo?.name?'':'is-empty'}`}>NAME {" "}<sup>*</sup></Form.Label>
                                         <Form.Control 
                                         type="text" 
                                         placeholder=""
@@ -269,7 +269,7 @@ const CheckoutMain=()=>{
                                 xs={12}
                                 >
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea3">
-                                        <Form.Label>PHONE {" "}<sup>*</sup></Form.Label>
+                                        <Form.Label className={`checkout-require-input ${customerInfo?.phone?'':'is-empty'}`}>PHONE {" "}<sup>*</sup></Form.Label>
                                         <Form.Control 
                                         type="text" 
                                         placeholder=""
@@ -284,7 +284,7 @@ const CheckoutMain=()=>{
                                 xs={12}
                                 >
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea3">
-                                        <Form.Label>ADDRESS {" "}<sup>*</sup></Form.Label>
+                                        <Form.Label className={`checkout-require-input ${customerInfo?.address?'':'is-empty'}`}>ADDRESS {" "}<sup>*</sup></Form.Label>
                                         <Form.Control 
                                         type="text" 
                                         placeholder=""
