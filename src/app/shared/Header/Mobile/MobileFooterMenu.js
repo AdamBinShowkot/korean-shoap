@@ -58,15 +58,18 @@ const MobileFooterMenu=()=>{
                 >
                     <Link 
                     href="/"
-                    className="footer-cart-button"
                     >
-                        <Image
-                        src="/m_icon1.png"
-                        width={60}
-                        height={60}
-                        className="mobile-menu-image"
-                        alt="Icon One"
-                        />
+                        <Button
+                        className="footer-cart-button"
+                        >
+                            <Image
+                            src="/m_icon1.png"
+                            width={60}
+                            height={60}
+                            className="mobile-menu-image"
+                            alt="Icon One"
+                            />
+                        </Button>
                     </Link>
                     <Button
                     className="footer-cart-button"

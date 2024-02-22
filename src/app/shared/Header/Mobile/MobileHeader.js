@@ -1,3 +1,8 @@
+'use client'
+import React,{
+    useState,
+    useEffect
+} from 'react';
 import {
     Row,
     Col,
@@ -6,8 +11,11 @@ import {
 import Image from 'next/image';
 import HeaderSearchInput from '../shared/HeaderSearchInput';
 import './index.scss';
+import Link from 'next/link';
+import MenuModal from '../../CartModal/MenuModal';
 
 const MobileHeader=()=>{
+    const [showModal,setShowModal]=useState(false);
     return(
         <>
             <Col 
@@ -28,18 +36,25 @@ const MobileHeader=()=>{
                         height={60}
                         className='mobile-humberger-menu'
                         alt="Picture of the author"
+                        onClick={()=>{
+                            setShowModal(true)
+                        }}
                         />
                     </Col>
                     <Col 
                     xs={6}
                     >
-                        <Image
-                        src="/shop-logo.png"
-                        width={250}
-                        height={100}
-                        className='mobile-shoap-logo'
-                        alt="Picture of the author"
-                        />
+                       <Link
+                       href="/"
+                       >
+                            <Image
+                            src="/shop-logo.png"
+                            width={250}
+                            height={100}
+                            className='mobile-shoap-logo'
+                            alt="Picture of the author"
+                            />
+                       </Link>
                     </Col>
                     <Col 
                     xs={4}
@@ -91,6 +106,7 @@ const MobileHeader=()=>{
                     </Col>
                 </Row>
             </Col>
+            <MenuModal IsModalShow={showModal} setIsModalShow={setShowModal}/>
         </>
     )
 }

@@ -121,7 +121,7 @@ const CartModal=({IsModalShow,setIsModalShow})=>{
             ConfigureAxios(token);
             axios.get(`/cart`)
             .then((response)=>{
-                console.log("Cart Lists : ",response.data)
+               // console.log("Cart Lists : ",response.data)
                 if(response.status===200){
                     setCartLists(response.data)
                 }

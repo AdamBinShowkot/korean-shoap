@@ -29,10 +29,7 @@
         height: 60px;
         justify-content: space-around;
         align-items: center;
-        .mobile-menu-image{
-            height: 30px;
-            width: 30px;
-        }
+       
     }
 }
 .footer-cart-button{
@@ -40,7 +37,11 @@
     border: none;
     position: relative;
     height: 40px;
-    width: 65px;
+    width: 55px;
+    .mobile-menu-image{
+        height: 100%;
+        width: 100%;
+    }
 }
 .footer-cart-button:hover{
     background: transparent;
