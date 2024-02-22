@@ -131,7 +131,7 @@
   }
   
   .modal.left .modal-body {
-    padding: 15px 15px 80px;
+    padding: 15px 0px 80px;
   }
         
   /*Right*/
@@ -166,6 +166,28 @@
     align-items: center;
 }
 
+.mobile-nav-menu{
+    width: 100%;
+}
+.cart-modal-body{
+    .navbar-container{
+        padding: 0;
+    }
+    .mega-menu-href{
+        display: flex;
+        justify-content: space-between;
+    }
+    li.mega-drop-down {
+        padding: 10px 6px !important;
+    }
+    .mega-drop-down{
+        border-bottom: 1px solid grey;
+        a{
+            
+        }
+    }
+}
+ 
 
 /*** RESPONSIVE AREA ***/
 @media only screen and (max-width:480px) {

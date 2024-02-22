@@ -12,7 +12,10 @@ import {
     Form,
     Button,
     Modal,
-    Card
+    Card,
+    Navbar,
+    Nav,
+    NavDropdown
 } from 'react-bootstrap';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -34,54 +37,129 @@ import NotFoundComponent from '@/app/ui/NotFound';
 import './index.scss';
 
 const MenuModal=({IsModalShow,setIsModalShow})=>{
-    const {userInfo,setUserInfo}=useContext(UserInfoContextApi);
-    const {cartLists,setCartLists}=useContext(AddToCartContext);
-    const [addToCartSuccess,setAddToCartSuccess]=useState(false);
-    const [addToCartError,setAddToCartError]=useState(false);
-    const [cartTotal,setCartTotal]=useState(0);
-    //const [showModal,setShowModal]=useState(IsModalShow);
-    const [quantity,setQuantity]=useState(0);
-    const [totalPrice,setTotalPrice]=useState(0);
-    const [IsShow,setIsShow]=useState(false);
-    const [yesDelete,setYesDelete]=useState(false);
-    const [removeData,setRemoveData]=useState({});
-    const [successMsg,setSuccessMsg]=useState("");
-    const [errorMsg,setErrorMsg]=useState("");
+    const [categoryLists,setCategoryLists]=useState([]);
+    const [skinTypeLists,setSkinTypeLists]=useState([]);
+    const [skinConcernLists,setSkinConernLists]=useState([]);
+    const [ingredientLists,setIngredientLists]=useState([]);
+    const [brandLists,setBrandLists]=useState([]);
 
     // get cart lists on initial load
     useEffect(()=>{
         const token=localStorage.getItem("token");
 
-        if(token){
-            getCartLists(token)
-        }else{
-            let lists=localStorage.getItem("ProductCarts");
-            lists=JSON.parse(lists);
-            if(lists?.length){
-                setCartLists(lists)
-            }
-        }
+        inittialLoad();
     },[])
 
-
-
-
-    // get cart lists onload
-    const getCartLists=async(token="")=>{
-        if(token){
-            ConfigureAxios(token);
-            axios.get(`/cart`)
-            .then((response)=>{
-                //console.log("Cart Lists : ",response.data)
-                if(response.status===200){
-                    setCartLists(response.data)
-                }
-            }).catch((error)=>{
-
-            })
-        }
+    const inittialLoad=async()=>{
+        ConfigureAxios();
+        getCategoryLists();
+        getSkinTypeLists();
+        getConcernLists();
+        getIngredientsLists();
+        getBrandLists();
 
     }
+    const getCategoryLists=async()=>{
+        axios.get(`/public/category/list`).then((response)=>{
+            if(response.status==200){
+                //console.log(response)
+                if(response.data.items.length){
+                    const datas=response.data.items;
+                    if(datas.length){
+                        setCategoryLists(datas)
+                    }else{
+                        setCategoryLists([])
+                    }
+                    //return datas;
+                }
+                //setCategoryLists([])
+            }
+        }).catch((error)=>{
+            console.log("get category lists error.");
+            setCategoryLists([])
+        })
+    }
+ 
+    const getSkinTypeLists=async()=>{
+        axios.get(`/public/skin-type/list`).then((response)=>{
+            if(response.status==200){
+               // console.log(response)
+                if(response.data.items.length){
+                    const datas=response.data.items;
+                    if(datas.length){
+                        setSkinTypeLists(datas)
+                    }else{
+                        setSkinTypeLists([])
+                    }
+                }
+                //setSkinTypeLists([])
+            }
+        }).catch((error)=>{
+            console.log("get skin type lists error.");
+            setSkinTypeLists([])
+        })
+    }
+    const getConcernLists=async()=>{
+        axios.get(`/public/skin-concern/list`).then((response)=>{
+            if(response.status==200){
+                //console.log(response)
+                if(response.data.items.length){
+                    const datas=response.data.items;
+                    if(datas.length){
+                        setSkinConernLists(datas)
+                    }else{
+                        setSkinConernLists([])
+                    }
+                }
+                //setSkinConernLists([])
+            }
+        }).catch((error)=>{
+            console.log("get skin concern lists error.");
+            setSkinConernLists([])
+        })
+    }
+    const getBrandLists=async()=>{
+        axios.get(`/public/brand/list`).then((response)=>{
+            if(response.status==200){
+               // console.log(response)
+                if(response.data.items.length){
+                    const datas=response.data.items;
+                    if(datas.length){
+                        setBrandLists(datas)
+                    }else{
+                        setBrandLists([])
+                    }
+                }
+                //setBrandLists([])
+            }
+        }).catch((error)=>{
+            console.log("get brand lists error.");
+            setBrandLists([])
+        })
+    }
+    const getIngredientsLists=async()=>{
+        axios.get(`/public/ingredient/list`).then((response)=>{
+            if(response.status==200){
+               // console.log(response)
+                if(response.data.items.length){
+                    const datas=response.data.items;
+                    if(datas.length){
+                        setIngredientLists(datas)
+                    }else{
+                        setIngredientLists([])
+                    }
+                }
+               // setIngredientLists([])
+            }
+        }).catch((error)=>{
+            console.log("get ingredients lists error.");
+            setIngredientLists([])
+        })
+    }
+
+
+
+
 
   
 
@@ -145,11 +223,236 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                 </Modal.Header>
                 <Modal.Body
                 style={{
-                    backgroundColor:"#f7f5fb"
+                    backgroundColor:"#f7f5fb",
+                    flexDirection:'column'
                 }}
                 className="cart-modal-body"
                 >
-                   
+                    <ul 
+                    class="exo-menu navbar-container"
+                    style={{
+                        display:'flex',
+                        flexDirection:'column'
+                    }}
+                    >
+                        <li className="mega-drop-down">
+                        <a className="mega-menu-href" href="#">
+                            CATEGORY
+                            &nbsp;
+                            <Image
+                            src={'/downArrow.png'}
+                            height={8}
+                            width={14}
+                            alt="Image"
+                            className="navbar-arrow-image"
+                            />
+                        </a>
+                        <div className="animated fadeIn mega-menu">
+                            <div className="mega-menu-wrap">
+                                <Row>
+                                    <Col
+                                    className="mega-menu-left-container"
+                                    >
+                                        {
+                                            categoryLists?.length?categoryLists.map((dta)=>{
+                                                return <Link 
+                                                key={dta.id}
+                                                href={`/products?category=${dta.name}&category_id=${dta.id}&IsFromMenu=1`}
+                                                as={`/products?category=${dta.name}&category_id=${dta.id}&menu=1`}
+                                                className="link-href"
+                                                >
+                                                    {dta.name}
+                                                </Link>
+                                            }):""
+                                        }
+                                    </Col>
+                                </Row>
+                            </div>	
+                        </div>
+                        </li>
+                    <li className="mega-drop-down">
+                        <a className="mega-menu-href" href="#">
+                            SKIN CONCERN
+                            &nbsp;
+                            <Image
+                            src={'/downArrow.png'}
+                            height={8}
+                            width={14}
+                            alt="Image"
+                            className="navbar-arrow-image"
+                            />
+                        </a>
+                        <div className="animated fadeIn mega-menu">
+                            <div className="mega-menu-wrap">
+                                <Row>
+                                    <Col
+                                    className="mega-menu-left-container"
+                                    >
+                                        {
+                                            skinConcernLists?.length?skinConcernLists.map((dta)=>{
+                                                return <Link 
+                                                key={dta.id}
+                                                href={`/products?skin_concern=${dta.name}&skin_concern_id=${dta.id}&menu=1`}
+                                                className="link-href"
+                                                >
+                                                    {dta.name}
+                                                </Link>
+                                            }):""
+                                        }
+                                    </Col>
+                                </Row>
+                            </div>	
+                        </div>
+                    </li>
+                    <li className="mega-drop-down">
+                        <a className="mega-menu-href" href="#">
+                            SKIN TYPE
+                            &nbsp;
+                            <Image
+                            src={'/downArrow.png'}
+                            height={8}
+                            width={14}
+                            alt="Image"
+                            className="navbar-arrow-image"
+                            />
+                        </a>
+                        <div className="animated fadeIn mega-menu">
+                            <div className="mega-menu-wrap">
+                                <Row>
+                                    <Col
+                                    className="mega-menu-left-container"
+                                    >
+                                        {
+                                            skinTypeLists?.length?skinTypeLists.map((dta)=>{
+                                                return <Link 
+                                                key={dta.id}
+                                                href={`/products?skin_type=${dta.name}&skin_type_id=${dta.id}&menu=1`}
+                                                className="link-href"
+                                                >
+                                                    {dta.name}
+                                                </Link>
+                                            }):""
+                                        }
+                                    </Col>
+                                </Row>
+                            </div>	
+                        </div>
+                    </li>
+                    <li className="mega-drop-down">
+                        <a className="mega-menu-href" href="#">
+                            INGREDIENTS
+                            &nbsp;
+                            <Image
+                            src={'/downArrow.png'}
+                            height={8}
+                            width={14}
+                            alt="Image"
+                            className="navbar-arrow-image"
+                            />
+                        </a>
+                        <div className="animated fadeIn mega-menu">
+                            <div className="mega-menu-wrap">
+                                <Row>
+                                    <Col
+                                    className="mega-menu-left-container"
+                                    >
+                                        {
+                                            ingredientLists?.length?ingredientLists.map((dta)=>{
+                                                return <Link 
+                                                key={dta.id}
+                                                href={`/products?ingredients=${dta.name}&ingredient_id=${dta.id}&menu=1`}
+                                                className="link-href"
+                                                >
+                                                    {dta.name}
+                                                </Link>
+                                            }):""
+                                        }
+                                    </Col>
+                                </Row>
+                            </div>	
+                        </div>
+                    </li>
+                    <li className="mega-drop-down">
+                        <a className="mega-menu-href" href="#">
+                            BRANDS
+                            &nbsp;
+                            <Image
+                            src={'/downArrow.png'}
+                            height={8}
+                            width={14}
+                            alt="Image"
+                            className="navbar-arrow-image"
+                            />
+                        </a>
+                        <div className="animated fadeIn mega-menu">
+                            <div className="mega-menu-wrap">
+                                <Row>
+                                    <Col
+                                    className="mega-menu-left-container"
+                                    >
+                                        {
+                                            brandLists?.length?brandLists.map((dta)=>{
+                                                return <Link 
+                                                key={dta.id}
+                                                href={`/products?brand=${dta.name}&brand_id=${dta.id}&menu=1`}
+                                                className="link-href"
+                                                >
+                                                    {dta.name}
+                                                </Link>
+                                            }):""
+                                        }
+                                    </Col>
+                                </Row>
+                            </div>	
+                        </div>
+                    </li>
+                </ul>
+                   {/* <Navbar
+                   style={{
+                    display:'flex',
+                    flexDirection:'column'
+                   }}
+                   >
+                    <Nav className="mr-auto mobile-nav-menu">
+                        <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2">
+                            Another action
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="#action/3.4">
+                            Separated link
+                            </NavDropdown.Item>
+                        </NavDropdown>
+                    </Nav>
+                    <Nav className="mr-auto mobile-nav-menu">
+                        <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2">
+                            Another action
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="#action/3.4">
+                            Separated link
+                            </NavDropdown.Item>
+                        </NavDropdown>
+                    </Nav>
+                    <Nav className="mr-auto mobile-nav-menu">
+                        <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2">
+                            Another action
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="#action/3.4">
+                            Separated link
+                            </NavDropdown.Item>
+                        </NavDropdown>
+                    </Nav>
+                   </Navbar> */}
                 </Modal.Body>
             </Modal>
         </>
