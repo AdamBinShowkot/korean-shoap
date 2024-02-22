@@ -30,8 +30,8 @@
             }
         }
         .image-section{
-            margin: 0px 1.7vw;
-            min-height: 35vh;
+            margin: 0px .5vw;
+            min-height: 32vh;
             .image{
                 //height: 100% !important;
                 width: 100% !important;
@@ -128,7 +128,7 @@
         .cart-body{
             position: relative;
             width: 100%;
-            min-height: 35vh;
+            min-height: 30vh;
             .discount-section{
                 color: #fff;
                 padding: 5px 12px !important;
@@ -138,20 +138,20 @@
                 }
             }
             .image-section{
-                margin: 0px 1.7vw;
-                min-height: 35vh;
+                margin: 0px .3vw;
+                min-height: 27vh;
                 .image{
-                    height: 32vh;
+                    height: 27vh;
                 }
             }
         }
         .cart-content{
             .title{
-                height: 8vh;
-                padding: 0px 5px;
+                overflow: hidden;
+                height: 6vh;
                 .products-link-href{
                     span{
-                        font-size: 12px !important;
+                        font-size: 11px !important;
                     }
                 }
                 .products-link-href:hover{
@@ -213,8 +213,8 @@
                 }
             }
             .image-section{
-                margin: 0px 1.7vw;
-                min-height: 35vh;
+                margin: 0px .5vw;
+                min-height: 32vh;
                 .image{
                     height: 32vh;
                 }
@@ -227,7 +227,8 @@
         }
         .cart-content{
             .title{
-                height: 8vh;
+                overflow: hidden;
+                height: 6vh;
                 padding: 0px 5px;
                 .products-link-href{
                     span{
