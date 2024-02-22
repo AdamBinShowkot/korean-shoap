@@ -19,12 +19,14 @@ import {
 import './index.scss';
 import Link from 'next/link';
 import CartModal from '../../CartModal';
+import MenuModal from '../../CartModal/MenuModal';
 
 const MobileFooterMenu=()=>{
     const {userInfo,setUserInfo}=useContext(UserInfoContextApi);
     const {cartLists,setCartLists}=useContext(AddToCartContext);
     const [totalQty,setTotalQty]=useState(0);
     const [cartTotal,setCartTotal]=useState(0);
+    const [menuModalShow,setMenuModalShow]=useState(false);
     const [showModal,setShowModal]=useState(false);
     const [token,setToken]=useState("");
     
@@ -67,8 +69,11 @@ const MobileFooterMenu=()=>{
                         />
                     </Link>
                     <Button
-                   className="footer-cart-button"
-                   >
+                    className="footer-cart-button"
+                    onClick={()=>{
+                        setMenuModalShow(true)
+                    }}
+                    >
                         <Image
                         src="/m_icon2.png"
                         width={60}
@@ -119,6 +124,7 @@ const MobileFooterMenu=()=>{
                 </Col>
             </Row>
             <CartModal IsModalShow={showModal} setIsModalShow={setShowModal}/>
+            <MenuModal IsModalShow={menuModalShow} setIsModalShow={setMenuModalShow}/>
         </>
     )
 }
