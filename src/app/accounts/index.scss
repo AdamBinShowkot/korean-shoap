@@ -45,3 +45,36 @@
     color: #fff;
     font-weight: 700;
 }
+
+/*** RESPONSIVE AREA ***/
+@media only screen and (max-width:480px) {
+    .login-register-inner{
+        padding: 0px 10px 0px 10px;
+    }
+    .login-registration-container{
+        padding: 5vh 10px 20px;
+    }
+    .others-login-container{
+        padding: 0 10px 20px;
+    }
+}
+@media only screen and (min-width:768px) {
+  
+}
+@media only screen and (min-width:980px) {
+    .login-register-inner{
+        padding: 0px 20px 0px 20px;
+    }
+    .login-registration-container{
+        padding: 15vh 15vw 100px;
+    }
+    .others-login-container{
+        padding: 0 10vw 40px;
+    }
+}
+@media only screen and (min-width:1360px) {
+    
+}
+@media only screen and (min-width:1920px) {
+    
+}

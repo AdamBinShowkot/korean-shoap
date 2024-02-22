@@ -113,17 +113,21 @@ const MobileFooterMenu=()=>{
                             {totalQty?totalQty:0}
                         </span>
                    </Button>
-                   <Button
-                   className="footer-cart-button"
-                   >
-                        <Image
-                        src="/m_icon4.png"
-                        width={60}
-                        height={60}
-                        className="mobile-menu-image"
-                        alt="Icon One"
-                        />
-                   </Button>
+                  <Link
+                  href={`/accounts`}
+                  >
+                    <Button
+                    className="footer-cart-button"
+                    >
+                            <Image
+                            src="/m_icon4.png"
+                            width={60}
+                            height={60}
+                            className="mobile-menu-image"
+                            alt="Icon One"
+                            />
+                    </Button>
+                  </Link>
                 </Col>
             </Row>
             <CartModal IsModalShow={showModal} setIsModalShow={setShowModal}/>
