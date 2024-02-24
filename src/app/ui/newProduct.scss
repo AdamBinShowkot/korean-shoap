@@ -30,12 +30,13 @@
             }
         }
         .image-section{
-            margin: 0px .5vw;
-            min-height: 32vh;
+            margin: 1vh .5vw 1vh !important;
+            height: 33vh;
+            //z-index: -4;
             .image{
                 //height: 100% !important;
                 width: 100% !important;
-                z-index: -3 !important;
+                z-index: -10 !important;
                 height: 32vh;
             }
             .image:hover{
@@ -46,6 +47,7 @@
         }
     }
     .cart-content{
+        z-index: 4 !important;
         .title{
             height: 8vh;
             padding: 0px 5px;
@@ -138,10 +140,10 @@
                 }
             }
             .image-section{
-                margin: 0px .3vw;
-                min-height: 30vh;
+                margin: 1vh .3vw 1vh !important;
+                min-height: 28vh;
                 .image{
-                    height: 27vh;
+                    height: 28vh;
                 }
             }
         }
@@ -205,6 +207,7 @@
         border-radius: 10px;
         margin: 10px .7vw;
         .cart-body{
+            
             min-height: 35vh;
             .discount-section{
                 padding: 5px 12px !important;
@@ -213,10 +216,10 @@
                 }
             }
             .image-section{
-                margin: 0px .5vw;
-                min-height: 35vh;
+                margin: 1vh .5vw 1vh !important;
+                height: 33vh;
                 .image{
-                    height: 35vh;
+                    height: 33vh;
                 }
                 .image:hover{
                     transform: scale(1.1); 
