@@ -129,7 +129,7 @@ export default async function Page({params}){
                             >
                                 <span className="left">
                                     <StarComponent rate={details?.avg_rating?details.avg_rating:0}/> 
-                                    &nbsp;&nbsp;&nbsp;<b>3</b> &nbsp;&nbsp; Customer review &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Sold: <b>32</b>
+                                    &nbsp;&nbsp;&nbsp;<b>{details?.total_review?details.total_review:"0"}</b> &nbsp;&nbsp; Customer review &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Sold: <b>32</b>
                                     &nbsp;&nbsp;
                                 </span>
                                 <span className="right">

@@ -74,7 +74,7 @@ const TopBarMain=()=>{
                     display:'flex',
                     alignItems:'center',
                     flexDirection:'row',
-                    width:'86vw'
+                    width:'84vw'
                 }}
                 >
                     <div 
@@ -176,7 +176,7 @@ const TopBarMain=()=>{
                     <div 
                     className='header-social-container'
                     style={{
-                        width:'11vw'
+                        width:'9vw'
                     }}
                     >
                         <a

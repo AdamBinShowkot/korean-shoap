@@ -28,6 +28,7 @@ const CheckoutMain=()=>{
     const [userInfo,setUserInfo]=useState({});
     const [checkoutSuccess,setCheckoutSuccess]=useState(false);
     const [checkoutError,setCheckoutError]=useState(false);
+    const [errorMsg,setErrorMsg]=useState("")
    
     const [totalPrice,setTotalPrice]=useState(0);
     const [customerInfo,setCustomerInfo]=useState({
@@ -152,11 +153,11 @@ const CheckoutMain=()=>{
             obj.products=myLists;
 
             // if(Token){
-            console.log("Post Object : ",obj)
+            //console.log("Post Object : ",obj)
             ConfigureAxios(Token);
             axios.post(`/public/orders`,JSON.stringify(obj))
             .then((response)=>{
-                console.log("order response: ",response);
+               // console.log("order response: ",response);
                 if(response.status===200){
                     getCartLists(Token)
                     setCheckoutSuccess(true);
@@ -176,15 +177,17 @@ const CheckoutMain=()=>{
             }).catch((error)=>{
                 //alert("Something Went Wrong.")
                 setCheckoutError(true);
+                setErrorMsg("Checkout Error.")
                 setTimeout(()=>{
                     setCheckoutError(false);
                     //window.location.href="/accounts"
                 },2000)
-                console.log("order error: ",error)
+                //console.log("order error: ",error)
             })
     
         }else{
             setCheckoutError(true);
+            setErrorMsg("Please fill the required field.");
             setTimeout(()=>{
                 setCheckoutError(false);
                 //window.location.href="/accounts"
@@ -488,7 +491,7 @@ const CheckoutMain=()=>{
             Postion={"top-end"}/>
             <WarningToaster 
             IsShow={checkoutError} 
-            ToastMsg="Checkout Error."
+            ToastMsg={`${errorMsg?errorMsg:"Checkout Error."}`}
             Width={'20vw'}
             Postion={"top-end"}/>
         </>

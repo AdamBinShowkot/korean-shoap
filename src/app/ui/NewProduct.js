@@ -251,20 +251,24 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
         <>
             <div className={`korean-shop-cart ${IsFromProductsPage?'cart-from-products-page':''} ${IsFromHomePage?'cart-from-home-page':''}`}>
                 <div className='cart-body'>
-                    <div className='discount-section'>
-                        <span>10%</span>
-                        <span>OFF</span>
-                    </div>
-                    <div className='image-section'>
-                        <Image
-                        src={`${data?.image?`${baseImageServer}/${data.image}`:'/products2.jpg'}`}
-                        height={220}
-                        width={190}
-                        alt={`${data?.img_alt?data?.img_alt:'Alter Text'}`}
-                        className='image'
-                        >
-                        </Image>
-                    </div>
+                    <Link
+                    href={`${data?.slug?`/products/${data?.slug}`:'/products/page=1&per_page=10'}`}
+                    >
+                        <div className='discount-section'>
+                            <span>10%</span>
+                            <span>OFF</span>
+                        </div>
+                        <div className='image-section'>
+                            <Image
+                            src={`${data?.image?`${baseImageServer}/${data.image}`:'/products2.jpg'}`}
+                            height={220}
+                            width={190}
+                            alt={`${data?.img_alt?data?.img_alt:'Alter Text'}`}
+                            className='image'
+                            >
+                            </Image>
+                        </div>
+                    </Link>
                 </div>
                 <div className='cart-content'>
                     <div className='title'>
