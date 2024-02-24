@@ -387,3 +387,17 @@ a.toggle-menu{
 .visit-my-blog {
     background: #6232a7;
 }
+
+
+/*** RESPONSIVE AREA ***/
+@media only screen and (min-width:420px) {
+  .mega-menu {
+    margin: 6px;
+  }
+}
+
+@media only screen and (min-width:980px) {
+  .mega-menu {
+    margin: 0px;
+  }
+}

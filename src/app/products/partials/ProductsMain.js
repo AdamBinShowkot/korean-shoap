@@ -360,7 +360,7 @@ const ProductsMain=()=>{
           
         }
 
-        if(category_id || brand_id && skin_type_id || skin_concern_id || ingredient_id){
+        if(category_id || brand_id || skin_type_id || skin_concern_id || ingredient_id){
             let queryStr=`category_id=${category_id?category_id:''}`;
             queryStr+=`&brand_id=${brand_id?brand_id:''}`;
             queryStr+=`&skin_type_id=${skin_type_id?skin_type_id:''}`;
