@@ -152,14 +152,13 @@ const NavBarTwo=()=>{
                     {/* <li>
                         <a  href="#" className='category-menu-href'><i className="fa fa-home"></i> CATEGORIES</a>
                     </li> */}
-                     <li className="mega-drop-down">
+                    <li 
+                    className="mega-drop-down"
+                    >
                         <a 
                         className="mega-menu-href" 
                         href="#"
-                        onClick={()=>{
-                            //alert("Helloo")
-                            setOpenCategory(!openCategory);
-                        }}
+                       
                         >
                             <i className="fa fa-list"></i> CATEGORY
                             &nbsp;
@@ -171,7 +170,7 @@ const NavBarTwo=()=>{
                             className="navbar-arrow-image"
                             />
                         </a>
-                        <div className={`animated fadeIn mega-menu ${openCategory?'hide-child':''}`}>
+                        <div className={`animated fadeIn mega-menu `}>
                             <div className="mega-menu-wrap">
                                 <Row>
                                     <Col
@@ -212,7 +211,7 @@ const NavBarTwo=()=>{
                             className="navbar-arrow-image"
                             />
                         </a>
-                        <div className={`animated fadeIn mega-menu ${openSkinConcern?'hide-child':''}`}>
+                        <div className={`animated fadeIn mega-menu `}>
                             <div className="mega-menu-wrap">
                                 <Row>
                                     <Col
@@ -253,7 +252,7 @@ const NavBarTwo=()=>{
                             className="navbar-arrow-image"
                             />
                         </a>
-                        <div className={`animated fadeIn mega-menu ${openSkinType?'hide-child':''}`}>
+                        <div className={`animated fadeIn mega-menu `}>
                             <div className="mega-menu-wrap">
                                 <Row>
                                     <Col
@@ -293,7 +292,7 @@ const NavBarTwo=()=>{
                             className="navbar-arrow-image"
                             />
                         </a>
-                        <div className={`animated fadeIn mega-menu ${openIngredients?'hide-child':''}`}>
+                        <div className={`animated fadeIn mega-menu `}>
                             <div className="mega-menu-wrap">
                                 <Row>
                                     <Col
@@ -333,7 +332,7 @@ const NavBarTwo=()=>{
                             className="navbar-arrow-image"
                             />
                         </a>
-                        <div className={`animated fadeIn mega-menu ${openBrand?'hide-child':''}`}>
+                        <div className={`animated fadeIn mega-menu `}>
                             <div className="mega-menu-wrap">
                                 <Row>
                                     <Col

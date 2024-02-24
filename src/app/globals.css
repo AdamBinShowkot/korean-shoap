@@ -54,7 +54,7 @@ ul li{
   display:flex;
   justify-content:center;
   align-items:center;
-  padding: 20px 7.5vw;
+  padding: 20px 100px;
 }
 .home-page-products-container{
   display:flex;
@@ -276,7 +276,7 @@ ul li{
     display:flex;
     justify-content:center;
     align-items:center;
-    padding: 20px 7.25vw;
+    padding: 20px 8.1vw;
   }
 }
 @media only screen and (min-width:1360px) {

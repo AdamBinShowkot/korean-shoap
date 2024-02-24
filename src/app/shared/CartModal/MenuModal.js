@@ -42,6 +42,11 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
     const [skinConcernLists,setSkinConernLists]=useState([]);
     const [ingredientLists,setIngredientLists]=useState([]);
     const [brandLists,setBrandLists]=useState([]);
+    const [openBrand,setOpenBrand]=useState(false);
+    const [openSkinType,setOpenSkinType]=useState(false);
+    const [openSkinConcern,setOpenSkinConcern]=useState(false);
+    const [openIngredients,setOpenIngredients]=useState(false);
+    const [openCategory,setOpenCategory]=useState(false);
 
     // get cart lists on initial load
     useEffect(()=>{
@@ -236,7 +241,14 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                     }}
                     >
                         <li className="mega-drop-down">
-                        <a className="mega-menu-href" href="#">
+                        <a 
+                        className="mega-menu-href" 
+                        href="#"
+                        onClick={()=>{
+                            //alert("Helloo")
+                            setOpenCategory(!openCategory);
+                        }}
+                        >
                             CATEGORY
                             &nbsp;
                             <Image
@@ -247,7 +259,7 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                             className="navbar-arrow-image"
                             />
                         </a>
-                        <div className="animated fadeIn mega-menu">
+                        <div  className={`animated fadeIn mega-menu ${openCategory?'hide-child':''}`}>
                             <div className="mega-menu-wrap">
                                 <Row>
                                     <Col
@@ -271,7 +283,13 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                         </div>
                         </li>
                     <li className="mega-drop-down">
-                        <a className="mega-menu-href" href="#">
+                        <a 
+                        className="mega-menu-href" 
+                        href="#"
+                        onClick={()=>{
+                            setOpenSkinConcern(!openSkinConcern);
+                        }}
+                        >
                             SKIN CONCERN
                             &nbsp;
                             <Image
@@ -282,7 +300,7 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                             className="navbar-arrow-image"
                             />
                         </a>
-                        <div className="animated fadeIn mega-menu">
+                        <div className={`animated fadeIn mega-menu ${openSkinConcern?'hide-child':''}`}>
                             <div className="mega-menu-wrap">
                                 <Row>
                                     <Col
@@ -305,7 +323,13 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                         </div>
                     </li>
                     <li className="mega-drop-down">
-                        <a className="mega-menu-href" href="#">
+                        <a 
+                        className="mega-menu-href" 
+                        href="#"
+                        onClick={()=>{
+                            setOpenSkinType(!openSkinType);
+                        }}
+                        >
                             SKIN TYPE
                             &nbsp;
                             <Image
@@ -316,7 +340,7 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                             className="navbar-arrow-image"
                             />
                         </a>
-                        <div className="animated fadeIn mega-menu">
+                        <div  className={`animated fadeIn mega-menu ${openSkinType?'hide-child':''}`}>
                             <div className="mega-menu-wrap">
                                 <Row>
                                     <Col
@@ -339,7 +363,13 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                         </div>
                     </li>
                     <li className="mega-drop-down">
-                        <a className="mega-menu-href" href="#">
+                        <a 
+                        className="mega-menu-href" 
+                        href="#"
+                        onClick={()=>{
+                            setOpenIngredients(!openIngredients);
+                        }}
+                        >
                             INGREDIENTS
                             &nbsp;
                             <Image
@@ -350,7 +380,7 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                             className="navbar-arrow-image"
                             />
                         </a>
-                        <div className="animated fadeIn mega-menu">
+                        <div className={`animated fadeIn mega-menu ${openIngredients?'hide-child':''}`}>
                             <div className="mega-menu-wrap">
                                 <Row>
                                     <Col
@@ -373,7 +403,13 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                         </div>
                     </li>
                     <li className="mega-drop-down">
-                        <a className="mega-menu-href" href="#">
+                        <a 
+                        className="mega-menu-href" 
+                        href="#"
+                        onClick={()=>{
+                            setOpenBrand(!openIngredients);
+                        }}
+                        >
                             BRANDS
                             &nbsp;
                             <Image
@@ -384,7 +420,9 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                             className="navbar-arrow-image"
                             />
                         </a>
-                        <div className="animated fadeIn mega-menu">
+                        <div 
+                        className={`animated fadeIn mega-menu ${openBrand?'hide-child':''}`}
+                        >
                             <div className="mega-menu-wrap">
                                 <Row>
                                     <Col

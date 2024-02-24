@@ -1,4 +1,7 @@
 
+.hide-child{
+    display: none !important;
+}
 .modal-footer{
     display: block;
     padding: 4px;
@@ -197,6 +200,9 @@
     .modal.left .modal-dialog {
         width: 80vw !important;
     }
+    .mega-menu {
+        margin: 12px 6px 6px 6px;
+    }
 }
 @media only screen and (min-width:768px) {
   
@@ -207,6 +213,9 @@
     }
     .modal.left .modal-dialog {
         width: 30vw !important;
+    }
+    .mega-menu {
+        margin: 0px;
     }
 }
 @media only screen and (min-width:1360px) {
