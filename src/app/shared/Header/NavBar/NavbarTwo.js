@@ -20,6 +20,11 @@ const NavBarTwo=()=>{
     const [skinConcernLists,setSkinConernLists]=useState([]);
     const [ingredientLists,setIngredientLists]=useState([]);
     const [brandLists,setBrandLists]=useState([]);
+    const [openBrand,setOpenBrand]=useState(false);
+    const [openSkinType,setOpenSkinType]=useState(false);
+    const [openSkinConcern,setOpenSkinConcern]=useState(false);
+    const [openIngredients,setOpenIngredients]=useState(false);
+    const [openCategory,setOpenCategory]=useState(false);
 
     useEffect(()=>{
         inittialLoad();
@@ -148,7 +153,14 @@ const NavBarTwo=()=>{
                         <a  href="#" className='category-menu-href'><i className="fa fa-home"></i> CATEGORIES</a>
                     </li> */}
                      <li className="mega-drop-down">
-                        <a className="mega-menu-href" href="#">
+                        <a 
+                        className="mega-menu-href" 
+                        href="#"
+                        onClick={()=>{
+                            //alert("Helloo")
+                            setOpenCategory(!openCategory);
+                        }}
+                        >
                             <i className="fa fa-list"></i> CATEGORY
                             &nbsp;
                             <Image
@@ -159,7 +171,7 @@ const NavBarTwo=()=>{
                             className="navbar-arrow-image"
                             />
                         </a>
-                        <div className="animated fadeIn mega-menu">
+                        <div className={`animated fadeIn mega-menu ${openCategory?'hide-child':''}`}>
                             <div className="mega-menu-wrap">
                                 <Row>
                                     <Col
@@ -183,7 +195,13 @@ const NavBarTwo=()=>{
                         </div>
                     </li>
                     <li className="mega-drop-down">
-                        <a className="mega-menu-href" href="#">
+                        <a 
+                        className="mega-menu-href" 
+                        href="#"
+                        onClick={()=>{
+                            setOpenSkinConcern(!openSkinConcern);
+                        }}
+                        >
                             <i className="fa fa-cogs"></i> SKIN CONCERN
                             &nbsp;
                             <Image
@@ -194,7 +212,7 @@ const NavBarTwo=()=>{
                             className="navbar-arrow-image"
                             />
                         </a>
-                        <div className="animated fadeIn mega-menu">
+                        <div className={`animated fadeIn mega-menu ${openSkinConcern?'hide-child':''}`}>
                             <div className="mega-menu-wrap">
                                 <Row>
                                     <Col
@@ -211,43 +229,20 @@ const NavBarTwo=()=>{
                                                 </Link>
                                             }):""
                                         }
-                                        {/* <Link 
-                                        href="/"
-                                        className="link-href"
-                                        >
-                                            Pores Care
-                                        </Link>
-                                        <Link 
-                                        href="/"
-                                        className="link-href"
-                                        >
-                                            Acne & Spots Solution
-                                        </Link>
-                                        <Link 
-                                        href="/"
-                                        className="link-href"
-                                        >
-                                            Moisturizing & Hydration Care
-                                        </Link>
-                                        <Link 
-                                        href="/"
-                                        className="link-href"
-                                        >
-                                            Damaged Skin Repair
-                                        </Link>
-                                        <Link 
-                                        href="/"
-                                        className="link-href"
-                                        >
-                                           Anti Agening & Wrinkle Care
-                                        </Link> */}
+                                       
                                     </Col>
                                 </Row>
                             </div>	
                         </div>
                     </li>
                     <li className="mega-drop-down">
-                        <a className="mega-menu-href" href="#">
+                        <a 
+                        className="mega-menu-href" 
+                        href="#"
+                        onClick={()=>{
+                            setOpenSkinType(!openSkinType);
+                        }}
+                        >
                             <i className="fa fa-cogs"></i> SKIN TYPE
                             &nbsp;
                             <Image
@@ -258,7 +253,7 @@ const NavBarTwo=()=>{
                             className="navbar-arrow-image"
                             />
                         </a>
-                        <div className="animated fadeIn mega-menu">
+                        <div className={`animated fadeIn mega-menu ${openSkinType?'hide-child':''}`}>
                             <div className="mega-menu-wrap">
                                 <Row>
                                     <Col
@@ -281,7 +276,13 @@ const NavBarTwo=()=>{
                         </div>
                     </li>
                     <li className="mega-drop-down">
-                        <a className="mega-menu-href" href="#">
+                        <a 
+                        className="mega-menu-href" 
+                        href="#"
+                        onClick={()=>{
+                            setOpenIngredients(!openIngredients);
+                        }}
+                        >
                             <i className="fa fa-briefcase"></i> INGREDIENTS
                             &nbsp;
                             <Image
@@ -292,7 +293,7 @@ const NavBarTwo=()=>{
                             className="navbar-arrow-image"
                             />
                         </a>
-                        <div className="animated fadeIn mega-menu">
+                        <div className={`animated fadeIn mega-menu ${openIngredients?'hide-child':''}`}>
                             <div className="mega-menu-wrap">
                                 <Row>
                                     <Col
@@ -315,7 +316,13 @@ const NavBarTwo=()=>{
                         </div>
                     </li>
                     <li className="mega-drop-down">
-                        <a className="mega-menu-href" href="#">
+                        <a 
+                        className="mega-menu-href" 
+                        href="#"
+                        onClick={()=>{
+                            setOpenBrand(!openIngredients);
+                        }}
+                        >
                             <i className="fa fa-list"></i> BRANDS
                             &nbsp;
                             <Image
@@ -326,7 +333,7 @@ const NavBarTwo=()=>{
                             className="navbar-arrow-image"
                             />
                         </a>
-                        <div className="animated fadeIn mega-menu">
+                        <div className={`animated fadeIn mega-menu ${openBrand?'hide-child':''}`}>
                             <div className="mega-menu-wrap">
                                 <Row>
                                     <Col
