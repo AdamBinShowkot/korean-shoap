@@ -75,6 +75,9 @@
 
 /*** RESPONSIVE AREA ***/
 @media only screen and (max-width:480px) {
+  .product-slider-container{
+    padding: 20px 0px !important;
+  }
     .get-know-about-row h2{
       font-size: 19px;
     }
@@ -112,6 +115,9 @@
         padding: 2.5vh 2.5vw;
         background-color: antiquewhite;
     } */
+    .product-slider-container{
+      padding: 40px 0px !important;
+    }
     .products-item-title{
       p{
         strong{
