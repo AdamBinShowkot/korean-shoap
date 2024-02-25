@@ -407,7 +407,7 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                         className="mega-menu-href" 
                         href="#"
                         onClick={()=>{
-                            setOpenBrand(!openIngredients);
+                            setOpenBrand(!openBrand);
                         }}
                         >
                             BRANDS
