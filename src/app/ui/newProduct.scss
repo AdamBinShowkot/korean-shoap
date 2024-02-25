@@ -130,7 +130,7 @@
         .cart-body{
             position: relative;
             width: 100%;
-            min-height: 30vh;
+            min-height: 26vh;
             .discount-section{
                 color: #fff;
                 padding: 5px 12px !important;
@@ -141,9 +141,9 @@
             }
             .image-section{
                 margin: 1vh .3vw 1vh !important;
-                min-height: 28vh;
+                height: 24vh;
                 .image{
-                    height: 28vh;
+                    height: 24vh;
                 }
             }
         }
@@ -196,8 +196,8 @@
         margin: 6px 1vw;
     }
     .cart-from-home-page{
-        width: 43vw;
-        margin: 6px 1vw;
+        width: 45vw;
+        margin: 6px .7vw;
     }
 }
 
