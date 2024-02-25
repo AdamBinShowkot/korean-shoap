@@ -42,11 +42,11 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
     const [skinConcernLists,setSkinConernLists]=useState([]);
     const [ingredientLists,setIngredientLists]=useState([]);
     const [brandLists,setBrandLists]=useState([]);
-    const [openBrand,setOpenBrand]=useState(false);
-    const [openSkinType,setOpenSkinType]=useState(false);
-    const [openSkinConcern,setOpenSkinConcern]=useState(false);
-    const [openIngredients,setOpenIngredients]=useState(false);
-    const [openCategory,setOpenCategory]=useState(false);
+    const [openBrand,setOpenBrand]=useState(true);
+    const [openSkinType,setOpenSkinType]=useState(true);
+    const [openSkinConcern,setOpenSkinConcern]=useState(true);
+    const [openIngredients,setOpenIngredients]=useState(true);
+    const [openCategory,setOpenCategory]=useState(true);
 
     // get cart lists on initial load
     useEffect(()=>{
