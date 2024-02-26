@@ -21,10 +21,14 @@ import axios from 'axios';
 import ConfigureAxios from '@/utils/axiosConfig';
 import './index.scss';
 import Link from 'next/link';
+import { 
+    baseImageServer 
+} from '@/utils/config';
 
 const HeaderSearchInput=()=>{
     const [searchParams,setSearchParams]=useState("");
     const [searchLists,setSearchLists]=useState([]);
+    const [IsSearchStart,setIsSearchStart]=useState(false);
     const router=useRouter();
 
     const handleOnSearch=(e)=>{
@@ -47,17 +51,21 @@ const HeaderSearchInput=()=>{
         setSearchParams(e.target.value);
         ConfigureAxios();
         if(value){
+            setIsSearchStart(true);
             axios.get(`/public/product-search?q=${value}`)
             .then((response)=>{
                 if(response.status==200){
                     const dataLists=response.data.items;
                     if(dataLists.length){
                         setSearchLists(dataLists)
+                        setIsSearchStart(false);
                     }else{
+                        setIsSearchStart(false);
                         setSearchLists([]);
                     }
                 }
             }).catch((error)=>{
+                setIsSearchStart(false);
                 setSearchLists([]);
                 console.log("On search error.")
             })
@@ -114,33 +122,83 @@ const HeaderSearchInput=()=>{
                 <ul 
                 className={`live-search-list ${searchParams?'':'search-hide'}`}
                 >
-                   {
-                    searchLists?.length?searchLists.map((data)=>{
-                        return <li 
-                        key={data.id}
-                        onClick={()=>{
-                            setSearchLists([]);
-                            setSearchParams("");
-                        }}
-                        >
-                            <Link
-                            href={`/products/${data.slug}`}
-                            >
-                                {data.name}
+                    {
+                        IsSearchStart?<div className="loading-container">
+                            <Image
+                            src={`/loading_gif.gif`}
+                            height={70}
+                            width={70}
+                            alt="Is Loading."
+                            />
+                        </div>:searchLists?.length?searchLists.map((data)=>{
+                            return <Link
+                                href={`/products/${data.slug}`}
+                                key={data.id}
+                                onClick={()=>{
+                                    setSearchLists([]);
+                                    setSearchParams("");
+                                }}
+                                >
+                                    <li
+                                    className='items-lists'
+                                    >
+                                        <div
+                                        className="item-div left-container"
+                                        >
+                                            <Image
+                                            src={`${data?.image?`${baseImageServer}/${data.image}`:'/products2.jpg'}`}
+                                            height={80}
+                                            width={80}
+                                            alt={`${data?.img_alt?data.img_alt:'Alt Image'}`}
+                                            className='search-item-image'
+                                            />
+                                        </div>
+                                        <div
+                                        className="item-div right-container"
+                                        >
+                                            <span>
+                                                <b>{data.name}</b>
+                                            </span>
+                                            <span>
+                                                Status: <b>{data?.variant[0]?.stock>=1?"In Stock":"Stock Out"}</b>
+                                            </span>
+                                            <span
+                                            style={{
+                                                display:'flex'
+                                            }}
+                                            >
+                                                <h3 className="search-cart-price-text" style={{marginRight:'5px'}}>
+                                                ৳{data?.variant[0]?.price && data?.variant[0]?.discount_price?parseFloat(data?.variant[0].discount_price).toFixed(0):0}
+                                                </h3>
+                                                <h3 className="search-cart-discount-text">&nbsp;<del> ৳{data?.variant[0]?.price?parseFloat(data?.variant[0].price).toFixed(0):0}</del></h3>
+                                            </span>
+                                        </div>
+                                </li> 
                             </Link>
+                        }):<li>
+                            Opps! Not Found.
                         </li>
-                    }):<li>
-                        Opps! Not Found.
+                    }
+                    <li
+                    style={{
+                        position:'sticky',
+                        bottom:'-10px',
+                        background:'transparent',
+                        width:'10%',
+                        marginLeft:'45%',
+                        marginBottom:'-10px'
+                    }}
+                    >
+                       <Image
+                       src={`/search_close.png`}
+                       height={30}
+                       width={30}
+                       alt="Search Close"
+                       onClick={()=>{
+                            setSearchParams("");
+                       }}
+                       />
                     </li>
-                   }
-                    {/* <li>Is</li>
-                    <li>My</li>
-                    <li>Search</li>
-                    <li>With</li>
-                    <li>Black Jack</li>
-                    <li>and</li>
-                    <li>Sluts</li>
-                    <li>BellHard</li> */}
                 </ul>
             </div> 
         </>
