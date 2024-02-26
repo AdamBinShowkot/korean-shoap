@@ -191,8 +191,8 @@ const HeaderSearchInput=()=>{
                     >
                        <Image
                        src={`/search_close.png`}
-                       height={30}
-                       width={30}
+                       height={40}
+                       width={40}
                        alt="Search Close"
                        onClick={()=>{
                             setSearchParams("");

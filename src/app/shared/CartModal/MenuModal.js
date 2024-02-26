@@ -269,6 +269,9 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                                             categoryLists?.length?categoryLists.map((dta)=>{
                                                 return <Link 
                                                 key={dta.id}
+                                                onClick={()=>{
+                                                    setIsModalShow(false)
+                                                }}
                                                 href={`/products?category=${dta.name}&category_id=${dta.id}&IsFromMenu=1`}
                                                 as={`/products?category=${dta.name}&category_id=${dta.id}&menu=1`}
                                                 className="link-href"
@@ -310,6 +313,9 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                                             skinConcernLists?.length?skinConcernLists.map((dta)=>{
                                                 return <Link 
                                                 key={dta.id}
+                                                onClick={()=>{
+                                                    setIsModalShow(false)
+                                                }}
                                                 href={`/products?skin_concern=${dta.name}&skin_concern_id=${dta.id}&menu=1`}
                                                 className="link-href"
                                                 >
@@ -350,6 +356,9 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                                             skinTypeLists?.length?skinTypeLists.map((dta)=>{
                                                 return <Link 
                                                 key={dta.id}
+                                                onClick={()=>{
+                                                    setIsModalShow(false)
+                                                }}
                                                 href={`/products?skin_type=${dta.name}&skin_type_id=${dta.id}&menu=1`}
                                                 className="link-href"
                                                 >
@@ -390,6 +399,9 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                                             ingredientLists?.length?ingredientLists.map((dta)=>{
                                                 return <Link 
                                                 key={dta.id}
+                                                onClick={()=>{
+                                                    setIsModalShow(false)
+                                                }}
                                                 href={`/products?ingredients=${dta.name}&ingredient_id=${dta.id}&menu=1`}
                                                 className="link-href"
                                                 >
@@ -432,6 +444,9 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                                             brandLists?.length?brandLists.map((dta)=>{
                                                 return <Link 
                                                 key={dta.id}
+                                                onClick={()=>{
+                                                    setIsModalShow(false)
+                                                }}
                                                 href={`/products?brand=${dta.name}&brand_id=${dta.id}&menu=1`}
                                                 className="link-href"
                                                 >

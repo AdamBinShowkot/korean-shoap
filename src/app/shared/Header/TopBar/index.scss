@@ -12,7 +12,7 @@
     height: 66px;
     .korean-shop-logo{
         height: 100%;
-        width: 80%;
+        width: 65%;    
     }
 }
 
@@ -33,9 +33,13 @@
     align-items: center;
     
 }
-.header-social-image:hover{
+.desktop-header-social-icon{
+    height: 20px;
+    width: 20px;
+}
+.desktop-header-social-icon:hover{
 
-        cursor: pointer;
+    cursor: pointer;
 }
 
 
@@ -55,4 +59,28 @@
     background-color: #fff;
     border: none;
     padding: 2px;
+}
+
+
+/*** RESPONSIVE AREA ***/
+@media only screen and (min-width:360px) {
+    .logo-div{
+        padding: 0px 0px;
+        height: 66px;
+        .korean-shop-logo{
+            height: 40px;
+            width: 100%;           
+        }
+    }
+}
+  
+@media only screen and (min-width:980px) {
+    .logo-div{
+        padding: 0px 0px;
+        height: 66px;
+        .korean-shop-logo{
+            height: 100%;
+            width: 65%;    
+        }
+    }
 }

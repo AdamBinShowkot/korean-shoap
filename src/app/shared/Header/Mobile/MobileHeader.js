@@ -70,6 +70,7 @@ const MobileHeader=()=>{
                             width={16}
                             height={16}
                             alt="search"
+                            className="header-social-icon facebook-icon"
                             />
                         </Button>
                     
@@ -78,9 +79,10 @@ const MobileHeader=()=>{
                         >
                             <Image
                             src="/instagram.png"
-                            width={20}
-                            height={20}
+                            width={25}
+                            height={25}
                             alt="search"
+                            className="header-social-icon instagram-icon"
                             />
                         </Button>
                         <Button
@@ -91,6 +93,7 @@ const MobileHeader=()=>{
                             width={22}
                             height={22}
                             alt="search"
+                            className="header-social-icon youtube-icon"
                             />
                         </Button>
                     </Col>
