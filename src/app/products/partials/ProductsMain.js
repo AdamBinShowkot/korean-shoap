@@ -49,13 +49,19 @@ const CustomMenu = forwardRef(
           className={className}
           aria-labelledby={labeledBy}
         >
-          <Form.Control
+          <div
+          style={{
+            padding:"5px 10px"
+          }}
+          >
+            <Form.Control
             autoFocus
-            className="mx-3 my-2 w-auto"
+            //className="mx-3 my-2 w-auto"
             placeholder="Type to filter..."
             onChange={(e) => setValue(e.target.value)}
             value={value}
-          />
+            />
+          </div>
           <ul className="list-unstyled">
             {Children.toArray(children).filter(
               (child) =>
