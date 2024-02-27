@@ -47,27 +47,8 @@ const FooterProductSlider=({product_lists,len})=>{
             let newSettings={...settings,slidesToShow:2};
             if(len>=5){
                 setMyLists(newLists);
-            }else if(len>=4){
-                for(let i=0; i<1; i++){
-                    const newObj={
-                        id:"1000"+i,
-                        emptyPost:true
-                    }
-                    newLists=[...newLists,newObj];
-                }
-                setMyLists(newLists)
-            }else if(len>=3){
-                for(let i=0; i<2; i++){
-                    const newObj={
-                        id:"1000"+i,
-                        emptyPost:true
-                    }
-                   
-                    newLists=[...newLists,newObj]; 
-                }
-                setMyLists(newLists)
             }else if(len>=2){
-                 for(let i=0; i<3; i++){
+                 for(let i=0; i<1; i++){
                     const newObj={
                          id:"1000"+i,
                          emptyPost:true
@@ -77,7 +58,7 @@ const FooterProductSlider=({product_lists,len})=>{
                 }
                 setMyLists(newLists)
             }else{
-                for(let i=0; i<4; i++){
+                for(let i=0; i<1; i++){
                     const newObj={
                         id:"1000"+i,
                         emptyPost:true

@@ -342,7 +342,7 @@ export default async function Page({params}){
                     <CommentMain/>
                 </Col>
             </Row>
-            <Row
+            <div
             className="products-footer-slider-area"
             >
                 <Col xs={12}>
@@ -351,7 +351,7 @@ export default async function Page({params}){
                     len={details?.related_products?.length?details?.related_products.length:0}
                     />
                 </Col>
-            </Row>
+            </div>
         </>
     )
 }
