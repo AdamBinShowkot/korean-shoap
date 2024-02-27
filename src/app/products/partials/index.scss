@@ -28,6 +28,31 @@
        
     }
 }
+
+.products-top-container-rown{
+    padding:30px 6.8vw;
+    .products-top-container-column{
+        display: flex;
+        padding: 0px !important;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        border: 1px solid rgba(92, 51, 169, 1);
+        border-radius: 4px;
+        .filter-items{
+            display: flex;
+        }
+        .left-container{
+            width: 90%;
+        }
+        .right-container{
+            width: 10%;
+            position: relative;
+            justify-content: flex-end;
+            align-items: center;
+        }
+    }
+}
 .product-filter-input-group{
     width: 100%;
     border: 1px solid rgba(92, 51, 169, 1);
@@ -120,18 +145,43 @@
         padding: 20px 0px 0px 0px;
     }
     .filter-toggle-button{
-        max-width: 21.5vw;
+        width: 100%;
+        max-width: 100%;
+        border-right: none;
         .filter-box:first-of-type{
-            width:92%;
+            width:95%;
             span{
                 margin-right:4px;
-                font-size:7px;
+                font-size:12px;
             }
         }
         .filter-box:last-of-type{
-            width:8%;
+            width:14%;
             text-align:right;
            
+        }
+    }
+    .products-top-container-rown{
+        padding: 16px 9px;
+        .products-top-container-column{
+            align-items: center;
+            border: none;
+            .filter-items{
+
+            }
+            .left-container{
+                width: 100%;
+                flex-wrap: wrap;
+                .dropdown{
+                    width: 48%;
+                    margin: 5px 1%;
+                    border: 1px solid rgba(92, 51, 169, 1);
+                    border-radius: 4px;
+                }
+            }
+            .right-container{
+                display: none;
+            }
         }
     }
 }

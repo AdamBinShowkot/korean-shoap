@@ -701,12 +701,13 @@ const ProductsMain=()=>{
                 </div>
             </div>
             <Row
+            className='products-top-container-rown'
             >
                 <Col 
                 xs={12}
-                className='products-top-container-row'
+                className='products-top-container-column'
                 >
-                    <InputGroup
+                    {/* <InputGroup
                     className='product-filter-input-group'
                     >
                         <Dropdown 
@@ -851,41 +852,6 @@ const ProductsMain=()=>{
                                 }
                             </Dropdown.Menu>
                         </Dropdown>
-                        {/* <Dropdown 
-                        >
-                            <Dropdown.Toggle 
-                            as={CustomToggle}
-                        
-                            id="dropdown-basic"
-                            style={{
-                                display:'flex',
-                                alignItems:'center',
-                                justifyContent:'center',
-                                width:'10vw !important',
-                            }}
-                            >
-                               {activeIngreidients?.slugs?activeIngreidients.slugs:""}
-                            </Dropdown.Toggle>
-
-                            <Dropdown.Menu
-                            className="filter-sub-menu-container"
-                            as={CustomMenu}>
-                                {
-                                    ingredientLists?.length?ingredientLists.map((dta)=>{
-                                        return <Dropdown.Item 
-                                        eventKey={`${dta.id}`}
-                                        onClick={(e)=>{
-                                            handleOnFilterMenuChange(dta,'ingredient')
-                                        }}
-                                        key={dta.id}
-                                        className={`filter-item-menu ${activeIngreidients.ingredient_id==dta.id?'filter-item-menu-active':''}`}
-                                        >
-                                            {dta.name}
-                                        </Dropdown.Item>
-                                    }):""
-                                }
-                            </Dropdown.Menu>
-                        </Dropdown> */}
                         <Button
                         style={{
                             position:'absolute',
@@ -905,7 +871,177 @@ const ProductsMain=()=>{
                             alt="Reset Image"
                             />
                         </Button>
-                    </InputGroup>
+                    </InputGroup> */}
+
+                    <div
+                    className='filter-items left-container'
+                    >
+                        <Dropdown 
+                        >
+                            <Dropdown.Toggle 
+                            as={CustomToggle}
+                            className="filter-sub-menu-container"
+                            id="dropdown-basic"
+                            style={{
+                                display:'flex',
+                                alignItems:'center',
+                                justifyContent:'center',
+                                width:'10vw !important',
+                            }}
+                            >
+                               {activeSkinConcern?.slugs?activeSkinConcern.slugs:""}
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu 
+                            as={CustomMenu}
+                            className="filter-sub-menu-container"
+                            >
+                                {
+                                    skinConcernLists?.length?skinConcernLists.map((dta)=>{
+                                        return <Dropdown.Item 
+                                        eventKey={`${dta.id}`}
+                                        onClick={(e)=>{
+                                            handleOnFilterMenuChange(dta,'skin-concern')
+                                        }}
+                                        key={dta.id}
+                                        className={`filter-item-menu ${activeSkinConcern.skin_concern_id==dta.id?'filter-item-menu-active':''}`}
+                                        >
+                                            {dta.name}
+                                        </Dropdown.Item>
+                                    }):""
+                                }
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        <Dropdown 
+                        >
+                            <Dropdown.Toggle 
+                            as={CustomToggle}
+                        
+                            id="dropdown-basic"
+                            style={{
+                                display:'flex',
+                                alignItems:'center',
+                                justifyContent:'center',
+                                width:'10vw !important',
+                            }}
+                            >
+                               {activeSkinType?.slugs?activeSkinType.slugs:""}
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu
+                            className="filter-sub-menu-container"
+                            as={CustomMenu}>
+                                {
+                                    skinTypeLists?.length?skinTypeLists.map((dta)=>{
+                                        return <Dropdown.Item 
+                                        eventKey={`${dta.id}`}
+                                        onClick={(e)=>{
+                                            handleOnFilterMenuChange(dta,'skin-type')
+                                        }}
+                                        key={dta.id}
+                                        className={`filter-item-menu ${activeSkinType.skin_type_id==dta.id?'filter-item-menu-active':''}`}
+                                        >
+                                            {dta.name}
+                                        </Dropdown.Item>
+                                    }):""
+                                }
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        <Dropdown 
+                        >
+                            <Dropdown.Toggle 
+                            as={CustomToggle}
+                            className="filter-sub-menu-container"
+                            id="dropdown-basic"
+                            style={{
+                                display:'flex',
+                                alignItems:'center',
+                                justifyContent:'center',
+                                width:'10vw !important',
+                            }}
+                            >
+                               {activeCategories?.slugs?activeCategories.slugs:""}
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu 
+                            as={CustomMenu}
+                            className="filter-sub-menu-container"
+                            >
+                                {
+                                    categoryLists?.length?categoryLists.map((dta)=>{
+                                        return <Dropdown.Item 
+                                        eventKey={`${dta.id}`}
+                                        onClick={(e)=>{
+                                            handleOnFilterMenuChange(dta,'category')
+                                        }}
+                                        key={dta.id}
+                                        className={`filter-item-menu ${activeCategories.category_id==dta.id?'filter-item-menu-active':''}`}
+                                        >
+                                            {dta.name}
+                                        </Dropdown.Item>
+                                    }):""
+                                }
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        <Dropdown 
+                        >
+                            <Dropdown.Toggle 
+                            as={CustomToggle}
+                        
+                            id="dropdown-basic"
+                            style={{
+                                display:'flex',
+                                alignItems:'center',
+                                justifyContent:'center',
+                                width:'10vw !important',
+                            }}
+                            >
+                               {activeBrand?.slugs?activeBrand.slugs:""}
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu
+                            className="filter-sub-menu-container"
+                            as={CustomMenu}>
+                                {
+                                    brandLists?.length?brandLists.map((dta)=>{
+                                        return <Dropdown.Item 
+                                        eventKey={`${dta.id}`}
+                                        className={`filter-item-menu ${activeBrand.brand_id==dta.id?'filter-item-menu-active':''}`}
+                                        onClick={(e)=>{
+                                            handleOnFilterMenuChange(dta,'brand')
+                                        }}
+                                        key={dta.id}
+                                        >
+                                            {dta.name}
+                                        </Dropdown.Item>
+                                    }):""
+                                }
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </div>
+                    <div
+                     className='filter-items right-container'
+                    >
+                        <Button
+                        style={{
+                            // position:'absolute',
+                           
+                            border:'none',
+                            borderRadius:'4px',
+                            borderLeft:'1px solid rgb(92, 51, 169)',
+                            borderTopLeftRadius:'0',
+                            borderBottomLeftRadius:'0'
+                        }}
+                        onClick={handleReset}
+                        >
+                            <Image
+                            src="/reset_buttton.png"
+                            height={15}
+                            width={25}
+                            alt="Reset Image"
+                            />
+                        </Button>
+                    </div>
                 </Col>
             </Row>
             <Row>
