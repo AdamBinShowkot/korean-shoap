@@ -65,7 +65,7 @@ const ItemsContainer=({title,lists,len})=>{
                 setMyLists(newLists);
             }else if(len>=2){
                 // console.log("Heloooooooooooo3")
-                 for(let i=0; i<1; i++){
+                 for(let i=0; i<2; i++){
                      const newObj={
                          id:"1000"+i,
                          emptyPost:true
@@ -79,7 +79,7 @@ const ItemsContainer=({title,lists,len})=>{
                  setMyLists(newLists)
             }else{
                 //console.log("Helooooooooooooelse")
-                for(let i=0; i<1; i++){
+                for(let i=0; i<2; i++){
                     const newObj={
                         id:"1000"+i,
                         emptyPost:true
