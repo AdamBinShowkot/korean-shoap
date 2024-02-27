@@ -13,9 +13,9 @@
 }
 
 /*** RESPONSIVE AREA ***/
-@media only screen and (min-width:360px) {
+@media only screen and (max-width:480px)  {
     .product-slider-container{
-        padding:40px 0px !important;
+        padding:10px 0px !important;
     }
     // .product-slider-container.row{
     //     padding: 0 !important;

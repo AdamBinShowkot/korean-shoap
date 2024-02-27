@@ -148,7 +148,7 @@ const NavBarTwo=()=>{
             <Col
             className="navbar-container"
             >
-                <ul class="exo-menu navbar-container">
+                <ul className="exo-menu navbar-container">
                     {/* <li>
                         <a  href="#" className='category-menu-href'><i className="fa fa-home"></i> CATEGORIES</a>
                     </li> */}
