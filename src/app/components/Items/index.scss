@@ -88,7 +88,7 @@
     .get-know-about-row .btn-one span{
       font-size: 11px;
     }
-    .products-item-title{
+  .products-item-title{
       text-align: left !important;
       p{
         margin: 0px 10px;
@@ -96,8 +96,18 @@
           font-size:16px !important;
         }
       }
+  }
+  .product-slider-container{
+    .slick-list {
+        padding: 0px!important;
+        .slick-slide{
+            width: 44vw !important;
+            margin: 0 1.3vw 0 1.5vw!important;
+        }
     }
   }
+
+}
   @media only screen and (min-width:768px) {
     /* .slider-controll-row .slider-controll-col .slick-slide{
         overflow: hidden;

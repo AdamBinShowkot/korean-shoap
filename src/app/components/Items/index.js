@@ -172,6 +172,9 @@ const ItemsContainer=({title,lists,len})=>{
             </Row>
             <Row 
             className='product-slider-container'
+            style={{
+                overflow:'hidden !important'
+            }}
             >
                 <Col xs={12}>
                     <Slider {...settings}>
