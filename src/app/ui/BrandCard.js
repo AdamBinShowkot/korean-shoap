@@ -6,6 +6,7 @@ import {
 } from 'react-bootstrap';
 import Image from 'next/image';
 import { baseImageServer } from '@/utils/config';
+import ImageItem from './ImageItems';
 import './brand.scss';
 import Link from 'next/link';
 
@@ -13,35 +14,18 @@ import Link from 'next/link';
 const BrandCard=({data,IsBrand})=>{
     return(
         <>
-            <Card
-            className='brand-main-container'
+            <Link
+            href={`${IsBrand?`/products/brands/${data.slug}`:`/products/skin-concern/${data.slug}`}`}
             >
-                <Row>
-                    <Col
-                    className='image-container'
-                    >
-                        <Image
-                        src={`${data?.image?`${baseImageServer}/${data.image}`:'/products2.jpg'}`}
-                        height={220}
-                        width={190}
-                        alt={`${data?.img_alt?data?.img_alt:'Alter Text'}`}
-                        className='brand-image'
-                        />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col
-                    className='brand-title-container'
-                    >
-                        <Link
-                        href={`${IsBrand?`/products/brands/${data.slug}`:`/products/skin-concern/${data.slug}`}`}
-                        className='brand-title-link'
-                        >
-                            <h3>{data.name}</h3>
-                        </Link>
-                    </Col>
-                </Row>
-            </Card>
+                <Card
+                className='brand-main-container'
+
+                >
+                    <ImageItem
+                    data={data}
+                    />
+                </Card>
+            </Link>
         </>
     )
 }

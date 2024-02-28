@@ -112,12 +112,16 @@ const ProductsMain=()=>{
                     {
                         products?.length?(
                             products.map((dta)=>{  
-                            return <div key={dta.id} style={{margin:'5px 0px'}}>
+                            return <Col 
+                                key={dta.id} 
+                                xs={6}
+                                lg={2}
+                                >
                                     <BrandCard
                                     IsBrand={true}
                                     IsSkinConcern={false}  
                                     data={dta}/>
-                                </div>
+                                </Col>
                             })
                         ):dummyProducts?.length?dummyProducts.map((dta)=>{
                             return <div key={dta.id}>
