@@ -328,7 +328,7 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
             </div>
 
             <Modal 
-            show={show} 
+            show={false} 
             onHide={handleClose}
             centered={true}
             >
@@ -430,7 +430,7 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
             ToastMsg="Add to on cart failed"
             Width={'20vw'}
             Postion={"bottom-end"}/>
-            <CartModal IsModalShow={showModal} setIsModalShow={setShowModal}/>
+            <CartModal IsModalShow={show} setIsModalShow={handleClose}/>
         </>
     )
 }
