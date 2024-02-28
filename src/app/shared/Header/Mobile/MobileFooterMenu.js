@@ -99,16 +99,7 @@ const MobileFooterMenu=()=>{
                         alt="Icon One"
                         />
                         <span
-                        style={{
-                            zIndex:'100',
-                            position:'relative',
-                            top:'-24px !important',
-                            fontSize:'11px',
-                            padding:'3px 6px',
-                            borderRadius:'50px',
-                            backgroundColor:'#05f600',
-                            left:'5px'
-                        }}
+                        className='shop-button-span'
                         >
                             {totalQty?totalQty:0}
                         </span>
