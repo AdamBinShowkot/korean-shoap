@@ -1,5 +1,5 @@
 .brand-main-container{
-    min-width: 15.4vw;
+    width: 100%;
     margin: 10px 1vw;
     display: flex;
     align-items: center;
@@ -30,7 +30,7 @@
 /*** RESPONSIVE AREA ***/
 @media only screen and (max-width:480px) {
     .brand-main-container{
-        min-width: 46.5vw;
+        width: 100%;
         margin: 10px 1vw;
         display: flex;
         align-items: center;
@@ -38,7 +38,7 @@
         .image-container{
             padding:0px 20px;
             height:27vh;
-            width: 46.5vw;
+            width:100%;
             .brand-image{
                 height: 100% !important;
                 width: 100% !important;
@@ -58,12 +58,12 @@
 
 @media only screen and (min-width:980px) {
     .brand-main-container{
-        min-width: 15.2vw;
+        width: 100%;
         margin: 10px .8vw;
         .image-container{
             padding:0px 20px;
             height:27vh;
-            width: 15.2vw;
+            width: 100%;
             .brand-image{
                 height: 100% !important;
                 width: 100% !important;

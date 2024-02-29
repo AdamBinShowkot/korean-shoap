@@ -8,40 +8,28 @@ import Image from 'next/image';
 import { baseImageServer } from '@/utils/config';
 import './brand.scss';
 import Link from 'next/link';
+import ImageItem from './ImageItems';
 
 
 const BrandCard=({data,IsBrand})=>{
     return(
         <>
-            <Card
-            className='brand-main-container'
-            >
-                <Row>
-                    <Col
-                    className='image-container'
+           <Col
+           xl={2}
+           sm={6}
+           >
+                <Card
+                className='brand-main-container'
+                >
+                    <Link
+                    href={`${IsBrand?`/products/brands/${data.slug}`:`/products/skin-concern/${data.slug}`}`}
                     >
-                        <Image
-                        src={`${data?.image?`${baseImageServer}/${data.image}`:'/products2.jpg'}`}
-                        height={220}
-                        width={190}
-                        alt={`${data?.img_alt?data?.img_alt:'Alter Text'}`}
-                        className='brand-image'
+                        <ImageItem
+                        data={data}
                         />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col
-                    className='brand-title-container'
-                    >
-                        <Link
-                        href={`${IsBrand?`/products/brands/${data.slug}`:`/products/skin-concern/${data.slug}`}`}
-                        className='brand-title-link'
-                        >
-                            <h3>{data.name}</h3>
-                        </Link>
-                    </Col>
-                </Row>
-            </Card>
+                    </Link>
+                </Card>
+           </Col>
         </>
     )
 }
