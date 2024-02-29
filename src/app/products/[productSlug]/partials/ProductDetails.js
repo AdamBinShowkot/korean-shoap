@@ -13,7 +13,7 @@ const ProductDetails=({data})=>{
     //console.log(data)
     return(
         <>
-            <Accordion defaultActiveKey={['0','1','2','3']} alwaysOpen className="product-details-accordion">
+            <Accordion defaultActiveKey={['0','1','2']} alwaysOpen className="product-details-accordion">
                 <Accordion.Item eventKey="0">
                     <Accordion.Header style={{margin:'0',padding:"0",fontSize:'20px'}}>
                         <Image
@@ -66,22 +66,7 @@ const ProductDetails=({data})=>{
                         </span>
                     </Accordion.Body>
                 </Accordion.Item>
-                <Accordion.Item eventKey="3">
-                    <Accordion.Header>
-                        <Image
-                        src='/details4.png'
-                        height={20}
-                        width={20}
-                        alt=""
-                        />
-                        &nbsp;&nbsp;
-                        Ingredients
-                    </Accordion.Header>
-                    <Accordion.Body>
-                    
-                    </Accordion.Body>
-                </Accordion.Item>
-                </Accordion>
+            </Accordion>
         </>
     )
 }
