@@ -9,7 +9,7 @@ import { baseImageServer } from '@/utils/config';
 import ImageItem from './ImageItems';
 import './brand.scss';
 import Link from 'next/link';
-import ImageItem from './ImageItems';
+
 
 
 const BrandCard=({data,IsBrand})=>{
