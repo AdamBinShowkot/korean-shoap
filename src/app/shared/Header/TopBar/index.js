@@ -127,16 +127,7 @@ const TopBarMain=()=>{
                                 >
                                 </Image>
                                 <span
-                                style={{
-                                    zIndex:'100',
-                                    position:'relative',
-                                    top:'-26px !important',
-                                    fontSize:'11px',
-                                    padding:'2px 4px',
-                                    borderRadius:'50px',
-                                    backgroundColor:'#05f600',
-                                    left:'5px'
-                                }}
+                                className='shop-button-span'
                                 >
                                     {totalQty?totalQty:0}
                                 </span>

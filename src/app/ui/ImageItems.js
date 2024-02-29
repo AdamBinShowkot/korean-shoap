@@ -1,17 +1,19 @@
 import React from 'react';
+import { 
+    Row,
+    Col 
+} from 'react-bootstrap';
 import Image from 'next/image';
 import { baseImageServer } from '@/utils/config';
-import {
-    Row,
-    Col,
-    Card
-} from 'react-bootstrap';
-import './brand.scss'
+import './brand.scss';
+import Link from 'next/link';
+import './brand.scss';
 
 const ImageItem=({data})=>{
     return(
         <section>
-            <Row>
+            <Row
+            >
                 <Col
                 className='image-container'
                 >
