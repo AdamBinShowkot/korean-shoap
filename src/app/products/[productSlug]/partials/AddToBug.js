@@ -284,7 +284,7 @@ const AddToBug=({data})=>{
                 </Col>
             </Row>
             <Modal 
-            show={show} 
+            show={false} 
             onHide={handleClose}
             centered={true}
             >
@@ -389,7 +389,7 @@ const AddToBug=({data})=>{
             ToastMsg="Add to on cart failed"
             Width={'20vw'}
             Postion={"bottom-end"}/>
-            <CartModal IsModalShow={showModal} setIsModalShow={setShowModal}/>
+            <CartModal IsModalShow={show} setIsModalShow={handleClose}/>
         </>
     )
 }
