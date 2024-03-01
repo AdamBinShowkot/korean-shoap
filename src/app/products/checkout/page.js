@@ -9,7 +9,7 @@ import './index.scss';
 const CheckoutPage=()=>{
     return(
         <>
-            <TopBanner/>
+            {/* <TopBanner/> */}
             <CheckoutMain/>
         </>
     )

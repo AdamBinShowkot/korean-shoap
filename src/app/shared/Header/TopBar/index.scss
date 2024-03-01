@@ -33,9 +33,17 @@
     align-items: center;
     
 }
-.desktop-header-social-icon{
+.desktop-header-social-icon.facebook{
     height: 20px;
-    width: 20px;
+    width: 14px;
+}
+.desktop-header-social-icon.youtube{
+    height: 20px;
+    width: 22px;
+}
+.desktop-header-social-icon.instagram{
+    height: 20px;
+    width: 21px;
 }
 .desktop-header-social-icon:hover{
 

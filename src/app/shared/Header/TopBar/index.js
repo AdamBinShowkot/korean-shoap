@@ -175,7 +175,7 @@ const TopBarMain=()=>{
                         target="_blank"
                         >
                             <Image
-                            className="desktop-header-social-icon"
+                            className="desktop-header-social-icon facebook"
                             src="/facebook.png"
                             width={11}
                             height={11}
@@ -184,7 +184,7 @@ const TopBarMain=()=>{
                         </a>
                         <a href="https://www.instagram.com/koreanshopbd/" target='_blank'>
                             <Image
-                            className="desktop-header-social-icon"
+                            className="desktop-header-social-icon instagram"
                             src="/instagram.png"
                             width={20}
                             height={20}
@@ -192,7 +192,7 @@ const TopBarMain=()=>{
                             /> 
                         </a>
                         <Image
-                        className="desktop-header-social-icon"
+                        className="desktop-header-social-icon youtube"
                         src="/youtube.png"
                         width={22}
                         height={22}

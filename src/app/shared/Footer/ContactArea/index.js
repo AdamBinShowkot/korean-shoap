@@ -53,6 +53,7 @@ const ContactAreaMain=()=>{
                         >
                             <Image
                             src="/facebook.png"
+                            className="desktop-header-social-icon facebook"
                             width={11}
                             height={11}
                             alt="search"
@@ -68,6 +69,7 @@ const ContactAreaMain=()=>{
                         <a href="https://www.instagram.com/koreanshopbd/" target='_blank'>
                             <Image
                             src="/instagram.png"
+                            className="desktop-header-social-icon instagram"
                             width={20}
                             height={20}
                             alt="search"
@@ -80,6 +82,7 @@ const ContactAreaMain=()=>{
                         > */}
                             <Image
                             src="/youtube.png"
+                            className="desktop-header-social-icon youtube"
                             width={22}
                             height={22}
                             alt="search"
