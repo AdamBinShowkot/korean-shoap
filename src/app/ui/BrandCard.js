@@ -11,6 +11,7 @@ import './brand.scss';
 import Link from 'next/link';
 
 
+
 const BrandCard=({data,IsBrand})=>{
     return(
         <>
