@@ -73,7 +73,7 @@ const SliderProducts=({lists})=>{
         return () => {
           
         };
-    }, [width]);
+    }, [width,lists,settings]);
 
     // const windowSizeHandler = () => {
     //     if(window.innerWidth<420){

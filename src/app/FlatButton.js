@@ -73,7 +73,7 @@ const FlatButton=()=>{
             setQuantity(0);
             setTotalPrice(0);
         }
-    },[cartLists])
+    },[cartLists,setCartLists])
 
    
 

@@ -154,7 +154,7 @@ const ItemsContainer=({title,lists,len})=>{
         return () => {
           
         };
-    }, [width]);
+    }, [width,len,lists,settings,title]);
 
     // console.log("TWO",myLists);
     // console.log("TWO",title);
