@@ -30,6 +30,7 @@ import ProductHover from './partials/ProuctHover';
 import './indexTwo.scss';
 import ConfigureAxios from '@/utils/axiosConfig';
 import CartModal from '../shared/CartModal';
+import ProductsTitle from './ProductsTitle';
 import axios from 'axios';
 
 const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
@@ -272,17 +273,7 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
                 </div>
                 <div className='cart-content'>
                     <div className='title'>
-                        <Link
-                        href={`${data?.slug?`/products/${data?.slug}`:'/products/page=1&per_page=10'}`}
-                        className="products-link-href"
-                        >
-                            <span>
-                                <b>
-                                    {data?.name?data.name:`Neogen Dermalogy Black 
-                                    Energy Cream 80ml`}
-                                </b>
-                            </span>
-                        </Link>
+                        <ProductsTitle data={data}/>
                     </div>
                     <div className='price-wishlist'>
                         <div className='price'>
