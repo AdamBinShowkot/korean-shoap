@@ -145,7 +145,7 @@ const ItemsContainer=({title,lists,len})=>{
                     newLists=[...newLists,newObj];
                 }
                 setMyLists(newLists)
-                console.log(title,newLists)
+                //console.log(title,newLists)
             }
             setSettings(newSettings)
            
@@ -154,7 +154,7 @@ const ItemsContainer=({title,lists,len})=>{
         return () => {
           
         };
-    }, [width,len,lists,settings,title]);
+    }, [width]);
 
     // console.log("TWO",myLists);
     // console.log("TWO",title);
