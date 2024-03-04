@@ -60,22 +60,22 @@ const QuickLinks=()=>{
                 <ul className={`${isContentShow?'show-quick-links content':'hide-quick-links content'}`}>
                     <li>
                         <Link href="/about-us">
-                            About Us
+                            <strong>About Us</strong>
                         </Link>
                     </li>
                     <li>
                         <Link href="/">
-                            Information
+                            <strong>Information</strong>
                         </Link>
                     </li>
                     <li>
                         <Link href="/">
-                            Privacy Policy
+                            <strong>Privacy Policy</strong>
                         </Link>
                     </li>
                     <li>
                         <Link href="/">
-                            Terms & Conditions
+                            <strong>Terms & Conditions</strong>
                         </Link>
                     </li>
                 </ul>

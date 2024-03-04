@@ -1,5 +1,5 @@
 .contact-form-container{
-    padding: 10px 100px;
+    padding: 10px 90px;
     background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1));
     .contact-footer-form-container{
         display: flex;
@@ -18,6 +18,12 @@
 .footer-info{
     padding: 60px 150px 20px;
     background-color: #fff;
+}
+.show-service-content li a strong{
+    text-transform: uppercase;
+}
+.show-quick-links li a strong{
+    text-transform: uppercase;
 }
 
 /*** RESPONSIVE AREA ***/
@@ -39,7 +45,7 @@
   
 @media only screen and (min-width:980px) {
     .footer-info{
-        padding: 60px 150px 20px;
+        padding: 60px 120px 20px;
     }
     .contact-form-container{
         padding: 10px 100px;
