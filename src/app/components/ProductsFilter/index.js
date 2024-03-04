@@ -56,17 +56,47 @@ const IsotopeReact = ({lists,brands}) => {
 
     useEffect(()=>{
     if(lists.length){
+        let dataLists=[];
         lists.map((dta)=>{
-            if(dta.slug=="neogen"){
-                if(dta?.products?.length){
-                    setNeogenLists(dta.products);
-                }
-            }else if(dta.slug=="cosrx"){
-                if(dta?.products?.length){
-                    setCosrxLists(dta.products);
-                }
+            // if(dta.slug=="neogen"){
+            //     if(dta?.products?.length){
+            //         setNeogenLists(dta.products);
+            //     }
+            // }else if(dta.slug=="cosrx"){
+            //     if(dta?.products?.length){
+            //         setCosrxLists(dta.products);
+            //     }
+            // }else if(dta.slug=="tiam"){
+            //     if(dta?.products?.length){
+            //         setTiamLists(dta.products);
+            //     }
+            // }else if(dta.slug=="tiam"){
+            //     if(dta?.products?.length){
+            //         setTiamLists(dta.products);
+            //     }
+            // }
+            if(dta?.products?.length){
+                //alert("HHH")
+                //console.log("Datas : ",dta.products)
+                let newArr=[...products];
+
+                //newArr=newArr.concat(dta.products);
+                let newArr2=[];
+
+                dta.products.map((d2)=>{
+                    const newObj={
+                        ...d2,
+                        parent_slug:dta.slug,    
+                    }
+                    newArr2=[...newArr2,newObj];
+                })
+
+                dataLists=[...dataLists,...newArr2];
+
+               
             }
         })
+        setProducts(dataLists);
     }
    //console.log(lists)
 },[lists])
@@ -110,6 +140,7 @@ const IsotopeReact = ({lists,brands}) => {
 
   const handleFilterKeyChange = key => () => setFilterKey(key)
 
+  //console.log("d: ",products)
   return (
     <>
         <div
@@ -211,6 +242,24 @@ const IsotopeReact = ({lists,brands}) => {
                 // }}
                 >
                     {
+                        products?.length?products.map((dta)=>{
+                            return  <SingleItem
+                            className={`${dta.parent_slug?dta.parent_slug:''}`}
+                            key={dta.id}
+                            details={dta}
+                            />
+                        }):""
+                    }
+                    {/* {
+                        tiamLists?.length?tiamLists.map((dta)=>{
+                            return  <SingleItem
+                            className={"tiam"}
+                            key={dta.id}
+                            details={dta}
+                            />
+                        }):""
+                    }
+                    {
                         neogenLists?.length?neogenLists.map((dta)=>{
                             return  <SingleItem
                             className={"neogen"}
@@ -227,7 +276,7 @@ const IsotopeReact = ({lists,brands}) => {
                             details={dta}
                             />
                         }):""
-                    }
+                    } */}
                     {/* <ItemsContainer/> */}
                     
                     {/* <Col
