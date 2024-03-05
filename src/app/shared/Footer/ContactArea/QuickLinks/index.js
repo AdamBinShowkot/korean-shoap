@@ -44,7 +44,7 @@ const QuickLinks=()=>{
                     xs={12}
                     className='inner-column'
                     >
-                        <strong className="footer-header">QUICK LINKS</strong>
+                        <strong className="footer-header">quick links</strong>
                         <Image
                         onClick={()=>{
                             setIsContentShow(!isContentShow)
@@ -60,22 +60,22 @@ const QuickLinks=()=>{
                 <ul className={`${isContentShow?'show-quick-links content':'hide-quick-links content'}`}>
                     <li>
                         <Link href="/about-us">
-                            <strong>About Us</strong>
+                            About Us
                         </Link>
                     </li>
                     <li>
                         <Link href="/">
-                            <strong>Information</strong>
+                            Information
                         </Link>
                     </li>
                     <li>
                         <Link href="/">
-                            <strong>Privacy Policy</strong>
+                            Privacy Policy
                         </Link>
                     </li>
                     <li>
                         <Link href="/">
-                            <strong>Terms & Conditions</strong>
+                            Terms & Conditions
                         </Link>
                     </li>
                 </ul>

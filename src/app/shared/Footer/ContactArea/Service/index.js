@@ -60,12 +60,12 @@ const ServiceMain=()=>{
                 <ul className={`${isContentShow?'show-service-content content':'hide-service-content content'}`}>
                     <li>
                         <Link href="/blogs">
-                            <strong>Blog</strong>
+                            blog
                         </Link>
                     </li>
                     <li>
                         <Link href="/products/brands">
-                            <strong>BRANDS</strong>
+                           brands
                         </Link>
                     </li>
                     <li>
@@ -73,12 +73,12 @@ const ServiceMain=()=>{
                             Products
                         </Link> */}
                         <Link href="/products?page=1&per_page=10">
-                            <strong>Products</strong>
+                            products
                         </Link>
                     </li>
                     <li>
                         <Link href="/products/skin-concern">
-                            <strong>Skin Concern</strong>
+                            skin concern
                         </Link>
                     </li>
                 </ul>

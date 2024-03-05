@@ -6,13 +6,13 @@ const Content=({isContentShow})=>{
         <>
             <p className={`${isContentShow?'show-contact-content content':'hide-contact-content content'}`}>
                 <span>
-                    <strong>50 Zigatola Kacha Bazar,Dhaka,Bangladesh</strong>
+                    50 Zigatola Kacha Bazar,Dhaka,Bangladesh
                 </span><br/>
                 <span>
-                    <strong>Mail:koreanshopbangladesh@gmail.com</strong>
+                    Mail:koreanshopbangladesh@gmail.com
                 </span>
                 <br/>
-                <span><strong>Phone:+8801303-779646</strong></span>
+                <span>Phone:+8801303-779646</span>
             </p>
         </>
     )

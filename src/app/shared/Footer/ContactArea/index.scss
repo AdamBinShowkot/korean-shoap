@@ -1,4 +1,11 @@
 .footer-container{
+    padding: 0px 0px 20px;
+    .content{
+        font-size: 16px !important;
+    }
+    .content span{
+        font-size: 16px !important;
+    }
     .footer-column{
         display: flex;
         flex-direction: column;
@@ -9,6 +16,7 @@
             display:flex;
             justify-content:space-between;
             align-items:center;
+            
             .show.footer-image{
                 display: block;
                 height: 16px;
@@ -22,6 +30,10 @@
             }
         }
     }
+}
+.footer-header{
+    font-size: 20px;
+    text-transform: capitalize;
 }
 .footer-bottom-container{
     padding-bottom: 0;

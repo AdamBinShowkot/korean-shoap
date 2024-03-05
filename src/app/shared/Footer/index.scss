@@ -16,14 +16,18 @@
     }
 }
 .footer-info{
-    padding: 60px 150px 20px;
+    padding: 80px 150px 20px;
     background-color: #fff;
 }
-.show-service-content li a strong{
-    text-transform: uppercase;
+.show-service-content li a{
+    text-transform: capitalize !important;
+    font-size: 16px;
+    line-height: 20px;
 }
-.show-quick-links li a strong{
-    text-transform: uppercase;
+.show-quick-links li a{
+    text-transform: capitalize !important;
+    font-size: 16px;
+    line-height: 20px;
 }
 
 /*** RESPONSIVE AREA ***/
@@ -45,7 +49,7 @@
   
 @media only screen and (min-width:980px) {
     .footer-info{
-        padding: 60px 120px 20px;
+        padding: 80px 120px 50px;
     }
     .contact-form-container{
         padding: 10px 100px;

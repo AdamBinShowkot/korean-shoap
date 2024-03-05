@@ -5,10 +5,10 @@ const Content=({isContentShow})=>{
     return(
         <>
             <span className={`${isContentShow?'show-about-content content':'hide-about-content content'}`}>
-                <strong>
+                
                 Korean Shop BD is the online platform, one of the largest retail supermarket in Bangladesh. 
                 A business entity that’s defining the standards in innovation and service quality in the nation.
-                </strong>
+               
             </span>
         </>
     )
