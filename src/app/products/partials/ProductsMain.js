@@ -529,7 +529,7 @@ const ProductsMain=()=>{
 
     }
     const getCategoryLists=async()=>{
-        axios.get(`/public/category/list?page=1&per_page=20`).then((response)=>{
+        axios.get(`/public/category/list`).then((response)=>{
             if(response.status==200){
                 //console.log(response)
                 if(response.data.items.length){
@@ -545,7 +545,7 @@ const ProductsMain=()=>{
         })
     }
     const getSkinTypeLists=async()=>{
-        axios.get(`/public/skin-type/list?page=1&per_page=100`).then((response)=>{
+        axios.get(`/public/skin-type/list`).then((response)=>{
             if(response.status==200){
                // console.log(response)
                 if(response.data.items.length){
@@ -561,7 +561,7 @@ const ProductsMain=()=>{
         })
     }
     const getConcernLists=async()=>{
-        const lists=await axios.get(`/public/skin-concern/list?page=1&per_page=100`).then((response)=>{
+        const lists=await axios.get(`/public/skin-concern/list`).then((response)=>{
             if(response.status==200){
                 //console.log(response)
                 if(response.data.items.length){
@@ -577,7 +577,7 @@ const ProductsMain=()=>{
         return lists;
     }
     const getBrandLists=async()=>{
-        const lists=await axios.get(`/public/brand/list?page=1&per_page=100`).then((response)=>{
+        const lists=await axios.get(`/public/brand/list`).then((response)=>{
             if(response.status==200){
                // console.log(response)
                 if(response.data.items.length){
@@ -593,7 +593,7 @@ const ProductsMain=()=>{
         return lists;
     }
     const getIngredientsLists=async()=>{
-        const lists=await axios.get(`/public/ingredient/list?page=2&per_page=100`).then((response)=>{
+        const lists=await axios.get(`/public/ingredient/list`).then((response)=>{
             if(response.status==200){
                // console.log(response)
                 if(response.data.items.length){

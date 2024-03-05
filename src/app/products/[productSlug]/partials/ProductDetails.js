@@ -44,7 +44,7 @@ const ProductDetails=({data})=>{
                     </Accordion.Header>
                     <Accordion.Body>
                         <span>
-                            {data?.long_description?parse(data.long_description):""}
+                            {data?.highlighted_ingredients?parse(data.highlighted_ingredients):""}
                         </span>
                     </Accordion.Body>
                 </Accordion.Item>
