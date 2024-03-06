@@ -280,7 +280,9 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
                             <h3 className="cart-price-text" style={{marginRight:'5px'}}>
                                 ৳{variants?.price && variants?.discount_price?parseFloat(variants.discount_price).toFixed(0):0}
                             </h3>
-                            <h3 className="cart-discount-text">&nbsp;<del> ৳{variants?.price?parseFloat(variants.price).toFixed(0):0}</del></h3>
+                            <h3 className="cart-discount-text">&nbsp;{
+                                variants.price>variants.discount_price?<del> ৳{variants?.price?parseFloat(variants.price).toFixed(0):0}</del>:""
+                            }</h3>
                         </div>
                         <div className='wishlist'>
                             <Image
