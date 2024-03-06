@@ -31,6 +31,7 @@ import {
 } from '@/utils/config';
 import WarningModal from '@/app/ui/WarningModal';
 import NotFoundComponent from '@/app/ui/NotFound';
+import NotFoundItem from './NotFoundItem';
 import './index.scss';
 
 const CartModal=({IsModalShow,setIsModalShow})=>{
@@ -503,7 +504,9 @@ const CartModal=({IsModalShow,setIsModalShow})=>{
                                    </span>
                                 </Card.Footer>
                             </Card>
-                        }):<NotFoundComponent/>
+                        }):<NotFoundItem
+                        setIsModalShow={setIsModalShow}
+                        />
                     }
                 </Modal.Body>
                 <Modal.Footer>
