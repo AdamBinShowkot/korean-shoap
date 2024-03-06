@@ -180,8 +180,7 @@ const NavBarTwo=()=>{
                                             categoryLists?.length?categoryLists.map((dta)=>{
                                                 return <Link 
                                                 key={dta.id}
-                                                href={`/products?category=${dta.name}&category_id=${dta.id}&IsFromMenu=1`}
-                                                as={`/products?category=${dta.name}&category_id=${dta.id}&menu=1`}
+                                                href={`/products/category/${dta.slug?dta.slug:''}`}
                                                 className="link-href"
                                                 >
                                                     {dta.name}

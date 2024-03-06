@@ -17,7 +17,8 @@ import {
 } from 'react-bootstrap';
 import Image from 'next/image';
 import { 
-    useRouter 
+    useRouter,
+    usePathname  
 } from 'next/navigation';
 import { 
     useSearchParams 
@@ -116,6 +117,7 @@ const CustomToggle = forwardRef(function CustomToggle({ children, onClick }, ref
 const ProductsMain=()=>{
     // const products = await getProductLists();
     const history=useRouter();
+    const pathname=usePathname();
     const searchParams = useSearchParams()
     const page = searchParams.get('page');
     const query = searchParams.get('q');
@@ -197,33 +199,33 @@ const ProductsMain=()=>{
                 name:category_name,
                 slugs:category_name
             })
-            if(isFromMenu){
-                setActiveCategories({
-                    category_id:category_id,
-                    name:category_name,
-                    slugs:category_name
-                })
-                setActiveBrand({
-                    brand_id:'',
-                    name:"",
-                    slugs:"Brand"
-                })
-                setActiveSkinType({
-                    skin_type_id:'',
-                    name:"",
-                    slugs:"Skin Type"
-                })
-                setActiveSkinConcern({
-                    skin_concern_id:'',
-                    name:"",
-                    slugs:"Skin Concern"
-                })
-                setActiveIngreidients({
-                    ingredient_id:'',
-                    name:"",
-                    slugs:"Ingredients"
-                })
-            }
+            // if(isFromMenu){
+            //     setActiveCategories({
+            //         category_id:category_id,
+            //         name:category_name,
+            //         slugs:category_name
+            //     })
+            //     setActiveBrand({
+            //         brand_id:'',
+            //         name:"",
+            //         slugs:"Brand"
+            //     })
+            //     setActiveSkinType({
+            //         skin_type_id:'',
+            //         name:"",
+            //         slugs:"Skin Type"
+            //     })
+            //     setActiveSkinConcern({
+            //         skin_concern_id:'',
+            //         name:"",
+            //         slugs:"Skin Concern"
+            //     })
+            //     setActiveIngreidients({
+            //         ingredient_id:'',
+            //         name:"",
+            //         slugs:"Ingredients"
+            //     })
+            // }
         }
         if(brand_id){
             setActiveBrand({
@@ -232,33 +234,33 @@ const ProductsMain=()=>{
                 slugs:brand_name
             });
 
-            if(isFromMenu){
-                setActiveCategories({
-                    category_id:"",
-                    name:"",
-                    slugs:"Category"
-                })
-                setActiveBrand({
-                    brand_id:brand_id,
-                    name:brand_name,
-                    slugs:brand_name
-                })
-                setActiveSkinType({
-                    skin_type_id:'',
-                    name:"",
-                    slugs:"Skin Type"
-                })
-                setActiveSkinConcern({
-                    skin_concern_id:'',
-                    name:"",
-                    slugs:"Skin Concern"
-                })
-                setActiveIngreidients({
-                    ingredient_id:'',
-                    name:"",
-                    slugs:"Ingredients"
-                })
-            }
+            // if(isFromMenu){
+            //     setActiveCategories({
+            //         category_id:"",
+            //         name:"",
+            //         slugs:"Category"
+            //     })
+            //     setActiveBrand({
+            //         brand_id:brand_id,
+            //         name:brand_name,
+            //         slugs:brand_name
+            //     })
+            //     setActiveSkinType({
+            //         skin_type_id:'',
+            //         name:"",
+            //         slugs:"Skin Type"
+            //     })
+            //     setActiveSkinConcern({
+            //         skin_concern_id:'',
+            //         name:"",
+            //         slugs:"Skin Concern"
+            //     })
+            //     setActiveIngreidients({
+            //         ingredient_id:'',
+            //         name:"",
+            //         slugs:"Ingredients"
+            //     })
+            // }
         }
         if(skin_type_id){
             setActiveSkinType({
@@ -266,33 +268,33 @@ const ProductsMain=()=>{
                 name:skin_type,
                 slugs:skin_type
             });
-            if(isFromMenu){
-                setActiveCategories({
-                    category_id:"",
-                    name:"",
-                    slugs:"Category"
-                })
-                setActiveBrand({
-                    brand_id:'',
-                    name:"",
-                    slugs:""
-                })
-                setActiveSkinType({
-                    skin_type_id:skin_type_id,
-                    name:skin_type,
-                    slugs:skin_type
-                })
-                setActiveSkinConcern({
-                    skin_concern_id:'',
-                    name:"",
-                    slugs:"Skin Concern"
-                })
-                setActiveIngreidients({
-                    ingredient_id:'',
-                    name:"",
-                    slugs:"Ingredients"
-                })
-            }
+            // if(isFromMenu){
+            //     setActiveCategories({
+            //         category_id:"",
+            //         name:"",
+            //         slugs:"Category"
+            //     })
+            //     setActiveBrand({
+            //         brand_id:'',
+            //         name:"",
+            //         slugs:""
+            //     })
+            //     setActiveSkinType({
+            //         skin_type_id:skin_type_id,
+            //         name:skin_type,
+            //         slugs:skin_type
+            //     })
+            //     setActiveSkinConcern({
+            //         skin_concern_id:'',
+            //         name:"",
+            //         slugs:"Skin Concern"
+            //     })
+            //     setActiveIngreidients({
+            //         ingredient_id:'',
+            //         name:"",
+            //         slugs:"Ingredients"
+            //     })
+            // }
         }
         if(skin_concern_id){
             setActiveSkinConcern({
@@ -301,33 +303,33 @@ const ProductsMain=()=>{
                 slugs:skin_concern
             });
 
-            if(isFromMenu){
-                setActiveCategories({
-                    category_id:"",
-                    name:"",
-                    slugs:"Category"
-                })
-                setActiveBrand({
-                    brand_id:'',
-                    name:"",
-                    slugs:"Brand"
-                })
-                setActiveSkinType({
-                    skin_type_id:'',
-                    name:"",
-                    slugs:"Skin Type"
-                })
-                setActiveSkinConcern({
-                    skin_concern_id:skin_concern_id,
-                    name:skin_concern,
-                    slugs:skin_concern
-                })
-                setActiveIngreidients({
-                    ingredient_id:'',
-                    name:"",
-                    slugs:"Ingredients"
-                })
-            }
+            // if(isFromMenu){
+            //     setActiveCategories({
+            //         category_id:"",
+            //         name:"",
+            //         slugs:"Category"
+            //     })
+            //     setActiveBrand({
+            //         brand_id:'',
+            //         name:"",
+            //         slugs:"Brand"
+            //     })
+            //     setActiveSkinType({
+            //         skin_type_id:'',
+            //         name:"",
+            //         slugs:"Skin Type"
+            //     })
+            //     setActiveSkinConcern({
+            //         skin_concern_id:skin_concern_id,
+            //         name:skin_concern,
+            //         slugs:skin_concern
+            //     })
+            //     setActiveIngreidients({
+            //         ingredient_id:'',
+            //         name:"",
+            //         slugs:"Ingredients"
+            //     })
+            // }
         }
         if(ingredient_id){
             setActiveIngreidients({
@@ -336,33 +338,33 @@ const ProductsMain=()=>{
                 slugs:ingredients
             });
 
-            if(isFromMenu){
-                setActiveCategories({
-                    category_id:"",
-                    name:"",
-                    slugs:"Category"
-                })
-                setActiveBrand({
-                    brand_id:'',
-                    name:"",
-                    slugs:"Brand"
-                })
-                setActiveSkinType({
-                    skin_type_id:'',
-                    name:"",
-                    slugs:"Skin Type"
-                })
-                setActiveSkinConcern({
-                    skin_concern_id:'',
-                    name:"",
-                    slugs:"Skin Concern"
-                })
-                setActiveIngreidients({
-                    ingredient_id:ingredient_id,
-                    name:ingredients,
-                    slugs:ingredients
-                })
-            }
+            // if(isFromMenu){
+            //     setActiveCategories({
+            //         category_id:"",
+            //         name:"",
+            //         slugs:"Category"
+            //     })
+            //     setActiveBrand({
+            //         brand_id:'',
+            //         name:"",
+            //         slugs:"Brand"
+            //     })
+            //     setActiveSkinType({
+            //         skin_type_id:'',
+            //         name:"",
+            //         slugs:"Skin Type"
+            //     })
+            //     setActiveSkinConcern({
+            //         skin_concern_id:'',
+            //         name:"",
+            //         slugs:"Skin Concern"
+            //     })
+            //     setActiveIngreidients({
+            //         ingredient_id:ingredient_id,
+            //         name:ingredients,
+            //         slugs:ingredients
+            //     })
+            // }
           
         }
 
@@ -444,7 +446,7 @@ const ProductsMain=()=>{
             })
         }
         else{
-            axios.get(`/public/product-list?per_page=${per_page}&page=${page}`)
+            axios.get(`/public/product-list?per_page=${per_page?per_page:10}&page=${page?page:1}`)
             .then((response)=>{
                 if(response.status===200){
                     // console.log(response.data)
@@ -499,6 +501,10 @@ const ProductsMain=()=>{
             })
         }
     },[page,per_page,category_id,brand_id,skin_type_id,skin_concern_id,ingredient_id,query])
+
+    useEffect(()=>{
+        console.log("Called...555",pathname)
+    },[searchParams])
 
     const inittialLoad=async()=>{
         ConfigureAxios();
