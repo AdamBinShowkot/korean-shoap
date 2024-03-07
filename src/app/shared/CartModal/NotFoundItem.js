@@ -28,7 +28,9 @@ const NotFoundItem=({setIsModalShow})=>{
                     <Button
                     className='go-to-shop-button'
                     onClick={()=>{
-                        setIsModalShow(false)
+                        if(typeof setIsModalShow=='function'){
+                            setIsModalShow(false)
+                        }
                     }}
                     >
                         Got To Shoap
