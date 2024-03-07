@@ -220,7 +220,7 @@ const NavBarTwo=()=>{
                                             skinConcernLists?.length?skinConcernLists.map((dta)=>{
                                                 return <Link 
                                                 key={dta.id}
-                                                href={`/products?skin_concern=${dta.name}&skin_concern_id=${dta.id}&menu=1`}
+                                                href={`/products/skin-concern/${dta.slug?dta.slug:''}`}
                                                 className="link-href"
                                                 >
                                                     {dta.name}
@@ -261,7 +261,7 @@ const NavBarTwo=()=>{
                                             skinTypeLists?.length?skinTypeLists.map((dta)=>{
                                                 return <Link 
                                                 key={dta.id}
-                                                href={`/products?skin_type=${dta.name}&skin_type_id=${dta.id}&menu=1`}
+                                                href={`/products/skin-type/${dta.slug?dta.slug:''}`}
                                                 className="link-href"
                                                 >
                                                     {dta.name}
@@ -301,7 +301,7 @@ const NavBarTwo=()=>{
                                             ingredientLists?.length?ingredientLists.map((dta)=>{
                                                 return <Link 
                                                 key={dta.id}
-                                                href={`/products?ingredients=${dta.name}&ingredient_id=${dta.id}&menu=1`}
+                                                href={`/products/ingredient/${dta.slug?dta.slug:''}`}
                                                 className="link-href"
                                                 >
                                                     {dta.name}
@@ -341,7 +341,7 @@ const NavBarTwo=()=>{
                                             brandLists?.length?brandLists.map((dta)=>{
                                                 return <Link 
                                                 key={dta.id}
-                                                href={`/products?brand=${dta.name}&brand_id=${dta.id}&menu=1`}
+                                                href={`/products/brands/${dta.slug?dta.slug:''}`}
                                                 className="link-href"
                                                 >
                                                     {dta.name}

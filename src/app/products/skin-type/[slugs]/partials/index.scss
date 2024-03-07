@@ -1,0 +1,84 @@
+.product-filter-input-group{
+    width: 100%;
+    border: 1px solid rgba(92, 51, 169, 1);
+    border-radius: 5px;
+    position: relative;
+}
+.product-filter-input-group .products-filter-group-button{
+    color: #000;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 0;
+    border: 1px solid rgba(92, 51, 169, 1);
+    font-size: 13px;
+    font-weight: 600;
+    //margin-right: 1px;
+}
+
+.product-filter-input-group .products-filter-button-main{
+    position: absolute;
+    right: 5px;
+    padding: 10px 15px;
+    background: none;
+    border: none;
+}
+.dropdown-toggle::after{
+    display: none;
+}
+.filter-sub-menu-container{
+    z-index: 10 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    max-height: 30vw !important;
+    padding: 0px;
+}
+.filter-toggle-button{
+    max-width: 18vw;
+    min-width: 12vw;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:6px 6px;
+    border-right: 1px solid rgba(92, 51, 169, 1);
+}
+.filter-toggle-button:hover{
+    cursor: pointer;
+}
+.filter-item-menu{
+    padding: 12px 6px;
+    background-color: #efdbff;
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid #b37feb;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.filter-item-menu-active{
+    background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1)) !important;
+    color: #fff;
+}
+.page-next-prev-button{
+    color: #000;
+}
+.pagination-button{
+    margin: 0px 5px;
+    border-radius: 50px;
+    background-color: #fff;
+    color: #000;
+    border-color: grey;
+    padding-left:15px;
+    padding-right: 15px;
+}
+.pagination-active-lists{
+    background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1)) !important;
+    color: #fff;
+    border-color: none;
+}
+.filter-item-menu:last-of-type{
+    border-bottom: 1px solid #b37feb;
+}
