@@ -28,6 +28,7 @@ import {
 import NotFoundItem from '@/app/shared/CartModal/NotFoundItem';
 import SuccessToaster from '@/app/ui/SuccessToaster';
 import WarningToaster from '@/app/ui/WarningToaster';
+import Link from 'next/link';
 
 const CheckoutMain=()=>{
     const router=useRouter();
@@ -38,7 +39,7 @@ const CheckoutMain=()=>{
     const [checkoutError,setCheckoutError]=useState(false);
     const [errorMsg,setErrorMsg]=useState("")
     const [successMsg,setSuccessMsg]=useState("");
-   
+    const [totalQty,setTotalQty]=useState(0);
     const [totalPrice,setTotalPrice]=useState(0);
     const [customerInfo,setCustomerInfo]=useState({
         name:"",
@@ -61,7 +62,9 @@ const CheckoutMain=()=>{
                 (accumulator, currentValue) => accumulator + (currentValue.quantity*parseFloat(currentValue.discount_price)),
                 0,
             )
-            setTotalPrice(totalPrice)
+            setTotalPrice(totalPrice);
+            const qty=cartLists.reduce((accumulator, currentValue) => {return accumulator + currentValue.quantity},0);
+            setTotalQty(qty)
         }else{
             setTotalPrice(0)
         }
@@ -259,6 +262,8 @@ const CheckoutMain=()=>{
             //alert("Please filled mandatory filed.")
         }
     }
+
+    //console.log("Cart Lists : ",cartLists)
     return(
         <>
             <Row>
@@ -316,9 +321,7 @@ const CheckoutMain=()=>{
                         xs={12}
                         style={{
                             padding:'0px',
-                            paddingRight:"20px",
-                            maxHeight:"64vh",
-                            overflowY:'auto'
+                            paddingRight:"20px"
                         }}
                         >
                             <h3>BILLING & SHIPPING</h3>
@@ -398,14 +401,39 @@ const CheckoutMain=()=>{
                         xs={12}
                         style={{
                             padding:'0px',
-                            paddingLeft:"20px",
-                            maxHeight:"60vh",
-                            overflowY:'auto',
-                            overflowX:'hidden'
+                            paddingLeft:"20px"
                         }}
                         >
+                            <Row>
+                                <Col
+                                style={{
+                                    position:'sticky',
+                                    display:'flex',
+                                    zIndex:'10'
+                                }}
+                                >
+                                    <h3>Your Order</h3>
+                                    <h3
+                                    style={{
+                                        position:'absolute',
+                                        right:'6px',
+                                        padding:'2px 8px',
+                                        backgroundColor:'purple',
+                                        borderRadius:'50px',
+                                        color:'#fff'
+                                    }} 
+                                    >
+                                        <b>{totalQty?totalQty:0}</b>
+                                    </h3>
+                                </Col>
+                            </Row>
                             <Row
                             className='form-container'
+                            style={{
+                                maxHeight:"52vh",
+                                overflowY:'auto',
+                                overflowX:'hidden'
+                            }}
                             >
                                 <Col>
                                 {
@@ -481,6 +509,31 @@ const CheckoutMain=()=>{
                                     }):<NotFoundItem
                                     />
                                 }
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col
+                                style={{
+                                    position:'sticky',
+                                    display:'flex',
+                                    zIndex:'10'
+                                }}
+                                >
+                                    <Link
+                                    href={"/products?page=1&per_page=10"}
+                                    style={{
+                                        width:'100%'
+                                    }}
+                                    >
+                                        <Button
+                                        style={{
+                                            width:'100%'
+                                        }}
+                                        className='buy-more-button'
+                                        >
+                                            Buy More
+                                        </Button>
+                                    </Link>
                                 </Col>
                             </Row>
                         </Col>
