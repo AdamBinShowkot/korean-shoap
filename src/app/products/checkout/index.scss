@@ -32,6 +32,7 @@
 }
 .buy-more-button:hover {
     transform: scale(1.01);
+    border-color: var(--prio-vai-like, linear-gradient(90deg, #5C33A9 0.25%, #E8639A 99.81%));
 }
 .checkout-submit-button{
     border-radius: 10px;
