@@ -319,10 +319,7 @@ const CheckoutMain=()=>{
                         <Col 
                         lg={6} 
                         xs={12}
-                        style={{
-                            padding:'0px',
-                            paddingRight:"20px"
-                        }}
+                        className='checkout-middle-container left-container'
                         >
                             <h3>BILLING & SHIPPING</h3>
                             <Row
@@ -399,10 +396,7 @@ const CheckoutMain=()=>{
                         <Col 
                         lg={6} 
                         xs={12}
-                        style={{
-                            padding:'0px',
-                            paddingLeft:"20px"
-                        }}
+                        className="checkout-middle-container right-container"
                         >
                             <Row>
                                 <Col
@@ -557,9 +551,7 @@ const CheckoutMain=()=>{
                             >
                                 <h4 className='title'>YOUR ORDER</h4>
                                 <span className='cupon'>Have Coupon?</span>
-                                <Row
-                                
-                                >
+                                <Row>
                                     <Col 
                                     xl={6}
                                     xs={12}
@@ -567,7 +559,10 @@ const CheckoutMain=()=>{
                                     >
                                         <h3 className='inner-title'>Choose Shipping Method</h3>
                                         <Row>
-                                            <Col xl={6}>
+                                            <Col 
+                                            xl={6}
+                                            xs={8}
+                                            >
                                                 <Form.Check
                                                 inline
                                                 label="Delivery Outside Dhaka:"
@@ -585,6 +580,7 @@ const CheckoutMain=()=>{
                                             </Col>
                                             <Col 
                                             xl={6}
+                                            xs={4}
                                             style={{
                                                 textAlign:'right'
                                             }}
@@ -593,7 +589,10 @@ const CheckoutMain=()=>{
                                             </Col>
                                         </Row>
                                         <Row>
-                                            <Col xl={6}>
+                                            <Col 
+                                            xl={6}
+                                            xs={8}
+                                            >
                                                 <Form.Check
                                                 inline
                                                 label="Delivery Inside Dhaka:"
@@ -611,6 +610,7 @@ const CheckoutMain=()=>{
                                             </Col>
                                             <Col 
                                             xl={6}
+                                            xs={4}
                                             style={{
                                                 textAlign:'right'
                                             }}
@@ -623,11 +623,15 @@ const CheckoutMain=()=>{
                                             marginTop:"25px"
                                         }}
                                         >
-                                            <Col xl={6}>
+                                            <Col 
+                                            xl={6}
+                                            xs={6}
+                                            >
                                                 <h4>Cart Total:</h4>
                                             </Col>
                                             <Col 
                                             xl={6}
+                                            xs={6}
                                             style={{
                                                 textAlign:'right'
                                             }}
@@ -638,11 +642,15 @@ const CheckoutMain=()=>{
                                         <hr/>
                                         <Row
                                         >
-                                            <Col xl={6}>
+                                            <Col 
+                                            xl={6}
+                                            xs={6}
+                                            >
                                                 <h4>Grand Total</h4>
                                             </Col>
                                             <Col 
                                             xl={6}
+                                            xs={6}
                                             style={{
                                                 textAlign:'right'
                                             }}
@@ -652,8 +660,8 @@ const CheckoutMain=()=>{
                                         </Row>
                                     </Col>
                                     <Col 
-                                xl={6}
-                                xs={12}
+                                    xl={6}
+                                    xs={12}
                                     className="left-side side"
                                     >
                                         <h3 className='inner-title'>Choose Shipping Method</h3>

@@ -327,7 +327,7 @@ const StockQuantitySection=({data})=>{
                 >
                     <span style={{fontSize:'15px',fontWeight:"700"}}><b>৳{variants?.discount_price?parseFloat(variants.discount_price).toFixed(2):0}</b>&nbsp;
                     <b>{
-                        variants.price>variants.discount_price?<del>৳{variants?.price?parseFloat(variants.price).toFixed(2):0}</del>:""
+                        parseFloat(variants.price)>parseFloat(variants.discount_price)?<del>৳{variants?.price?parseFloat(variants.price).toFixed(2):0}</del>:""
                     }</b>&nbsp;&nbsp; | &nbsp;&nbsp;</span>
                     <Image
                     src='/qurier.png'
