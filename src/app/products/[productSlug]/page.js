@@ -129,7 +129,7 @@ export default async function Page({params}){
                             className="details-top-info"
                             >
                                 <span className="left">
-                                    <StarComponent rate={details?.avg_rating?details.avg_rating:0}/> 
+                                    <StarComponent rate={details?.avg_rating && details?.total_review?details.avg_rating:0}/> 
                                     &nbsp;&nbsp;&nbsp;<b>{details?.total_review?details.total_review:"0"}</b> &nbsp;&nbsp; Customer review &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp; 
                                     {/* &nbsp; Sold: <b>32</b> */}
                                     &nbsp;&nbsp;
@@ -192,7 +192,7 @@ export default async function Page({params}){
                 </Col>
             </Row>
             <hr className='product-details-hr'/>
-            <Row
+            {/* <Row
             className="details-comments-area"
             >
                 <Col 
@@ -332,8 +332,8 @@ export default async function Page({params}){
                         </InputGroupText>
                     </InputGroup>
                 </Col>
-            </Row>
-            <Row
+            </Row> */}
+            {/* <Row
             className="products-comments-area"
             >
                 <Col 
@@ -341,7 +341,7 @@ export default async function Page({params}){
                 >
                     <CommentMain/>
                 </Col>
-            </Row>
+            </Row> */}
             <div
             className="products-footer-slider-area"
             >

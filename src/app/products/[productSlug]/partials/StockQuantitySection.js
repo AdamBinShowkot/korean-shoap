@@ -328,7 +328,9 @@ const StockQuantitySection=({data})=>{
                     <span style={{fontSize:'15px',fontWeight:"700"}}><b>৳{variants?.discount_price?parseFloat(variants.discount_price).toFixed(2):0}</b>&nbsp;
                     <b>{
                         parseFloat(variants.price)>parseFloat(variants.discount_price)?<del>৳{variants?.price?parseFloat(variants.price).toFixed(2):0}</del>:""
-                    }</b>&nbsp;&nbsp; | &nbsp;&nbsp;</span>
+                    }</b>
+                    </span>
+                    {/* &nbsp;&nbsp; | &nbsp;&nbsp;</span>
                     <Image
                     src='/qurier.png'
                     width={20}
@@ -336,7 +338,7 @@ const StockQuantitySection=({data})=>{
                     alt=""
                     />
                     &nbsp;&nbsp;
-                    <span>Free delivery from ৳45</span>
+                    <span>Free delivery from ৳45</span> */}
                 </Col>
             </Row><br/>
             <Row>

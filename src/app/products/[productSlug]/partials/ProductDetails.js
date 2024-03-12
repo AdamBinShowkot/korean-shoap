@@ -10,6 +10,8 @@ import './index.scss';
 import parse from 'html-react-parser';
 
 const ProductDetails=({data})=>{
+    const {ingredients}=data;
+    const ingredients_len=ingredients?.length;
     //console.log(data)
     return(
         <>
@@ -44,7 +46,15 @@ const ProductDetails=({data})=>{
                     </Accordion.Header>
                     <Accordion.Body>
                         <span>
-                            {data?.highlighted_ingredients?parse(data.highlighted_ingredients):""}
+                            <p>
+                                {data?.ingredients?.length?data.ingredients.map((d,index)=>{
+                                    if(ingredients_len-1==index){
+                                        return d?.name+' .';
+                                    }else{
+                                        return d?.name+' , ';
+                                    }
+                                }):""}
+                            </p>
                         </span>
                     </Accordion.Body>
                 </Accordion.Item>

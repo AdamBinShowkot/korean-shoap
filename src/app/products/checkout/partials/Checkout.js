@@ -266,7 +266,7 @@ const CheckoutMain=()=>{
     //console.log("Cart Lists : ",cartLists)
     return(
         <>
-            <Row>
+            {/* <Row>
                 <Col
                 className='checkout-container'
                 >
@@ -310,8 +310,12 @@ const CheckoutMain=()=>{
                         </Col>
                     </Row>
                 </Col>
-            </Row>
-            <Row>
+            </Row> */}
+            <Row
+            style={{
+                paddingTop:"50px"
+            }}
+            >
                 <Col
                 className="billing-shipping-container"
                 >
@@ -664,7 +668,7 @@ const CheckoutMain=()=>{
                                     xs={12}
                                     className="left-side side"
                                     >
-                                        <h3 className='inner-title'>Choose Shipping Method</h3>
+                                        <h3 className='inner-title'>Choose Billing Method</h3>
                                         <Form.Check
                                         inline
                                         label="Cash On Delivery"
