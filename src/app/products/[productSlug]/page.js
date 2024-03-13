@@ -342,16 +342,20 @@ export default async function Page({params}){
                     <CommentMain/>
                 </Col>
             </Row> */}
-            <div
-            className="products-footer-slider-area"
-            >
-                <Col xs={12}>
-                    <FooterProductSlider
-                    product_lists={details?.related_products?.length?details.related_products:[]}
-                    len={details?.related_products?.length?details?.related_products.length:0}
-                    />
-                </Col>
-            </div>
+          {
+            details?.related_products.length?(
+                <div
+                className="products-footer-slider-area"
+                >
+                    <Col xs={12}>
+                        <FooterProductSlider
+                        product_lists={details?.related_products?.length?details.related_products:[]}
+                        len={details?.related_products?.length?details?.related_products.length:0}
+                        />
+                    </Col>
+                </div>
+            ):""
+          }
         </>
     )
 }
