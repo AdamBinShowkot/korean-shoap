@@ -343,7 +343,7 @@ export default async function Page({params}){
                 </Col>
             </Row> */}
           {
-            details?.related_products.length?(
+            details?.related_products?.length?(
                 <div
                 className="products-footer-slider-area"
                 >
