@@ -1,4 +1,5 @@
-import React from 'react';
+'use client'
+import React,{useEffect,useState} from 'react';
 import {
     Card,
     Button
@@ -12,7 +13,7 @@ import './index.scss';
 
 async function getProductLists(){
     ConfigureAxios();
-    const response=axios.get('/public/top/products?page=1&per_page=20').then((res)=>{
+    const response=axios.get('/public/product-list?per_page=15&page=1').then((res)=>{
         if(res.status===200){
             return res.data?.items;
         }
@@ -20,7 +21,28 @@ async function getProductLists(){
 
     return response;
 }
-const ProductsSlider=async({lists})=>{
+const ProductsSlider=({})=>{
+    const [lists,setLists]=useState([]);
+
+    useEffect(()=>{
+        ConfigureAxios();
+        initLoading();
+    },[])
+
+    const initLoading=async()=>{
+        const response=await axios.get('/public/product-list?per_page=15&page=1').then((res)=>{
+            if(res.status===200){
+                //console.log("Itemsss : ",res.data.items)
+                return res.data?.items;
+            }
+        });
+
+        if(response.length){
+            setLists(response)
+        }else{
+            setLists([])
+        }
+    }
     //const dataLists=await getProductLists();
     //console.log("Data: ",dataLists)
     return(

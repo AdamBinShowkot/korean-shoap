@@ -52,8 +52,10 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
     useEffect(()=>{
         const token=localStorage.getItem("token");
 
-        inittialLoad();
-    },[])
+        if(IsModalShow){
+            inittialLoad();
+        }
+    },[IsModalShow])
 
     const inittialLoad=async()=>{
         ConfigureAxios();

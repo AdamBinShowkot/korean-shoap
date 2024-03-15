@@ -1,6 +1,6 @@
 'use client';
 import React,{
-    useContext, useEffect, useState
+    useContext, useEffect, useState,useCallback
 } from 'react';
 import {
     Col,
@@ -53,16 +53,18 @@ const CartModal=({IsModalShow,setIsModalShow})=>{
     useEffect(()=>{
         const token=localStorage.getItem("token");
 
-        if(token){
-            getCartLists(token)
-        }else{
-            let lists=localStorage.getItem("ProductCarts");
-            lists=JSON.parse(lists);
-            if(lists?.length){
-                setCartLists(lists)
+        if(IsModalShow){
+            if(token){
+                getCartLists(token)
+            }else{
+                let lists=localStorage.getItem("ProductCarts");
+                lists=JSON.parse(lists);
+                if(lists?.length){
+                    setCartLists(lists)
+                }
             }
         }
-    },[])
+    },[IsModalShow])
 
     // calculate cart lists total prices
     useEffect(()=>{
@@ -117,7 +119,7 @@ const CartModal=({IsModalShow,setIsModalShow})=>{
 
 
     // get cart lists onload
-    const getCartLists=async(token="")=>{
+    const getCartLists=useCallback(async(token="")=>{
         if(token){
             ConfigureAxios(token);
             axios.get(`/cart`)
@@ -131,7 +133,7 @@ const CartModal=({IsModalShow,setIsModalShow})=>{
             })
         }
 
-    }
+    },[])
 
     // handle remove cart on click
     const handleRemoveCart=(data)=>{

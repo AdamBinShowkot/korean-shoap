@@ -30,10 +30,12 @@ function getProductLists(){
     })
 }
 
-const IsotopeReact = ({lists,brands}) => {
+const IsotopeReact = () => {
     //console.log("Lists : ",lists)
     const isotope = useRef()
     const [width, height] = useDeviceSize();
+    const [lists,setLists]=useState([]);
+    const [brands,setBrands]=useState([]);
   // store the filter keyword in a state
     const [filterKey, setFilterKey] = useState('*')
     const [products,setProducts]=useState([]);
@@ -53,63 +55,66 @@ const IsotopeReact = ({lists,brands}) => {
     //     })
     // },[])
   // initialize an Isotope object with configs
+    useEffect(()=>{
+        initialLoading();
+    },[])
 
     useEffect(()=>{
-    if(lists.length){
-        let dataLists=[];
-        lists.map((dta)=>{
-            // if(dta.slug=="neogen"){
-            //     if(dta?.products?.length){
-            //         setNeogenLists(dta.products);
-            //     }
-            // }else if(dta.slug=="cosrx"){
-            //     if(dta?.products?.length){
-            //         setCosrxLists(dta.products);
-            //     }
-            // }else if(dta.slug=="tiam"){
-            //     if(dta?.products?.length){
-            //         setTiamLists(dta.products);
-            //     }
-            // }else if(dta.slug=="tiam"){
-            //     if(dta?.products?.length){
-            //         setTiamLists(dta.products);
-            //     }
-            // }
-            if(dta?.products?.length){
-                //alert("HHH")
-                //console.log("Datas : ",dta.products)
-                let newArr=[...products];
+        if(lists.length){
+            let dataLists=[];
+            lists.map((dta)=>{
+                // if(dta.slug=="neogen"){
+                //     if(dta?.products?.length){
+                //         setNeogenLists(dta.products);
+                //     }
+                // }else if(dta.slug=="cosrx"){
+                //     if(dta?.products?.length){
+                //         setCosrxLists(dta.products);
+                //     }
+                // }else if(dta.slug=="tiam"){
+                //     if(dta?.products?.length){
+                //         setTiamLists(dta.products);
+                //     }
+                // }else if(dta.slug=="tiam"){
+                //     if(dta?.products?.length){
+                //         setTiamLists(dta.products);
+                //     }
+                // }
+                if(dta?.products?.length){
+                    //alert("HHH")
+                    //console.log("Datas : ",dta.products)
+                    let newArr=[...products];
 
-                //newArr=newArr.concat(dta.products);
-                let newArr2=[];
+                    //newArr=newArr.concat(dta.products);
+                    let newArr2=[];
 
-                dta.products.map((d2)=>{
-                    const newObj={
-                        ...d2,
-                        parent_slug:dta.slug,    
-                    }
-                    newArr2=[...newArr2,newObj];
-                })
+                    dta.products.map((d2)=>{
+                        const newObj={
+                            ...d2,
+                            parent_slug:dta.slug,    
+                        }
+                        newArr2=[...newArr2,newObj];
+                    })
 
-                dataLists=[...dataLists,...newArr2];
+                    dataLists=[...dataLists,...newArr2];
 
-               
-            }
-        })
-        setProducts(dataLists);
-    }
+                
+                }
+            })
+            setProducts(dataLists);
+        }
    //console.log(lists)
-},[lists])
-  useEffect(() => {
-    setTimeout(()=>{
-        isotope.current = new Isotope('.filter-container', {
-            itemSelector: '.grid-item',
-            layoutMode: 'fitRows',
-        })
-   },400)
+    },[lists])
+    useEffect(() => {
+        setTimeout(()=>{
+            isotope.current = new Isotope('.filter-container', {
+                itemSelector: '.grid-item',
+                layoutMode: 'fitRows',
+            })
+        },400)
     // cleanup
    // return () => isotope.current.destroy()
-  }, [width])
+  }, [width,lists])
 
 
   // handling filter key change
@@ -137,6 +142,55 @@ const IsotopeReact = ({lists,brands}) => {
 //     }
 //    console.log(lists)
 // },[lists])
+
+  const initialLoading=async()=>{
+    ConfigureAxios();
+    const brands1=await getFeturedBrands();
+    //console.log("Brandss : ",brands1)
+    const lists1=await getBrandProductLists();
+    //console.log("listss : ",lists1)
+
+    if(brands1.length){
+        setBrands(brands1)
+    }else{
+        setBrands([])
+    }
+
+    if(lists1.length){
+        setLists(lists1)
+    }else{
+        setLists([])
+    }
+
+  }
+  const getFeturedBrands=async()=>{
+    const response=await axios.get('/public/features/brand').then((res)=>{
+        if(res.status===200){
+          //console.log("Products : ",res.data);
+          return res.data?.length?res.data:[];
+        }
+    }).catch((error)=>{
+      //console.log(error)
+      console.log("Get Featured Brand List Error.")
+      return [];
+    });
+  
+    return response;
+  }
+  const getBrandProductLists=async()=>{
+    const response=await axios.get('/public/feature-product/brand').then((res)=>{
+        if(res.status===200){
+            //console.log("Products : ",res.data);
+            return res.data;
+        }
+    }).catch((error)=>{
+      //console.log(error)
+      console.log("Get Brand Product Lists error.")
+      return [];
+    });
+  
+    return response;
+  }
 
   const handleFilterKeyChange = key => () => setFilterKey(key)
 

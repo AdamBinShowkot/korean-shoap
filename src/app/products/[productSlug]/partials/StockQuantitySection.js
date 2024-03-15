@@ -25,7 +25,7 @@ const StockQuantitySection=({data})=>{
     const [cartsproducts,setCartProducts]=useState({});
     const [addToCartSuccess,setAddToCartSuccess]=useState(false);
     const [addToCartError,setAddToCartError]=useState(false);
-    const variants=data?.variants?data?.variant[0]:{};
+    const variants=data?.variant?.length?data?.variant[0]:{};
 
     useEffect(()=>{
         if(cartLists?.length){

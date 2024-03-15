@@ -17,6 +17,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './index.scss';
 import Image from 'next/image';
+import ConfigureAxios from '@/utils/axiosConfig';
+import axios from 'axios';
 
 function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -39,8 +41,9 @@ function SamplePrevArrow(props) {
       />
     );
 }
-const ItemsContainer=({title,lists,len})=>{
-   
+const ItemsContainer=({title,IsCleanser,IsTonner,IsSerum,IsBodyCare,IsEyeCare})=>{
+    const [lists,setLists]=useState([]);
+    const [len,setLen]=useState(0);
     const [myLists,setMyLists]=useState([]);
     const [settings,setSettings]=useState(
         {
@@ -55,6 +58,9 @@ const ItemsContainer=({title,lists,len})=>{
     )
     const [width, height] = useDeviceSize();  
 
+    useEffect(()=>{
+        initialLoad()
+    },[])
     useEffect(() => {
         if(width<420){
 
@@ -154,10 +160,137 @@ const ItemsContainer=({title,lists,len})=>{
         return () => {
           
         };
-    }, [width]);
+    }, [width,lists]);
 
-    // console.log("TWO",myLists);
-    // console.log("TWO",title);
+    const initialLoad=async()=>{
+        if(IsCleanser && !IsTonner && !IsSerum && !IsBodyCare && !IsEyeCare){
+            getCleanserProducts()
+            //console.log("Title : ",title)
+        }else if(!IsCleanser && IsTonner && !IsSerum && !IsBodyCare && !IsEyeCare){
+            getTonerProducts();
+            //console.log("Title : ",title)
+        }else if(!IsCleanser && !IsTonner && IsSerum && !IsBodyCare && !IsEyeCare){
+            getBodySerumProducts();
+            //console.log("Title : ",title)
+        }else if(!IsCleanser && !IsTonner && !IsSerum && IsBodyCare && !IsEyeCare){
+            getBodyCareProducts();
+            //console.log("Title : ",title)
+        }else if(!IsCleanser && !IsTonner && !IsSerum && !IsBodyCare && IsEyeCare){
+            getEyeCareProducts();
+            //console.log("Title : ",title)
+        }
+
+    }
+    const getCleanserProducts=async()=>{
+        ConfigureAxios();
+        const response=await axios.get('/public/feature-product/category/cleanser').then((res)=>{
+            if(res.status===200){
+                //console.log("Products : ",res.data);
+                return res.data?.length?res.data[0].products:[];
+            }
+        }).catch((error)=>{
+          //console.log(error)
+          console.log("Get Cleanser Product Lists Error.")
+          return [];
+        });
+      
+        if(response.length){
+            setLists(response);
+            setLen(response.length)
+        }else{
+            setLists([])
+            setLen(0)
+        }
+    }
+
+    const getTonerProducts=async()=>{
+        ConfigureAxios();
+        const response=await axios.get('/public/feature-product/category/toner').then((res)=>{
+            if(res.status===200){
+                //console.log("Products : ",res.data);
+                return res.data?.length?res.data[0].products:[];
+            }
+        }).catch((error)=>{
+          //console.log(error)
+          console.log("Get Toner Products Error")
+          return [];
+        });
+      
+        if(response.length){
+            setLists(response);
+            setLen(response.length)
+        }else{
+            setLists([])
+            setLen(0)
+        }
+    }
+
+    const getBodySerumProducts=async()=>{
+        ConfigureAxios();
+        const response=await axios.get('/public/feature-product/category/serum').then((res)=>{
+            if(res.status===200){
+                //console.log("Products : ",res.data);
+                return res.data?.length?res.data[0].products:[];
+            }
+        }).catch((error)=>{
+          //console.log(error)
+          console.log("Get Body Serum Lists Error.")
+          return [];
+        });
+      
+        if(response.length){
+            setLists(response);
+            setLen(response.length)
+        }else{
+            setLists([])
+            setLen(0)
+        }
+    }
+
+    const getBodyCareProducts=async()=>{
+        ConfigureAxios();
+        const response=await axios.get('/public/feature-product/category/body-care').then((res)=>{
+            if(res.status===200){
+                //console.log("Products : ",res.data);
+                return res.data?.length?res.data[0].products:[];
+            }
+        }).catch((error)=>{
+          //console.log(error)
+          console.log("Get Body Care Lists Error.")
+          return [];
+        });
+      
+        if(response.length){
+            setLists(response);
+            setLen(response.length)
+        }else{
+            setLists([])
+            setLen(0)
+        }
+    }
+
+    const getEyeCareProducts=async()=>{
+        ConfigureAxios();
+        const response=await axios.get('/public/feature-product/category/eye-care').then((res)=>{
+            if(res.status===200){
+                //console.log("Products : ",res.data);
+                return res.data?.length?res.data[0].products:[];
+            }
+        }).catch((error)=>{
+         // console.log(error)
+          console.log("Get Eye Care Lists Error.")
+          return [];
+        });
+      
+        if(response.length){
+            setLists(response);
+            setLen(response.length)
+        }else{
+            setLists([])
+            setLen(0)
+        }
+    }
+      
     return(
         <>
             <Row>

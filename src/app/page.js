@@ -14,6 +14,7 @@ import ItemsContainer from './components/Items';
 import BannerThree from './components/Banner3';
 import IsotopeReact from './components/ProductsFilter';
 import HomeBlogSection from './components/HomeBlogSection';
+import PageContent from './PageContent';
 //import useSize from '@/hooks/useSize';
 
 async function getBodyCareLists(){
@@ -175,15 +176,15 @@ async function getHeroBgImage(){
   return response;
 }
 export default async function Home() {
-  const featredBrandLists=await getFeturedBrands();
-  const brandLists=await getBrandProductLists();
-  const productsLists=await getProductsLists();
-  const CleanserItems=await getCleanserProducts();
-  const TonerItems=await getTonerProducts();
-  const BodyCareItems=await getBodyCareProducts();
-  const EyeCareItems=await getEyeCareProducts();
-  const EyeSerumItems=await getBodySerumProducts();
-  const HeroBgLists=await getHeroBgImage();
+  // const featredBrandLists=await getFeturedBrands();
+  // const brandLists=await getBrandProductLists();
+  // const productsLists=await getProductsLists();
+  // const CleanserItems=await getCleanserProducts();
+  // const TonerItems=await getTonerProducts();
+  // const BodyCareItems=await getBodyCareProducts();
+  // const EyeCareItems=await getEyeCareProducts();
+  // const EyeSerumItems=await getBodySerumProducts();
+  // const HeroBgLists=await getHeroBgImage();
   // const brandLists=[] ;
   // const productsLists=[];
   // const CleanserItems=[];
@@ -200,13 +201,13 @@ export default async function Home() {
 
   return (
     <>
-      <Row>
+      {/* <Row>
         <Col>
           <SliderBanner
           lists={HeroBgLists}
           />
         </Col>
-      </Row>
+  </Row>*/}
       <Row
       className='home-page-inner-container'
       >
@@ -224,7 +225,7 @@ export default async function Home() {
           }}
           >
             <ProductsSlider
-            lists={productsLists}
+            //lists={productsLists}
             />
           </div>
           <div style={{
@@ -232,25 +233,35 @@ export default async function Home() {
           }}>
             <ItemsContainer 
             title="CLEANSER "
-            lists={CleanserItems}
-            len={CleanserItems?.length?CleanserItems.length:0}
+            IsCleanser={true}
+            IsTonner={false}
+            IsSerum={false}
+            IsBodyCare={false}
+            IsEyeCare={false}
             />
           </div>
           <div style={{
             width:'100%',
           }}>
             <ItemsContainer 
-            lists={TonerItems}
-            len={TonerItems?.length?TonerItems.length:0}
-            title="TONER "/>
+            title="TONER "
+            IsCleanser={false}
+            IsTonner={true}
+            IsSerum={false}
+            IsBodyCare={false}
+            IsEyeCare={false}
+            />
           </div>
           <div style={{
             width:'100%',
           }}>
             <ItemsContainer 
             title="SERUM/ESSENCE/AMPOULE "
-            lists={EyeSerumItems}
-            len={EyeSerumItems?.length?EyeSerumItems.length:0}
+            IsCleanser={false}
+            IsTonner={false}
+            IsSerum={true}
+            IsBodyCare={false}
+            IsEyeCare={false}
             />
           </div>
           <div style={{
@@ -258,8 +269,11 @@ export default async function Home() {
           }}>
             <ItemsContainer 
             title="BODY CARE "
-            lists={BodyCareItems}
-            len={BodyCareItems?.length?BodyCareItems.length:0}
+            IsCleanser={false}
+            IsTonner={false}
+            IsSerum={false}
+            IsBodyCare={true}
+            IsEyeCare={false}
             />
           </div>
           <div style={{
@@ -267,8 +281,11 @@ export default async function Home() {
           }}>
             <ItemsContainer 
             title="EYE CARE "
-            lists={EyeCareItems}
-            len={EyeCareItems?.length?EyeCareItems.length:0}
+            IsCleanser={false}
+            IsTonner={false}
+            IsSerum={false}
+            IsBodyCare={false}
+            IsEyeCare={true}
             />
           </div>
         </Col>
@@ -278,16 +295,18 @@ export default async function Home() {
         <BannerThree/>
       </Row>
       <Row>
+      
         <IsotopeReact 
-        lists={brandLists}
-        brands={featredBrandLists}
+        // lists={brandLists}
+        // brands={featredBrandLists}
         />
-      </Row>
+      </Row> 
       {/* <Row>
         <Col xs={12}>
           <HomeBlogSection/>
         </Col>
       </Row> */}
+      {/* <PageContent/> */}
     </>
   )
 }
