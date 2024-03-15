@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import {
     Card,
     Button,
@@ -9,13 +9,17 @@ import {
 import { 
     baseImageServer 
 } from '@/utils/config';
+import ConfigureAxios from '@/utils/axiosConfig';
+import axios from 'axios';
 import Slider from 'react-slick';
 import './index.scss';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Image from 'next/image';
 
-const SliderBanner=({lists})=>{
+const SliderBanner=()=>{
+    const [lists,setLists]=useState([]);
+
     const settings = {
         dots: false,
         infinite: true,
@@ -24,6 +28,33 @@ const SliderBanner=({lists})=>{
         slidesToScroll: 1,
         centerMode:true
     };
+    useEffect(()=>{
+        initialLoading();
+    },[])
+
+    const initialLoading=async()=>{
+        getHeroBgImage();
+    }
+
+    const getHeroBgImage=async()=>{
+        ConfigureAxios();
+        const response=await axios.get('/public/sliders/hero-slider').then((res)=>{
+          if(res.status===200){
+            //console.log("Products : ",res.data);
+            return res.data;
+          }
+        }).catch((error)=>{
+          //console.log(error)
+          console.log("Get Home Page Image Error.")
+          return [];
+        });
+      
+        if(response.length){
+            setLists(response);
+        }else{
+            setLists([])
+        }
+      }
     //console.log("Lists",lists)
     return(
         <>

@@ -201,13 +201,12 @@ export default async function Home() {
 
   return (
     <>
-      {/* <Row>
+      <Row>
         <Col>
           <SliderBanner
-          lists={HeroBgLists}
           />
         </Col>
-  </Row>*/}
+      </Row>
       <Row
       className='home-page-inner-container'
       >
