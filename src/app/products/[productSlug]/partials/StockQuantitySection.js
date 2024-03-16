@@ -117,7 +117,7 @@ const StockQuantitySection=({data})=>{
                         let lists=localStorage.getItem("ProductCarts");
                         lists=JSON.parse(lists);
         
-                        console.log("Condition Working...")
+                        //console.log("Condition Working...")
                         if(lists?.length){
                             let newLists=[];
         
@@ -135,7 +135,7 @@ const StockQuantitySection=({data})=>{
                                 }
                             })
         
-                            console.log(newLists)
+                            //console.log(newLists)
                             if(newLists?.length){
                                 //localStorage.removeItem("ProductCarts");
                                 localStorage.setItem("ProductCarts",JSON.stringify(newLists));
@@ -152,7 +152,7 @@ const StockQuantitySection=({data})=>{
     }
 
     const handleUpdateCart=(data)=>{
-        console.log("Hello...")
+        //console.log("Hello...")
         //console.log("Data : ",data)
         if(data?.id){
             if(cartsproducts?.product_id){
@@ -178,12 +178,12 @@ const StockQuantitySection=({data})=>{
                     let lists=localStorage.getItem("ProductCarts");
                     lists=JSON.parse(lists);
 
-                    console.log("Condition Working...for update")
+                    //console.log("Condition Working...for update")
                     if(lists?.length){
                         let newLists=[];
 
 
-                        console.log("Lists",lists);
+                        //console.log("Lists",lists);
                         lists.map((dta)=>{
                             if(dta.product_id==data.id){
                                 const obj={
@@ -233,7 +233,7 @@ const StockQuantitySection=({data})=>{
                     setCartLists([...lists,newObj])
                     axios.post(`/cart`,JSON.stringify(newObj2))
                     .then((response)=>{
-                        console.log("Cart response when logged in: ",response);
+                        //console.log("Cart response when logged in: ",response);
                         //setCartLists([...lists,newObj])
                         getCartLists(Token);
                     }).catch((error)=>{
@@ -243,7 +243,7 @@ const StockQuantitySection=({data})=>{
                     let lists=localStorage.getItem("ProductCarts");
                     lists=JSON.parse(lists);
 
-                    console.log("Condition Working Add To Bag...")
+                    //console.log("Condition Working Add To Bag...")
                     if(lists?.length){
                         let newLists=[];
 

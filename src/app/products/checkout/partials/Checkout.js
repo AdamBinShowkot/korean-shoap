@@ -46,8 +46,9 @@ const CheckoutMain=()=>{
         phone:"",
         address:"",
         note:"",
-        insideDhaka:true,
-        paymentMethod:"COD"
+        location:"",
+        paymentMethod:""
+        //paymentMethod:"COD"
     })
 
     useEffect(()=>{
@@ -189,21 +190,22 @@ const CheckoutMain=()=>{
             address,
             phone,
             note,
+            location,
             insideDhaka
         }=customerInfo;
 
-        if(paymentMethod && name  && address && phone && paymentMethod==="COD" && lists?.length){
+        if(paymentMethod && name  && address && phone && paymentMethod==="COD" && lists?.length && location){
             const obj={
                 // coupon_code:"",
                 // postal_code: "",
                 // city: "",
                 payment_method:paymentMethod?paymentMethod:"",
-                delivery_charge:49,
+                delivery_charge:parseInt(location),
                 name:name?name:"",
                 mobile:phone?phone:"",
                 full_address:address?address:"",
                 customer_note:note?note:"",
-                grand_total:(totalPrice+49),
+                grand_total:parseFloat(totalPrice+parseInt(location)).toFixed(2),
                 products:[]
             }
 
@@ -394,6 +396,62 @@ const CheckoutMain=()=>{
                                             </Form.Group>
                                         </Col>
                                     </Row>
+                                    <Row>
+                                        <Col 
+                                        xl={12}
+                                        xs={12}
+                                        >
+                                            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea3">
+                                                <Form.Label className={`checkout-require-input ${customerInfo?.location?'':'is-empty'}`}>BILLING METHOD {" "}<sup>*</sup></Form.Label>
+                                                <Form.Select 
+                                                aria-label="Default select example"
+                                                onChange={onValueChange}
+                                                name="location"
+                                                value={customerInfo.location}
+                                                >
+                                                    <option>Choose Shipping Method</option>
+                                                    <option value="100">Delivery Outside Dhaka.</option>
+                                                    <option value="49">Delivery Inside Dhaka.</option>
+                                                </Form.Select>
+                                            </Form.Group>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col 
+                                        xl={12}
+                                        xs={12}
+                                        >
+                                            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea3">
+                                                <Form.Label className={`checkout-require-input ${customerInfo?.paymentMethod?'':'is-empty'}`}>SHIPPING METHOD {" "}<sup>*</sup></Form.Label>
+                                                <Form.Select 
+                                                aria-label="Default select example"
+                                                value={customerInfo.paymentMethod}
+                                                name="paymentMethod"
+                                                onChange={onValueChange}
+                                                >
+                                                    <option>Choose Billing Method</option>
+                                                    <option value="COD">Cash On Delivery</option>
+                                                    <option value="BKASH">bKash</option>
+                                                    <option value="CARD">Pay with Card /Mobile Wallet</option>
+                                                </Form.Select>
+                                            </Form.Group>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col
+                                        >
+                                            <Button
+                                            style={{
+                                                width:'100%'
+                                            }}
+                                            onClick={checkoutSubmit}
+                                            disabled={cartLists?.length?false:true}
+                                            className='buy-more-button'
+                                            >
+                                                Confirm Order
+                                            </Button>
+                                        </Col>
+                                    </Row>
                                 </Col>
                             </Row>
                         </Col>
@@ -428,7 +486,7 @@ const CheckoutMain=()=>{
                             <Row
                             className='form-container'
                             style={{
-                                maxHeight:"52vh",
+                                maxHeight:"62vh",
                                 overflowY:'auto',
                                 overflowX:'hidden'
                             }}
@@ -507,6 +565,52 @@ const CheckoutMain=()=>{
                                     }):<NotFoundItem
                                     />
                                 }
+                                <Card>
+                                    <Card.Body>
+                                    <Row>
+                                        <Col 
+                                        xs={6}
+                                        >
+                                            <span>Delivery Charge</span>
+                                        </Col>
+                                        <Col 
+                                        xs={6}
+                                        style={{
+                                            textAlign:'right'
+                                        }}
+                                        >
+                                            <span className='cart-items-footer-text'>
+                                                {customerInfo?.location?customerInfo.location:0}
+                                            </span>
+                                        </Col>
+                                    </Row>
+                                        </Card.Body>
+                                        <Card.Footer className="text-muted">
+                                            <Row>
+                                                <Col
+                                                xs={6}
+                                                lg={6}
+                                                >
+                                                    <span className='cart-items-footer-text'>
+                                                        <b>Total</b>
+                                                    </span>
+                                                </Col>
+                                                <Col
+                                                xs={6}
+                                                lg={6}
+                                                style={{
+                                                    textAlign:'right'
+                                                }}
+                                                >
+                                                    <span className='cart-items-footer-text'>
+                                                        ৳ {totalPrice?customerInfo?.location?
+                                                        parseFloat(totalPrice+parseInt(customerInfo.location)).toFixed(2)
+                                                        :parseFloat(totalPrice).toFixed(2):0}
+                                                    </span>
+                                                </Col>
+                                            </Row>
+                                        </Card.Footer>
+                                    </Card>
                                 </Col>
                             </Row>
                             <Row>
@@ -538,7 +642,7 @@ const CheckoutMain=()=>{
                     </Row>
                 </Col>
             </Row>
-            <Row
+            {/*<Row
             style={{
                 paddingBottom:'30px'
             }}
@@ -731,7 +835,7 @@ const CheckoutMain=()=>{
                         </Row>
                     </Row>
                 </Col>
-            </Row>
+            </Row>*/}
             <SuccessToaster 
             IsShow={checkoutSuccess} 
             ToastMsg={`${successMsg?successMsg:"Checkout Success."}`}

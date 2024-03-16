@@ -78,8 +78,8 @@ const MobileHeader=()=>{
                             /> */}
                             <svg 
                             xmlns="http://www.w3.org/2000/svg" 
-                            width="18" 
-                            height="18" 
+                            width="16" 
+                            height="16" 
                             fill="currentColor" 
                             className="bi bi-facebook footer-icon" 
                             viewBox="0 0 16 16"
@@ -99,8 +99,8 @@ const MobileHeader=()=>{
                             /> */}
                             <svg 
                             mlns="http://www.w3.org/2000/svg"
-                            width="16" 
-                            height="16" 
+                            width="15" 
+                            height="15" 
                             fill="currentColor" 
                             class="bi bi-instagram footer-icon" 
                             viewBox="0 0 16 16">
@@ -113,8 +113,8 @@ const MobileHeader=()=>{
                         >
                             <svg 
                             xmlns="http://www.w3.org/2000/svg" 
-                            width="18" 
-                            height="18" 
+                            width="16" 
+                            height="16" 
                             fill="currentColor" 
                             class="bi bi-tiktok footer-icon" 
                             viewBox="0 0 16 16"
@@ -124,8 +124,8 @@ const MobileHeader=()=>{
                         </a>
                         <svg 
                         xmlns="http://www.w3.org/2000/svg" 
-                        width="22" 
-                        height="22" 
+                        width="20" 
+                        height="20" 
                         fill="currentColor" 
                         className="bi bi-youtube footer-icon" 
                         viewBox="0 0 16 16">
