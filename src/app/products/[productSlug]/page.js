@@ -135,7 +135,7 @@ export default async function Page({params}){
                                     &nbsp;&nbsp;
                                 </span>
                                 <span className="right">
-                                    Size: <b>&nbsp;80ml</b>&nbsp;&nbsp;&nbsp;
+                                    Size: <b>&nbsp;{details?.variant[0]?.size?details?.variant[0]?.size:""}</b>&nbsp;&nbsp;&nbsp;
                                     SKU: <b>&nbsp;{details?.sku?details.sku:'111'}</b>
                                 </span>
                             </span>

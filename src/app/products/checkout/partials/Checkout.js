@@ -79,7 +79,7 @@ const CheckoutMain=()=>{
                 //console.log(response)
                 if(response.status===200){
                     const {data}=response;
-                   // console.log("Users",data)
+                  // console.log("Users",data)
                     //setUserInfo(data);
                     if(data?.id){
                         setCustomerInfo((state)=>({
@@ -315,7 +315,8 @@ const CheckoutMain=()=>{
             </Row> */}
             <Row
             style={{
-                paddingTop:"50px"
+                paddingTop:"50px",
+                paddingBottom:"50px"
             }}
             >
                 <Col
@@ -410,8 +411,8 @@ const CheckoutMain=()=>{
                                                 value={customerInfo.location}
                                                 >
                                                     <option>Choose Shipping Method</option>
-                                                    <option value="100">Delivery Outside Dhaka.</option>
-                                                    <option value="49">Delivery Inside Dhaka.</option>
+                                                    <option value="150">Delivery Outside Dhaka.</option>
+                                                    <option value="80">Delivery Inside Dhaka.</option>
                                                 </Form.Select>
                                             </Form.Group>
                                         </Col>
@@ -486,7 +487,7 @@ const CheckoutMain=()=>{
                             <Row
                             className='form-container'
                             style={{
-                                maxHeight:"62vh",
+                                maxHeight:"70vh",
                                 overflowY:'auto',
                                 overflowX:'hidden'
                             }}
