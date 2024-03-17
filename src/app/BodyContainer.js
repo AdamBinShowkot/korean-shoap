@@ -2,7 +2,8 @@
 import './globals.css';
 import {
     useState,
-    useMemo
+    useMemo,
+    useEffect
 } from 'react';
 import {
     Row,
@@ -13,6 +14,9 @@ import {
     AddToCartContext 
 } from '@/contextApi/addToCartApi';
 import { 
+  WishListsContextApi 
+} from '@/contextApi/widhListsContext';
+import { 
   UserInfoContextApi 
 } from '@/contextApi/userInfoApi';
 import FlatButton from './FlatButton';
@@ -22,11 +26,39 @@ import FooterMain from './shared/Footer';
 import { 
   ToastContainer 
 } from 'react-toastify';
+import ConfigureAxios from '@/utils/axiosConfig';
+import axios from 'axios';
 
 
 const BodyContainer=({children})=>{
     const [cartLists,setCartLists]=useState([]);
     const [userInfo,setUserInfo]=useState({});
+    const [wishLists,setWishLists]=useState([]);
+
+    useEffect(()=>{
+      const token=localStorage.getItem("token");
+      if(token){
+        ConfigureAxios(token);
+        axios.get(`/wishlist`)
+        .then((response)=>{
+          if(response.status==200){
+            const {data}=response;
+
+            if(data.length){
+              //console.log("Responsee",data)
+              setWishLists(data)
+            }else{
+              setWishLists([])
+            }
+          }else{
+            setWishLists([])
+          }
+        }).catch((error)=>{
+          setWishLists([])
+          console.log("Get WishLists Error.");
+        })
+      }
+    },[])
 
     // const provided = useMemo(() => ({
     //     value: cartLists,
@@ -41,36 +73,40 @@ const BodyContainer=({children})=>{
           <AddToCartContext.Provider 
           value={{cartLists,setCartLists}}
           >
-            <Container fluid>
-              <HeaderMain/>
-              {/* <Container> */}
-                
-              <Row>
-                <Col 
-                style={{
-                  overflow:'hidden'
-                }}>
-                    {/* <ToastContainer
-                    position="bottom-right"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="light"
-                    /> */}
+            <WishListsContextApi.Provider
+            value={{wishLists,setWishLists}}
+            >
+              <Container fluid>
+                <HeaderMain/>
+                {/* <Container> */}
                   
-                  <FlatButton/>
-                  {children}
-                </Col>
-              </Row>
-              {/* </Container> */}
-              <FooterMain/>
-              <MobileFooterMenu/>
-            </Container>
+                <Row>
+                  <Col 
+                  style={{
+                    overflow:'hidden'
+                  }}>
+                      {/* <ToastContainer
+                      position="bottom-right"
+                      autoClose={5000}
+                      hideProgressBar={false}
+                      newestOnTop={false}
+                      closeOnClick
+                      rtl={false}
+                      pauseOnFocusLoss
+                      draggable
+                      pauseOnHover
+                      theme="light"
+                      /> */}
+                    
+                    <FlatButton/>
+                    {children}
+                  </Col>
+                </Row>
+                {/* </Container> */}
+                <FooterMain/>
+                <MobileFooterMenu/>
+              </Container>
+            </WishListsContextApi.Provider>
           </AddToCartContext.Provider>
         </UserInfoContextApi.Provider>
       </>

@@ -7,6 +7,9 @@ import React,{
 import { 
     AddToCartContext 
 } from '@/contextApi/addToCartApi';
+import { 
+    WishListsContextApi 
+} from '@/contextApi/widhListsContext';
 import {
     Card,
     Row,
@@ -38,12 +41,20 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
     const [hoverShow,setHoverShow]=useState(false);
     const [showModal,setShowModal]=useState(false);
     const {cartLists,setCartLists}=useContext(AddToCartContext);
+    const {wishLists,setWishLists}=useContext(WishListsContextApi);
+    const [isWishLists,setIsWishLists]=useState(false);
+    const [wishListsData,setWishListsData]=useState({});
     const variants=data?.variant?.length?data?.variant[0]:{}
     const [sizes,setSizes]=useState([]);
     const [sizeLists,setSizeLists]=useState([]);
     const [addToCartSuccess,setAddToCartSuccess]=useState(false);
     const [addToCartError,setAddToCartError]=useState(false);
+    const [wishListsSuccess,setWishListsSuccess]=useState(false);
+    const [wishListSuccessmsg,setWishListSuccessMsg]=useState("");
+    const [wishListError,setWishListError]=useState(false);
+    const [wishListErrorMsg,setWishListErrorMsg]=useState("");
     const [show, setShow] = useState(false);
+    const [showModal2,setShowModal2]=useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -60,6 +71,26 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
             setSizeLists(variants[0]);
         }
     },[data]);
+
+    useEffect(()=>{
+        const {id}=data;
+        if(wishLists.length){
+           
+            const filterProducts=wishLists.filter((d)=>{return d.product.id==id});
+            if(filterProducts.length){
+                setIsWishLists(true);
+                setWishListsData(filterProducts[0]);
+            }else{
+                setIsWishLists(false);
+                setWishListsData({});
+            }
+            //console.log("Filter Products : ",filterProducts);
+        }else{
+            setIsWishLists(false);
+            setWishListsData({});
+        }
+    },[wishLists]);
+
     const handleAddToCart=(infos,name)=>{
         const token=localStorage.getItem("token");
         if(token && infos?.id){
@@ -233,6 +264,66 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
         }
     }
 
+    const handleWishLists=(data)=>{
+        //console.log("Data",data)
+        const token=localStorage.getItem("token");
+
+        if(token && data?.id){
+           // console.log('Heloooo')
+            ConfigureAxios(token);
+            if(isWishLists && wishListsData?.id){
+                axios.delete(`/wishlist/${wishListsData.id}`)
+                .then((response)=>{
+                    //console.log("Delete response",response)
+                    //setIsWishLists(true);
+                    if(response.status==200){
+                        getWishLists(token);
+                        setWishListsSuccess(true);
+                        setWishListSuccessMsg("Successfully remove wishlists.")
+                        setTimeout(()=>{
+                            setWishListsSuccess(false)
+                        },2000)
+                    }
+                }).catch((error)=>{
+                    setWishListError(true);
+                    setWishListErrorMsg("Wish lists removed failed.")
+                    setTimeout(()=>{
+                        setWishListError(false)
+                    },2000)
+                    console.log("Eroor",error)
+                })
+            }else{
+                const obj={
+                    product_id:data?.id
+                }
+                axios.post(`/wishlist`,JSON.stringify(obj))
+                .then((response)=>{
+                    //console.log("Success response :",response)
+                    if(response.status==201){
+                        getWishLists(token);
+                        setWishListsSuccess(true);
+                        setWishListSuccessMsg("Add to wish lists success.")
+                        setTimeout(()=>{
+                            setWishListsSuccess(false)
+                        },2000)
+                    }
+                    //setIsWishLists(true);
+                    //getWishLists(token);
+                    //alert("Success.")
+                }).catch((error)=>{
+                    setWishListError(true);
+                    setWishListErrorMsg("Add to wish list failed.")
+                    setTimeout(()=>{
+                        setWishListError(false)
+                    },2000)
+                    console.log("Eroor",error)
+                })
+            }
+        }else{
+            setShowModal2(true);
+        }
+    }
+
     const getCartLists=async(token="")=>{
         if(token){
             ConfigureAxios(token);
@@ -246,6 +337,30 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
             })
         }
 
+    }
+
+    const getWishLists=async(token)=>{
+      if(token){
+        ConfigureAxios(token);
+        axios.get(`/wishlist`)
+        .then((response)=>{
+          if(response.status==200){
+            const {data}=response;
+
+            if(data.length){
+              console.log("Responsee Data: ",data)
+              setWishLists(data)
+            }else{
+              setWishLists([])
+            }
+          }else{
+            setWishLists([])
+          }
+        }).catch((error)=>{
+          setWishLists([])
+          console.log("Get WishLists Error.");
+        })
+      }
     }
 
     return(
@@ -286,10 +401,13 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
                         </div>
                         <div className='wishlist'>
                             <Image
-                            src="/love.png"
+                            src={`${isWishLists?'/love_red.png':'/love.png'}`}
                             height={25}
                             width={25}
                             alt="Wishlist"
+                            onClick={()=>{
+                                handleWishLists(data)
+                            }}
                             >
 
                             </Image>
@@ -321,8 +439,10 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
             </div>
 
             <Modal 
-            show={false} 
-            onHide={handleClose}
+            show={showModal2} 
+            onHide={()=>{
+                setShowModal2(false);
+            }}
             centered={true}
             >
                 <Modal.Body>
@@ -338,7 +458,7 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
                         }}
                         >
                             <Image
-                            src="/cart_success.png"
+                            src="/warning_image.png"
                             height={70}
                             width={70}
                             alt="Cart Success"
@@ -353,7 +473,7 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
                                     marginTop:"10px"
                                 }}
                                 >
-                                    <h3 style={{fontSize:'24px',fontWeight:'600'}}>Product Added on cart successfully</h3>
+                                    <h3 style={{fontSize:'24px',fontWeight:'600'}}>Sorry you are not logged in!</h3>
                                 </Col>
                             </Row>
                             <Row>
@@ -367,32 +487,18 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
                                 }}
                                 >
                                  
-                                        <Button
-                                        style={{
-                                            margin:"0px 15px",
-                                            backgroundImage:'linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1))',
-                                            border:"none"
-                                        }}
-                                        onClick={()=>{
-                                            setShow(false)
-                                            router.push("/products/checkout")
-                                        }}
-                                        >
-                                            Buy More
-                                        </Button>
-                               
                                     <Button
                                     style={{
                                         margin:"0px 15px",
-                                        backgroundColor:"#389e0d",
-                                        border:'none'
+                                        backgroundImage:'linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1))',
+                                        border:"none"
                                     }}
                                     onClick={()=>{
-                                        setShowModal(true);
-                                        handleClose();
+                                        setShowModal2(false);
+                                        router.push("/accounts")
                                     }}
                                     >
-                                        Go To Cart
+                                        Yes, Log in!
                                     </Button>
                                     <Button
                                     style={{
@@ -401,7 +507,7 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
                                         border:'none'
                                     }}
                                     onClick={()=>{
-                                        setShow(false)
+                                        setShowModal2(false)
                                     }}
                                     >
                                         Close
@@ -421,6 +527,17 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
             <ErrorToaster 
             IsShow={addToCartError} 
             ToastMsg="Add to on cart failed"
+            Width={'20vw'}
+            Postion={"bottom-end"}/>
+            <SuccessToaster
+            IsShow={wishListsSuccess}
+            Width={'20vw'} 
+            ToastMsg={`${wishListSuccessmsg?wishListSuccessmsg:'Add to wish list successfull.'}`} 
+            Postion={"bottom-end"}
+            />
+            <ErrorToaster 
+            IsShow={wishListError} 
+            ToastMsg={`${wishListErrorMsg?wishListErrorMsg:'Add to wish list failed'}`}
             Width={'20vw'}
             Postion={"bottom-end"}/>
             <CartModal IsModalShow={show} setIsModalShow={handleClose}/>

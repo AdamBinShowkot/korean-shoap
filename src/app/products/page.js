@@ -15,13 +15,13 @@ const ProductsPage=(props)=>{
     //console.log("props",props)
     return(
         <>
-            <Row>
+            {/* <Row>
                 <Col 
                 xs={12}
                 >
                     <TopBanner/>
                 </Col>
-            </Row>
+            </Row> */}
             <Row>
                 <Col xs={12}>
                     <ProductsMain/>
