@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import NormalProduct from './NormalProduct';
 import VideoProduct from './VideoProduct';
 
-const ProductSlider=()=>{
+const ProductSlider=({images,setActiveImage})=>{
     const settings = {
         // className: "center",
         // centerMode: true,
@@ -17,14 +17,26 @@ const ProductSlider=()=>{
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 4,
+        slidesToShow: 3,
+        slidesToScroll: 3,
         centerMode:false
     };
     return(
         <>
             <Slider {...settings}>
-                <div>
+                {
+                    images.map((d,index)=>{
+                        return <div
+                        key={index}
+                        >
+                            <NormalProduct
+                            setActiveImage={setActiveImage}
+                            image={d}
+                            />
+                        </div>
+                    })
+                }
+                {/* <div>
                     <NormalProduct/>
                 </div>
                 <div>
@@ -38,10 +50,7 @@ const ProductSlider=()=>{
                 </div>
                 <div>
                     <NormalProduct/>
-                </div>
-                <div>
-                    <NormalProduct/>
-                </div>
+                </div> */}
             </Slider>
         </>
     )

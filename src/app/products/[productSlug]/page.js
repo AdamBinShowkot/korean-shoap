@@ -18,6 +18,7 @@ import parse from 'html-react-parser';
 import NormalProduct from './partials/NormalProduct';
 import VideoProduct from './partials/VideoProduct';
 import ProductSlider from './partials/ProductSlider';
+import DetailsLeftSection from './partials/DetailsLeftSection';
 import StarComponent from './partials/StarComponent';
 import ProductDetails from './partials/ProductDetails';
 import CommentMain from './partials/CommentMain';
@@ -58,43 +59,9 @@ export default async function Page({params}){
                 xs={12}
                 lg={4}
                 >
-                    <Card
-                    style={{
-                        borderRadius:'10px'
-                    }}
-                    >
-                        <Row>
-                            <Col 
-                            xs={12}
-                            style={{
-                                padding:'10px 30px'
-                            }}
-                            >
-                                <Button
-                                className='save-off-button'
-                                >
-                                    Save 20%
-                                </Button>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col 
-                            xs={12}
-                            style={{
-                                display:'flex',
-                                justifyContent:'center',
-                                alignItems:'center'
-                            }}
-                            >
-                                <Image
-                                src={`${details?.image?`${baseImageServer}/${details.image}`:'/detailsImage.png'}`}
-                                height={320}
-                                width={320}
-                                alt="Image"
-                                />
-                            </Col>
-                        </Row>
-                    </Card>
+                   <DetailsLeftSection
+                   details={details}
+                   /> 
                 </Col>
                 <Col 
                 xs={12}
