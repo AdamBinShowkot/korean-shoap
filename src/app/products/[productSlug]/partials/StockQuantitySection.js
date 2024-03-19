@@ -521,7 +521,7 @@ const StockQuantitySection=({data})=>{
                             }else{
                                 const newObj={
                                     id:currentId,
-                                    name:infos?.name,
+                                    name:data?.name,
                                     image:data.image,
                                     price:variants.price,
                                     discount_price:variants.discount_price,
