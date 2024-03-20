@@ -16,13 +16,15 @@ function ImageMagnifier({
     const [showMagnifier, setShowMagnifier] = useState(false);
     return (
       <div
-        style={{
-          position: "relative",
-          height: height,
-          width: width
-        }}
+      style={{
+        position: "relative",
+        height: height,
+        width: width
+      }}
+      className="product-details-image"
       >
         <Image
+        className="product-details-image"
         style={{
           background:'transparent'
         }}

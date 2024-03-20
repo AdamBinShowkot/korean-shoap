@@ -33,7 +33,7 @@ const NotFoundItem=({setIsModalShow})=>{
                         }
                     }}
                     >
-                        Got To Shoap
+                        Got To Shop
                     </Button>
                     </Link>
                 </Col>

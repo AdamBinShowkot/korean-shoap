@@ -24,7 +24,7 @@ const DetailsLeftSection=({details})=>{
                 borderRadius:'10px'
             }}
             >
-                <Row>
+                {/* <Row>
                     <Col 
                     xs={12}
                     style={{
@@ -37,20 +37,28 @@ const DetailsLeftSection=({details})=>{
                             Save 20%
                         </Button>
                     </Col>
-                </Row>
-                <Row>
-                    <Col 
-                    xs={12}
+                </Row> */}
+                {/* <Row> */}
+                    <div 
+                    //xs={12}
                     style={{
                         display:'flex',
+                        width:"100%",
                         justifyContent:'center',
-                        alignItems:'center'
+                        alignItems:'center',
+                        position:'relative'
                     }}
                     >
+                        <Button
+                        className='save-off-button product-details'
+                        >
+                            Save 20%
+                        </Button>
                         <ImageMagnifier
                         src={`${details?.image?`${baseImageServer}/${activeImage}`:'/detailsImage.png'}`}
                         height={320}
                         width={320}
+                        
                         />
                         {/* <Image
                         src={`${details?.image?`${baseImageServer}/${details.image}`:'/detailsImage.png'}`}
@@ -58,8 +66,8 @@ const DetailsLeftSection=({details})=>{
                         width={320}
                         alt="Image"
                         /> */}
-                    </Col>
-                </Row>
+                    </div>
+                {/* </Row> */}
             </Card>
             {
                 details?.images?.length?<Row
