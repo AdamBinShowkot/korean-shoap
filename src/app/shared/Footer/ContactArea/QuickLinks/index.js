@@ -64,17 +64,17 @@ const QuickLinks=()=>{
                         </Link>
                     </li>
                     <li>
-                        <Link href="/">
+                        <Link href="/information">
                             Information
                         </Link>
                     </li>
                     <li>
-                        <Link href="/">
+                        <Link href="/privacy-policy">
                             Privacy Policy
                         </Link>
                     </li>
                     <li>
-                        <Link href="/">
+                        <Link href="/terms-&-condition">
                             Terms & Conditions
                         </Link>
                     </li>
