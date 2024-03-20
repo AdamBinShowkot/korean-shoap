@@ -15,6 +15,7 @@ import BannerThree from './components/Banner3';
 import IsotopeReact from './components/ProductsFilter';
 import HomeBlogSection from './components/HomeBlogSection';
 import PageContent from './PageContent';
+import parse from 'html-react-parser';
 //import useSize from '@/hooks/useSize';
 
 async function getBodyCareLists(){
@@ -175,6 +176,22 @@ async function getHeroBgImage(){
 
   return response;
 }
+
+async function getHomePageInfo(){
+  ConfigureAxios();
+  const response=axios.get(`/public/seo-contents/home`).then((res)=>{
+      if(res.status===200){
+          //console.log("Products : ",res.data);
+          return res.data;
+      }
+  }).catch((error)=>{
+    //console.log(error)
+    console.log("Get Terms & Condition Error.")
+    return [];
+  });
+
+  return response;
+}
 export default async function Home() {
   // const featredBrandLists=await getFeturedBrands();
   // const brandLists=await getBrandProductLists();
@@ -197,6 +214,7 @@ export default async function Home() {
   //const bodyCareDataLists= await getBodyCareLists();
   //console.log(bodyCareDataLists)
   //const test = useSize();
+  const homeInfo=await getHomePageInfo();
 
 
   return (
@@ -299,6 +317,13 @@ export default async function Home() {
         // lists={brandLists}
         // brands={featredBrandLists}
         />
+      </Row>
+      <Row>
+        <Col
+        className='home-page-footer-seo-content'
+        >
+          {homeInfo?.content?parse(homeInfo.content):""}
+        </Col>
       </Row> 
       {/* <Row>
         <Col xs={12}>

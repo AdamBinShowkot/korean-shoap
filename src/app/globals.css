@@ -301,3 +301,6 @@ ul li{
   /*color: linear-gradient(90deg, #5C33A9 0%, #E8639A 75.33%, #5C33A9 100%) !important;*/
   color:purple !important;
 }
+.home-page-footer-seo-content{
+  padding: 20px 100px;
+}
