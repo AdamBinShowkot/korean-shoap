@@ -348,7 +348,7 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
             const {data}=response;
 
             if(data.length){
-              console.log("Responsee Data: ",data)
+              //console.log("Responsee Data: ",data)
               setWishLists(data)
             }else{
               setWishLists([])
@@ -362,6 +362,7 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
         })
       }
     }
+    
 
     return(
         <>

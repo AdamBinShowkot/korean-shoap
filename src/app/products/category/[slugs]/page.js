@@ -5,7 +5,7 @@ import {
 } from 'react-bootstrap';
 import TopBanner from '../../TopBanner';
 import ProductsMain from './partials/ProductsMain';
-
+import SlugInfo from './partials/SlugsInfo';
 import ConfigureAxios from '@/utils/axiosConfig';
 import axios from 'axios';
 import parse from 'html-react-parser';
@@ -32,7 +32,7 @@ export const metadata = {
 }
 
 async function ProductsBrandsSlugPage({params}){
-    const data=await getCategoryInfos(params);
+    //const data=await getCategoryInfos(params);
 
     return(
         <>
@@ -51,17 +51,7 @@ async function ProductsBrandsSlugPage({params}){
                     />
                 </Col>
             </Row>
-            {
-                data?.content?(
-                    <Row>
-                        <Col
-                        className='home-page-footer-seo-content'
-                        >
-                            {data?.content?parse(data.content):""}
-                        </Col>
-                    </Row>
-                ):""
-            } 
+            <SlugInfo params={params}/>
         </>
     )
 }

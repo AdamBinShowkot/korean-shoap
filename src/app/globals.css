@@ -304,3 +304,18 @@ ul li{
 .home-page-footer-seo-content{
   padding: 20px 100px;
 }
+.home-page-footer-seo-content p{
+  color: #000;
+}
+
+
+@media only screen and (max-width:480px) {
+  .home-page-footer-seo-content{
+    padding: 10px 10px;
+  }
+}
+@media only screen and (min-width:980px) {
+  .home-page-footer-seo-content{
+    padding: 20px 100px;
+  }
+}

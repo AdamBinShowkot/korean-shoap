@@ -16,6 +16,7 @@ import IsotopeReact from './components/ProductsFilter';
 import HomeBlogSection from './components/HomeBlogSection';
 import PageContent from './PageContent';
 import parse from 'html-react-parser';
+import SlugInfo from './SlugInfo';
 //import useSize from '@/hooks/useSize';
 
 async function getBodyCareLists(){
@@ -318,13 +319,14 @@ export default async function Home() {
         // brands={featredBrandLists}
         />
       </Row>
-      <Row>
+      {/* <Row>
         <Col
         className='home-page-footer-seo-content'
         >
           {homeInfo?.content?parse(homeInfo.content):""}
         </Col>
-      </Row> 
+      </Row>  */}
+      <SlugInfo/>
       {/* <Row>
         <Col xs={12}>
           <HomeBlogSection/>

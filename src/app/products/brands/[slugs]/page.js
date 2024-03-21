@@ -8,6 +8,7 @@ import ProductsMain from './partials/ProductsMain';
 import ConfigureAxios from '@/utils/axiosConfig';
 import axios from 'axios';
 import parse from 'html-react-parser';
+import SlugInfo from './partials/SlugsInfo';
 
 async function getBrandsInfos({slugs}){
     //console.log("params: ",slugs);
@@ -50,17 +51,7 @@ async function ProductsBrandsSlugPage({params}){
                     />
                 </Col>
             </Row>
-            {
-                data?.content?(
-                    <Row>
-                        <Col
-                        className='home-page-footer-seo-content'
-                        >
-                            {data?.content?parse(data.content):""}
-                        </Col>
-                    </Row>
-                ):""
-            } 
+            <SlugInfo params={params}/>
         </>
     )
 }

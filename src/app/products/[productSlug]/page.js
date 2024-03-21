@@ -25,6 +25,7 @@ import CommentMain from './partials/CommentMain';
 import FooterProductSlider from './partials/ProductsSlider';
 import './index.scss';
 import AddToBug from './partials/AddToBug';
+import AddToWish from './partials/AddToWish';
 import StockQuantitySection from './partials/StockQuantitySection';
 
 async function getProductsDetails({productSlug}){
@@ -131,15 +132,9 @@ export default async function Page({params}){
                             alignItems:'center'
                         }}
                         >
-                            <Image
-                            src="/love.png"
-                            height={20}
-                            width={20}
-                            alt="Love"
-                      
+                            <AddToWish
+                            data={details}
                             />
-                            &nbsp;&nbsp;
-                            <span><b>Add to Wishlist</b></span>
                             &nbsp;&nbsp;
                             <Image
                             src="/share.png"
