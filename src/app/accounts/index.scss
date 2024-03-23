@@ -12,6 +12,17 @@
     color: #fa541c;
 }
 
+.buy-more-button{
+    background: var(--prio-vai-like, linear-gradient(90deg, #5C33A9 0.25%, #E8639A 99.81%));
+    border-color: var(--prio-vai-like, linear-gradient(90deg, #5C33A9 0.25%, #E8639A 99.81%));
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+.buy-more-button:hover {
+    transform: scale(1.01);
+    border-color: var(--prio-vai-like, linear-gradient(90deg, #5C33A9 0.25%, #E8639A 99.81%));
+}
+
 .others-login-container{
     padding: 0 10vw 40px;
     .break-section{

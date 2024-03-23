@@ -13,10 +13,12 @@ import {
 } from 'react-bootstrap';
 import SuccessToaster from '@/app/ui/SuccessToaster';
 import WarningToaster from '@/app/ui/WarningToaster';
+import './index.scss';
 
 const RegistrationMain=()=>{
     const [loginSuccess,setLoginSuccess]=useState(false);
     const [loginWarning,setLoginWarning]=useState(false);
+    const [warningMsg,setWarningMsg]=useState("");
     const [registrationInfo,setRegistrationInfo]=useState({
         name:"",
         mobile:"",
@@ -79,11 +81,18 @@ const RegistrationMain=()=>{
                 }
             }).catch((error)=>{
                 setLoginWarning(true);
+                setWarningMsg("Registration Failed");
                 setTimeout(()=>{
                     setLoginWarning(false);
                 },2000)
                 console.log(error)
             })
+        }else{
+            setWarningMsg("Please filled the required field.");
+            setLoginWarning(true);
+            setTimeout(()=>{
+                setLoginWarning(false);
+            },2000)
         }
     }
     return(
@@ -100,6 +109,11 @@ const RegistrationMain=()=>{
                             placeholder=""
                             name="name"
                             onChange={handleOnInputChange}
+                            onKeyDown={(e)=>{
+                                if(e.key=="Enter"){
+                                    handleRegistration(e)
+                                }
+                            }}
                             value={registrationInfo.name} 
                             />
                         </Form.Group>
@@ -110,6 +124,11 @@ const RegistrationMain=()=>{
                             placeholder=""
                             name="mobile"
                             onChange={handleOnInputChange}
+                            onKeyDown={(e)=>{
+                                if(e.key=="Enter"){
+                                    handleRegistration(e)
+                                }
+                            }}
                             value={registrationInfo.mobile} 
                             />
                         </Form.Group>
@@ -120,6 +139,11 @@ const RegistrationMain=()=>{
                             placeholder=""
                             name="password"
                             onChange={handleOnInputChange}
+                            onKeyDown={(e)=>{
+                                if(e.key=="Enter"){
+                                    handleRegistration(e)
+                                }
+                            }}
                             value={registrationInfo.password} 
                             />
                         </Form.Group>
@@ -132,7 +156,8 @@ const RegistrationMain=()=>{
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea4">
                             <Button
                             //className='checkout-submit-button'
-                            className="login-register-button"
+                            //className="login-register-button"
+                            className="buy-more-button"
                             onClick={handleRegistration}
                             >
                                 REGISTRATION
@@ -147,7 +172,7 @@ const RegistrationMain=()=>{
             Postion={"top-end"}/>
             <WarningToaster 
             IsShow={loginWarning} 
-            ToastMsg="Registration Failed"
+            ToastMsg={`${warningMsg?warningMsg:'Registration Failed'}`}
             Width={'22vw'}
             Postion={"top-end"}/>
         </>

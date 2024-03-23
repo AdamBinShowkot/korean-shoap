@@ -23,6 +23,12 @@
     border-color: var(--prio-vai-like, linear-gradient(90deg, #5C33A9 0.25%, #E8639A 99.81%));
     border-radius: 4px;
 }
+.checkout-require-input{
+    color: #000;
+}
+.checkout-require-input.is-empty{
+    color: #fa541c;
+}
 // .toast-container{
 //     min-width: 150px !important;
 //     background: transparent;

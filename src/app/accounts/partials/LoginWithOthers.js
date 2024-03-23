@@ -28,7 +28,11 @@ const LoginWithOthers=()=>{
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                     <Button
-                                    className='checkout-submit-button'
+                                    //className='checkout-submit-button'
+                                    className="buy-more-button"
+                                    style={{
+                                        width:"25%"
+                                    }}
                                     >
                                         LOGIN WITH OTP
                                     </Button>
