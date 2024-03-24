@@ -4,7 +4,7 @@ import {
     Player, 
     ControlBar 
 } from 'video-react';
-// import '~video-react/dist/video-react.css';
+import './video-react.css';
 
 
 const VideoPlayerArea=()=>{

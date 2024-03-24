@@ -37,10 +37,10 @@ export default function RootLayout({ children }) {
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-TZ2KQCGH');`
         }}></script>
-        <link
+        {/* <link
           rel="stylesheet"
           href="https://video-react.github.io/assets/video-react.css"
-        />
+        /> */}
 
       </head>
       <body >
