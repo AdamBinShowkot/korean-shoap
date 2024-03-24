@@ -274,8 +274,7 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                                                 onClick={()=>{
                                                     setIsModalShow(false)
                                                 }}
-                                                href={`/products?category=${dta.name}&category_id=${dta.id}&IsFromMenu=1`}
-                                                as={`/products?category=${dta.name}&category_id=${dta.id}&menu=1`}
+                                                href={`/products/category/${dta.slug?dta.slug:''}`}
                                                 className="link-href"
                                                 >
                                                     {dta.name}
@@ -318,7 +317,7 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                                                 onClick={()=>{
                                                     setIsModalShow(false)
                                                 }}
-                                                href={`/products?skin_concern=${dta.name}&skin_concern_id=${dta.id}&menu=1`}
+                                                href={`/products/skin-concern/${dta.slug?dta.slug:''}`}
                                                 className="link-href"
                                                 >
                                                     {dta.name}
@@ -361,7 +360,7 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                                                 onClick={()=>{
                                                     setIsModalShow(false)
                                                 }}
-                                                href={`/products?skin_type=${dta.name}&skin_type_id=${dta.id}&menu=1`}
+                                                href={`/products/skin-type/${dta.slug?dta.slug:''}`}
                                                 className="link-href"
                                                 >
                                                     {dta.name}
@@ -404,7 +403,7 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                                                 onClick={()=>{
                                                     setIsModalShow(false)
                                                 }}
-                                                href={`/products?ingredients=${dta.name}&ingredient_id=${dta.id}&menu=1`}
+                                                href={`/products/ingredient/${dta.slug?dta.slug:''}`}
                                                 className="link-href"
                                                 >
                                                     {dta.name}
@@ -449,7 +448,7 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                                                 onClick={()=>{
                                                     setIsModalShow(false)
                                                 }}
-                                                href={`/products?brand=${dta.name}&brand_id=${dta.id}&menu=1`}
+                                                href={`/products/brands/${dta.slug?dta.slug:''}`}
                                                 className="link-href"
                                                 >
                                                     {dta.name}
