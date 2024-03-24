@@ -11,6 +11,7 @@ import {
 } from "@/utils/config";
 import ImageMagnifier from "./MagnifyingImage";
 import ProductSlider from "./ProductSlider";
+import VideoPlayerArea from "./VideoPlayerArea";
 import './index.scss';
 import { useState } from "react";
 
@@ -84,6 +85,15 @@ const DetailsLeftSection=({details})=>{
                     </Col>
                 </Row>:""
             }
+            <Row
+            style={{
+                padding:'0px 0px 10px 0px'
+            }}
+            >
+                <Col xs={12}>
+                    <VideoPlayerArea/>
+                </Col>
+            </Row>
         </>
     )
 }

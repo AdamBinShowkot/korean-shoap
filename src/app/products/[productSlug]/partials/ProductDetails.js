@@ -15,7 +15,7 @@ const ProductDetails=({data})=>{
     //console.log(data)
     return(
         <>
-            <Accordion defaultActiveKey={['0','1','2']} alwaysOpen className="product-details-accordion">
+            <Accordion defaultActiveKey={[]} alwaysOpen className="product-details-accordion">
                 <Accordion.Item eventKey="0">
                     <Accordion.Header style={{margin:'0',padding:"0",fontSize:'20px'}}>
                         <Image
