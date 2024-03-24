@@ -47,6 +47,8 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
     const [openSkinConcern,setOpenSkinConcern]=useState(true);
     const [openIngredients,setOpenIngredients]=useState(true);
     const [openCategory,setOpenCategory]=useState(true);
+    const [openCombo,setOpenCombo]=useState(true);
+    const [openOffer,setOpenOffer]=useState(true);
 
     // get cart lists on initial load
     useEffect(()=>{
@@ -457,6 +459,71 @@ const MenuModal=({IsModalShow,setIsModalShow})=>{
                                         }
                                     </Col>
                                 </Row>
+                            </div>	
+                        </div>
+                    </li>
+                    <li className="mega-drop-down">
+                        <a 
+                        className="mega-menu-href" 
+                        href="#"
+                        onClick={()=>{
+                            setOpenCombo(!openCombo);
+                        }}
+                        >
+                            Combo
+                            &nbsp;
+                            <Image
+                            src={'/downArrow.png'}
+                            height={8}
+                            width={14}
+                            alt="Image"
+                            className="navbar-arrow-image"
+                            />
+                        </a>
+                        <div 
+                        className={`animated fadeIn mega-menu ${openCombo?'hide-child':''}`}
+                        >
+                            <div className="mega-menu-wrap">
+                                {/* <Row>
+                                    <Col
+                                    className="mega-menu-left-container"
+                                    >
+                                        
+                                    </Col>
+                                </Row> */}
+                            </div>	
+                        </div>
+                    </li>
+
+                    <li className="mega-drop-down">
+                        <a 
+                        className="mega-menu-href" 
+                        href="#"
+                        onClick={()=>{
+                            setOpenOffer(!openOffer)
+                        }}
+                        >
+                            Offer
+                            &nbsp;
+                            <Image
+                            src={'/downArrow.png'}
+                            height={8}
+                            width={14}
+                            alt="Image"
+                            className="navbar-arrow-image"
+                            />
+                        </a>
+                        <div 
+                        className={`animated fadeIn mega-menu ${openOffer?'hide-child':''}`}
+                        >
+                            <div className="mega-menu-wrap">
+                                {/* <Row>
+                                    <Col
+                                    className="mega-menu-left-container"
+                                    >
+                                        
+                                    </Col>
+                                </Row> */}
                             </div>	
                         </div>
                     </li>
