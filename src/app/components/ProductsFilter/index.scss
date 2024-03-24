@@ -11,6 +11,12 @@
     min-height: 100px;
     height: auto;
 }
+.brand-lists-container{
+    padding:30px 0px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
 .filter-item{
     display: flex;
     justify-content: center;
@@ -67,8 +73,12 @@
             width: 100%;
         }
     }
+    .brand-lists-container{
+        padding:15px 0px;
+    }
     .filter-button{
-        font-size:18px;
+        font-size:10px;
+        margin: 0 4px;
     }
     .isotope-container{
         padding: 60px 10px;
@@ -87,6 +97,9 @@
     .filter-products-container-two{
         padding: 0px 0px;
     }
+    .brand-lists-container{
+        padding:30px 0px;
+    }
     .isotope-items{
         width: 18.5%;
         margin: 0px .6%;
@@ -97,6 +110,7 @@
     }
     .filter-button{
         font-size:27px;
+        margin: 0 15px;
     }
     .isotope-container{
         padding: 60px 7vw;

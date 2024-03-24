@@ -227,12 +227,7 @@ const IsotopeReact = () => {
                 >
                     <Col 
                     xs={12}
-                    style={{
-                        padding:'30px 0px',
-                        display:'flex',
-                        justifyContent:'center',
-                        alignItems:'center'
-                    }}
+                    className="brand-lists-container"
                     >
                         {/* <Button
                         variant="outline-primary"
