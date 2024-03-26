@@ -76,7 +76,7 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
         const {id}=data;
         if(wishLists.length){
            
-            const filterProducts=wishLists.filter((d)=>{return d.product.id==id});
+            const filterProducts=wishLists.filter((d)=>{return d?.product?.id==id});
             if(filterProducts.length){
                 setIsWishLists(true);
                 setWishListsData(filterProducts[0]);

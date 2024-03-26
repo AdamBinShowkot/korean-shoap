@@ -1,0 +1,119 @@
+.wishlist-container{
+    padding: 25px 7vw;
+    .wishlist-header-title{
+        font-size: 25px;
+        font-weight: 700;
+        color: #E8639A;
+    }
+}
+.wishlist-container .wishlist-header-title::after{
+    display: block;
+    content: "";
+    height: 4px;
+    width: 100px;
+    background-color: #be4c7c;
+}
+
+// product card css
+.product-card-main{
+    width: 48%;
+    margin: 1% 1%;
+}
+.product-card-main.odd-card{
+    margin-left: 0 !important;
+}
+.product-card-main.even-card{
+    margin-right: 0 !important;
+}
+
+.product-card-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    .image-section{
+        .product-image{
+            height: 100% !important;
+            width: 100% !important;
+        }
+    }
+    .description-section{
+        display: flex;
+        //justify-content: flex-start;
+        //align-items: center;
+        flex-direction: column;
+        grid-row-gap: 10px;
+        h4{
+            font-size: 20px;
+            font-weight: 600;
+        }
+        span{
+            font-size: 18px !important;
+        }
+        .product-action-button{
+            //width: 100%;
+            color: #fff;
+            font-size: 13px;
+            background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1));
+            border-radius: 4px;
+            border: none;
+            transition: all 0.3s ease-in-out;
+        }
+        .product-action-button-delete{
+            color: #fff;
+            font-size: 13px;
+            background-color: #ad2102;
+            border-radius: 4px;
+            border: none;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+}
+
+.product-action-button:hover{
+    transform: scale(1.01);
+    border-color: var(--prio-vai-like, linear-gradient(90deg, #5C33A9 0.25%, #E8639A 99.81%));
+}
+.product-action-button-delete:hover{
+    transform: scale(1.01);
+    border-color: #ad2102;
+}
+
+/*** RESPONSIVE AREA ***/
+@media only screen and (max-width:480px) {
+    .wishlist-container{
+        padding: 25px 10px;
+        .wishlist-header-title{
+            font-size: 25px;
+        }
+    }
+    // .product-card-main{
+    //     width: 100%;
+    //     margin: 1% 0%;
+    // }
+    .product-card-main.odd-card{
+        margin-left: 0 !important;
+    }
+    .product-card-main.even-card{
+        margin-right: 0 !important;
+    }
+}
+  
+@media only screen and (min-width:980px) {
+    .wishlist-container{
+        padding: 25px 7vw;
+        .wishlist-header-title{
+            font-size: 25px;
+        }
+    }
+    .product-card-main{
+        width: 48%;
+        margin: 1% 1%;
+    }
+    .product-card-main.odd-card{
+        margin-left: 0 !important;
+    }
+    .product-card-main.even-card{
+        margin-right: 0 !important;
+    }
+}

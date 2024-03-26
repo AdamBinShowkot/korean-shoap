@@ -848,7 +848,7 @@ const StockQuantitySection=({data})=>{
                         <InputGroupText
                         className='normal-input global-search'
                         >
-                            <b>{cartsproducts?.quantity?cartsproducts.quantity:0}</b>
+                            <b>{cartsproducts?.quantity?cartsproducts.quantity:1}</b>
                         </InputGroupText>
                         <InputGroupText
                         className='normal-input global-search'
