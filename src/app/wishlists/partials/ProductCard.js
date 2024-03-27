@@ -112,27 +112,29 @@ const ProductCard=({data,IsOdd})=>{
                         product_id:currentId,
                         image:infos.image,
                         name:infos.name,
-                        price:parseFloat(variants.price-variants.discount_price).toFixed(0),
+                        price:parseFloat(infos.price-infos.discount_price).toFixed(0),
                         quantity:1
                     }
                     const newObj2={
                         quantity:1,
-                        product_id:infos?.id,
-                        product_variant_id:variants.id?variants.id:0
+                        product_id:infos?.product_id,
+                        product_variant_id:infos.product_variant_id?infos.product_variant_id:0
                     }
                     setCartLists([...lists,newObj])
                     axios.post(`/cart`,JSON.stringify(newObj2))
                     .then((response)=>{
                         setShow(true);
-                        setAddToCartSuccess(true);
+                        setIsSuccess(true);
+                        setSuccessMsg("Add To Cart Success.");
                         getCartLists(token);
                         setTimeout(()=>{
-                            setAddToCartSuccess(false)
+                            setIsSuccess(false)
                         },2000)
                     }).catch((error)=>{
-                        setAddToCartError(true);
+                        setIsError(true);
+                        setErrorMsg("Add to cart failed.")
                         setTimeout(()=>{
-                            setAddToCartError(false)
+                            setIsError(false)
                         },2000)
                         console.log("CCART",error)
                     })
