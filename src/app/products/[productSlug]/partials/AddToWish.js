@@ -41,7 +41,7 @@ const AddToWish=({data})=>{
         const {id}=data;
         if(wishLists.length){
            
-            const filterProducts=wishLists.filter((d)=>{return d.product.id==id});
+            const filterProducts=wishLists.filter((d)=>{return d?.product_id==id});
             //console.log("Filter Products : ",filterProducts);
             if(filterProducts.length){
                 setIsWishLists(true);
@@ -87,7 +87,8 @@ const AddToWish=({data})=>{
                 })
             }else{
                 const obj={
-                    product_id:data?.id
+                    product_id:data?.id,
+                    product_variant_id:data?.variant[0]?.id
                 }
                 axios.post(`/wishlist`,JSON.stringify(obj))
                 .then((response)=>{

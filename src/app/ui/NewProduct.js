@@ -76,7 +76,7 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
         const {id}=data;
         if(wishLists.length){
            
-            const filterProducts=wishLists.filter((d)=>{return d?.product?.id==id});
+            const filterProducts=wishLists.filter((d)=>{return d?.product_id==id});
             if(filterProducts.length){
                 setIsWishLists(true);
                 setWishListsData(filterProducts[0]);
@@ -294,7 +294,8 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
                 })
             }else{
                 const obj={
-                    product_id:data?.id
+                    product_id:data?.id,
+                    product_variant_id:variants?.id
                 }
                 axios.post(`/wishlist`,JSON.stringify(obj))
                 .then((response)=>{
@@ -363,6 +364,8 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
       }
     }
     
+
+   // console.log("Wish Lists : ",wishLists);
 
     return(
         <>

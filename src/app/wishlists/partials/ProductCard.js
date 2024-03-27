@@ -98,11 +98,11 @@ const ProductCard=({data,IsOdd})=>{
                     className="image-section"
                     >
                         <Image
-                        src={`${data?.product?.image?`${baseImageServer}/${data?.product?.image}`:'/products2.jpg'}`}
+                        src={`${data?.image?`${baseImageServer}/${data?.image}`:'/products2.jpg'}`}
                         height={200}
                         width={200}
                         className='product-image'
-                        alt={`${data?.product?.img_alt?data.product.img_alt:'Alter Image'}`}
+                        alt={`${data?.img_alt?data.img_alt:'Alter Image'}`}
                         />
                     </Col>
                     <Col
@@ -111,10 +111,11 @@ const ProductCard=({data,IsOdd})=>{
                     className="description-section"
                     >
                         <h4>
-                            {data?.product?.name?data.product.name:''}
+                            {data?.name?data.name:''}
                         </h4>
                         <span>
-                            <b>Price : ৳ 1600</b> <del> ৳ 1800</del>
+                            <b>
+                                Price : ৳ {data?.discount_price?data.discount_price:0}</b> {data?.price?<del> ৳ {data.price}</del>:""}
                         </span>
                         <div
                         style={{
