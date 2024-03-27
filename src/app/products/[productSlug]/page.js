@@ -27,6 +27,7 @@ import './index.scss';
 import AddToBug from './partials/AddToBug';
 import AddToWish from './partials/AddToWish';
 import StockQuantitySection from './partials/StockQuantitySection';
+import ShareComponent from './partials/ShareComponent';
 
 async function getProductsDetails({productSlug}){
     ConfigureAxios();
@@ -136,14 +137,7 @@ export default async function Page({params}){
                             data={details}
                             />
                             &nbsp;&nbsp;
-                            <Image
-                            src="/share.png"
-                            height={20}
-                            width={20}
-                            alt="Love"
-                            />
-                            &nbsp;&nbsp;
-                            <span><b>Share</b></span>
+                            <ShareComponent data={details}/>
                         </Col>
                     </Row><br/>
                     <Row>
