@@ -51,7 +51,7 @@ const WarningModal=({IsShow,setIsShow,setYesDelete,deletData,handleRemoveCart})=
                                     marginTop:"10px"
                                 }}
                                 >
-                                    <h3 style={{fontSize:'24px',fontWeight:'600',textAlign:'center'}}>Are you sure?<br/> you want to delete item from Cart.</h3><br/>
+                                    <h3 style={{fontSize:'24px',fontWeight:'600',textAlign:'center'}}>Are you sure?<br/> you want to delete item from lists.</h3><br/>
                                     <span>You won't be able to revert this!</span>
                                 </Col>
                             </Row>

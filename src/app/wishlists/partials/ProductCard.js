@@ -20,6 +20,7 @@ import SuccessToaster from '@/app/ui/SuccessToaster';
 import ErrorToaster from '@/app/ui/ErrorToaster';
 import Image from 'next/image';
 import ConfigureAxios from '@/utils/axiosConfig';
+import WarningModal from '@/app/ui/WarningModal';
 import axios from 'axios';
 import './index.scss';
 
@@ -29,6 +30,9 @@ const ProductCard=({data,IsOdd})=>{
     const [isSuccess,setIsSuccess]=useState(false);
     const [successMsg,setSuccessMsg]=useState("");
     const [isError,setIsError]=useState(false);
+    const [yesDelete,setYesDelete]=useState(false);
+    const [IsShow,setIsShow]=useState(false);
+    const [removeData,setRemoveData]=useState({});
     const [errorMsg,setErrorMsg]=useState("");
 
     const handleDeleteWishLists=async(data)=>{
@@ -127,7 +131,9 @@ const ProductCard=({data,IsOdd})=>{
                                 marginLeft:"10px"
                             }}
                             onClick={()=>{
-                                handleDeleteWishLists(data);
+                                //handleDeleteWishLists(data);
+                                setIsShow(true);
+                                setRemoveData(data);
                             }}
                             className='product-action-button-delete'
                             >
@@ -137,6 +143,14 @@ const ProductCard=({data,IsOdd})=>{
                     </Col>
                 </Row>
             </Card>
+
+            <WarningModal 
+            IsShow={IsShow} 
+            setIsShow={setIsShow} 
+            setYesDelete={setYesDelete}
+            deletData={removeData}
+            handleRemoveCart={handleDeleteWishLists}
+            />
 
             <SuccessToaster
             IsShow={isSuccess}

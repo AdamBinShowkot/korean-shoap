@@ -157,7 +157,10 @@ const FlatButton=()=>{
                 </Col>
             </Row>
            {/* </Link> */}
-           <CartModal IsModalShow={showModal} setIsModalShow={setShowModal}/>
+           <CartModal 
+           IsModalShow={showModal} 
+           setIsModalShow={setShowModal}
+           />
         </>
     )
 }
