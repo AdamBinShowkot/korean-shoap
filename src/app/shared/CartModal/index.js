@@ -91,7 +91,7 @@ const CartModal=({IsModalShow,setIsModalShow})=>{
 
         if(token){
             ConfigureAxios(token);
-            getCartLists(token)
+            //getCartLists(token)
             let lists=localStorage.getItem("ProductCarts");
             lists=JSON.parse(lists);
             if(lists?.length){
