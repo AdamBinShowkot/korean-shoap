@@ -212,12 +212,10 @@ const ProductCard=({data,IsOdd})=>{
             <Card
             className={`product-card-main ${IsOdd?'odd-card':'even-card'}`}
             >
-                <Row
+                <div
                 className="product-card-container"
                 >
-                    <Col
-                    xs={12}
-                    lg={4}
+                    <div
                     className="image-section"
                     >
                         <Image
@@ -227,10 +225,8 @@ const ProductCard=({data,IsOdd})=>{
                         className='product-image'
                         alt={`${data?.img_alt?data.img_alt:'Alter Image'}`}
                         />
-                    </Col>
-                    <Col
-                    xs={12}
-                    lg={8}
+                    </div>
+                    <div
                     className="description-section"
                     >
                         <h4>
@@ -238,7 +234,7 @@ const ProductCard=({data,IsOdd})=>{
                         </h4>
                         <span>
                             <b>
-                                Price : ৳ {data?.discount_price?data.discount_price:0}</b> {data?.price?<del> ৳ {data.price}</del>:""}
+                                Price : ৳{data?.discount_price?data.discount_price:0}</b> {data?.price?<del> ৳{data.price}</del>:""}
                         </span>
                         <div
                         style={{
@@ -267,8 +263,8 @@ const ProductCard=({data,IsOdd})=>{
                                 Delete
                             </Button> 
                         </div>
-                    </Col>
-                </Row>
+                    </div>
+                </div>
             </Card>
 
             <WarningModal 

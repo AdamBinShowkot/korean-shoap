@@ -31,14 +31,20 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    //position: relative;
     .image-section{
+        width: 30%;
         .product-image{
             height: 100% !important;
             width: 100% !important;
         }
     }
     .description-section{
+        width: 70%;
         display: flex;
+        //position: absolute;
+        bottom: 5px;
+        right: 5px;
         //justify-content: flex-start;
         //align-items: center;
         flex-direction: column;
@@ -81,6 +87,37 @@
 
 /*** RESPONSIVE AREA ***/
 @media only screen and (max-width:480px) {
+    .product-card-container{
+        padding: 5px;
+        width: 45vw;
+        overflow: hidden;
+        flex-direction: column;
+        z-index: 14;
+        .image-section{
+            width: 100%;
+            overflow: hidden;
+            z-index: 12;
+            .product-image{
+                height: 99% !important;
+                width: 100% !important;
+            }
+        }
+        .description-section{
+            width: 100%;
+            h4{
+                font-size: 14px;
+            }
+            span{
+                font-size: 12px !important;
+            }
+        }
+    }
+    .product-card-container.odd-card{
+        margin-right: .5vw;
+    }
+    .product-card-container.even-card{
+        margin-left: .5vw;
+    }
     .wishlist-container{
         padding: 25px 10px;
         .wishlist-header-title{
@@ -97,9 +134,33 @@
     .product-card-main.even-card{
         margin-right: 0 !important;
     }
+    .product-action-button{
+        font-size: 11px;
+    }
+    .product-action-button-delete{
+        font-size: 11px;
+    }
 }
   
 @media only screen and (min-width:980px) {
+    .product-card-container{
+        width: 100%;
+        flex-direction: row;
+        z-index: 14;
+        .image-section{
+            width: 30%;
+             
+        }
+        .description-section{
+            width: 70%;
+        }
+    }
+    .wishlist-container{
+        padding: 25px 10px;
+        .wishlist-header-title{
+            font-size: 25px;
+        }
+     }
     .wishlist-container{
         padding: 25px 7vw;
         .wishlist-header-title{
