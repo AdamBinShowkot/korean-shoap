@@ -45,6 +45,9 @@ const ItemsContainer=({title,IsCleanser,IsTonner,IsSerum,IsBodyCare,IsEyeCare})=
     const [lists,setLists]=useState([]);
     const [len,setLen]=useState(0);
     const [myLists,setMyLists]=useState([]);
+    const [essenseLisrts,setEssenseLists]=useState([]);
+    const [ampouleLists,setAmpouleLists]=useState([]);
+
     const [settings,setSettings]=useState(
         {
             dots: false,
@@ -171,6 +174,21 @@ const ItemsContainer=({title,IsCleanser,IsTonner,IsSerum,IsBodyCare,IsEyeCare})=
             //console.log("Title : ",title)
         }else if(!IsCleanser && !IsTonner && IsSerum && !IsBodyCare && !IsEyeCare){
             getBodySerumProducts();
+            const serums=await getBodySerumProducts();
+            const essences=await getBodyEssenseProducts();
+            const ampoules=await getBodyAmpouleProducts();
+
+            
+            const listss=serums.concat(essences,ampoules);
+            // console.log("Serum Length: ",serums.length);
+            // console.log("Lists Length: ",listss.length);
+            if(listss.length){
+                setLists(listss);
+                setLen(listss.length)
+            }else{
+                setLists([]);
+                setLen(0)
+            }
             //console.log("Title : ",title)
         }else if(!IsCleanser && !IsTonner && !IsSerum && IsBodyCare && !IsEyeCare){
             getBodyCareProducts();
@@ -239,11 +257,59 @@ const ItemsContainer=({title,IsCleanser,IsTonner,IsSerum,IsBodyCare,IsEyeCare})=
         });
       
         if(response.length){
-            setLists(response);
-            setLen(response.length)
+            //setLists(response);
+            //setLen(response.length)
+            return response;
         }else{
-            setLists([])
-            setLen(0)
+            //setLists([])
+            //setLen(0)
+            return [];
+        }
+    }
+    const getBodyEssenseProducts=async()=>{
+        ConfigureAxios();
+        const response=await axios.get('/public/feature-product/category/essence').then((res)=>{
+            if(res.status===200){
+                //console.log("Products : ",res.data);
+                return res.data?.length?res.data[0].products:[];
+            }
+        }).catch((error)=>{
+          //console.log(error)
+          console.log("Get Body Serum Lists Error.")
+          return [];
+        });
+      
+        if(response.length){
+            //setEssenseLists(response);
+            //setLen(response.length)
+            return response;
+        }else{
+            //setEssenseLists([])
+            //setLen(0)
+            return []
+        }
+    }
+    const getBodyAmpouleProducts=async()=>{
+        ConfigureAxios();
+        const response=await axios.get('/public/feature-product/category/ampoule').then((res)=>{
+            if(res.status===200){
+                //console.log("Products : ",res.data);
+                return res.data?.length?res.data[0].products:[];
+            }
+        }).catch((error)=>{
+          //console.log(error)
+          console.log("Get Body Serum Lists Error.")
+          return [];
+        });
+      
+        if(response.length){
+            //setAmpouleLists(response);
+            return response;
+            //setLen(response.length)
+        }else{
+            //setAmpouleLists([])
+           // setLen(0)
+           return []
         }
     }
 

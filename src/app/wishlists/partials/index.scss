@@ -48,7 +48,9 @@
         //justify-content: flex-start;
         //align-items: center;
         flex-direction: column;
+        position: relative;
         grid-row-gap: 10px;
+        min-height: auto;
         h4{
             font-size: 20px;
             font-weight: 600;
@@ -72,6 +74,10 @@
             border-radius: 4px;
             border: none;
             transition: all 0.3s ease-in-out;
+        }
+        .button-container{
+            position:relative;
+            bottom: 0;
         }
     }
 }
@@ -104,8 +110,15 @@
         }
         .description-section{
             width: 100%;
+            position: relative;
+            padding: 5px 6px;
+            min-height: 14vh;
+            .button-container{
+                position:absolute;
+                bottom: 0;
+            }
             h4{
-                font-size: 14px;
+                font-size: 13px;
             }
             span{
                 font-size: 12px !important;
@@ -135,10 +148,10 @@
         margin-right: 0 !important;
     }
     .product-action-button{
-        font-size: 11px;
+        font-size: 11px !important;
     }
     .product-action-button-delete{
-        font-size: 11px;
+        font-size: 11px !important;
     }
 }
   

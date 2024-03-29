@@ -234,12 +234,13 @@ const ProductCard=({data,IsOdd})=>{
                         </h4>
                         <span>
                             <b>
-                                Price : ৳{data?.discount_price?data.discount_price:0}</b> {data?.price?<del> ৳{data.price}</del>:""}
+                                Price : ৳{data?.discount_price?parseInt(data.discount_price):0}</b> {data?.price?<del> ৳{parseInt(data.price)}</del>:""}
                         </span>
                         <div
                         style={{
 
                         }}
+                        className="button-container"
                         >
                             <Button
                             className='product-action-button'
