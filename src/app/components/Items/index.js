@@ -369,8 +369,8 @@ const ItemsContainer=({title,IsCleanser,IsTonner,IsSerum,IsBodyCare,IsEyeCare})=
                     </p> */}
                     <Image 
                     src={`/${title}.webp`}
-                    height={250}
-                    width={200}
+                    height={150}
+                    width={1200}
                     alt={`${title}`}
                     className='title-image'
                     />

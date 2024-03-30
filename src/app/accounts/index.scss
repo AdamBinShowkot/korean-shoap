@@ -3,7 +3,15 @@
 }
 .login-register-inner{
     padding: 0px 20px 0px 20px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    padding: 25px;
 }
+
+// .login-register-inner.card.left-login-container {
+//     display: flex !important;
+//     justify-content: center !important;
+//     align-items: center !important;
+// }
 
 .checkout-require-input{
     color: #000;
@@ -105,7 +113,7 @@
         margin-left: 1%;
     }
     .login-register-inner{
-        padding: 0px 20px 0px 20px;
+        //padding: 0px 20px 0px 20px;
     }
     .login-registration-container{
         padding: 15vh 15vw 100px;

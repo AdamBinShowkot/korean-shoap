@@ -1,14 +1,16 @@
 .checkout-middle-container{
     padding: 0px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    padding: 25px;
 }
 .checkout-middle-container.left-container{
-    padding-right: 20px;
+    //padding-right: 20px;
     //margin-right: 5px;
     width: 49%;
     margin-right: 1%;
 }
 .checkout-middle-container.right-container{
-    padding-left: 20px;
+    //padding-left: 20px;
     width: 49%;
     margin-left: 1%;
 }
@@ -248,7 +250,7 @@
         width:30%;
     }
     .checkout-middle-container{
-        padding: 0px;
+        //padding: 0px;
     }
     .checkout-middle-container.left-container{
         padding-right: 20px;

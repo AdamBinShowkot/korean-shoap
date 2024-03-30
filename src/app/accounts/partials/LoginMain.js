@@ -109,10 +109,16 @@ const LoginMain=()=>{
     return(
         <>
             <Row>
-                <Col>
+                <Col
+                // style={{
+                //     display:'flex',
+                //     justifyContent:'center',
+                //     alignItems:'center'
+                // }}
+                >
                     <Form
                     className="contact-form"
-                   
+                    
                     >
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                             <Form.Label className={`checkout-require-input ${userInfos?.phone?'':'is-empty'}`}><sup>*</sup>{" "}Phone/Email:</Form.Label>

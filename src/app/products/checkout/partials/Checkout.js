@@ -327,9 +327,6 @@ const CheckoutMain=()=>{
                         lg={6} 
                         xs={12}
                         className='checkout-middle-container left-container card'
-                        style={{
-                            padding:"6px"
-                        }}
                         >
                             <h3 className="billing-title">BILLING & SHIPPING</h3>
                             <Row
@@ -469,9 +466,7 @@ const CheckoutMain=()=>{
                         lg={6} 
                         xs={12}
                         className="checkout-middle-container right-container card"
-                        style={{
-                            padding:"6px"
-                        }}
+                       
                         >
                             <Row>
                                 <Col
