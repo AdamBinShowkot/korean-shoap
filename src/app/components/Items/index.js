@@ -202,6 +202,12 @@ const ItemsContainer=({title,IsCleanser,IsTonner,IsSerum,IsBodyCare,IsEyeCare,Is
             getSunScreenProducts();
             //console.log("Title : ",title)
         }
+        else if(!IsCleanser && !IsTonner && !IsSerum && !IsBodyCare && !IsEyeCare && !IsSuncreen && IsHairCare && !IsScrubMask && !IsSleepingMask){
+            getHairCareProducts();
+        }
+        else if(!IsCleanser && !IsTonner && !IsSerum && !IsBodyCare && !IsEyeCare && !IsSuncreen && !IsHairCare && IsScrubMask && !IsSleepingMask){
+            getScrubMaskProducts();
+        }
 
     }
     const getCleanserProducts=async()=>{
@@ -372,6 +378,48 @@ const ItemsContainer=({title,IsCleanser,IsTonner,IsSerum,IsBodyCare,IsEyeCare,Is
         }).catch((error)=>{
          // console.log(error)
           console.log("Get Eye Care Lists Error.")
+          return [];
+        });
+      
+        if(response.length){
+            setLists(response);
+            setLen(response.length)
+        }else{
+            setLists([])
+            setLen(0)
+        }
+    }
+    const getHairCareProducts=async()=>{
+        ConfigureAxios();
+        const response=await axios.get('/public/feature-product/category/hair-care').then((res)=>{
+            if(res.status===200){
+                //console.log("Products : ",res.data);
+                return res.data?.length?res.data[0].products:[];
+            }
+        }).catch((error)=>{
+         // console.log(error)
+          console.log("Get Hair Care Lists Error.")
+          return [];
+        });
+      
+        if(response.length){
+            setLists(response);
+            setLen(response.length)
+        }else{
+            setLists([])
+            setLen(0)
+        }
+    }
+    const getScrubMaskProducts=async()=>{
+        ConfigureAxios();
+        const response=await axios.get('/public/feature-product/category/scrub-&-mask').then((res)=>{
+            if(res.status===200){
+                //console.log("Products : ",res.data);
+                return res.data?.length?res.data[0].products:[];
+            }
+        }).catch((error)=>{
+         // console.log(error)
+          console.log("Get Hair Care Lists Error.")
           return [];
         });
       

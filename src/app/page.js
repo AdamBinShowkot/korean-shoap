@@ -311,6 +311,40 @@ export default async function Home() {
             IsSleepingMask={false}
             />
           </div>
+
+          <div style={{
+            width:'100%',
+          }}>
+            <ItemsContainer 
+            title="scrub-&-mask"
+            IsCleanser={false}
+            IsTonner={false}
+            IsSerum={false}
+            IsBodyCare={false}
+            IsEyeCare={false}
+            IsSuncreen={false}
+            IsHairCare={false}
+            IsScrubMask={true}
+            IsSleepingMask={false}
+            />
+          </div>
+
+          <div style={{
+            width:'100%',
+          }}>
+            <ItemsContainer 
+            title="hair-care"
+            IsCleanser={false}
+            IsTonner={false}
+            IsSerum={false}
+            IsBodyCare={false}
+            IsEyeCare={false}
+            IsSuncreen={false}
+            IsHairCare={true}
+            IsScrubMask={false}
+            IsSleepingMask={false}
+            />
+          </div>
           <div style={{
             width:'100%',
           }}>
