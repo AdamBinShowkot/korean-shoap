@@ -63,9 +63,25 @@
     color: #fff;
     font-weight: 700;
 }
+.left-login-container{
+    width: 49%;
+    margin-right: 1%;
+}
+.right-login-container{
+    width: 49%;
+    margin-left: 1%;
+}
 
 /*** RESPONSIVE AREA ***/
 @media only screen and (max-width:480px) {
+    .left-login-container{
+        width: 98%;
+        margin: 1%;
+    }
+    .right-login-container{
+        width: 98%;
+        margin: 1%;
+    }
     .login-register-inner{
         padding: 0px 10px 0px 10px;
     }
@@ -80,6 +96,14 @@
   
 }
 @media only screen and (min-width:980px) {
+    .left-login-container{
+        width: 49%;
+        margin-right: 1%;
+    }
+    .right-login-container{
+        width: 49%;
+        margin-left: 1%;
+    }
     .login-register-inner{
         padding: 0px 20px 0px 20px;
     }

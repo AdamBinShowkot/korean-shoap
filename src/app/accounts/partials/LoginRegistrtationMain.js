@@ -35,14 +35,14 @@ const LoginRegistrationMain=()=>{
                         <Col
                         xl={6}
                         xs={12}
-                        className="login-register-inner"
+                        className="login-register-inner card left-login-container"
                         >
                             <LoginMain/>
                         </Col>
                         <Col
                         xl={6}
                         xs={12}
-                        className="login-register-inner"            
+                        className="login-register-inner card right-login-container"            
                         >
                             <RegistrationMain/>
                         </Col>

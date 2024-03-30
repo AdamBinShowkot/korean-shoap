@@ -250,7 +250,7 @@ export default async function Home() {
             width:'100%',
           }}>
             <ItemsContainer 
-            title="CLEANSER "
+            title="cleanser"
             IsCleanser={true}
             IsTonner={false}
             IsSerum={false}
@@ -262,7 +262,7 @@ export default async function Home() {
             width:'100%',
           }}>
             <ItemsContainer 
-            title="TONER "
+            title="toner"
             IsCleanser={false}
             IsTonner={true}
             IsSerum={false}
@@ -274,7 +274,7 @@ export default async function Home() {
             width:'100%',
           }}>
             <ItemsContainer 
-            title="SERUM/ESSENCE/AMPOULE "
+            title="serum-essence-ampoule"
             IsCleanser={false}
             IsTonner={false}
             IsSerum={true}
@@ -286,7 +286,7 @@ export default async function Home() {
             width:'100%',
           }}>
             <ItemsContainer 
-            title="BODY CARE "
+            title="body-care"
             IsCleanser={false}
             IsTonner={false}
             IsSerum={false}
@@ -298,7 +298,7 @@ export default async function Home() {
             width:'100%',
           }}>
             <ItemsContainer 
-            title="EYE CARE "
+            title="eye-care"
             IsCleanser={false}
             IsTonner={false}
             IsSerum={false}

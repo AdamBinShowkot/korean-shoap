@@ -326,9 +326,12 @@ const CheckoutMain=()=>{
                         <Col 
                         lg={6} 
                         xs={12}
-                        className='checkout-middle-container left-container'
+                        className='checkout-middle-container left-container card'
+                        style={{
+                            padding:"6px"
+                        }}
                         >
-                            <h3>BILLING & SHIPPING</h3>
+                            <h3 className="billing-title">BILLING & SHIPPING</h3>
                             <Row
                             className='form-container'
                             >
@@ -344,6 +347,7 @@ const CheckoutMain=()=>{
                                                 type="text" 
                                                 placeholder=""
                                                 name="name"
+                                                className="form-input-text"
                                                 value={customerInfo.name}
                                                 onChange={onValueChange}
                                                 />
@@ -359,6 +363,7 @@ const CheckoutMain=()=>{
                                                 type="text" 
                                                 placeholder=""
                                                 name="phone"
+                                                className="form-input-text"
                                                 value={customerInfo.phone}
                                                 onChange={onValueChange}
                                                 />
@@ -374,6 +379,7 @@ const CheckoutMain=()=>{
                                                 type="text" 
                                                 placeholder=""
                                                 name="address"
+                                                className="form-input-text"
                                                 value={customerInfo.address}
                                                 onChange={onValueChange}
                                                 />
@@ -386,11 +392,12 @@ const CheckoutMain=()=>{
                                         xs={12}
                                         >
                                             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea3">
-                                                <Form.Label>ORDER NOTE (OPTIONAL)</Form.Label>
+                                                <Form.Label className={`checkout-require-input`}>ORDER NOTE (OPTIONAL)</Form.Label>
                                                 <Form.Control 
                                                 as="textarea" 
                                                 rows={2} 
                                                 name="note"
+                                                className="form-input-text"
                                                 value={customerInfo.note}
                                                 onChange={onValueChange}
                                                 />
@@ -408,6 +415,7 @@ const CheckoutMain=()=>{
                                                 aria-label="Default select example"
                                                 onChange={onValueChange}
                                                 name="location"
+                                                className="form-input-text"
                                                 value={customerInfo.location}
                                                 >
                                                     <option>Choose Shipping Method</option>
@@ -428,6 +436,7 @@ const CheckoutMain=()=>{
                                                 aria-label="Default select example"
                                                 value={customerInfo.paymentMethod}
                                                 name="paymentMethod"
+                                                className="form-input-text"
                                                 onChange={onValueChange}
                                                 >
                                                     <option>Choose Billing Method</option>
@@ -459,7 +468,10 @@ const CheckoutMain=()=>{
                         <Col 
                         lg={6} 
                         xs={12}
-                        className="checkout-middle-container right-container"
+                        className="checkout-middle-container right-container card"
+                        style={{
+                            padding:"6px"
+                        }}
                         >
                             <Row>
                                 <Col
@@ -469,7 +481,7 @@ const CheckoutMain=()=>{
                                     zIndex:'10'
                                 }}
                                 >
-                                    <h3>Your Order</h3>
+                                    <h3 className="billing-title">Your Order</h3>
                                     <h3
                                     style={{
                                         position:'absolute',

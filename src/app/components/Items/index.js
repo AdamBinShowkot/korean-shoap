@@ -364,9 +364,16 @@ const ItemsContainer=({title,IsCleanser,IsTonner,IsSerum,IsBodyCare,IsEyeCare})=
                 xs={12}
                 className='products-item-title'
                 >
-                    <p>
+                    {/* <p>
                         <strong>{title?title:''}</strong> <span>{'  '}items</span>
-                    </p>
+                    </p> */}
+                    <Image 
+                    src={`/${title}.webp`}
+                    height={250}
+                    width={200}
+                    alt={`${title}`}
+                    className='title-image'
+                    />
                 </Col>
             </Row>
             <Row 
