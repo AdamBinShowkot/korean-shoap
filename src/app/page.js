@@ -256,6 +256,10 @@ export default async function Home() {
             IsSerum={false}
             IsBodyCare={false}
             IsEyeCare={false}
+            IsSuncreen={false}
+            IsHairCare={false}
+            IsScrubMask={false}
+            IsSleepingMask={false}
             />
           </div>
           <div style={{
@@ -268,8 +272,29 @@ export default async function Home() {
             IsSerum={false}
             IsBodyCare={false}
             IsEyeCare={false}
+            IsSuncreen={false}
+            IsHairCare={false}
+            IsScrubMask={false}
+            IsSleepingMask={false}
             />
           </div>
+          <div style={{
+            width:'100%',
+          }}>
+            <ItemsContainer 
+            title="sunscreen"
+            IsCleanser={false}
+            IsTonner={false}
+            IsSerum={false}
+            IsBodyCare={false}
+            IsEyeCare={false}
+            IsSuncreen={true}
+            IsHairCare={false}
+            IsScrubMask={false}
+            IsSleepingMask={false}
+            />
+          </div>
+         
           <div style={{
             width:'100%',
           }}>
@@ -280,6 +305,10 @@ export default async function Home() {
             IsSerum={true}
             IsBodyCare={false}
             IsEyeCare={false}
+            IsSuncreen={false}
+            IsHairCare={false}
+            IsScrubMask={false}
+            IsSleepingMask={false}
             />
           </div>
           <div style={{
@@ -292,6 +321,10 @@ export default async function Home() {
             IsSerum={false}
             IsBodyCare={true}
             IsEyeCare={false}
+            IsSuncreen={false}
+            IsHairCare={false}
+            IsScrubMask={false}
+            IsSleepingMask={false}
             />
           </div>
           <div style={{
@@ -304,6 +337,10 @@ export default async function Home() {
             IsSerum={false}
             IsBodyCare={false}
             IsEyeCare={true}
+            IsSuncreen={false}
+            IsHairCare={false}
+            IsScrubMask={false}
+            IsSleepingMask={false}
             />
           </div>
         </Col>
