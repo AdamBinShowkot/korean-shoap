@@ -63,35 +63,15 @@ const IsotopeReact = () => {
         if(lists.length){
             let dataLists=[];
             lists.map((dta)=>{
-                // if(dta.slug=="neogen"){
-                //     if(dta?.products?.length){
-                //         setNeogenLists(dta.products);
-                //     }
-                // }else if(dta.slug=="cosrx"){
-                //     if(dta?.products?.length){
-                //         setCosrxLists(dta.products);
-                //     }
-                // }else if(dta.slug=="tiam"){
-                //     if(dta?.products?.length){
-                //         setTiamLists(dta.products);
-                //     }
-                // }else if(dta.slug=="tiam"){
-                //     if(dta?.products?.length){
-                //         setTiamLists(dta.products);
-                //     }
-                // }
                 if(dta?.products?.length){
-                    //alert("HHH")
-                    //console.log("Datas : ",dta.products)
                     let newArr=[...products];
 
-                    //newArr=newArr.concat(dta.products);
                     let newArr2=[];
 
                     dta.products.map((d2)=>{
                         const newObj={
                             ...d2,
-                            parent_slug:dta.slug,    
+                            parent_slug:dta.slug=="3w-clinic"?"s"+dta.slug:dta.slug,    
                         }
                         newArr2=[...newArr2,newObj];
                     })
@@ -102,8 +82,8 @@ const IsotopeReact = () => {
                 }
             })
             setProducts(dataLists);
+            //console.log('Data: ',dataLists)
         }
-   //console.log(lists)
     },[lists])
     useEffect(() => {
         setTimeout(()=>{
@@ -112,7 +92,6 @@ const IsotopeReact = () => {
                 layoutMode: 'fitRows',
             })
         },400)
-    // cleanup
    // return () => isotope.current.destroy()
   }, [width,lists])
 
@@ -147,11 +126,13 @@ const IsotopeReact = () => {
     ConfigureAxios();
     const brands1=await getFeturedBrands();
     //console.log("Brandss : ",brands1)
+
+    const brands11=configParentLists(brands1)
     const lists1=await getBrandProductLists();
     //console.log("listss : ",lists1)
 
-    if(brands1.length){
-        setBrands(brands1)
+    if(brands11.length){
+        setBrands(brands11)
     }else{
         setBrands([])
     }
@@ -162,6 +143,23 @@ const IsotopeReact = () => {
         setLists([])
     }
 
+  }
+
+  const configParentLists=(lists)=>{
+    //console.log("Lists:s ",lists)
+    let returnLists=[];
+    const newLists=[...lists];
+
+    if(newLists?.length){
+        newLists.map((d)=>{
+            const obj={
+                ...d,
+                slug:d.slug=="3w-clinic"?"s"+d.slug:d.slug
+            }
+            returnLists=[...returnLists,obj];
+        })
+    }
+    return returnLists;
   }
   const getFeturedBrands=async()=>{
     const response=await axios.get('/public/features/brand').then((res)=>{
@@ -229,34 +227,6 @@ const IsotopeReact = () => {
                     xs={12}
                     className="brand-lists-container"
                     >
-                        {/* <Button
-                        variant="outline-primary"
-                        className={`filter-button ${filterKey=="cosrx"?"filter-active-button":""}`}
-                        onClick={handleFilterKeyChange('cosrx')}
-                        >
-                            COSRX
-                        </Button> */}
-                        {/* <Button
-                        variant="outline-primary"
-                        className={`filter-button ${filterKey=="neogen"?"filter-active-button":""}`}
-                        onClick={handleFilterKeyChange('neogen')}
-                        >
-                            NEOGEN
-                        </Button> */}
-                        {/* <Button
-                        variant="outline-primary"
-                        className={`filter-button ${filterKey=="fruit"?"filter-active-button":""}`}
-                        onClick={handleFilterKeyChange('fruit')}
-                        >
-                            TIAM
-                        </Button> */}
-                        {/* <Button
-                        variant="outline-primary"
-                        className={`filter-button ${filterKey=="vege"?"filter-active-button":""}`}
-                        onClick={handleFilterKeyChange('vege')}
-                        >
-                            SUM BY MI
-                        </Button> */}
                         {
                             brands?.length?brands.map((dta)=>{
                                 return <Button
@@ -299,63 +269,6 @@ const IsotopeReact = () => {
                             />
                         }):""
                     }
-                    {/* {
-                        tiamLists?.length?tiamLists.map((dta)=>{
-                            return  <SingleItem
-                            className={"tiam"}
-                            key={dta.id}
-                            details={dta}
-                            />
-                        }):""
-                    }
-                    {
-                        neogenLists?.length?neogenLists.map((dta)=>{
-                            return  <SingleItem
-                            className={"neogen"}
-                            key={dta.id}
-                            details={dta}
-                            />
-                        }):""
-                    }
-                    {
-                        cosrxLists?.length?cosrxLists.map((dta)=>{
-                            return  <SingleItem
-                            className={"cosrx"}
-                            key={dta.id}
-                            details={dta}
-                            />
-                        }):""
-                    } */}
-                    {/* <ItemsContainer/> */}
-                    
-                    {/* <Col
-                    style={{
-                        width:'22% !important'
-                    }} 
-                    className="grid-item vege ">
-                        <StaticCardWithImage/>
-                    </Col>
-                    <Col
-                    style={{
-                        width:'22% !important'
-                    }} 
-                    className="grid-item fruit">
-                        <FilterProduct/>
-                    </Col>
-                    <Col
-                    style={{
-                        width:'22% !important'
-                    }} 
-                    className="grid-item fruit">
-                        <FilterProduct/>
-                    </Col>
-                    <Col
-                    style={{
-                        width:'22% !important'
-                    }} 
-                    className="grid-item fruit">
-                        <FilterProduct/>
-                    </Col> */}
                 </div>
             </Col>
         </div>
