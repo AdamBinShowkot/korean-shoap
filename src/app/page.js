@@ -260,6 +260,7 @@ export default async function Home() {
             IsHairCare={false}
             IsScrubMask={false}
             IsSleepingMask={false}
+            IsCream={false}
             />
           </div>
           <div style={{
@@ -276,6 +277,41 @@ export default async function Home() {
             IsHairCare={false}
             IsScrubMask={false}
             IsSleepingMask={false}
+            IsCream={false}
+            />
+          </div>
+          <div style={{
+            width:'100%',
+          }}>
+            <ItemsContainer 
+            title="serum-essence-ampoule"
+            IsCleanser={false}
+            IsTonner={false}
+            IsSerum={true}
+            IsBodyCare={false}
+            IsEyeCare={false}
+            IsSuncreen={false}
+            IsHairCare={false}
+            IsScrubMask={false}
+            IsSleepingMask={false}
+            IsCream={false}
+            />
+          </div>
+          <div style={{
+            width:'100%',
+          }}>
+            <ItemsContainer 
+            title="cream"
+            IsCleanser={false}
+            IsTonner={false}
+            IsSerum={false}
+            IsBodyCare={false}
+            IsEyeCare={false}
+            IsSuncreen={false}
+            IsHairCare={false}
+            IsScrubMask={false}
+            IsSleepingMask={false}
+            IsCream={true}
             />
           </div>
           <div style={{
@@ -292,31 +328,14 @@ export default async function Home() {
             IsHairCare={false}
             IsScrubMask={false}
             IsSleepingMask={false}
+            IsCream={false}
             />
           </div>
-         
           <div style={{
             width:'100%',
           }}>
             <ItemsContainer 
-            title="serum-essence-ampoule"
-            IsCleanser={false}
-            IsTonner={false}
-            IsSerum={true}
-            IsBodyCare={false}
-            IsEyeCare={false}
-            IsSuncreen={false}
-            IsHairCare={false}
-            IsScrubMask={false}
-            IsSleepingMask={false}
-            />
-          </div>
-
-          <div style={{
-            width:'100%',
-          }}>
-            <ItemsContainer 
-            title="scrub-&-mask"
+            title="mask-night"
             IsCleanser={false}
             IsTonner={false}
             IsSerum={false}
@@ -324,41 +343,9 @@ export default async function Home() {
             IsEyeCare={false}
             IsSuncreen={false}
             IsHairCare={false}
-            IsScrubMask={true}
-            IsSleepingMask={false}
-            />
-          </div>
-
-          <div style={{
-            width:'100%',
-          }}>
-            <ItemsContainer 
-            title="hair-care"
-            IsCleanser={false}
-            IsTonner={false}
-            IsSerum={false}
-            IsBodyCare={false}
-            IsEyeCare={false}
-            IsSuncreen={false}
-            IsHairCare={true}
             IsScrubMask={false}
-            IsSleepingMask={false}
-            />
-          </div>
-          <div style={{
-            width:'100%',
-          }}>
-            <ItemsContainer 
-            title="body-care"
-            IsCleanser={false}
-            IsTonner={false}
-            IsSerum={false}
-            IsBodyCare={true}
-            IsEyeCare={false}
-            IsSuncreen={false}
-            IsHairCare={false}
-            IsScrubMask={false}
-            IsSleepingMask={false}
+            IsSleepingMask={true}
+            IsCream={false}
             />
           </div>
           <div style={{
@@ -375,6 +362,58 @@ export default async function Home() {
             IsHairCare={false}
             IsScrubMask={false}
             IsSleepingMask={false}
+            IsCream={false}
+            />
+          </div>
+          <div style={{
+            width:'100%',
+          }}>
+            <ItemsContainer 
+            title="body-care"
+            IsCleanser={false}
+            IsTonner={false}
+            IsSerum={false}
+            IsBodyCare={true}
+            IsEyeCare={false}
+            IsSuncreen={false}
+            IsHairCare={false}
+            IsScrubMask={false}
+            IsSleepingMask={false}
+            IsCream={false}
+            />
+          </div>
+          <div style={{
+            width:'100%',
+          }}>
+            <ItemsContainer 
+            title="hair-care"
+            IsCleanser={false}
+            IsTonner={false}
+            IsSerum={false}
+            IsBodyCare={false}
+            IsEyeCare={false}
+            IsSuncreen={false}
+            IsHairCare={true}
+            IsScrubMask={false}
+            IsSleepingMask={false}
+            IsCream={false}
+            />
+          </div>
+          <div style={{
+            width:'100%',
+          }}>
+            <ItemsContainer 
+            title="scrub-&-mask"
+            IsCleanser={false}
+            IsTonner={false}
+            IsSerum={false}
+            IsBodyCare={false}
+            IsEyeCare={false}
+            IsSuncreen={false}
+            IsHairCare={false}
+            IsScrubMask={true}
+            IsSleepingMask={false}
+            IsCream={false}
             />
           </div>
         </Col>

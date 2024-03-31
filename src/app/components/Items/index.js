@@ -42,7 +42,7 @@ function SamplePrevArrow(props) {
     );
 }
 
-const ItemsContainer=({title,IsCleanser,IsTonner,IsSerum,IsBodyCare,IsEyeCare,IsSuncreen,IsHairCare,IsScrubMask,IsSleepingMask})=>{
+const ItemsContainer=({title,IsCleanser,IsTonner,IsSerum,IsBodyCare,IsEyeCare,IsSuncreen,IsHairCare,IsScrubMask,IsSleepingMask,IsCream})=>{
     const [lists,setLists]=useState([]);
     const [len,setLen]=useState(0);
     const [myLists,setMyLists]=useState([]);
@@ -167,14 +167,14 @@ const ItemsContainer=({title,IsCleanser,IsTonner,IsSerum,IsBodyCare,IsEyeCare,Is
     }, [width,lists]);
 
     const initialLoad=async()=>{
-        if(IsCleanser && !IsTonner && !IsSerum && !IsBodyCare && !IsEyeCare && !IsSuncreen && !IsHairCare && !IsScrubMask && !IsSleepingMask){
+        if(IsCleanser && !IsTonner && !IsSerum && !IsBodyCare && !IsEyeCare && !IsSuncreen && !IsHairCare && !IsScrubMask && !IsSleepingMask && !IsCream){
             getCleanserProducts()
             //console.log("Title : ",title)
-        }else if(!IsCleanser && IsTonner && !IsSerum && !IsBodyCare && !IsEyeCare && !IsSuncreen && !IsHairCare && !IsScrubMask && !IsSleepingMask){
+        }else if(!IsCleanser && IsTonner && !IsSerum && !IsBodyCare && !IsEyeCare && !IsSuncreen && !IsHairCare && !IsScrubMask && !IsSleepingMask && !IsCream){
             getTonerProducts();
             //console.log("Title : ",title)
-        }else if(!IsCleanser && !IsTonner && IsSerum && !IsBodyCare && !IsEyeCare && !IsSuncreen && !IsHairCare && !IsScrubMask && !IsSleepingMask){
-            getBodySerumProducts();
+        }else if(!IsCleanser && !IsTonner && IsSerum && !IsBodyCare && !IsEyeCare && !IsSuncreen && !IsHairCare && !IsScrubMask && !IsSleepingMask && !IsCream){
+            //getBodySerumProducts();
             const serums=await getBodySerumProducts();
             const essences=await getBodyEssenseProducts();
             const ampoules=await getBodyAmpouleProducts();
@@ -191,22 +191,74 @@ const ItemsContainer=({title,IsCleanser,IsTonner,IsSerum,IsBodyCare,IsEyeCare,Is
                 setLen(0)
             }
             //console.log("Title : ",title)
-        }else if(!IsCleanser && !IsTonner && !IsSerum && IsBodyCare && !IsEyeCare && !IsSuncreen && !IsHairCare && !IsScrubMask && !IsSleepingMask){
+        }else if(!IsCleanser && !IsTonner && !IsSerum && IsBodyCare && !IsEyeCare && !IsSuncreen && !IsHairCare && !IsScrubMask && !IsSleepingMask && !IsCream){
             getBodyCareProducts();
             //console.log("Title : ",title)
-        }else if(!IsCleanser && !IsTonner && !IsSerum && !IsBodyCare && IsEyeCare && !IsSuncreen && !IsHairCare && !IsScrubMask && !IsSleepingMask){
+        }else if(!IsCleanser && !IsTonner && !IsSerum && !IsBodyCare && IsEyeCare && !IsSuncreen && !IsHairCare && !IsScrubMask && !IsSleepingMask && !IsCream){
             getEyeCareProducts();
             //console.log("Title : ",title)
         }
-        else if(!IsCleanser && !IsTonner && !IsSerum && !IsBodyCare && !IsEyeCare && IsSuncreen && !IsHairCare && !IsScrubMask && !IsSleepingMask){
-            getSunScreenProducts();
-            //console.log("Title : ",title)
+        else if(!IsCleanser && !IsTonner && !IsSerum && !IsBodyCare && !IsEyeCare && IsSuncreen && !IsHairCare && !IsScrubMask && !IsSleepingMask && !IsCream){
+            const scrubLists=await getSunScreenProducts();
+            const maskLists=await getSunStickProducts();
+
+            const listss=scrubLists.concat(maskLists);
+            if(listss.length){
+                setLists(listss);
+                setLen(listss.length)
+            }else{
+                setLists([]);
+                setLen(0)
+            }
         }
-        else if(!IsCleanser && !IsTonner && !IsSerum && !IsBodyCare && !IsEyeCare && !IsSuncreen && IsHairCare && !IsScrubMask && !IsSleepingMask){
+        else if(!IsCleanser && !IsTonner && !IsSerum && !IsBodyCare && !IsEyeCare && !IsSuncreen && IsHairCare && !IsScrubMask && !IsSleepingMask && !IsCream){
             getHairCareProducts();
         }
-        else if(!IsCleanser && !IsTonner && !IsSerum && !IsBodyCare && !IsEyeCare && !IsSuncreen && !IsHairCare && IsScrubMask && !IsSleepingMask){
-            getScrubMaskProducts();
+        else if(!IsCleanser && !IsTonner && !IsSerum && !IsBodyCare && !IsEyeCare && !IsSuncreen && !IsHairCare && IsScrubMask && !IsSleepingMask && !IsCream){
+            const scrubLists=await getScrubProducts();
+            const maskLists=await getMaskProducts();
+
+            
+            const listss=scrubLists.concat(maskLists);
+            //console.log("Serum Length: ",sleepingMask);
+            // console.log("Lists Length: ",listss.length);
+            if(listss.length){
+                setLists(listss);
+                setLen(listss.length)
+            }else{
+                setLists([]);
+                setLen(0)
+            }
+        }
+        else if(!IsCleanser && !IsTonner && !IsSerum && !IsBodyCare && !IsEyeCare && !IsSuncreen && !IsHairCare && !IsScrubMask && IsSleepingMask && !IsCream){
+            const sleepingMask=await getSleepingMaskProducts();
+            const nightCreams=await getNightCreamProducts();
+
+            
+            const listss=sleepingMask.concat(nightCreams);
+            //console.log("Serum Length: ",sleepingMask);
+            // console.log("Lists Length: ",listss.length);
+            if(listss.length){
+                setLists(listss);
+                setLen(listss.length)
+            }else{
+                setLists([]);
+                setLen(0)
+            }
+        }
+        else if(!IsCleanser && !IsTonner && !IsSerum && !IsBodyCare && !IsEyeCare && !IsSuncreen && !IsHairCare && !IsScrubMask && !IsSleepingMask && IsCream){
+            const sleepingMask=await getMoisturizerProducts();
+            const nightCreams=await getCreamProducts();
+
+            
+            const listss=sleepingMask.concat(nightCreams);
+            if(listss.length){
+                setLists(listss);
+                setLen(listss.length)
+            }else{
+                setLists([]);
+                setLen(0)
+            }
         }
 
     }
@@ -368,25 +420,50 @@ const ItemsContainer=({title,IsCleanser,IsTonner,IsSerum,IsBodyCare,IsEyeCare,Is
         }
     }
 
-    const getSunScreenProducts=async()=>{
+    const getSleepingMaskProducts=async()=>{
         ConfigureAxios();
-        const response=await axios.get('/public/feature-product/category/eye-care').then((res)=>{
+        const response=await axios.get('/public/feature-product/category/sleeping-mask').then((res)=>{
             if(res.status===200){
                 //console.log("Products : ",res.data);
                 return res.data?.length?res.data[0].products:[];
             }
         }).catch((error)=>{
-         // console.log(error)
-          console.log("Get Eye Care Lists Error.")
+          //console.log(error)
+          console.log("Get Sleeping Mask Lists Error.")
           return [];
         });
       
         if(response.length){
-            setLists(response);
-            setLen(response.length)
+            //setLists(response);
+            //setLen(response.length)
+            return response;
         }else{
-            setLists([])
-            setLen(0)
+            //setLists([])
+            //setLen(0)
+            return [];
+        }
+    }
+    const getNightCreamProducts=async()=>{
+        ConfigureAxios();
+        const response=await axios.get('/public/feature-product/category/night-cream').then((res)=>{
+            if(res.status===200){
+                //console.log("Products : ",res.data);
+                return res.data?.length?res.data[0].products:[];
+            }
+        }).catch((error)=>{
+          //console.log(error)
+          console.log("Get Body Serum Lists Error.")
+          return [];
+        });
+      
+        if(response.length){
+            //setEssenseLists(response);
+            //setLen(response.length)
+            return response;
+        }else{
+            //setEssenseLists([])
+            //setLen(0)
+            return []
         }
     }
     const getHairCareProducts=async()=>{
@@ -410,25 +487,142 @@ const ItemsContainer=({title,IsCleanser,IsTonner,IsSerum,IsBodyCare,IsEyeCare,Is
             setLen(0)
         }
     }
-    const getScrubMaskProducts=async()=>{
+    const getScrubProducts=async()=>{
         ConfigureAxios();
-        const response=await axios.get('/public/feature-product/category/scrub-&-mask').then((res)=>{
+        const response=await axios.get('/public/feature-product/category/scrub').then((res)=>{
             if(res.status===200){
                 //console.log("Products : ",res.data);
                 return res.data?.length?res.data[0].products:[];
             }
         }).catch((error)=>{
-         // console.log(error)
-          console.log("Get Hair Care Lists Error.")
+          //console.log(error)
+          console.log("Get Scrub Lists Error.")
           return [];
         });
       
         if(response.length){
-            setLists(response);
-            setLen(response.length)
+            //setEssenseLists(response);
+            //setLen(response.length)
+            return response;
         }else{
-            setLists([])
-            setLen(0)
+            //setEssenseLists([])
+            //setLen(0)
+            return []
+        }
+    }
+    const getMaskProducts=async()=>{
+        ConfigureAxios();
+        const response=await axios.get('/public/feature-product/category/mask').then((res)=>{
+            if(res.status===200){
+                //console.log("Products : ",res.data);
+                return res.data?.length?res.data[0].products:[];
+            }
+        }).catch((error)=>{
+          //console.log(error)
+          console.log("Get MaskLists Error.")
+          return [];
+        });
+      
+        if(response.length){
+            //setEssenseLists(response);
+            //setLen(response.length)
+            return response;
+        }else{
+            //setEssenseLists([])
+            //setLen(0)
+            return []
+        }
+    }
+    const getSunScreenProducts=async()=>{
+        ConfigureAxios();
+        const response=await axios.get('/public/feature-product/category/sunscreen').then((res)=>{
+            if(res.status===200){
+                //console.log("Products : ",res.data);
+                return res.data?.length?res.data[0].products:[];
+            }
+        }).catch((error)=>{
+          //console.log(error)
+          console.log("Get Scrub Lists Error.")
+          return [];
+        });
+      
+        if(response.length){
+            //setEssenseLists(response);
+            //setLen(response.length)
+            return response;
+        }else{
+            //setEssenseLists([])
+            //setLen(0)
+            return []
+        }
+    }
+    const getSunStickProducts=async()=>{
+        ConfigureAxios();
+        const response=await axios.get('/public/feature-product/category/sun-stick').then((res)=>{
+            if(res.status===200){
+                //console.log("Products : ",res.data);
+                return res.data?.length?res.data[0].products:[];
+            }
+        }).catch((error)=>{
+          //console.log(error)
+          console.log("Get MaskLists Error.")
+          return [];
+        });
+      
+        if(response.length){
+            //setEssenseLists(response);
+            //setLen(response.length)
+            return response;
+        }else{
+            //setEssenseLists([])
+            //setLen(0)
+            return []
+        }
+    }
+    const getMoisturizerProducts=async()=>{
+        ConfigureAxios();
+        const response=await axios.get('/public/feature-product/category/moisturizer').then((res)=>{
+            if(res.status===200){
+                //console.log("Products : ",res.data);
+                return res.data?.length?res.data[0].products:[];
+            }
+        }).catch((error)=>{
+          //console.log(error)
+          console.log("Get Moisturizer Lists Error.")
+          return [];
+        });
+      
+        if(response.length){
+            //setEssenseLists(response);
+            //setLen(response.length)
+            return response;
+        }else{
+            //setEssenseLists([])
+            //setLen(0)
+            return []
+        }
+    }
+    const getCreamProducts=async()=>{
+        ConfigureAxios();
+        const response=await axios.get('/public/feature-product/category/cream').then((res)=>{
+            if(res.status===200){
+                //console.log("Products : ",res.data);
+                return res.data?.length?res.data[0].products:[];
+            }
+        }).catch((error)=>{
+          //console.log(error)
+          console.log("Get Cream Error.")
+          return [];
+        });
+      
+        if(response.length){
+            //setEssenseLists(response);
+            //setLen(response.length)
+            return response;
+        }else{
+            //setEssenseLists([])
+            //setLen(0)
+            return []
         }
     }
       
