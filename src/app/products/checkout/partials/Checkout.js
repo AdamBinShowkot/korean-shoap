@@ -213,7 +213,7 @@ const CheckoutMain=()=>{
             lists.map((dta)=>{
                 const newOBJ={
                     product_id:dta?.product_id,
-                    product_variant_id:dta?.product_sku_id,
+                    product_variant_id:dta?.product_variant_id,
                     quantity:dta?.quantity
                 }
                 myLists=[...myLists,newOBJ];
