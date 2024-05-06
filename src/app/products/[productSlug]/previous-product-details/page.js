@@ -48,10 +48,10 @@ async function getProductsDetails({productSlug}){
   
     return response;
 }
-export default async function Page({params}){
+export default async function Page2({params}){
     // console.log("Params",params)
     const details=await getProductsDetails(params)
-    console.log("Details:",details);
+    //console.log("Details:",details);
     return(
         <>
             <Row
@@ -59,36 +59,15 @@ export default async function Page({params}){
             >
                 <Col 
                 xs={12}
-                lg={8}
+                lg={4}
                 >
-                    <Card
-                    style={{
-                        padding:"10px"
-                    }}
-                    >
-                        <Row>
-                            <Col
-                            xs={6}
-                            lg={6}
-                            >
-                                <DetailsLeftSection
-                                details={details}
-                                /> 
-                            </Col>
-                            <Col
-                            xs={6}
-                            lg={6}
-                            >
-                                <DetailsLeftSection
-                                details={details}
-                                /> 
-                            </Col>
-                        </Row>
-                   </Card>
+                   <DetailsLeftSection
+                   details={details}
+                   /> 
                 </Col>
                 <Col 
                 xs={12}
-                lg={4}
+                lg={8}
                 className='product-details-left'
                 >
                     <Row>
