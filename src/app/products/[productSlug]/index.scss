@@ -9,6 +9,10 @@
     .products-title{
         font-size: 24px;
     }
+    .product-title-info p{
+        color: #000;
+        line-height: 26px;
+    }
     .details-top-info{
         display: flex;
         justify-content: flex-start;
@@ -158,7 +162,7 @@
     .products-details-container{
         padding:40px 100px;
         .products-title{
-            font-size: 24px;
+            font-size: 21px;
         }
     }
     .products-details-container{

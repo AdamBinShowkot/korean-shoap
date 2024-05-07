@@ -782,7 +782,7 @@ const StockQuantitySection=({data})=>{
 
     return(
         <>
-            <Row>
+            {/* <Row>
                 <Col 
                 xs={12}
                 style={{
@@ -801,7 +801,7 @@ const StockQuantitySection=({data})=>{
                         <b style={{color:'green'}}>&nbsp;&nbsp; In Stock</b>
                     </span>
                 </Col>
-            </Row><br/>
+            </Row><br/> */}
             <Row>
                 <Col 
                 xs={12}
@@ -811,11 +811,11 @@ const StockQuantitySection=({data})=>{
                     alignItems:'center'
                 }}
                 >
-                    <span style={{fontSize:'15px',fontWeight:"700"}}><b>৳{variants?.discount_price?parseFloat(variants.discount_price).toFixed(2):0}</b>&nbsp;
+                    {/* <span style={{fontSize:'15px',fontWeight:"700"}}><b>৳{variants?.discount_price?parseFloat(variants.discount_price).toFixed(2):0}</b>&nbsp;
                     <b>{
                         parseFloat(variants?.price)>parseFloat(variants.discount_price)?<del>৳{variants?.price?parseFloat(variants.price).toFixed(2):0}</del>:""
                     }</b>
-                    </span>
+                    </span> */}
                     {/* &nbsp;&nbsp; | &nbsp;&nbsp;</span>
                     <Image
                     src='/qurier.png'

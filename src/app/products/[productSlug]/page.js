@@ -69,7 +69,7 @@ export default async function Page({params}){
                         <Row>
                             <Col
                             xs={6}
-                            lg={6}
+                            lg={5}
                             >
                                 <DetailsLeftSection
                                 details={details}
@@ -77,11 +77,117 @@ export default async function Page({params}){
                             </Col>
                             <Col
                             xs={6}
-                            lg={6}
+                            lg={7}
                             >
-                                <DetailsLeftSection
-                                details={details}
-                                /> 
+                                <Col 
+                                xs={12}
+                                lg={12}
+                                className='product-details-left'
+                                >
+                                    <Row>
+                                        <Col xs={12}>
+                                            <h2 
+                                            className='products-title'
+                                            >
+                                                {details?.name?details.name:`Neogen Dermalogy Black Energy Cream 80ml`}
+                                            </h2>
+                                            <span
+                                            className='product-title-info'
+                                            >
+                                                <p>
+                                                    <strong>Products&nbsp;&nbsp;: </strong> 
+                                                </p>
+                                                <p>
+                                                    <strong>Brand&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong> 
+                                                </p>
+                                                <p>
+                                                    <strong>Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong> 
+                                                </p>
+                                                <p>
+                                                    <strong>Category&nbsp;&nbsp;: </strong> 
+                                                </p>
+                                                <p>
+                                                    <strong>Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong> 
+                                                </p>
+                                            </span>
+                                        </Col>
+                                    </Row>
+                                    {/* <Row
+                                    style={{
+                                        marginBottom:'5px'
+                                    }}
+                                    >
+                                        <Col 
+                                        xs={12}
+                                        style={{
+                                            display:'flex',
+                                            justifyContent:'flex-start',
+                                            alignItems:'center'
+                                        }}
+                                        className=''
+                                        >
+                                            
+                                            <span
+                                            className="details-top-info"
+                                            >
+                                                <span className="left">
+                                                    <StarComponent rate={details?.avg_rating && details?.total_review?details.avg_rating:0}/> 
+                                                    &nbsp;&nbsp;&nbsp;<b>{details?.total_review?details.total_review:"0"}</b> &nbsp;&nbsp; Customer review &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp; 
+                                          
+                                                    &nbsp;&nbsp;
+                                                </span>
+                                                <span className="right">
+                                                    Size: <b>&nbsp;{details?.variant[0]?.size?details?.variant[0]?.size:""}</b>&nbsp;&nbsp;&nbsp;
+                                                    SKU: <b>&nbsp;{details?.sku?details.sku:'111'}</b>
+                                                </span>
+                                            </span>
+                                            
+                                        </Col>
+                                    </Row>  */}
+                                    {/* <Row>
+                                        <Col 
+                                        xs={12}
+                                        className="products-details-short-description"
+                                        >
+                                            {details?.short_description?parse(details.short_description):""}
+                                        
+                                        </Col>
+                                    </Row><br/> */}
+                                    <StockQuantitySection data={details}/>
+                                    <br/>
+                                    <AddToBug data={details}/>
+                                    <br/>
+                                    <Row>
+                                        <Col 
+                                        xs={12}
+                                        style={{
+                                            display:'flex',
+                                            justifyContent:'flex-start',
+                                            alignItems:'center'
+                                        }}
+                                        >
+                                            <AddToWish
+                                            data={details}
+                                            />
+                                            &nbsp;&nbsp;
+                                            <ShareComponent data={details}/>
+                                        </Col>
+                                    </Row><br/>
+                                    <Row>
+                                        <Col 
+                                        xs={12}
+                                        className="products-details-short-description"
+                                        >
+                                            {details?.short_description?parse(details.short_description):""}
+                                        
+                                        </Col>
+                                    </Row><br/>
+                                    <Row>
+                                        <Col xs={12}>
+                                            {/* <ProductDetails data={details}/> */}
+                                        </Col>
+                                    </Row>
+                                </Col>
                             </Col>
                         </Row>
                    </Card>
@@ -91,81 +197,7 @@ export default async function Page({params}){
                 lg={4}
                 className='product-details-left'
                 >
-                    <Row>
-                        <Col xs={12}>
-                            <h2 
-                            className='products-title'
-                            >
-                                {details?.name?details.name:`Neogen Dermalogy Black Energy Cream 80ml`}
-                            </h2>
-                        </Col>
-                    </Row>
-                    <Row
-                    style={{
-                        marginBottom:'5px'
-                    }}
-                    >
-                        <Col 
-                        xs={12}
-                        style={{
-                            display:'flex',
-                            justifyContent:'flex-start',
-                            alignItems:'center'
-                        }}
-                        className=''
-                        >
-                            
-                            <span
-                            className="details-top-info"
-                            >
-                                <span className="left">
-                                    <StarComponent rate={details?.avg_rating && details?.total_review?details.avg_rating:0}/> 
-                                    &nbsp;&nbsp;&nbsp;<b>{details?.total_review?details.total_review:"0"}</b> &nbsp;&nbsp; Customer review &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp; 
-                                    {/* &nbsp; Sold: <b>32</b> */}
-                                    &nbsp;&nbsp;
-                                </span>
-                                <span className="right">
-                                    Size: <b>&nbsp;{details?.variant[0]?.size?details?.variant[0]?.size:""}</b>&nbsp;&nbsp;&nbsp;
-                                    SKU: <b>&nbsp;{details?.sku?details.sku:'111'}</b>
-                                </span>
-                            </span>
-                            
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col 
-                        xs={12}
-                        className="products-details-short-description"
-                        >
-                            {details?.short_description?parse(details.short_description):""}
-                         
-                        </Col>
-                    </Row><br/>
-                    <StockQuantitySection data={details}/>
-                    <br/>
-                    <AddToBug data={details}/>
-                    <br/>
-                    <Row>
-                        <Col 
-                        xs={12}
-                        style={{
-                            display:'flex',
-                            justifyContent:'flex-start',
-                            alignItems:'center'
-                        }}
-                        >
-                            <AddToWish
-                            data={details}
-                            />
-                            &nbsp;&nbsp;
-                            <ShareComponent data={details}/>
-                        </Col>
-                    </Row><br/>
-                    <Row>
-                        <Col xs={12}>
-                            <ProductDetails data={details}/>
-                        </Col>
-                    </Row>
+                    
                 </Col>
             </Row>
             <hr className='product-details-hr'/>
