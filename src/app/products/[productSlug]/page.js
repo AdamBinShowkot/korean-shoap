@@ -89,25 +89,70 @@ export default async function Page({params}){
                                             <h2 
                                             className='products-title'
                                             >
-                                                {details?.name?details.name:`Neogen Dermalogy Black Energy Cream 80ml`}
+                                                {
+                                                    details?.name?details.name:`Neogen Dermalogy Black Energy Cream 80ml`
+                                                }
                                             </h2>
                                             <span
                                             className='product-title-info'
                                             >
                                                 <p>
-                                                    <strong>Products&nbsp;&nbsp;: </strong> 
+                                                    <span>
+                                                        <b>
+                                                            Products
+                                                        </b>&nbsp;&nbsp;&nbsp;: 
+                                                        <strong>
+                                                            &nbsp;&nbsp;&nbsp;{details.variant[0]?.sku?details.variant[0].sku:""}
+                                                        </strong>
+                                                    </span> 
                                                 </p>
                                                 <p>
-                                                    <strong>Brand&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong> 
+                                                    <span>
+                                                        <b>
+                                                            Brand
+                                                        </b>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        :
+                                                        <strong>
+                                                            &nbsp;&nbsp;&nbsp;{details.brand?.name?details.brand.name:""}
+                                                        </strong> 
+                                                    </span> 
                                                 </p>
                                                 <p>
-                                                    <strong>Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong> 
+                                                    <span>
+                                                        <b>
+                                                            Size
+                                                        </b>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        :
+                                                        <strong>
+                                                            &nbsp;&nbsp;&nbsp;{details.variant[0]?.size?details.variant[0].size:""}
+                                                        </strong> 
+                                                    </span> 
                                                 </p>
                                                 <p>
-                                                    <strong>Category&nbsp;&nbsp;: </strong> 
+                                                    <span>
+                                                        <b>
+                                                            Category
+                                                        </b>
+                                                        &nbsp;&nbsp;
+                                                        :
+                                                        <strong>
+                                                            &nbsp;&nbsp;&nbsp;{details.category?.name?details.category.name:""}
+                                                        </strong>  
+                                                    </span> 
                                                 </p>
                                                 <p>
-                                                    <strong>Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong> 
+                                                    <span>
+                                                        <b>
+                                                            Status
+                                                        </b>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        :
+                                                        <strong>
+                                                            &nbsp;&nbsp;&nbsp;{details.variant[0]?.stock>0?"In Stock":"Out Stock"}
+                                                        </strong>
+                                                    </span> 
                                                 </p>
                                             </span>
                                         </Col>

@@ -830,7 +830,15 @@ const StockQuantitySection=({data})=>{
             <Row>
                 <Col 
                 xs={12}
+                style={{
+                    display:'flex',
+                    alignItems:'center',
+                    justifyContent:"flex-start"
+                }}
                 >
+                    <span>
+                        Jjkmfsdjf
+                    </span>
                     <InputGroup>
                         <InputGroupText
                         className='normal-input global-search'
