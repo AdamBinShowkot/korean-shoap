@@ -4,6 +4,7 @@
 .products-details-short-description p{
     color: #000;
 }
+
 .products-details-container{
     padding:40px 100px;
     .products-title{
@@ -81,6 +82,10 @@
     font-size: 11px;
 }
 
+// New Product Details CSS
+.new-products-details-card{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
 
 // RESPONSIVE AREA
 @media only screen and (max-width:480px) {
@@ -155,6 +160,8 @@
         }
     }
 }
+
+
 @media only screen and (min-width:980px) {
     .product-details-left{
         padding: 0px 0px 20px 20px;

@@ -836,9 +836,11 @@ const StockQuantitySection=({data})=>{
                     justifyContent:"flex-start"
                 }}
                 >
-                    <span>
-                        Jjkmfsdjf
-                    </span>
+                    <span style={{fontSize:'15px',fontWeight:"700"}}><b>৳{variants?.discount_price?parseFloat(variants.discount_price).toFixed(2):0}</b>&nbsp;
+                    <b>{
+                        parseFloat(variants?.price)>parseFloat(variants.discount_price)?<del>৳{variants?.price?parseFloat(variants.price).toFixed(2):0}</del>:""
+                    }</b>
+                    </span> &nbsp; &nbsp;
                     <InputGroup>
                         <InputGroupText
                         className='normal-input global-search'

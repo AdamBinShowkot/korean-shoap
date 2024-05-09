@@ -15,8 +15,8 @@ const NormalProduct=({image,setActiveImage})=>{
             }}
             className='slider-normal-card'
             style={{
-                width: '110px',
-                height:'110px',
+                width: '90px',
+                height:'90px',
                 backgroundColor:'transparent',
                 backgroundImage:`url(${baseImageServer}/${image})`,
                 backgroundRepeat: 'no-repeat',

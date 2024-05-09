@@ -28,6 +28,7 @@ import AddToBug from './partials/AddToBug';
 import AddToWish from './partials/AddToWish';
 import StockQuantitySection from './partials/StockQuantitySection';
 import ShareComponent from './partials/ShareComponent';
+import RelatedProducts from './partials/RelatedProducts';
 
 async function getProductsDetails({productSlug}){
     ConfigureAxios();
@@ -65,6 +66,7 @@ export default async function Page({params}){
                     style={{
                         padding:"10px"
                     }}
+                    className='new-products-details-card'
                     >
                         <Row>
                             <Col
@@ -242,7 +244,28 @@ export default async function Page({params}){
                 lg={4}
                 className='product-details-left'
                 >
-                    
+                    <Card
+                    style={{
+                        padding:"10px"
+                    }}
+                    className='new-products-details-card'
+                    >
+                        <RelatedProducts/>
+                    </Card>
+                </Col>
+            </Row>
+            <Row
+            className='products-details-container'
+            >
+                <Col>
+                    <Card
+                    style={{
+                        padding:"10px"
+                    }}
+                    className='new-products-details-card'
+                    >
+
+                    </Card>
                 </Col>
             </Row>
             <hr className='product-details-hr'/>
