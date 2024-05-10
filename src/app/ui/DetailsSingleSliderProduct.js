@@ -369,78 +369,185 @@ const DetailsSingleSliderProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
 
     return(
         <>
-            <div className={`korean-shop-cart `}>
-                <div className='cart-body'>
-                    <Link
-                    href={`${data?.slug?`/products/${data?.slug}`:'/products/page=1&per_page=10'}`}
+            <div className={`related-products-card`}>
+                <div
+                className='feature-brand-container'
+                >
+                    <div
+                    className='left-div div'
                     >
-                        <div className='discount-section'>
-                            <span>10%</span>
-                            <span>OFF</span>
-                        </div>
-                        <div className='image-section'>
+                        <div
+                        className='image-div'
+                        >
                             <Image
+                            height={150}
+                            width={150}
                             src={`${data?.image?`${baseImageServer}/${data.image}`:'/products2.jpg'}`}
-                            height={220}
-                            width={190}
-                            alt={`${data?.img_alt?data?.img_alt:'Alter Text'}`}
-                            className='image'
-                            >
-                            </Image>
-                        </div>
-                    </Link>
-                </div>
-                <div className='cart-content'>
-                    <div className='title'>
-                        <ProductsTitle data={data}/>
-                    </div>
-                    <div className='price-wishlist'>
-                        <div className='price'>
-                            <h3 className="cart-price-text" style={{marginRight:'5px'}}>
-                                ৳{variants?.price && variants?.discount_price?parseFloat(variants.discount_price).toFixed(0):0}
-                            </h3>
-                            <h3 className="cart-discount-text">&nbsp;{
-                                parseFloat(variants.price)>parseFloat(variants.discount_price)?<del> ৳{variants?.price?parseFloat(variants.price).toFixed(0):0}</del>:""
-                            }</h3>
-                        </div>
-                        <div className='wishlist'>
-                            <Image
-                            src={`${isWishLists?'/love_red.png':'/love.png'}`}
-                            height={25}
-                            width={25}
-                            alt="Wishlist"
-                            onClick={()=>{
-                                handleWishLists(data)
-                            }}
-                            >
-
-                            </Image>
+                            className="feature-brand-image"
+                            />
                         </div>
                     </div>
-                    <div className='cart-action'>
-                        <div className='add-to-cart'>
-                            <Button 
-                            className='product-action-button'
-                            onClick={()=>{
-                                handleAddToCart(data?data:{},"add-to-cart")
-                            }}
+                    <div
+                    className='right-div div'
+                    >
+                        <div
+                        className='ks-row'
+                        >
+                            <div
+                            className='ks-lg-12'
                             >
-                                Add To Cart 
-                            </Button>
+                                <ProductsTitle data={data}/>
+                            </div>
                         </div>
-                        <div className='buy-now'>
-                            <Button 
-                            className='product-action-button'
-                            onClick={()=>{
-                                handleAddToCart(data?data:{},"buy-now")
+                        <div
+                        className='ks-row'
+                        style={{
+                            display:"flex",
+                            justifyContent:'center',
+                            alignItems:"center",
+                            padding:"10px 0px"
+                        }}
+                        >
+                            <div
+                            className='ks-lg-8 left'
+                            style={{
+                                display:"flex",
+                                justifyContent:'flex-start',
+                                alignItems:"center"
                             }}
                             >
-                                Buy Now
-                            </Button>
+                                <h3 className="cart-price-text" style={{marginRight:'5px'}}>
+                                    ৳{variants?.price && variants?.discount_price?parseFloat(variants.discount_price).toFixed(0):0}
+                                </h3>
+                                <h3 className="cart-discount-text">&nbsp;{
+                                    parseFloat(variants.price)>parseFloat(variants.discount_price)?<del> ৳{variants?.price?parseFloat(variants.price).toFixed(0):0}</del>:""
+                                }</h3>
+                            </div>
+                            <div
+                            className='ks-lg-4 right'
+                            style={{
+                                display:"flex",
+                                justifyContent:'flex-end',
+                                alignItems:"center"
+                            }}
+                            >
+                                <Image
+                                src={`${isWishLists?'/love_red.png':'/love.png'}`}
+                                height={25}
+                                width={25}
+                                alt="Wishlist"
+                                className='wish-lists-image'
+                                onClick={()=>{
+                                    handleWishLists(data)
+                                }}
+                                ></Image>
+                            </div>
+                        </div>
+                        <div
+                        className='ks-row'
+                        >
+                            <div
+                            className='ks-lg-6 left'
+                            >
+                                <Button 
+                                className='brand-action-button'
+                                onClick={()=>{
+                                    handleAddToCart(data?data:{},"add-to-cart")
+                                }}
+                                >
+                                    Add To Cart 
+                                </Button>
+                            </div>
+                            <div 
+                            className='ks-lg-6 right'
+                            >
+                                <Button 
+                                className='brand-action-button'
+                                onClick={()=>{
+                                    handleAddToCart(data?data:{},"buy-now")
+                                }}
+                                >
+                                    Buy Now
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {/* <div> */}
+                {/* <div className={`related-products-card`}>
+                    <div className='cart-body'>
+                        <Link
+                        href={`${data?.slug?`/products/${data?.slug}`:'/products/page=1&per_page=10'}`}
+                        >
+                            <div className='discount-section'>
+                                <span>10%</span>
+                                <span>OFF</span>
+                            </div>
+                            <div className='image-section'>
+                                <Image
+                                src={`${data?.image?`${baseImageServer}/${data.image}`:'/products2.jpg'}`}
+                                height={220}
+                                width={190}
+                                alt={`${data?.img_alt?data?.img_alt:'Alter Text'}`}
+                                className='image'
+                                >
+                                </Image>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className='cart-content'>
+                        <div className='title'>
+                            <ProductsTitle data={data}/>
+                        </div>
+                        <div className='price-wishlist'>
+                            <div className='price'>
+                                <h3 className="cart-price-text" style={{marginRight:'5px'}}>
+                                    ৳{variants?.price && variants?.discount_price?parseFloat(variants.discount_price).toFixed(0):0}
+                                </h3>
+                                <h3 className="cart-discount-text">&nbsp;{
+                                    parseFloat(variants.price)>parseFloat(variants.discount_price)?<del> ৳{variants?.price?parseFloat(variants.price).toFixed(0):0}</del>:""
+                                }</h3>
+                            </div>
+                            <div className='wishlist'>
+                                <Image
+                                src={`${isWishLists?'/love_red.png':'/love.png'}`}
+                                height={25}
+                                width={25}
+                                alt="Wishlist"
+                                onClick={()=>{
+                                    handleWishLists(data)
+                                }}
+                                >
+
+                                </Image>
+                            </div>
+                        </div>
+                        <div className='cart-action'>
+                            <div className='add-to-cart'>
+                                <Button 
+                                className='product-action-button'
+                                onClick={()=>{
+                                    handleAddToCart(data?data:{},"add-to-cart")
+                                }}
+                                >
+                                    Add To Cart 
+                                </Button>
+                            </div>
+                            <div className='buy-now'>
+                                <Button 
+                                className='product-action-button'
+                                onClick={()=>{
+                                    handleAddToCart(data?data:{},"buy-now")
+                                }}
+                                >
+                                    Buy Now
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                </div> */}
+            {/* </div> */}
 
             <Modal 
             show={showModal2} 

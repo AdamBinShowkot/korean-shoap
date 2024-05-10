@@ -29,6 +29,7 @@ import AddToWish from './partials/AddToWish';
 import StockQuantitySection from './partials/StockQuantitySection';
 import ShareComponent from './partials/ShareComponent';
 import RelatedProducts from './partials/RelatedProducts';
+import ProductDetailsTabs from './partials/ProductDetailsTabs';
 
 async function getProductsDetails({productSlug}){
     ConfigureAxios();
@@ -52,7 +53,7 @@ async function getProductsDetails({productSlug}){
 export default async function Page({params}){
     // console.log("Params",params)
     const details=await getProductsDetails(params)
-    console.log("Details:",details);
+    //console.log("Details:",details);
     return(
         <>
             <Row
@@ -250,7 +251,9 @@ export default async function Page({params}){
                     }}
                     className='new-products-details-card'
                     >
-                        <RelatedProducts/>
+                        <RelatedProducts
+                        brand={details.brand?.name?details.brand:{}}
+                        />
                     </Card>
                 </Col>
             </Row>
@@ -264,7 +267,7 @@ export default async function Page({params}){
                     }}
                     className='new-products-details-card'
                     >
-
+                        <ProductDetailsTabs data={details}/>
                     </Card>
                 </Col>
             </Row>

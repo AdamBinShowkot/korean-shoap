@@ -1,4 +1,8 @@
-import React from 'react';
+'use client';
+import React,{
+    useState,
+    useEffect
+} from 'react';
 import {
     Row,
     Col,
@@ -8,15 +12,86 @@ import {
     Form,
     Button
 } from 'react-bootstrap';
+import axios from 'axios';
 import Image from 'next/image';
 import BlogPosts from './partials/BlogPosts';
 import SidebarMain from './partials/Sidebar';
 import RecentSinglePost from './partials/RecentSinglePost';
 import FeaturedImage from './partials/FeatruedImage';
+import ConfigureAxios from '@/utils/axiosConfig';
 import './index.scss';
 
 
 const BlogsPage=()=>{
+    const [blogs,setBlogs]=useState([]);
+    const [categries,setCategories]=useState([]);
+
+    useEffect(()=>{
+        ConfigureAxios();
+        initialLoading();
+    },[]);
+
+    const initialLoading=async()=>{
+        const blogLists=await getBlogs();
+        const categoryLists=await getCategories();
+
+        //console.log("Blog: ",blogLists);
+        //console.log("Cat: ",categoryLists);
+
+        if(blogLists?.length){
+            setBlogs(blogLists)
+        }else{
+            setBlogs([]);
+        }
+
+        if(categoryLists?.length){
+            setCategories(categoryLists);
+        }else{
+            setCategories(categoryLists);
+        }
+
+    }
+
+    const getBlogs=async()=>{
+        const data= await axios.get(`/public/blogs?per_page=10&page=1`).then((res)=>{
+            if(res.status===200){
+                const {
+                    items
+                }=res.data;
+
+                //console.log("Items: ",items);
+                if(items.length){
+                    return items;
+                }else{
+                    return [];
+                }
+            }
+        }).catch((error)=>{
+            return [];
+        })
+
+        return data;
+    }
+    const getCategories=async()=>{
+        const data=await axios.get(`/public/blog-categories`).then((res)=>{
+            if(res.status===200){
+                const {
+                    data
+                }=res;
+
+                //console.log("Data: ",data);
+                if(data.length){
+                    return data;
+                }else{
+                    return [];
+                }
+            }
+        }).catch((error)=>{
+            return [];
+        })
+
+        return data;
+    }
     return(
         <>
             <Row
@@ -29,7 +104,7 @@ const BlogsPage=()=>{
                     className='blog-page-container'
                     >
                         <div className="blog-first">
-                            <BlogPosts/>
+                            <BlogPosts lists={blogs}/>
                         </div>
                         <div 
                         className="blog-second "
@@ -56,14 +131,18 @@ const BlogsPage=()=>{
                             <br/>
                             <h3>Categories</h3>
                             <ul className='blog-category-lists'>
-                                <li>Cream Blush</li>
-                                <li>Uncategorized</li>
+                                {
+                                    categries?.length?categries.map((d)=>{
+                                        return <li key={d.id}>{d.name}</li>
+                                    }):""
+                                }
+                                {/* <li>Uncategorized</li>
                                 <li>Hair & Body</li>
                                 <li>Make Up</li>
                                 <li>How To’s</li>
                                 <li>Skincare</li>
                                 <li>Sun Care</li>
-                                <li>Tip</li>
+                                <li>Tip</li> */}
                             </ul>
                         </div>
                         <div 

@@ -1,0 +1,193 @@
+.related-products-card{
+    //overflow: hidden;
+    border: 1px solid grey;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 25vh;
+    margin: 5px 0px;
+}
+.ks-row{
+    display: flex;
+    width: 100%;
+}
+.ks-lg-12{
+    width: 100%;
+}
+.ks-lg-6{
+    width: 50%;
+}
+.ks-lg-8{
+    width: 70%;
+}
+.ks-lg-4{
+    width: 30%;
+}
+.brand-action-button{
+    width: 98%;
+    color: #fff;
+    font-size: 12px;
+    background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1));
+    border-radius: 0;
+    border: none;
+    
+}
+.feature-brand-container{ 
+    display: flex;
+    flex-direction: row;
+    .div{
+        padding: 4px;
+    }
+    .left-div{
+        width: 30%;
+        overflow: hidden;
+        border-top-left-radius: 5px;
+        .image-div{
+            height:100px;
+            width:100%;
+            overflow:hidden;
+            //border:1px solid grey;
+        }
+    }
+    .right-div{
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        .ks-row{
+            .left{
+                .brand-action-button{
+                    border-top-left-radius: 50px;
+                    border-bottom-left-radius: 50px;
+                    margin-right: 2%;
+                }
+            }
+            .right{
+                .brand-action-button{
+                    border-top-right-radius: 50px;
+                    border-bottom-right-radius: 50px;
+                    margin-left: 2%;
+                }
+            }
+        }
+    }
+}
+.feature-brand-image{
+    height: 100% !important;
+    width: 100% !important;
+}
+.wish-lists-image:hover{
+    cursor: pointer;
+}
+.korean-shop-cart{
+    //z-index: 10;
+    overflow: hidden;
+    border: 1px solid grey;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    .cart-body{
+        position: relative;
+        width: 100%;
+        min-height: 35vh;
+        .discount-section{
+            z-index: 2;
+            background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1));
+            border: none !important;
+            color: #fff;
+            padding: 5px 12px !important;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 0;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 10px;
+            display: flex;
+            position: absolute;
+            top:0px;
+            right:0px;
+            flex-direction: column;
+            span{
+                color:#fff;
+                font-size: 14px;
+            }
+        }
+        .image-section{
+            margin: 1vh .5vw 1vh !important;
+            height: 33vh;
+            //z-index: -4;
+            .image{
+                //height: 100% !important;
+                background: transparent;
+                width: 100% !important;
+                z-index: -10 !important;
+                height: 32vh;
+            }
+            .image:hover{
+                transform: scale(1.1); 
+                z-index: -3;
+                transition: .5s ease-in;
+            }
+        }
+    }
+    .cart-content{
+        z-index: 4 !important;
+        .title{
+            height: 8vh;
+            padding: 0px 5px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            overflow: hidden;
+            .products-link-href{
+                span{
+                    font-size: 12px !important;
+                }
+            }
+            .products-link-href:hover{
+                text-decoration: underline;
+            }
+        }
+        .price-wishlist{
+            margin-bottom: 12px;
+            display: flex;
+            padding: 3px 5px;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            .price{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                .cart-price-text{
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+                .cart-discount-text{
+                    font-size: 18px;
+                }
+            }
+            .wishlist{
+
+            }
+        }
+    }
+    .cart-action{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        .product-action-button{
+            width: 100%;
+            color: #fff;
+            font-size: 13px;
+            background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1));
+            border-radius: 0;
+            border: none;
+        }
+        .add-to-cart{
+            width: 49%;
+        }
+        .buy-now{
+            width: 49%;
+        }
+    }
+}

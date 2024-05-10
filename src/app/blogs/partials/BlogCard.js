@@ -5,9 +5,19 @@ import {
     Card
 } from 'react-bootstrap';
 import Image from 'next/image';
+import { 
+    baseImageServer 
+} from '@/utils/config';
 import './index.scss';
+import { 
+    getMonthNameWithId 
+} from '@/utils/dateConfig';
 
-const BlogCard=()=>{
+const BlogCard=({data})=>{
+    console.log("Dataa: ",data);
+    const myDate=new Date(data.created_at);
+    const monthName=getMonthNameWithId((myDate.getMonth()+1));
+
     return(
         <>
             <Card
@@ -22,7 +32,7 @@ const BlogCard=()=>{
                 style={{
                     width: '100%',
                     minHeight:'170px',
-                    backgroundImage:`url('/blogImage.png')`,
+                    backgroundImage:`url('${baseImageServer}/${data.image}')`,
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: '100% 100%'
                 }}
@@ -41,9 +51,13 @@ const BlogCard=()=>{
                         textAlign:'center'
                     }}
                     >
-                        <span style={{fontSize:'11px'}}>By: Admin&nbsp;&nbsp; | &nbsp;&nbsp;October 25, 2022</span><br/>
+                        <span style={{fontSize:'11px'}}>By: Admin&nbsp;&nbsp; | &nbsp;&nbsp;{monthName} {myDate.getDate()}, {myDate.getFullYear()}</span><br/>
                         <span>
-                            <b>Tips & Procedure To Apply Luxury Beauty Cosmetic Cream</b>
+                            <b>
+                                {
+                                    data?.title?data.title:'Tips & Procedure To Apply Luxury Beauty Cosmetic Cream'
+                                }
+                            </b>
                         </span>
                     </Col>
                 </Row>

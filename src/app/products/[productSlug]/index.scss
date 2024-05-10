@@ -85,6 +85,11 @@
 // New Product Details CSS
 .new-products-details-card{
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    .nav-tabs{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 // RESPONSIVE AREA

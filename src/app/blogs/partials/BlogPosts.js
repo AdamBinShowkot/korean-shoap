@@ -7,11 +7,20 @@ import Link from 'next/link';
 import BlogCard from './BlogCard';
 import PaginationMain from './Pagination';
 
-const BlogPosts=()=>{
+const BlogPosts=({lists})=>{
     return(
         <>
             <Row>
-                <Col xs={6}>
+                {
+                    lists?.length?lists.map((d)=>{
+                        return <Col key={d.id} xs={6}>
+                        <Link href="/blogs/1">
+                            <BlogCard data={d}/>
+                        </Link>
+                    </Col>
+                    }):""
+                }
+                {/*<Col xs={6}>
                     <Link href="/blogs/1">
                         <BlogCard/>
                     </Link>
@@ -60,7 +69,7 @@ const BlogPosts=()=>{
                     <Link href="/blogs/10">
                         <BlogCard/>
                     </Link>
-                </Col>
+                </Col> */}
             </Row>
             <Row>
                 <Col 
