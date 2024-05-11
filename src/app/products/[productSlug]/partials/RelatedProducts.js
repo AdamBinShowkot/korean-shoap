@@ -10,6 +10,7 @@ import {
 import ConfigureAxios from '@/utils/axiosConfig';
 import DetailsSingleSliderProduct from '@/app/ui/DetailsSingleSliderProduct';
 import axios from 'axios';
+import './index.scss';
 
 
 const RelatedProducts=({brand})=>{
@@ -45,15 +46,7 @@ const RelatedProducts=({brand})=>{
         <>
             <Row>
                 <Col
-                style={{
-                    display:'flex',
-                    justifyContent:'center',
-                    alignContent:'center',
-                    flexDirection:'column',
-                    height:'90vh',
-                    overflow:'auto',
-                    padding:"10px 10px"
-                }}
+                className='related-product-column'
                 >
                     
                     {

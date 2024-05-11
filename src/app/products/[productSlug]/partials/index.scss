@@ -83,3 +83,29 @@
 .product-details p{
     color:#000 !important;
 }
+
+.related-product-column{
+    display:flex;
+    justify-content:center;
+    align-content:center;
+    flex-direction:column;
+    height:90vh;
+    overflow:auto;
+    padding:10px 10px;
+}
+
+// RESPONSIVE AREA
+@media only screen and (max-width:480px) {
+    .related-product-column{
+        height:60vh;
+    }
+    
+}
+
+
+@media only screen and (min-width:980px) {
+    .related-product-column{
+        height:90vh;
+    }
+    
+}

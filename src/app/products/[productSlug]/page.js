@@ -71,7 +71,7 @@ export default async function Page({params}){
                     >
                         <Row>
                             <Col
-                            xs={6}
+                            xs={12}
                             lg={5}
                             >
                                 <DetailsLeftSection
@@ -79,7 +79,7 @@ export default async function Page({params}){
                                 /> 
                             </Col>
                             <Col
-                            xs={6}
+                            xs={12}
                             lg={7}
                             >
                                 <Col 
@@ -160,47 +160,6 @@ export default async function Page({params}){
                                             </span>
                                         </Col>
                                     </Row>
-                                    {/* <Row
-                                    style={{
-                                        marginBottom:'5px'
-                                    }}
-                                    >
-                                        <Col 
-                                        xs={12}
-                                        style={{
-                                            display:'flex',
-                                            justifyContent:'flex-start',
-                                            alignItems:'center'
-                                        }}
-                                        className=''
-                                        >
-                                            
-                                            <span
-                                            className="details-top-info"
-                                            >
-                                                <span className="left">
-                                                    <StarComponent rate={details?.avg_rating && details?.total_review?details.avg_rating:0}/> 
-                                                    &nbsp;&nbsp;&nbsp;<b>{details?.total_review?details.total_review:"0"}</b> &nbsp;&nbsp; Customer review &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp; 
-                                          
-                                                    &nbsp;&nbsp;
-                                                </span>
-                                                <span className="right">
-                                                    Size: <b>&nbsp;{details?.variant[0]?.size?details?.variant[0]?.size:""}</b>&nbsp;&nbsp;&nbsp;
-                                                    SKU: <b>&nbsp;{details?.sku?details.sku:'111'}</b>
-                                                </span>
-                                            </span>
-                                            
-                                        </Col>
-                                    </Row>  */}
-                                    {/* <Row>
-                                        <Col 
-                                        xs={12}
-                                        className="products-details-short-description"
-                                        >
-                                            {details?.short_description?parse(details.short_description):""}
-                                        
-                                        </Col>
-                                    </Row><br/> */}
                                     <StockQuantitySection data={details}/>
                                     <br/>
                                     <AddToBug data={details}/>
@@ -258,7 +217,7 @@ export default async function Page({params}){
                 </Col>
             </Row>
             <Row
-            className='products-details-container'
+            className='products-details-container tabs'
             >
                 <Col>
                     <Card
@@ -272,156 +231,7 @@ export default async function Page({params}){
                 </Col>
             </Row>
             <hr className='product-details-hr'/>
-            {/* <Row
-            className="details-comments-area"
-            >
-                <Col 
-                xs={12}
-                xl={6}
-                >
-                    <Row
-                    // style={{
-                    //     display:'flex',
-                    //     justifyContent:'flex-start',
-                    //     alignItems:'center'
-                    // }}
-                    >
-                        <Col 
-                        xs={12}
-                        xl={12}
-                        style={{
-                            display:'flex',
-                            justifyContent:'flex-start',
-                            alignItems:'center'
-                        }}
-                        >
-                            <StarComponent
-                            size={15}
-                            rate={0}
-                            />
-                            &nbsp; &nbsp;
-                            <span style={{fontSize:'11px'}}>0 review</span>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col 
-                        xs={12}
-                        style={{
-                            display:'flex',
-                            justifyContent:'flex-start',
-                            alignItems:'center',
-                            paddingTop:'8px'
-                        }}
-                        >
-                            <span style={{fontSize:'13px',color:'#8566bf'}}>0 Question\0 Answers</span>                            
-                        </Col>
-                    </Row>
-                </Col>
-                <Col 
-                xs={12}
-                xl={6}
-                className='comments-button-section'
-                >
-                    <InputGroup
-                    className="button-container"
-                    >
-                        <InputGroupText
-                        className='product-details-comment-button'
-                        >
-                            <div
-                            style={{
-                                width:'20%',
-                                textAlign:'right'
-                            }}
-                            >
-                                <Image
-                                src="/details6.png"
-                                width={18}
-                                height={18}
-                                alt="search"
-                                />
-                            </div>
-                            <div
-                            style={{
-                                width:'100%',
-                                display:'flex',
-                                justifyContent:'center',
-                                alignItems:'center'
-                            }}
-                            >
-                                <div
-                                style={{
-                                    width:'80%',
-                                    
-                                }}
-                                >
-                                    <span
-                                    style={{
-                                        marginRight:'10px'
-                                    }}
-                                    >
-                                        Write A Review
-                                    </span>
-                                </div>
-                                
-                            </div>
-                        </InputGroupText>
-                    </InputGroup>
-                    <InputGroup
-                    className="button-container"
-                    >
-                        <InputGroupText
-                        className='product-details-comment-button'
-                        >
-                            <div
-                            style={{
-                                width:'20%',
-                                textAlign:'right'
-                            }}
-                            >
-                                <Image
-                                src="/details5.png"
-                                width={18}
-                                height={18}
-                                alt="search"
-                                />
-                            </div>
-                            <div
-                            style={{
-                                width:'100%',
-                                display:'flex',
-                                justifyContent:'center',
-                                alignItems:'center'
-                            }}
-                            >
-                                <div
-                                style={{
-                                    width:'80%',
-                                    
-                                }}
-                                >
-                                    <span
-                                    style={{
-                                        marginRight:'10px'
-                                    }}
-                                    >
-                                        Ask A Question
-                                    </span>
-                                </div>
-                            </div>
-                        </InputGroupText>
-                    </InputGroup>
-                </Col>
-            </Row> */}
-            {/* <Row
-            className="products-comments-area"
-            >
-                <Col 
-                xs={12}
-                >
-                    <CommentMain/>
-                </Col>
-            </Row> */}
+           
           {
             details?.related_products?.length?(
                 <div
