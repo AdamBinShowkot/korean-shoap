@@ -13,7 +13,7 @@ import {
     getMonthNameWithId 
 } from '@/utils/dateConfig';
 
-const BlogCard=({data})=>{
+const FakeCardd=({data})=>{
     //console.log("Dataa: ",data);
     const myDate=new Date(data?.created_at);
     const monthName=getMonthNameWithId((myDate.getMonth()+1));
@@ -25,7 +25,8 @@ const BlogCard=({data})=>{
             style={{
                 display:'flex',
                 justifyContent:'center',
-                alignItems:'center'
+                alignItems:'center',
+                visibility:"hidden"
             }}
             >
                 <Row
@@ -65,4 +66,4 @@ const BlogCard=({data})=>{
         </>
     )
 }
-export default BlogCard;
+export default FakeCardd;

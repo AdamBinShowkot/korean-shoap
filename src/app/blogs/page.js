@@ -12,6 +12,11 @@ import {
     Form,
     Button
 } from 'react-bootstrap';
+import Link from 'next/link'
+import { 
+    useRouter,
+    useSearchParams 
+} from 'next/navigation';
 import axios from 'axios';
 import Image from 'next/image';
 import BlogPosts from './partials/BlogPosts';
@@ -23,17 +28,60 @@ import './index.scss';
 
 
 const BlogsPage=()=>{
+    const searchParams = useSearchParams();
+    const router=useRouter();
     const [blogs,setBlogs]=useState([]);
     const [categries,setCategories]=useState([]);
+    const [searchParams2,setSearchParams]=useState("");
+    const [searchLists,setSearchLists]=useState([]);
+    const [IsSearchStart,setIsSearchStart]=useState(false);
+    const category = searchParams.get('category');
+    const query = searchParams.get('query');
 
     useEffect(()=>{
         ConfigureAxios();
+
         initialLoading();
     },[]);
 
+    useEffect(()=>{
+        if(category || query){
+            initialLoading2();
+        }
+    },[category,query])
+
     const initialLoading=async()=>{
-        const blogLists=await getBlogs();
+        
         const categoryLists=await getCategories();
+
+        //console.log("Blog: ",blogLists);
+        //console.log("Cat: ",categoryLists);
+
+        if(!category && !query){
+            let blogLists=await getBlogs();
+            if(blogLists?.length){
+                setBlogs(blogLists)
+            }else{
+                setBlogs([]);
+            }
+        }
+        
+
+        if(categoryLists?.length){
+            setCategories(categoryLists);
+        }else{
+            setCategories(categoryLists);
+        }
+
+    }
+
+
+    const initialLoading2=async()=>{
+        let blogLists=[];
+
+        if(category && !query){
+            blogLists=await getBlogsWithCategory(category);
+        }
 
         //console.log("Blog: ",blogLists);
         //console.log("Cat: ",categoryLists);
@@ -44,16 +92,30 @@ const BlogsPage=()=>{
             setBlogs([]);
         }
 
-        if(categoryLists?.length){
-            setCategories(categoryLists);
-        }else{
-            setCategories(categoryLists);
-        }
-
     }
-
     const getBlogs=async()=>{
         const data= await axios.get(`/public/blogs?per_page=10&page=1`).then((res)=>{
+            if(res.status===200){
+                const {
+                    items
+                }=res.data;
+
+                //console.log("Items: ",items);
+                if(items.length){
+                    return items;
+                }else{
+                    return [];
+                }
+            }
+        }).catch((error)=>{
+            return [];
+        })
+
+        return data;
+    }
+
+    const getBlogsWithCategory=async(slugs)=>{
+        const data= await axios.get(`/public/category-wise-blog/${slugs}?per_page=20&page=1`).then((res)=>{
             if(res.status===200){
                 const {
                     items
@@ -92,6 +154,48 @@ const BlogsPage=()=>{
 
         return data;
     }
+
+    const handleOnSearch=(e)=>{
+        
+        e.preventDefault();
+
+        if(searchParams2){
+            // setSearchLists([]);
+            // setSearchParams("");
+            setSearchLists([]);
+            setSearchParams("");
+            window.location.href=`/products?q=${searchParams2}`
+            // setTimeout(()=>{
+            //     router.push(`/products?q=${searchParams}`)
+            // },100)
+        }
+    }
+    const handleOnChange=(e)=>{
+        const {value}=e.target;
+        setSearchParams(e.target.value);
+        // ConfigureAxios();
+        // if(value){
+        //     setIsSearchStart(true);
+        //     axios.get(`/public/product-search?q=${value}`)
+        //     .then((response)=>{
+        //         if(response.status==200){
+        //             const dataLists=response.data.items;
+        //             if(dataLists.length){
+        //                 setSearchLists(dataLists)
+        //                 setIsSearchStart(false);
+        //             }else{
+        //                 setIsSearchStart(false);
+        //                 setSearchLists([]);
+        //             }
+        //         }
+        //     }).catch((error)=>{
+        //         setIsSearchStart(false);
+        //         setSearchLists([]);
+        //         console.log("On search error.")
+        //     })
+        // }
+    }
+
     return(
         <>
             <Row
@@ -114,6 +218,18 @@ const BlogsPage=()=>{
                                 <FormControl
                                 className='normal-input'
                                 placeholder='search here'
+                                value={searchParams2}
+                                onChange={handleOnChange}
+                                onKeyDown={(e)=>{
+                                    if(e.key=="Enter" && searchParams2){
+                                        // setSearchLists([]);
+                                        // setSearchParams("");
+                                        // router.push(`/products?q=${searchParams}`)
+                                        setSearchLists([]);
+                                        setSearchParams("");
+                                        window.location.href=`/blogs?category=&query=${searchParams2}`
+                                    }
+                                }}
                                 >
 
                                 </FormControl>
@@ -133,7 +249,15 @@ const BlogsPage=()=>{
                             <ul className='blog-category-lists'>
                                 {
                                     categries?.length?categries.map((d)=>{
-                                        return <li key={d.id}>{d.name}</li>
+                                        return <Link
+                                        key={d.id}
+                                        href={`/blogs?category=${d.slug}&query=`}
+                                        >
+                                            <li 
+                                            >
+                                            {d.name}
+                                        </li>
+                                        </Link>
                                     }):""
                                 }
                                 {/* <li>Uncategorized</li>

@@ -5,7 +5,9 @@ import {
 } from 'react-bootstrap';
 import Link from 'next/link';
 import BlogCard from './BlogCard';
+import FakeCardd from './FakeCard';
 import PaginationMain from './Pagination';
+import Notfound from './NotFound';
 
 const BlogPosts=({lists})=>{
     return(
@@ -18,14 +20,24 @@ const BlogPosts=({lists})=>{
                             <BlogCard data={d}/>
                         </Link>
                     </Col>
-                    }):""
+                    }):<Col 
+                    xs={6}
+                    style={{
+                        minWidth:"48%"
+                    }}
+                    >
+                       <Notfound/>
+                    </Col>
                 }
-                {/*<Col xs={6}>
-                    <Link href="/blogs/1">
-                        <BlogCard/>
-                    </Link>
+                <Col 
+                xs={6}
+                style={{
+                    // minWidth:"48%"
+                }}
+                >
+                   <FakeCardd/>
                 </Col>
-                <Col xs={6}>
+                {/*<Col xs={6}>
                     <Link href="/blogs/2">
                         <BlogCard/>
                     </Link>
