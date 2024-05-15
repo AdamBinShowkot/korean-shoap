@@ -86,8 +86,8 @@
 
 .related-product-column{
     display:flex;
-    justify-content:center;
-    align-content:center;
+    justify-content:flex-start;
+    align-content:flex-start;
     flex-direction:column;
     height:90vh;
     overflow:auto;
