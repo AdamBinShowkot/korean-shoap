@@ -204,6 +204,19 @@ export default async function Page({params}){
                 lg={4}
                 className='product-details-left'
                 >
+                    <Row>
+                        <Col>
+                            <h2>Related Products</h2>
+                        </Col>
+                    </Row>
+                    <hr
+                    style={{
+                        margin:"5px 0px 10px 0px",
+                        backgroundColor:'rgb(239 40 122)',
+                        color:'rgb(239 40 122)',
+                        height:'3px'
+                    }}
+                    />
                     <Card
                     style={{
                         padding:"10px"
@@ -231,7 +244,20 @@ export default async function Page({params}){
                 </Col>
             </Row>
             <hr className='product-details-hr'/>
-           
+            <h2
+            style={{
+                margin:"0px 100px 0px",
+            }}
+            >From Same Brand</h2>
+            <hr
+            style={{
+                margin:"5px 100px 0px",
+                backgroundColor:'rgb(239 40 122)',
+                color:'rgb(239 40 122)',
+                height:'3px',
+                width:'16%'
+            }}
+            />
           {
             details?.related_products?.length?(
                 <div

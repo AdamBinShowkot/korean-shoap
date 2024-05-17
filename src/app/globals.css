@@ -206,7 +206,8 @@ ul li{
 }
 .flat-button-footer-area{
   padding: 0px 20px 0px 6px;
-  background-color: rgba(232, 99, 154, 1);
+  /* background-color: rgba(232, 99, 154, 1); */
+  background-color: rgb(207, 70, 127);
 }
 
 .fixed-button span{
