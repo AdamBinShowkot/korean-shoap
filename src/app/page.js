@@ -17,6 +17,7 @@ import HomeBlogSection from './components/HomeBlogSection';
 import PageContent from './PageContent';
 import parse from 'html-react-parser';
 import SlugInfo from './SlugInfo';
+import BrandIndex from './components/Brands';
 //import useSize from '@/hooks/useSize';
 
 async function getBodyCareLists(){
@@ -437,6 +438,11 @@ export default async function Home() {
         </Col>
       </Row>  */}
       <SlugInfo/>
+      <div style={{
+        width:'100%',
+      }}>
+        <BrandIndex/>
+      </div>
       {/* <Row>
         <Col xs={12}>
           <HomeBlogSection/>
