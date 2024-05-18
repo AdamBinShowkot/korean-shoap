@@ -781,6 +781,52 @@ const ProductsMain=()=>{
                                 width:'10vw !important',
                             }}
                             >
+                               {activeCategories?.slugs?activeCategories.slugs:""}
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu 
+                            as={CustomMenu}
+                            className="filter-sub-menu-container"
+                            >
+                                <Dropdown.Item 
+                                eventKey={`001`}
+                                className={`filter-item-menu`}
+                                onClick={(e)=>{
+                                    clearFilterBox("category")
+                                }}
+                                key={"001"}
+                                >
+                                    All
+                                </Dropdown.Item>
+                                {
+                                    categoryLists?.length?categoryLists.map((dta)=>{
+                                        return <Dropdown.Item 
+                                        eventKey={`${dta.id}`}
+                                        onClick={(e)=>{
+                                            handleOnFilterMenuChange(dta,'category')
+                                        }}
+                                        key={dta.id}
+                                        className={`filter-item-menu ${activeCategories.category_id==dta.id?'filter-item-menu-active':''}`}
+                                        >
+                                            {dta.name}
+                                        </Dropdown.Item>
+                                    }):""
+                                }
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        <Dropdown 
+                        >
+                            <Dropdown.Toggle 
+                            as={CustomToggle}
+                            className="filter-sub-menu-container"
+                            id="dropdown-basic"
+                            style={{
+                                display:'flex',
+                                alignItems:'center',
+                                justifyContent:'center',
+                                width:'10vw !important',
+                            }}
+                            >
                                {activeSkinConcern?.slugs?activeSkinConcern.slugs:""}
                             </Dropdown.Toggle>
 
@@ -852,52 +898,6 @@ const ProductsMain=()=>{
                                         }}
                                         key={dta.id}
                                         className={`filter-item-menu ${activeSkinType.skin_type_id==dta.id?'filter-item-menu-active':''}`}
-                                        >
-                                            {dta.name}
-                                        </Dropdown.Item>
-                                    }):""
-                                }
-                            </Dropdown.Menu>
-                        </Dropdown>
-                        <Dropdown 
-                        >
-                            <Dropdown.Toggle 
-                            as={CustomToggle}
-                            className="filter-sub-menu-container"
-                            id="dropdown-basic"
-                            style={{
-                                display:'flex',
-                                alignItems:'center',
-                                justifyContent:'center',
-                                width:'10vw !important',
-                            }}
-                            >
-                               {activeCategories?.slugs?activeCategories.slugs:""}
-                            </Dropdown.Toggle>
-
-                            <Dropdown.Menu 
-                            as={CustomMenu}
-                            className="filter-sub-menu-container"
-                            >
-                                <Dropdown.Item 
-                                eventKey={`001`}
-                                className={`filter-item-menu`}
-                                onClick={(e)=>{
-                                    clearFilterBox("category")
-                                }}
-                                key={"001"}
-                                >
-                                    All
-                                </Dropdown.Item>
-                                {
-                                    categoryLists?.length?categoryLists.map((dta)=>{
-                                        return <Dropdown.Item 
-                                        eventKey={`${dta.id}`}
-                                        onClick={(e)=>{
-                                            handleOnFilterMenuChange(dta,'category')
-                                        }}
-                                        key={dta.id}
-                                        className={`filter-item-menu ${activeCategories.category_id==dta.id?'filter-item-menu-active':''}`}
                                         >
                                             {dta.name}
                                         </Dropdown.Item>
