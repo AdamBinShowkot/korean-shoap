@@ -209,11 +209,11 @@ export default async function Page({params}){
                             <h2>Related Products</h2>
                         </Col>
                     </Row>
-                    <hr
+                    <div
                     style={{
                         margin:"5px 0px 10px 0px",
-                        backgroundColor:'rgb(239 40 122)',
-                        color:'rgb(239 40 122)',
+                        backgroundColor:'#6737a8',
+                        color:'#6737a8',
                         height:'3px'
                     }}
                     />
@@ -249,11 +249,11 @@ export default async function Page({params}){
                 margin:"0px 100px 0px",
             }}
             >From Same Brand</h2>
-            <hr
+            <div
             style={{
                 margin:"5px 100px 0px",
-                backgroundColor:'rgb(239 40 122)',
-                color:'rgb(239 40 122)',
+                backgroundColor:'#6737a8',
+                color:'#6737a8',
                 height:'3px',
                 width:'16%'
             }}
