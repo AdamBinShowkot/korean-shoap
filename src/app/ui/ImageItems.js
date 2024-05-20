@@ -11,10 +11,14 @@ import './brand.scss';
 
 const ImageItem=({data})=>{
     return(
-        <section>
-            <Row
-            >
-                <Col
+        <section
+        style={{
+            height:"100%",
+            width:'100%'
+        }}
+        >
+           
+                <div
                 className='image-container'
                 >
                     <Image
@@ -24,8 +28,8 @@ const ImageItem=({data})=>{
                     alt={`${data?.img_alt?data?.img_alt:'Alter Text'}`}
                     className='brand-image'
                     />
-                </Col>
-            </Row>
+                </div>
+            
         </section>
     )
 }

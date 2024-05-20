@@ -437,12 +437,12 @@ export default async function Home() {
           {homeInfo?.content?parse(homeInfo.content):""}
         </Col>
       </Row>  */}
-      <SlugInfo/>
       <div style={{
         width:'100%',
       }}>
         <BrandIndex/>
       </div>
+      <SlugInfo/>
       {/* <Row>
         <Col xs={12}>
           <HomeBlogSection/>
