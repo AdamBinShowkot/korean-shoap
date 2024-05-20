@@ -95,6 +95,30 @@
     }
 }
 
+// Navbar responsive area .
+.product-details-tab .nav-item .nav-link{
+    border:1px solid #6737a8;
+    color: #000;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+}
+.product-details-tab .nav-item:first-child .nav-link{
+    border-left: 1px solid #6737a8 !important;  
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.product-details-tab .nav-item:last-child .nav-link{
+    border-right: 1px solid #6737a8 !important;  
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.product-details-tab .nav-item .nav-link.active{
+    background-color: #6737a8;
+    color: #fff !important;
+}
+
+
 // RESPONSIVE AREA
 @media only screen and (max-width:480px) {
     .product-details-left{

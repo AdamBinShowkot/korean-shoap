@@ -26,7 +26,7 @@ const RelatedProducts=({brand})=>{
     const getInitiData=async(slugs)=>{
         axios.get(`/public/brand/products/${slugs}`)
         .then((res)=>{
-            console.log("Response : ",res);
+            //console.log("Response : ",res);
             if(res.status==200){
                 const {
                     items
