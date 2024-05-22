@@ -7,6 +7,7 @@ import {
     Container
 } from 'react-bootstrap';
 import Image from 'next/image'
+import Link from 'next/link'
 import './index.scss';
 
 const BannerThree=()=>{
@@ -27,11 +28,15 @@ const BannerThree=()=>{
                         xs={4}
                         xl={4}
                         >
-                            <Button
-                            className='banner-three-button'
+                            <Link
+                            href={"/products/brands"}
                             >
-                                Shop By Brand
-                            </Button>
+                                <Button
+                                className='banner-three-button'
+                                >
+                                    Shop By Brand
+                                </Button>
+                            </Link>
                         </Col>
                         <Col 
                         xs={4}
@@ -50,11 +55,15 @@ const BannerThree=()=>{
                         xl={4}
                         className='column'
                         >
-                            <Button
-                            className='banner-three-button'
+                            <Link
+                            href={"/products"}
                             >
-                                Shop Now
-                            </Button>
+                                <Button
+                                className='banner-three-button'
+                                >
+                                    Shop Now
+                                </Button>
+                            </Link>   
                         </Col>
                     </Row>
                 </Container>
