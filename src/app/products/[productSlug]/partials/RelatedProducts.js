@@ -52,7 +52,7 @@ const RelatedProducts=({related_products})=>{
                     {
                         related_products?.length?related_products.map((dta)=>{
                             return <DetailsSingleSliderProduct key={dta.id} data={dta} />
-                        }):""
+                        }):<h3>Products Not Found.</h3>
                     }
             
                 </Col>

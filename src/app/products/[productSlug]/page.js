@@ -97,6 +97,13 @@ export default async function Page({params}){
                                                     details?.name?details.name:`Neogen Dermalogy Black Energy Cream 80ml`
                                                 }
                                             </h2>
+                                            
+                                            <span
+                                            className='products-details-short-description'
+                                            >
+                                                {details?.short_description?parse(details?.short_description):""}
+                                            </span>
+                                          
                                             <span
                                             className='product-title-info'
                                             >
@@ -106,7 +113,7 @@ export default async function Page({params}){
                                                             Products
                                                         </b>&nbsp;&nbsp;&nbsp;: 
                                                         <strong>
-                                                            &nbsp;&nbsp;&nbsp;{details.variant[0]?.sku?details.variant[0].sku:""}
+                                                            &nbsp;&nbsp;&nbsp;{details?.variant[0]?.sku?details.variant[0].sku:""}
                                                         </strong>
                                                     </span> 
                                                 </p>
@@ -118,7 +125,7 @@ export default async function Page({params}){
                                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                         :
                                                         <strong>
-                                                            &nbsp;&nbsp;&nbsp;{details.brand?.name?details.brand.name:""}
+                                                            &nbsp;&nbsp;&nbsp;{details?.brand?.name?details.brand.name:""}
                                                         </strong> 
                                                     </span> 
                                                 </p>
@@ -130,7 +137,7 @@ export default async function Page({params}){
                                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                         :
                                                         <strong>
-                                                            &nbsp;&nbsp;&nbsp;{details.variant[0]?.size?details.variant[0].size:""}
+                                                            &nbsp;&nbsp;&nbsp;{details?.variant[0]?.size?details.variant[0].size:""}
                                                         </strong> 
                                                     </span> 
                                                 </p>
@@ -142,7 +149,7 @@ export default async function Page({params}){
                                                         &nbsp;&nbsp;
                                                         :
                                                         <strong>
-                                                            &nbsp;&nbsp;&nbsp;{details.category?.name?details.category.name:""}
+                                                            &nbsp;&nbsp;&nbsp;{details?.category?.name?details.category.name:""}
                                                         </strong>  
                                                     </span> 
                                                 </p>
@@ -154,7 +161,7 @@ export default async function Page({params}){
                                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                         :
                                                         <strong>
-                                                            &nbsp;&nbsp;&nbsp;{details.variant[0]?.stock>0?"In Stock":"Out Stock"}
+                                                            &nbsp;&nbsp;&nbsp;{details?.variant[0]?.stock>0?"In Stock":"Out Stock"}
                                                         </strong>
                                                     </span> 
                                                 </p>
@@ -181,15 +188,15 @@ export default async function Page({params}){
                                             <ShareComponent data={details}/>
                                         </Col>
                                     </Row><br/>
-                                    <Row>
+                                    {/* <Row>
                                         <Col 
                                         xs={12}
                                         className="products-details-short-description"
                                         >
-                                            {details?.short_description?parse(details.short_description):""}
+                                            
                                         
                                         </Col>
-                                    </Row><br/>
+                                    </Row><br/> */}
                                     <Row>
                                         <Col xs={12}>
                                             {/* <ProductDetails data={details}/> */}
@@ -245,39 +252,9 @@ export default async function Page({params}){
                     </Card>
                 </Col>
             </Row>
-            <hr className='product-details-hr'/>
-            <h2
-            style={{
-                margin:"0px 100px 0px",
-            }}
-            >From Same Brand</h2>
-            <div
-            style={{
-                margin:"5px 100px 0px",
-                backgroundColor:'#6737a8',
-                color:'#6737a8',
-                height:'3px',
-                width:'16%'
-            }}
+            <ProductSliderIntermediate
+            brand={details.brand?.name?details.brand:{}}
             />
-          {
-            details?.related_products?.length?(
-                <div
-                className="products-footer-slider-area"
-                >
-                    <Col xs={12}>
-                        <ProductSliderIntermediate
-                        brand={details.brand?.name?details.brand:{}}
-                        />
-                        {/* <FooterProductSlider
-                        brand={details.brand?.name?details.brand:{}}
-                        product_lists={details?.related_products?.length?details.related_products:[]}
-                        len={details?.related_products?.length?details?.related_products.length:0}
-                        /> */}
-                    </Col>
-                </div>
-            ):""
-          }
         </>
     )
 }

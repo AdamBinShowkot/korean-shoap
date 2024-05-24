@@ -3,6 +3,9 @@ import React,{
     useState,
     useEffect
 } from "react";
+import {
+    Col
+} from 'react-bootstrap';
 import axios from 'axios';
 import ConfigureAxios from "@/utils/axiosConfig";
 import FooterProductSlider from "./ProductsSlider";
@@ -42,10 +45,39 @@ const ProductSliderIntermediate=({brand})=>{
     
     return(
         <>
-            <FooterProductSlider
-            product_lists={brands.length?brands:[]}
-            len={brands?.length?brands.length:0}
-            />
+          {
+            brands?.length?<>
+                <hr className='product-details-hr'/>
+                <h2
+                style={{
+                    margin:"0px 100px 0px",
+                }}
+                >From Same Brand</h2>
+                <div
+                style={{
+                    margin:"5px 100px 0px",
+                    backgroundColor:'#6737a8',
+                    color:'#6737a8',
+                    height:'3px',
+                    width:'16%'
+                }}
+                />
+        
+                <div
+                className="products-footer-slider-area"
+                >
+                    <Col xs={12}>
+                    {
+                        brands?.length?<FooterProductSlider
+                        product_lists={brands.length?brands:[]}
+                        len={brands?.length?brands.length:0}
+                        />:<h3>Not Brand Item Found.</h3>
+                    }
+                        
+                    </Col>
+                </div> 
+            </>:""
+          }
         </>
     )
 }
