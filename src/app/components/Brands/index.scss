@@ -30,6 +30,28 @@
     flex-wrap:wrap;
     overflow:hidden;
 }
+.products-bottom-container-column{
+    padding:40px 80px;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+}
+.brand-title{
+    margin: 0px 0px 10px 10px;
+}
+.brand-title-hr{
+    width: 35%;
+    margin: 0px 0px 10px 10px;
+    height: 2px;
+    background-color: purple;
+}
+.brands-category-inner-column{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
 
 // RESPONSIVE AREA
 @media only screen and (max-width:480px) {

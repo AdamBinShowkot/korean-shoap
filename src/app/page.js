@@ -424,31 +424,15 @@ export default async function Home() {
         <BannerThree/>
       </Row>
       <Row>
-      
-        <IsotopeReact 
-        // lists={brandLists}
-        // brands={featredBrandLists}
+        <IsotopeReact
         />
       </Row>
-      {/* <Row>
-        <Col
-        className='home-page-footer-seo-content'
-        >
-          {homeInfo?.content?parse(homeInfo.content):""}
-        </Col>
-      </Row>  */}
       <div style={{
         width:'100%',
       }}>
         <BrandIndex/>
       </div>
       <SlugInfo/>
-      {/* <Row>
-        <Col xs={12}>
-          <HomeBlogSection/>
-        </Col>
-      </Row> */}
-      {/* <PageContent/> */}
     </>
   )
 }

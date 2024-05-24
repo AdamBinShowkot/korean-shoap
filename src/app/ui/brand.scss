@@ -1,6 +1,6 @@
 .brand-main-container{
-    border: none;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    border: 1px solid #fafafa;
+    transition: .3s ease-in;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -34,6 +34,11 @@
             text-decoration: underline;
         }
     }
+}
+.brand-main-container:hover{
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    transition: .3s ease-in;
 }
 
 
@@ -69,12 +74,12 @@
 @media only screen and (min-width:980px) {
     .brand-main-container{
         margin: 10px;
-        min-height: 15vh;
+        min-height: 17vh;
         overflow: hidden;
         .image-container{
-            height: 15vh;
+            height: 17vh;
            // width: 100%;
-            width:15.6vw;
+            width:22.8vw;
             overflow: hidden;
             .brand-image{
                 height: 100% !important;

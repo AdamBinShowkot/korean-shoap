@@ -115,7 +115,7 @@ const ProductsMain=()=>{
                             return <Col 
                                 key={dta.id} 
                                 xs={6}
-                                lg={2}
+                                lg={3}
                                 >
                                     <BrandCard
                                     IsBrand={true}
