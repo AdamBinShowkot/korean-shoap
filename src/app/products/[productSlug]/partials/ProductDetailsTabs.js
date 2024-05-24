@@ -13,7 +13,7 @@ import './index.scss';
 const ProductDetailsTabs=({data})=>{
     const {ingredients}=data;
     const ingredients_len=ingredients?.length;
-    console.log("Data::: ",data);
+    //console.log("Data::: ",data);
     return(
         <>
 

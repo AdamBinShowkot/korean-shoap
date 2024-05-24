@@ -20,7 +20,6 @@ const BrandCard=({data,IsBrand})=>{
             >
                 <Card
                 className='brand-main-container'
-
                 >
                     <ImageItem
                     data={data}

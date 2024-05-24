@@ -13,35 +13,35 @@ import axios from 'axios';
 import './index.scss';
 
 
-const RelatedProducts=({brand})=>{
+const RelatedProducts=({related_products})=>{
     //console.log("Brand:: ",brand);
-    const [brands,setBrands]=useState([]);
+    // const [brands,setBrands]=useState([]);
 
-    useEffect(()=>{
-        ConfigureAxios();
-        const slugs=brand.slug;
-        getInitiData(slugs);
-    },[]);
+    // useEffect(()=>{
+    //     ConfigureAxios();
+    //     const slugs=brand.slug;
+    //     getInitiData(slugs);
+    // },[]);
 
-    const getInitiData=async(slugs)=>{
-        axios.get(`/public/brand/products/${slugs}`)
-        .then((res)=>{
-            //console.log("Response : ",res);
-            if(res.status==200){
-                const {
-                    items
-                }=res.data;
+    // const getInitiData=async(slugs)=>{
+    //     axios.get(`/public/brand/products/${slugs}`)
+    //     .then((res)=>{
+    //         //console.log("Response : ",res);
+    //         if(res.status==200){
+    //             const {
+    //                 items
+    //             }=res.data;
 
-                if(items?.length){
-                    setBrands(items);
-                }else{
-                    setBrands([]);
-                }
-            }
-        }).catch((error)=>{
-            console.log("Get Brand Lists Error.");
-        })
-    }
+    //             if(items?.length){
+    //                 setBrands(items);
+    //             }else{
+    //                 setBrands([]);
+    //             }
+    //         }
+    //     }).catch((error)=>{
+    //         console.log("Get Brand Lists Error.");
+    //     })
+    // }
     return(
         <>
             <Row>
@@ -50,7 +50,7 @@ const RelatedProducts=({brand})=>{
                 >
                     
                     {
-                        brands?.length?brands.map((dta)=>{
+                        related_products?.length?related_products.map((dta)=>{
                             return <DetailsSingleSliderProduct key={dta.id} data={dta} />
                         }):""
                     }

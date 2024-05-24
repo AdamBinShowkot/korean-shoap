@@ -13,20 +13,6 @@ import EmptyCard from '@/app/ui/EmptyCard';
 import useDeviceSize from '@/hooks/useDeviceSize';
 
 const FooterProductSlider=({product_lists,len})=>{
-    // const settings = {
-    //     // className: "center",
-    //     // centerMode: true,
-    //     // infinite: true,
-    //     // centerPadding: "60px",
-    //     // slidesToShow: 4,
-    //     // speed: 500
-    //     dots: false,
-    //     infinite: true,
-    //     speed: 500,
-    //     slidesToShow: 5,
-    //     slidesToScroll: 5,
-    //     centerMode:false
-    // };
     const [width, height] = useDeviceSize();  
 
     const [myLists,setMyLists]=useState([]);
@@ -41,8 +27,9 @@ const FooterProductSlider=({product_lists,len})=>{
     )
 
     useEffect(() => {
+        //console.log("Lists Data1: ",product_lists);
         if(width<420){
-
+            //console.log("Lists Data: ",product_lists);
             let newLists=[...product_lists];
             let newSettings={...settings,slidesToShow:2};
             if(len>=5){
@@ -70,7 +57,7 @@ const FooterProductSlider=({product_lists,len})=>{
           
             setSettings(newSettings)
         }else{
-          
+            
             let newLists=[...product_lists];
             let newSettings={...settings,slidesToShow:5};
             if(len>=5){
@@ -124,7 +111,9 @@ const FooterProductSlider=({product_lists,len})=>{
         return () => {
           
         };
-    }, [width]);
+    }, [width,product_lists]);
+
+    //console.log("Brand Data: ",myLists);
 
     return(
         <>

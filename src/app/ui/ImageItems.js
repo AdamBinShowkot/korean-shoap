@@ -14,7 +14,8 @@ const ImageItem=({data})=>{
         <section
         style={{
             height:"100%",
-            width:'100%'
+            width:'100%',
+            display:'flex'
         }}
         >
            
@@ -24,7 +25,7 @@ const ImageItem=({data})=>{
                     <Image
                     src={`${data?.image?`${baseImageServer}/${data.image}`:'/products2.jpg'}`}
                     height={220}
-                    width={190}
+                    width={230}
                     alt={`${data?.img_alt?data?.img_alt:'Alter Text'}`}
                     className='brand-image'
                     />

@@ -5,11 +5,14 @@
     justify-content: flex-start;
     .image-container{
         overflow: hidden;
+        //display: flex;
         padding:0px 20px;
         height:27vh;
+        //flex-direction: column;
         width: 15.2vw;
         .brand-image{
             z-index: -5;
+            width: 15.2vw;
             height: 100% !important;
             width: 100% !important;
         }
@@ -63,10 +66,10 @@
 @media only screen and (min-width:980px) {
     .brand-main-container{
         margin: 10px;
-        min-height: 16vh;
+        min-height: 17vh;
         overflow: hidden;
         .image-container{
-            height: 16vh;
+            height: 17vh;
             width: 100%;
             overflow: hidden;
             .brand-image{

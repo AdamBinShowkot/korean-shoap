@@ -23,6 +23,7 @@ import StarComponent from './partials/StarComponent';
 import ProductDetails from './partials/ProductDetails';
 import CommentMain from './partials/CommentMain';
 import FooterProductSlider from './partials/ProductsSlider';
+import ProductSliderIntermediate from './partials/ProductSliderIntermedieate';
 import './index.scss';
 import AddToBug from './partials/AddToBug';
 import AddToWish from './partials/AddToWish';
@@ -224,7 +225,8 @@ export default async function Page({params}){
                     className='new-products-details-card'
                     >
                         <RelatedProducts
-                        brand={details.brand?.name?details.brand:{}}
+                        //brand={details.brand?.name?details.brand:{}}
+                        related_products={details?.related_products?.length?details.related_products:[]}
                         />
                     </Card>
                 </Col>
@@ -264,10 +266,14 @@ export default async function Page({params}){
                 className="products-footer-slider-area"
                 >
                     <Col xs={12}>
-                        <FooterProductSlider
+                        <ProductSliderIntermediate
+                        brand={details.brand?.name?details.brand:{}}
+                        />
+                        {/* <FooterProductSlider
+                        brand={details.brand?.name?details.brand:{}}
                         product_lists={details?.related_products?.length?details.related_products:[]}
                         len={details?.related_products?.length?details?.related_products.length:0}
-                        />
+                        /> */}
                     </Col>
                 </div>
             ):""
