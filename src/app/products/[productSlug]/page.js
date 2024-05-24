@@ -72,7 +72,7 @@ export default async function Page({params}){
                         <Row>
                             <Col
                             xs={12}
-                            lg={5}
+                            lg={6}
                             >
                                 <DetailsLeftSection
                                 details={details}
@@ -80,7 +80,7 @@ export default async function Page({params}){
                             </Col>
                             <Col
                             xs={12}
-                            lg={7}
+                            lg={6}
                             >
                                 <Col 
                                 xs={12}

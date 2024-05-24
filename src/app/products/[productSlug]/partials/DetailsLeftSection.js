@@ -22,7 +22,8 @@ const DetailsLeftSection=({details})=>{
         <>
             <Card
             style={{
-                borderRadius:'10px'
+                borderRadius:'10px',
+                border:'2px solid #743ba7'
             }}
             >
                 {/* <Row>
