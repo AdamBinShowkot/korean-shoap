@@ -11,16 +11,19 @@ import './brand.scss';
 
 const ImageItem=({data})=>{
     return(
-        <section
-        style={{
-            height:"100%",
-            width:'100%',
-            display:'flex'
-        }}
-        >
+        // <section
+        // style={{
+        //     height:"100%",
+        //     width:'100%',
+        //     display:'flex'
+        // }}
+        // >
            
                 <div
                 className='image-container'
+                style={{
+                   
+                }}
                 >
                     <Image
                     src={`${data?.image?`${baseImageServer}/${data.image}`:'/products2.jpg'}`}
@@ -31,7 +34,7 @@ const ImageItem=({data})=>{
                     />
                 </div>
             
-        </section>
+        // </section>
     )
 }
 export default ImageItem;
