@@ -139,7 +139,7 @@ const BrandIndex=()=>{
                                         brandLists.map((dta)=>{  
                                         return <Col 
                                             key={dta.id} 
-                                            xs={12}
+                                            xs={6}
                                             lg={6}
                                             >
                                                 <BrandCard
@@ -177,7 +177,7 @@ const BrandIndex=()=>{
                                         categoryLists.map((dta)=>{  
                                         return <Col 
                                             key={dta.id} 
-                                            xs={12}
+                                            xs={6}
                                             lg={6}
                                             >
                                                 <BrandCard

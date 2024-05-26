@@ -166,7 +166,7 @@
                 .price{
 
                     .cart-price-text{
-                        font-size: 14px;
+                        font-size: 14px !important;
                         font-weight: 600;
                     }
                     .cart-discount-text{
@@ -181,7 +181,7 @@
         .cart-action{
             .product-action-button{
                 width: 100%;
-                font-size: 10px;
+                font-size: 10px !important;
                 padding: 6px;
             }
             .add-to-cart{
@@ -248,7 +248,7 @@
                 padding: 3px 5px;
                 .price{
                     .cart-price-text{
-                        font-size: 18px;
+                        font-size: 18px !important; 
                         font-weight: 600;
                     }
                     .cart-discount-text{
@@ -262,7 +262,7 @@
         }
         .cart-action{
             .product-action-button{
-                font-size: 13px;
+                font-size: 13px !important;
             }
             .add-to-cart{
                 width: 49%;

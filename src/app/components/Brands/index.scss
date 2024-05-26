@@ -71,6 +71,12 @@
             width: 44vw !important;
         }
     }
+    .products-bottom-container-column{
+        padding:10px 5px;
+    }
+    .brand-title-hr{
+        width: 60%;
+    }
 }
 @media only screen and (min-width:980px) {
     .products-top-container-row{
@@ -82,5 +88,11 @@
     .products-bottom-container-col{
         padding: 30px 80px;
         justify-content: flex-start;
+    }
+    .products-bottom-container-column{
+        padding:40px 80px;
+    }
+    .brand-title-hr{
+        width: 35%;
     }
 }
