@@ -80,10 +80,11 @@ const BodyContainer=({children})=>{
                 <HeaderMain/>
                 {/* <Container> */}
                   
-                <Row>
-                  <Col 
+                {/* <div> */}
+                  <div 
                   style={{
-                    overflow:'hidden'
+                    overflow:'hidden',
+                    width:"100%"
                   }}>
                       {/* <ToastContainer
                       position="bottom-right"
@@ -100,8 +101,8 @@ const BodyContainer=({children})=>{
                     
                     <FlatButton/>
                     {children}
-                  </Col>
-                </Row>
+                  </div>
+                {/* </div> */}
                 {/* </Container> */}
                 <FooterMain/>
                 <MobileFooterMenu/>

@@ -9,6 +9,7 @@ import {
 import axios from 'axios';
 import ConfigureAxios from "@/utils/axiosConfig";
 import FooterProductSlider from "./ProductsSlider";
+import './index.scss';
 
 const ProductSliderIntermediate=({brand})=>{
     //console.log("Brand:: ",brand);
@@ -49,18 +50,10 @@ const ProductSliderIntermediate=({brand})=>{
             brands?.length?<>
                 <hr className='product-details-hr'/>
                 <h2
-                style={{
-                    margin:"0px 100px 0px",
-                }}
+                className="product-details-heading"
                 >From Same Brand</h2>
                 <div
-                style={{
-                    margin:"5px 100px 0px",
-                    backgroundColor:'#6737a8',
-                    color:'#6737a8',
-                    height:'3px',
-                    width:'16%'
-                }}
+                className="product-details-hr-div"
                 />
         
                 <div
