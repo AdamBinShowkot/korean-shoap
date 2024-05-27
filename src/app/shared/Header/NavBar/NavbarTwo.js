@@ -357,32 +357,10 @@ const NavBarTwo=()=>{
                         <a 
                         className="mega-menu-href" 
                         href="#"
-                        onClick={()=>{
-                            //setOpenSkinConcern(!openSkinConcern);
-                        }}
                         >
                             <i className="fa fa-cogs"></i>COMBO
                             &nbsp;
-                            <Image
-                            src={'/downArrow.png'}
-                            height={8}
-                            width={14}
-                            alt="Image"
-                            className="navbar-arrow-image"
-                            />
                         </a>
-                        <div className={`animated fadeIn mega-menu `}>
-                            <div className="mega-menu-wrap">
-                                {/* <Row>
-                                    <Col
-                                    className="mega-menu-left-container"
-                                    >
-                                       
-                                       
-                                    </Col>
-                                </Row> */}
-                            </div>	
-                        </div>
                     </li>
                     <li className="mega-drop-down">
                         <a 
@@ -394,26 +372,21 @@ const NavBarTwo=()=>{
                         >
                             <i className="fa fa-cogs"></i>OFFER
                             &nbsp;
-                            <Image
-                            src={'/downArrow.png'}
-                            height={8}
-                            width={14}
-                            alt="Image"
-                            className="navbar-arrow-image"
-                            />
+                            
                         </a>
-                        <div className={`animated fadeIn mega-menu `}>
-                            <div className="mega-menu-wrap">
-                                {/* <Row>
-                                    <Col
-                                    className="mega-menu-left-container"
-                                    >
-                                       
-                                       
-                                    </Col>
-                                </Row> */}
-                            </div>	
-                        </div>
+                       
+                    </li>
+
+                    <li className="mega-drop-down">
+                        <Link
+                        className="mega-menu-href"
+                        href={"/products"}
+                        >
+                            SHOP
+                            &nbsp;
+                            
+                        </Link>
+                       
                     </li>
                 </ul>
             </Col> 
