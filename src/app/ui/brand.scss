@@ -1,4 +1,6 @@
 .brand-main-container{
+    width: 100%;
+    border-radius: 2px;
     border: 1px solid #fafafa;
     transition: .3s ease-in;
     overflow: hidden;
@@ -8,10 +10,10 @@
     .image-container{
         overflow: hidden;
         //display: flex;
-        padding:0px 20px;
+        padding:0px 5px;
         height:27vh;
         //flex-direction: column;
-        width: 15.2vw;
+        width: 12vw;
         .brand-image{
             z-index: -5;
             width: 15.2vw;
@@ -40,13 +42,13 @@
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
     transition: .3s ease-in;
 }
-
+//.brand-main-container:hover
 
 /*** RESPONSIVE AREA ***/
 @media only screen and (max-width:480px) {
     .brand-main-container{
         display: flex;
-        margin: 10px;
+        margin: 5px;
         align-items: center;
         justify-content: flex-start;
         .image-container{
@@ -73,13 +75,13 @@
 
 @media only screen and (min-width:980px) {
     .brand-main-container{
-        margin: 10px;
-        min-height: 17vh;
+        margin: 2px;
+        min-height: 15vh;
         overflow: hidden;
         .image-container{
-            height: 17vh;
+            height: 15vh;
            // width: 100%;
-            width:22.8vw;
+            width:15vw;
             overflow: hidden;
             .brand-image{
                 height: 100% !important;

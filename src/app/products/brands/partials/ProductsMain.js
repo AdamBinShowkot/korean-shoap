@@ -107,28 +107,36 @@ const ProductsMain=()=>{
             <Row>
                 <Col 
                 xs={12}
-                className="products-bottom-container-col"
+                className="products-bottom-container-column"
                 >
-                    {
-                        products?.length?(
-                            products.map((dta)=>{  
-                            return <Col 
-                                key={dta.id} 
-                                xs={6}
-                                lg={3}
-                                >
-                                    <BrandCard
-                                    IsBrand={true}
-                                    IsSkinConcern={false}  
-                                    data={dta}/>
-                                </Col>
-                            })
-                        ):dummyProducts?.length?dummyProducts.map((dta)=>{
-                            return <div key={dta.id}>
-                                <PlaceHolder/>
-                            </div>
-                        }):<NotFoundComponent/>
-                    }
+                    {/* <Row> */}
+                        <Row 
+                        xs={12}
+                        className='products-bottom-container-div'
+                        >
+                            {
+                                products?.length?(
+                                    products.map((dta)=>{  
+                                    return <Col 
+                                        key={dta.id} 
+                                        xs={6}
+                                        lg={2}
+                                        >
+                                            <BrandCard
+                                            IsBrand={true}
+                                            IsSkinConcern={false}
+                                            IsFromHome={false} 
+                                            data={dta}/>
+                                        </Col>
+                                    })
+                                ):dummyProducts?.length?dummyProducts.map((dta)=>{
+                                    return <div key={dta.id}>
+                                        <PlaceHolder/>
+                                    </div>
+                                }):<NotFoundComponent/>
+                            }
+                        </Row>
+                    {/* </Row> */}
                 </Col>
             </Row>
            {/* {

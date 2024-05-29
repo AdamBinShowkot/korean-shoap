@@ -18,13 +18,13 @@ const BrandCard=({data,IsBrand})=>{
             <Link
             href={`${IsBrand?`/products/brands/${data.slug}`:`/products/skin-concern/${data.slug}`}`}
             >
-                <Card
+                <div
                 className='brand-main-container'
                 >
                     <ImageItem
                     data={data}
                     />
-                </Card>
+                </div>
             </Link>
         </>
     )

@@ -5,6 +5,7 @@ import {
 } from 'react-bootstrap';
 import TopBanner from '../TopBanner';
 import ProductsMain from './partials/ProductsMain';
+import './index.scss';
 
 export const metadata = {
     title: 'The Korean Shop BD - Brand',
