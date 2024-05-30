@@ -76,7 +76,12 @@ const BodyContainer=({children})=>{
             <WishListsContextApi.Provider
             value={{wishLists,setWishLists}}
             >
-              <Container fluid>
+              <Container 
+              fluid
+              // style={{
+              //   overflowX:"hidden"
+              // }}
+              >
                 <HeaderMain/>
                 {/* <Container> */}
                   

@@ -4,7 +4,7 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    height: 25vh;
+    height: 22vh;
     margin: 5px 0px;
 }
 .ks-row{
@@ -72,8 +72,9 @@
     }
 }
 .feature-brand-image{
-    height: 100% !important;
+    // height: 100% !important;
     width: 100% !important;
+    height: 22vh;
 }
 .wish-lists-image:hover{
     cursor: pointer;

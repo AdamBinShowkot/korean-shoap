@@ -389,9 +389,13 @@ const DetailsSingleSliderProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
                     </div>
                     <div
                     className='right-div div'
+                    style={{
+                        position:'relative',
+                        height:"22vh"
+                    }}
                     >
                         <div
-                        className='ks-row'
+                        className='ks-row title-div'
                         >
                             <div
                             className='ks-lg-12'
@@ -445,6 +449,11 @@ const DetailsSingleSliderProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
                         </div>
                         <div
                         className='ks-row'
+                        style={{
+                            position:'absolute',
+                            bottom:"8px",
+                            right:'5px'
+                        }}
                         >
                             <div
                             className='ks-lg-6 left'
@@ -460,6 +469,7 @@ const DetailsSingleSliderProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
                             </div>
                             <div 
                             className='ks-lg-6 right'
+                           
                             >
                                 <Button 
                                 className='brand-action-button'

@@ -50,6 +50,13 @@ a,span{
 ul li{
   display: block !important;
 }
+.container-fluid{
+  /* margin: 0;
+  padding: 0; */
+  padding-left: 0;
+
+  /* overflow-y: hidden !important; */
+}
 .home-page-inner-container{
   display:flex;
   justify-content:center;
