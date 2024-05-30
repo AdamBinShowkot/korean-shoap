@@ -5,14 +5,17 @@ import React,{
 } from 'react';
 import {
     Row,
-    Col
+    Col,
+    Button
 } from 'react-bootstrap';
 import PlaceHolder from '@/app/ui/PlaceHolder';
 import NotFoundComponent from '@/app/ui/NotFound';
 import ConfigureAxios from '@/utils/axiosConfig';
 import BrandCard from '@/app/ui/BrandCard';
+import BrandCardTwo from '@/app/ui/BrandCardTwo';
 import axios from 'axios';
 import './index.scss';
+import Link from 'next/link';
 
 const BrandIndex=()=>{
     const [brandLists,setBrandLists]=useState([]);
@@ -122,11 +125,35 @@ const BrandIndex=()=>{
                         xs={12}
                         lg={6}
                         >
-                            <h2 className='brand-title'>Top 10 Brands.</h2>
                             <div
-                            className='brand-title-hr'
+                            className='brand-title-container'
                             >
-
+                                <div
+                                className='container left'
+                                >
+                                    <h2 className='brand-title'>Top 10 Brands.</h2>
+                                </div>
+                                <div
+                                className='container right'
+                                >
+                                    <Link
+                                    href={"/products/brands"}
+                                    >
+                                        <Button
+                                        className='title-view-more'
+                                        >
+                                            View All Brands
+                                        </Button>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div
+                            className='brand-title-hr-container'
+                            >
+                                <div
+                                className='brand-title-hr'
+                                >
+                                </div>
                             </div>
                             <div
                             style={{
@@ -142,7 +169,7 @@ const BrandIndex=()=>{
                                             xs={6}
                                             lg={6}
                                             >
-                                                <BrandCard
+                                                <BrandCardTwo
                                                 IsBrand={true}
                                                 IsSkinConcern={false}  
                                                 data={dta}/>
@@ -160,11 +187,35 @@ const BrandIndex=()=>{
                         xs={12}
                         lg={6}
                         >
-                            <h2 className='brand-title'>Top 10 Category.</h2>
                             <div
-                            className='brand-title-hr'
+                            className='brand-title-container'
                             >
-
+                                <div
+                                className='container left'
+                                >
+                                    <h2 className='brand-title'>Top 10 Category.</h2>
+                                </div>
+                                <div
+                                className='container right'
+                                >
+                                    <Link
+                                    href={"/products/categories"}
+                                    >
+                                        <Button
+                                        className='title-view-more'
+                                        >
+                                            View All Categories
+                                        </Button>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div
+                            className='brand-title-hr-container'
+                            >
+                                <div
+                                className='brand-title-hr'
+                                >
+                                </div>
                             </div>
                             <div
                             style={{
@@ -180,7 +231,7 @@ const BrandIndex=()=>{
                                             xs={6}
                                             lg={6}
                                             >
-                                                <BrandCard
+                                                <BrandCardTwo
                                                 IsBrand={true}
                                                 IsSkinConcern={false}  
                                                 data={dta}/>

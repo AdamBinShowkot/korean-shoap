@@ -36,12 +36,47 @@
     justify-content:flex-start;
     align-items:center;
 }
+.brand-title-container{
+    display: flex;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    .container{
+        display: flex;
+        width: 50%;
+        padding: 0;
+    }
+    .left{
+        text-align: left;
+    }
+    .right{
+        text-align: right;
+        justify-content: flex-end;
+    }
+    .title-view-more{
+        width: 100%;
+        color: #fff;
+        font-size: 13px;
+        background-image: linear-gradient(to right, rgba(92, 51, 169, 1), rgba(232, 99, 154, 1));
+        border-radius: 0;
+        border: none;
+    }
+}
 .brand-title{
     margin: 0px 0px 10px 10px;
 }
+.brand-title-hr-container{
+    width: 100%;
+    margin: 0px 0px 10px 10px;
+    height: 2px;
+    background-color: #f5f5f5;
+}
 .brand-title-hr{
     width: 35%;
-    margin: 0px 0px 10px 10px;
+    margin: 0px;
     height: 2px;
     background-color: purple;
 }
