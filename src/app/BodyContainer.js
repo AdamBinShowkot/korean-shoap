@@ -86,11 +86,7 @@ const BodyContainer=({children})=>{
                 {/* <Container> */}
                   
                 {/* <div> */}
-                  <div 
-                  style={{
-                    overflow:'hidden',
-                    width:"100%"
-                  }}>
+                  <div>
                       {/* <ToastContainer
                       position="bottom-right"
                       autoClose={5000}
