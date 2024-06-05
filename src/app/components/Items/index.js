@@ -660,7 +660,10 @@ const ItemsContainer=({title,IsCleanser,IsTonner,IsSerum,IsBodyCare,IsEyeCare,Is
                             myLists?.length?myLists.map((dta,index)=>{
                                 if(!dta?.emptyPost){
                                     return <div key={dta.id}>
-                                        <NewProduct data={dta}/>
+                                        <NewProduct 
+                                        data={dta}
+                                        IsFromHomeSlide={true}
+                                        />
                                     </div>
                                     
                                 }else{

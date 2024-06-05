@@ -36,7 +36,7 @@ import CartModal from '../shared/CartModal';
 import ProductsTitle from './ProductsTitle';
 import axios from 'axios';
 
-const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
+const NewProduct=({data,IsFromProductsPage,IsFromHomePage,IsFromHomeSlide})=>{
     const router=useRouter();
     const [hoverShow,setHoverShow]=useState(false);
     const [showModal,setShowModal]=useState(false);
@@ -369,7 +369,7 @@ const NewProduct=({data,IsFromProductsPage,IsFromHomePage})=>{
 
     return(
         <>
-            <div className={`korean-shop-cart ${IsFromProductsPage?'cart-from-products-page':''} ${IsFromHomePage?'cart-from-home-page':''}`}>
+            <div className={`korean-shop-cart ${IsFromProductsPage?'cart-from-products-page':''} ${IsFromHomePage?'cart-from-home-page':''} ${IsFromHomeSlide?'from-home-slide':''}`}>
                 <div className='cart-body'>
                     <Link
                     href={`${data?.slug?`/products/${data?.slug}`:'/products/page=1&per_page=10'}`}
